@@ -1,1 +1,115 @@
-{"sections":{"main":{"type":"main-page","settings":{"size_heading":140,"size_heading_mobile":100,"margin-top":40,"margin-bottom":0}}},"order":["main"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "compact-size-enabled": true,
+        "size_heading": 140,
+        "size_heading_mobile": 100,
+        "color-body-text": "rgba(0,0,0,0)",
+        "color-bg-overlay": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "margin-top": 40,
+        "margin-bottom": 0
+      }
+    },
+    "brand_collection_grid_JbCcHn": {
+      "type": "brand-collection-grid",
+      "name": "Brand Collection Grid",
+      "settings": {
+        "max_width": 1200,
+        "background_color": "#ffffff",
+        "columns_desktop": 4,
+        "columns_tablet": 3,
+        "columns_mobile": 2,
+        "grid_gap": 24,
+        "grid_gap_tablet": 20,
+        "grid_gap_mobile": 16,
+        "card_height": 200,
+        "card_height_mobile": 150,
+        "card_border_radius": 8,
+        "card_background": "#f8f9fa",
+        "image_fit": "cover",
+        "hover_background_image": "shopify://shop_images/ChatGPT_Image_Aug_11_2025_02_07_01_PM.png",
+        "hover_bg_opacity": 70,
+        "hover_bg_size": "cover",
+        "hover_bg_position": "center",
+        "hover_bg_blend_mode": "normal",
+        "hover_transition_duration": 300,
+        "hover_transform": "translateY(-4px)",
+        "hover_shadow": "0 8px 25px rgba(0, 0, 0, 0.15)",
+        "image_hover_scale": 105,
+        "image_hover_filter": "brightness(1.1)",
+        "show_alphabet_nav": true,
+        "alphabet_spacing": 16,
+        "alphabet_spacing_mobile": 12,
+        "alphabet_margin": 40,
+        "alphabet_margin_mobile": 30,
+        "alphabet_text_color": "#666666",
+        "alphabet_text_color_hover": "#333333",
+        "alphabet_text_color_disabled": "#cccccc",
+        "alphabet_background_hover": "#f5f5f5",
+        "alphabet_border_color": "#e5e5e5",
+        "alphabet_border_width": 1,
+        "alphabet_font_size": 16,
+        "alphabet_font_size_mobile": 14,
+        "alphabet_font_weight": "500",
+        "alphabet_padding_horizontal": 12,
+        "alphabet_padding_vertical": 8,
+        "alphabet_padding_horizontal_mobile": 8,
+        "alphabet_padding_vertical_mobile": 6,
+        "alphabet_border_radius": 4,
+        "letter_title_size": 32,
+        "letter_title_size_mobile": 24,
+        "letter_title_weight": "700",
+        "letter_title_color": "#333333",
+        "letter_title_alignment": "left",
+        "letter_title_margin": 24,
+        "letter_title_margin_mobile": 16,
+        "letter_section_spacing": 60,
+        "letter_section_spacing_mobile": 40,
+        "show_collection_titles": true,
+        "title_font_size": 16,
+        "title_font_size_mobile": 14,
+        "title_font_weight": "600",
+        "title_text_color": "#ffffff",
+        "title_alignment": "center",
+        "title_text_shadow": true,
+        "title_padding_horizontal": 16,
+        "title_padding_vertical": 16,
+        "title_padding_horizontal_mobile": 12,
+        "title_padding_vertical_mobile": 12,
+        "title_overlay_gradient": "linear-gradient(transparent, rgba(0, 0, 0, 0.7))",
+        "title_overlay_gradient_hover": "linear-gradient(transparent, rgba(0, 0, 0, 0.9))",
+        "title_hover_translate": 0,
+        "placeholder_background": "#f0f0f0",
+        "placeholder_text_color": "#999999",
+        "placeholder_font_size": 14,
+        "placeholder_text": "",
+        "empty_message": "No brand collections found. Please set collections with \"Collection type\" metafield as \"Vendor\".",
+        "empty_text_color": "#666666",
+        "empty_font_size": 18,
+        "empty_padding": 60,
+        "section_padding_horizontal": 20,
+        "section_padding_vertical": 60,
+        "section_padding_horizontal_mobile": 16,
+        "section_padding_vertical_mobile": 40,
+        "margin-top": 0,
+        "margin-bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "brand_collection_grid_JbCcHn"
+  ]
+}
