@@ -1,0 +1,732 @@
+{{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
+
+{% assign background_rgb = section.settings['color-overlay'] | color_to_rgb %}
+{% assign text_rgb = section.settings['color-body-text'] | color_to_rgb %}
+
+<style>
+  [data-section-id="{{ section.id }}"] {
+    {% if section.settings.margin-top %}
+      --section-gap-top: {{ section.settings.margin-top }}px;
+    {% endif %}
+
+    {% if section.settings.margin-bottom %}
+      --section-gap-bottom: {{ section.settings.margin-bottom }}px;
+    {% endif %}
+
+    {% if section.settings.full-width-enabled %}
+      --border-radius: 0;
+    {% endif %}
+
+    --font-heading-scale-desk: {{ section.settings.heading_size | divided_by: 100.0 }};
+    --font-heading-scale: {{ section.settings.heading_size_mobile | divided_by: 100.0 }};
+  }
+
+  [data-section-id="{{ section.id }}"] .breakdown-banner__container {
+    {% if section.settings.background_image %}
+      background-image: url('{{ section.settings.background_image | image_url: width: 1920 }}');
+      background-size: cover;
+      background-position: {{ section.settings.background_position | default: 'center center' }};
+      background-repeat: no-repeat;
+    {% endif %}
+    {% if section.settings.background_color != 'rgba(0,0,0,0)' %}
+      background-color: {{ section.settings.background_color }};
+    {% endif %}
+    position: relative;
+    min-height: var(--section-height, 300px);
+    width: 100%;
+    overflow: hidden;
+    padding: {{ section.settings.content_padding_vertical | default: 40 }}px {{ section.settings.content_padding_horizontal | default: 40 }}px;
+  }
+
+  @media (min-width: 1200px) {
+    [data-section-id="{{ section.id }}"] .breakdown-banner__container {
+      min-height: var(--section-height-desk, 300px);
+      padding: {{ section.settings.content_padding_vertical | default: 60 }}px {{ section.settings.content_padding_horizontal | default: 60 }}px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .breakdown-banner__overlay {
+    {% if background_rgb != 'rgba(0, 0, 0, 0.0)' %}
+      --color-overlay-rgb: {{ section.settings.color-overlay | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+      --color-overlay-opacity: {{ section.settings.color-overlay-opacity | divided_by: 100.0 }};
+      background-color: rgba(var(--color-overlay-rgb, 0, 0, 0), var(--color-overlay-opacity, 0));
+    {% endif %}
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  [data-section-id="{{ section.id }}"] .breakdown-banner__content {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+    height: 100%;
+  }
+
+  @media (min-width: 900px) {
+    [data-section-id="{{ section.id }}"] .breakdown-banner__content {
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .breakdown-banner__text-section {
+    {% if text_rgb != 'rgba(0, 0, 0, 0.0)' %}
+      color: {{ section.settings.color-body-text }};
+    {% endif %}
+  }
+
+  [data-section-id="{{ section.id }}"] .breakdown-banner__heading {
+    font-size: calc(var(--font-heading-scale-desk, 1) * 36px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 32px;
+    color: {{ section.settings.heading_color | default: '#000000' }};
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+  }
+
+  @media (max-width: 1199px) {
+    [data-section-id="{{ section.id }}"] .breakdown-banner__heading {
+      font-size: calc(var(--font-heading-scale, 1) * 28px);
+      margin-bottom: 24px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .breakdown-banner__points {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  @media (max-width: 899px) {
+    [data-section-id="{{ section.id }}"] .breakdown-banner__points {
+      position: relative;
+      height: 80px;
+      overflow: hidden;
+    }
+
+    [data-section-id="{{ section.id }}"] .breakdown-banner__points.carousel-enabled {
+      height: 80px;
+    }
+
+    [data-section-id="{{ section.id }}"] .breakdown-banner__point {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease-in-out;
+      margin: 0;
+      padding: 12px 0;
+    }
+
+    [data-section-id="{{ section.id }}"] .breakdown-banner__point.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .breakdown-banner__point {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+  }
+
+  [data-section-id="{{ section.id }}"] .breakdown-banner__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: {{ section.settings.icon_background_color | default: '#FFC107' }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 24px;
+    color: {{ section.settings.icon_color | default: '#000000' }};
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  @media (min-width: 900px) {
+    [data-section-id="{{ section.id }}"] .breakdown-banner__icon::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.6),
+        transparent
+      );
+      transition: left 0.6s ease;
+    }
+
+    [data-section-id="{{ section.id }}"] .breakdown-banner__point:hover .breakdown-banner__icon {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    [data-section-id="{{ section.id }}"] .breakdown-banner__point:hover .breakdown-banner__icon::before {
+      left: 100%;
+    }
+
+    [data-section-id="{{ section.id }}"] .breakdown-banner__point:hover .breakdown-banner__point-text {
+      color: {{ section.settings.icon_background_color | default: '#FFC107' }};
+      transition: color 0.3s ease;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .breakdown-banner__point-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: {{ section.settings.point_text_color | default: '#000000' }};
+    line-height: 1.4;
+  }
+
+  @media (max-width: 899px) {
+    [data-section-id="{{ section.id }}"] .breakdown-banner__point-text {
+      font-size: 16px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .breakdown-banner__image-section {
+    position: relative;
+  }
+
+  [data-section-id="{{ section.id }}"] .breakdown-banner__image {
+    width: 100%;
+    height: auto;
+    border-radius: {{ section.settings.image_border_radius | default: 12 }}px;
+    object-fit: cover;
+  }
+
+  /* Google Material Icons */
+  .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+</style>
+
+<!-- Load Google Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<script>
+  class BreakdownCarousel {
+    constructor(container) {
+      this.container = container;
+      this.points = container.querySelectorAll('.breakdown-banner__point');
+      this.currentIndex = 0;
+      this.isEnabled = container.dataset.carouselEnabled === 'true';
+      this.speed = parseInt(container.dataset.carouselSpeed) || 3000;
+      this.intervalId = null;
+      
+      if (this.isEnabled && this.points.length > 1) {
+        this.init();
+      }
+    }
+    
+    init() {
+      // Only enable on mobile
+      this.checkScreenSize();
+      window.addEventListener('resize', () => this.checkScreenSize());
+    }
+    
+    checkScreenSize() {
+      const isMobile = window.innerWidth <= 899;
+      
+      if (isMobile && this.isEnabled) {
+        this.startCarousel();
+        this.container.classList.add('carousel-enabled');
+      } else {
+        this.stopCarousel();
+        this.container.classList.remove('carousel-enabled');
+        // Reset all points to visible on desktop
+        this.points.forEach(point => {
+          point.classList.remove('active');
+          point.style.position = '';
+          point.style.opacity = '';
+          point.style.transform = '';
+        });
+      }
+    }
+    
+    startCarousel() {
+      if (this.intervalId) return;
+      
+      // Set initial state
+      this.showPoint(0);
+      
+      this.intervalId = setInterval(() => {
+        this.nextPoint();
+      }, this.speed);
+    }
+    
+    stopCarousel() {
+      if (this.intervalId) {
+        clearInterval(this.intervalId);
+        this.intervalId = null;
+      }
+    }
+    
+    showPoint(index) {
+      this.points.forEach((point, i) => {
+        point.classList.toggle('active', i === index);
+      });
+      this.currentIndex = index;
+    }
+    
+    nextPoint() {
+      const nextIndex = (this.currentIndex + 1) % this.points.length;
+      this.showPoint(nextIndex);
+    }
+  }
+  
+  // Initialize carousel when DOM is loaded
+  document.addEventListener('DOMContentLoaded', function() {
+    const carouselContainers = document.querySelectorAll('.breakdown-banner__points');
+    carouselContainers.forEach(container => {
+      new BreakdownCarousel(container);
+    });
+  });
+
+  // Reinitialize on theme editor changes
+  document.addEventListener('shopify:section:load', function(event) {
+    const carouselContainers = event.target.querySelectorAll('.breakdown-banner__points');
+    carouselContainers.forEach(container => {
+      new BreakdownCarousel(container);
+    });
+  });
+</script>
+
+<div
+  data-section-id="{{ section.id }}"
+  class="breakdown-banner {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
+>
+  <div class="breakdown-banner__container">
+    {% if section.settings.color-overlay != 'rgba(0,0,0,0)' %}
+      <div class="breakdown-banner__overlay"></div>
+    {% endif %}
+
+    <div class="breakdown-banner__content">
+      <div class="breakdown-banner__text-section">
+        {% if section.settings.heading != blank %}
+          <h2 class="breakdown-banner__heading">
+            {{ section.settings.heading }}
+          </h2>
+        {% endif %}
+
+                 {% if section.blocks.size > 0 %}
+           <div class="breakdown-banner__points" 
+                data-carousel-enabled="{{ section.settings.enable_mobile_carousel }}"
+                data-carousel-speed="{{ section.settings.carousel_speed | default: 3000 }}">
+             {% for block in section.blocks %}
+               <div class="breakdown-banner__point {% if forloop.first %}active{% endif %}" 
+                    data-block-id="{{ block.id }}"
+                    data-carousel-index="{{ forloop.index0 }}">
+                 <div class="breakdown-banner__icon">
+                   {% if block.settings.icon_type == 'material' %}
+                     <span class="material-icons">{{ block.settings.material_icon | default: 'star' }}</span>
+                   {% else %}
+                     {{ block.settings.custom_icon | default: '★' }}
+                   {% endif %}
+                 </div>
+                 <div class="breakdown-banner__point-text">
+                   {{ block.settings.point_text }}
+                 </div>
+               </div>
+             {% endfor %}
+           </div>
+         {% endif %}
+      </div>
+
+      {% if section.settings.side_image %}
+        <div class="breakdown-banner__image-section">
+          <img
+            class="breakdown-banner__image"
+            srcset="
+              {% if section.settings.side_image.width >= 400 %}{{ section.settings.side_image | image_url: width: 400 }} 400w, {% endif %}
+              {% if section.settings.side_image.width >= 600 %}{{ section.settings.side_image | image_url: width: 600 }} 600w, {% endif %}
+              {% if section.settings.side_image.width >= 800 %}{{ section.settings.side_image | image_url: width: 800 }} 800w, {% endif %}
+              {{ section.settings.side_image | image_url: width: 600 }} 600w
+            "
+            sizes="(min-width: 900px) 50vw, 100vw"
+            src="{{ section.settings.side_image | image_url: width: 600 }}"
+            alt="{{ section.settings.side_image.alt | escape }}"
+            loading="lazy"
+            width="{{ section.settings.side_image.width }}"
+            height="{{ section.settings.side_image.height }}"
+          >
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Breakdown Banner",
+  "tag": "section",
+  "class": "breakdown-banner-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "WHAT'S AT STAKE?"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 50,
+      "max": 200,
+      "step": 10,
+      "default": 100,
+      "label": "Heading size (Desktop)",
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 50,
+      "max": 150,
+      "step": 10,
+      "default": 100,
+      "label": "Heading size (Mobile)",
+      "unit": "%"
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image (optional)"
+    },
+    {
+      "type": "select",
+      "id": "background_position",
+      "label": "Background image position",
+      "options": [
+        {
+          "value": "center center",
+          "label": "Center"
+        },
+        {
+          "value": "left center",
+          "label": "Left"
+        },
+        {
+          "value": "right center",
+          "label": "Right"
+        }
+      ],
+      "default": "center center"
+    },
+    {
+      "type": "image_picker",
+      "id": "side_image",
+      "label": "Side image"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 12,
+      "label": "Image border radius"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "point_text_color",
+      "label": "Point text color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "icon_background_color",
+      "label": "Icon background color",
+      "default": "#FFC107"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "color-overlay",
+      "label": "Overlay color",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "range",
+      "id": "color-overlay-opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 0,
+      "label": "Overlay opacity"
+    },
+         {
+       "type": "header",
+       "content": "Mobile Carousel"
+     },
+     {
+       "type": "checkbox",
+       "id": "enable_mobile_carousel",
+       "label": "Enable mobile carousel",
+       "default": true,
+       "info": "On mobile, points will rotate automatically instead of stacking"
+     },
+     {
+       "type": "range",
+       "id": "carousel_speed",
+       "min": 2000,
+       "max": 8000,
+       "step": 500,
+       "unit": "ms",
+       "default": 3000,
+       "label": "Carousel speed",
+       "info": "Time between rotations (milliseconds)"
+     },
+     {
+       "type": "header",
+       "content": "Layout"
+     },
+    {
+      "type": "checkbox",
+      "id": "full-width-enabled",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "content_padding_horizontal",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60,
+      "label": "Horizontal padding"
+    },
+    {
+      "type": "range",
+      "id": "content_padding_vertical",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 60,
+      "label": "Vertical padding"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin-top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0,
+      "label": "Top margin"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 20,
+      "label": "Bottom margin"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "point",
+      "name": "Prize Point",
+      "settings": [
+        {
+          "type": "text",
+          "id": "point_text",
+          "label": "Point text",
+          "default": "$500 Cash Prize"
+        },
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon type",
+          "options": [
+            {
+              "value": "material",
+              "label": "Google Material Icon"
+            },
+            {
+              "value": "custom",
+              "label": "Custom Character/Emoji"
+            }
+          ],
+          "default": "material"
+        },
+        {
+          "type": "select",
+          "id": "material_icon",
+          "label": "Material Icon",
+          "options": [
+            {
+              "value": "attach_money",
+              "label": "💰 Money"
+            },
+            {
+              "value": "emoji_events",
+              "label": "🏆 Trophy"
+            },
+            {
+              "value": "confirmation_number",
+              "label": "🎫 Ticket"
+            },
+            {
+              "value": "stars",
+              "label": "⭐ Stars"
+            },
+            {
+              "value": "local_pizza",
+              "label": "🍕 Pizza"
+            },
+            {
+              "value": "card_giftcard",
+              "label": "🎁 Gift Card"
+            },
+            {
+              "value": "flight",
+              "label": "✈️ Flight"
+            },
+            {
+              "value": "location_city",
+              "label": "🏙️ City"
+            },
+            {
+              "value": "restaurant",
+              "label": "🍽️ Restaurant"
+            },
+            {
+              "value": "celebration",
+              "label": "🎉 Celebration"
+            },
+            {
+              "value": "grade",
+              "label": "⭐ Grade"
+            },
+            {
+              "value": "workspace_premium",
+              "label": "💎 Premium"
+            }
+          ],
+          "default": "attach_money",
+          "info": "Choose from Google Material Icons"
+        },
+        {
+          "type": "text",
+          "id": "custom_icon",
+          "label": "Custom Icon/Emoji",
+          "default": "💰",
+          "info": "Enter any emoji or single character (only used if Custom type selected)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Breakdown Banner",
+      "blocks": [
+        {
+          "type": "point",
+          "settings": {
+            "point_text": "$500 Cash Prize",
+            "icon_type": "material",
+            "material_icon": "attach_money"
+          }
+        },
+        {
+          "type": "point",
+          "settings": {
+            "point_text": "Entry to International Pizza Challenge",
+            "icon_type": "material",
+            "material_icon": "emoji_events"
+          }
+        },
+        {
+          "type": "point",
+          "settings": {
+            "point_text": "Show Pass to Pizza Expo in Las Vegas",
+            "icon_type": "material",
+            "material_icon": "confirmation_number"
+          }
+        },
+        {
+          "type": "point",
+          "settings": {
+            "point_text": "$250 Equipment Credit for People's Choice",
+            "icon_type": "material",
+            "material_icon": "stars"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %} 

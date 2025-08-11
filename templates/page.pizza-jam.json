@@ -1,0 +1,41 @@
+{
+  "sections": {
+    "informational_banner": {
+      "type": "informational-banner",
+      "settings": {
+        "badge_text": "Sept 16 || 11AM",
+        "badge_size": 100,
+        "badge_size_mobile": 90,
+        "heading": "<p><strong>PIZZA JAM</strong></p>",
+        "heading_size": 200,
+        "heading_size_mobile": 150,
+        "subheading": "<p>Think You've Got The<br>Best Plain Pie in NJ?</p>",
+        "subheading_size": 110,
+        "subheading_size_mobile": 100,
+        "button_label": "Claim Your Spot",
+        "button_link": "",
+        "button_style": "primary",
+        "button_full_width": false,
+        "text_position": "left",
+        "full-width-enabled": true,
+        "slide_height": "fixed_height",
+        "desktop_fixed_height": 400,
+        "mobile_fixed_height": 400,
+        "heading_color": "#8B0000",
+        "subheading_color": "#2c2c2c",
+        "badge_background_color": "#FFC107",
+        "badge_text_color": "#000000",
+        "badge_border_radius": 20,
+        "color-overlay": "#000000",
+        "color-overlay-opacity": 50,
+        "content_padding_horizontal": 60,
+        "content_padding_vertical": 40,
+        "content_padding_horizontal_mobile": 24,
+        "content_padding_vertical_mobile": 20,
+        "margin-top": 0,
+        "margin-bottom": 0
+      }
+    }
+  },
+  "order": ["informational_banner"]
+}

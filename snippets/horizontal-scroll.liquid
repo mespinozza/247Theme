@@ -1,0 +1,199 @@
+{% if product.media.size == 1 %}
+  <!-- If there is only one media, show the image directly -->
+  <div class="product-media-swiper single">
+    <div class="product-media">
+      <img src="{{ product.media[0].preview_image | img_url: 'master' }}" alt="{{ product.media[0].alt }}" />
+    </div>
+  </div>
+  {% else %}
+<div class="swiper-container product-media-swiper">
+  <div class="swiper-wrapper">
+    {% for media in product.media %}
+      <div class="swiper-slide">
+        {% comment %}
+        <a href="javascript:void(0);" class="media-link" data-media="{{ media.preview_image | img_url: '2048x2048' }}">
+          <img src="{{ media.preview_image | img_url: '800x800' }}" alt="{{ media.alt }}" />
+        </a>
+        {% endcomment %}
+        <img src="{{ media.preview_image | img_url: 'master' }}" alt="{{ media.alt }}" />
+      </div>
+    {% endfor %}
+  </div>
+  <!-- Add Scrollbar -->
+  <div class="swiper-scrollbar"></div>
+</div>
+  {% endif %}
+{% comment %}
+<!-- Modal for Image Preview -->
+<div id="product-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+    <img id="modal-image" src="" alt="Product Image" />
+  </div>
+</div>
+{% endcomment %}
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<!-- Swiper Initialization JS -->
+<script>
+  var swiper = new Swiper('.product-media-swiper', {
+    direction: "horizontal",
+    slidesPerView: "auto",
+    spaceBetween: 0,
+    // freeMode: true,
+  //   mousewheel: {
+  //   releaseOnEdges: true,
+  // },
+    mousewheel: true,
+    scrollbar: {
+      el: '.swiper-scrollbar',
+      hide: false,
+      draggable: true,
+    },
+    breakpoints: {
+    1024: {
+      slidesPerView: "auto",
+      spaceBetween: 10
+    },
+  }
+  });
+
+  // Modal Functionality
+  // var modal = document.getElementById("product-modal");
+  // var modalImage = document.getElementById("modal-image");
+  // var closeModal = document.getElementsByClassName("close-btn")[0];
+
+  // // Open Modal when image is clicked
+  // var mediaLinks = document.querySelectorAll('.media-link');
+  // mediaLinks.forEach(function(link) {
+  //   link.addEventListener('click', function(e) {
+  //     var imageUrl = this.getAttribute('data-media');
+  //     modalImage.src = imageUrl;
+  //     modal.style.display = "block";
+  //   });
+  // });
+
+  // // Close Modal when 'X' is clicked
+  // closeModal.onclick = function() {
+  //   modal.style.display = "none";
+  // }
+
+  // // Close Modal when clicked outside of the modal content
+  // window.onclick = function(event) {
+  //   if (event.target == modal) {
+  //     modal.style.display = "none";
+  //   }
+  // }
+</script>
+
+<!-- Custom CSS -->
+<style>
+  /* Modal Style */
+  /* .modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding-top: 60px;
+  }
+
+  .modal-content {
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    background-color: #fff;
+    max-width: 80%;
+    max-height: 80%;
+    overflow: auto;
+    border-radius: 8px;
+  }
+
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    color: #aaa;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .close-btn:hover,
+  .close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  #modal-image {
+    width: 100%;
+    height: auto;
+  } */
+  /* Ensure the swiper container is horizontally scrollable */
+.product-media-swiper {
+  width: 100%;
+  overflow: hidden;
+  position: relative; /* Add position relative to control the scrollbar */
+}
+.product-media-swiper .swiper-wrapper {
+  align-items: center;
+  margin-bottom: 20px;
+}
+.product-media-swiper .swiper-container {
+  width: 100%;
+  overflow: hidden;
+}
+  .product-media-swiper img {
+  width: 100%;
+}
+
+  @media screen and (min-width: 1024px) {  
+.product-media-swiper .swiper-slide {
+  width: 647px !important;
+}
+    .product-media-swiper .product-media {
+    width: 647px;
+    margin: auto;
+}
+}
+
+@media screen and (max-width: 1024px) {
+  .product-media-swiper .swiper-slide {
+  width: 100%;
+}
+    .product-media-swiper img {
+  width: 100%;
+}
+  .product-media-swiper {
+  margin-bottom: 25px;
+}
+}
+/* Only apply the scrollbar for the swiper container */
+.product-media-swiper .swiper-scrollbar {
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 12px;
+  border-radius: 4px;
+  left: 0;
+  z-index: 1;
+  width: 100%; /* Full width of the swiper container */
+}
+
+/* Optional: Customize the scrollbar thumb */
+.product-media-swiper .swiper-scrollbar .swiper-scrollbar-drag {
+  background-color: grey;
+  border-radius: 4px;
+  height: 12px;
+}
+  .product-media-swiper .swiper-scrollbar .swiper-scrollbar-drag:hover {
+  background-color: #504b4b;
+}
+
+</style>
+</script>

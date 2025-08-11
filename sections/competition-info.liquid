@@ -1,0 +1,596 @@
+<style>
+  [data-section-id="{{ section.id }}"] {
+    {% if section.settings.margin-top %}
+      --section-gap-top: {{ section.settings.margin-top }}px;
+    {% endif %}
+
+    {% if section.settings.margin-bottom %}
+      --section-gap-bottom: {{ section.settings.margin-bottom }}px;
+    {% endif %}
+
+    --font-heading-scale-desk: {{ section.settings.heading_size | divided_by: 100.0 }};
+    --font-heading-scale: {{ section.settings.heading_size_mobile | divided_by: 100.0 }};
+
+    --font-point-scale-desk: {{ section.settings.point_text_size | divided_by: 100.0 }};
+    --font-point-scale: {{ section.settings.point_text_size_mobile | divided_by: 100.0 }};
+  }
+
+  [data-section-id="{{ section.id }}"] .competition-info__container {
+    background-color: {{ section.settings.background_color | default: '#C41E3A' }};
+    color: {{ section.settings.text_color | default: '#ffffff' }};
+    padding: {{ section.settings.content_padding_vertical | default: 24 }}px {{ section.settings.content_padding_horizontal | default: 40 }}px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: auto;
+  }
+
+  @media (min-width: 1200px) {
+    [data-section-id="{{ section.id }}"] .competition-info__container {
+      padding: {{ section.settings.content_padding_vertical_desktop | default: 32 }}px {{ section.settings.content_padding_horizontal_desktop | default: 60 }}px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .competition-info__heading {
+    font-size: calc(var(--font-heading-scale-desk, 1) * 28px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+    width: 100%;
+  }
+
+  @media (max-width: 1199px) {
+    [data-section-id="{{ section.id }}"] .competition-info__heading {
+      font-size: calc(var(--font-heading-scale, 1) * 22px);
+      margin-bottom: 20px;
+    }
+  }
+
+  @media (max-width: 599px) {
+    [data-section-id="{{ section.id }}"] .competition-info__heading {
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .competition-info__points {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Mobile Carousel Styles */
+  @media (max-width: 599px) {
+    [data-section-id="{{ section.id }}"] .competition-info__points {
+      position: relative;
+      height: 60px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: 0;
+    }
+
+    [data-section-id="{{ section.id }}"] .competition-info__point {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      opacity: 0;
+      transform: translate(0, -50%) translateY(20px);
+      transition: all 0.5s ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 12px;
+      padding: 8px 16px;
+      box-sizing: border-box;
+    }
+
+    [data-section-id="{{ section.id }}"] .competition-info__point.active {
+      opacity: 1;
+      transform: translate(0, -50%) translateY(0);
+    }
+  }
+
+  @media (min-width: 600px) {
+    [data-section-id="{{ section.id }}"] .competition-info__points {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    [data-section-id="{{ section.id }}"] .competition-info__point {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+      padding: 8px;
+    }
+  }
+
+  @media (min-width: 900px) {
+    [data-section-id="{{ section.id }}"] .competition-info__points {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .competition-info__icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 18px;
+    color: {{ section.settings.text_color | default: '#ffffff' }};
+  }
+
+  @media (max-width: 599px) {
+    [data-section-id="{{ section.id }}"] .competition-info__icon {
+      width: 24px;
+      height: 24px;
+      font-size: 16px;
+      margin-right: 4px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .competition-info__point-text {
+    font-size: calc(var(--font-point-scale-desk, 1) * 16px);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  @media (max-width: 1199px) {
+    [data-section-id="{{ section.id }}"] .competition-info__point-text {
+      font-size: calc(var(--font-point-scale, 1) * 14px);
+    }
+  }
+
+  @media (max-width: 599px) {
+    [data-section-id="{{ section.id }}"] .competition-info__point-text {
+      font-size: calc(var(--font-point-scale, 1) * 14px);
+      line-height: 1.2;
+      text-align: center;
+      flex: 1;
+    }
+  }
+
+  /* Google Material Icons */
+  .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+  }
+</style>
+
+<!-- Load Google Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<div
+  data-section-id="{{ section.id }}"
+  class="competition-info {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
+>
+  <div class="competition-info__container">
+    {% if section.settings.heading != blank %}
+      <div class="competition-info__heading">
+        {{ section.settings.heading }}
+      </div>
+    {% endif %}
+
+         {% if section.blocks.size > 0 %}
+       <div class="competition-info__points" 
+            data-carousel-enabled="{{ section.settings.enable_mobile_carousel }}"
+            data-carousel-speed="{{ section.settings.carousel_speed }}">
+         {% for block in section.blocks %}
+           <div class="competition-info__point{% if forloop.first %} active{% endif %}" 
+                data-block-id="{{ block.id }}"
+                data-carousel-index="{{ forloop.index0 }}">
+             <div class="competition-info__icon">
+               {% if block.settings.icon_type == 'material' %}
+                 <span class="material-icons">{{ block.settings.material_icon | default: 'info' }}</span>
+               {% else %}
+                 {{ block.settings.custom_icon | default: 'ℹ️' }}
+               {% endif %}
+             </div>
+             <div class="competition-info__point-text">
+               {{ block.settings.point_text }}
+             </div>
+           </div>
+         {% endfor %}
+       </div>
+     {% endif %}
+  </div>
+ </div>
+
+<script>
+class CompetitionCarousel {
+  constructor(container) {
+    this.container = container;
+    this.points = container.querySelectorAll('.competition-info__point');
+    this.currentIndex = 0;
+    this.isEnabled = container.dataset.carouselEnabled === 'true';
+    this.speed = parseInt(container.dataset.carouselSpeed) || 3000;
+    this.intervalId = null;
+    
+    if (this.isEnabled && this.points.length > 1) {
+      this.init();
+    }
+  }
+
+  init() {
+    // Only run on mobile screens
+    if (window.innerWidth <= 599) {
+      this.start();
+    }
+    
+    // Listen for screen resize
+    window.addEventListener('resize', () => {
+      if (window.innerWidth <= 599) {
+        if (!this.intervalId && this.isEnabled) {
+          this.start();
+        }
+      } else {
+        this.stop();
+      }
+    });
+  }
+
+  start() {
+    if (this.intervalId) return;
+    
+    this.intervalId = setInterval(() => {
+      this.showNext();
+    }, this.speed);
+  }
+
+  stop() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
+    }
+  }
+
+  showNext() {
+    // Only run if we're on mobile
+    if (window.innerWidth > 599) return;
+    
+    // Remove active class from current point
+    this.points[this.currentIndex].classList.remove('active');
+    
+    // Move to next point (loop back to start if at end)
+    this.currentIndex = (this.currentIndex + 1) % this.points.length;
+    
+    // Add active class to new current point
+    this.points[this.currentIndex].classList.add('active');
+  }
+}
+
+// Initialize carousel when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  const carouselContainers = document.querySelectorAll('.competition-info__points[data-carousel-enabled="true"]');
+  carouselContainers.forEach(container => {
+    new CompetitionCarousel(container);
+  });
+});
+
+// Initialize carousel when section is loaded in theme editor
+document.addEventListener('shopify:section:load', function(event) {
+  if (event.target.querySelector('.competition-info__points')) {
+    const carouselContainers = event.target.querySelectorAll('.competition-info__points[data-carousel-enabled="true"]');
+    carouselContainers.forEach(container => {
+      new CompetitionCarousel(container);
+    });
+  }
+});
+</script>
+
+{% schema %}
+{
+  "name": "Competition Info",
+  "tag": "section",
+  "class": "competition-info-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p><strong>ONLY 20 PIZZERIAS CAN COMPETE</strong></p>"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 50,
+      "max": 200,
+      "step": 10,
+      "default": 100,
+      "label": "Heading size (Desktop)",
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 50,
+      "max": 150,
+      "step": 10,
+      "default": 100,
+      "label": "Heading size (Mobile)",
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "point_text_size",
+      "min": 50,
+      "max": 150,
+      "step": 10,
+      "default": 100,
+      "label": "Point text size (Desktop)",
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "point_text_size_mobile",
+      "min": 50,
+      "max": 130,
+      "step": 10,
+      "default": 100,
+      "label": "Point text size (Mobile)",
+      "unit": "%"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#C41E3A"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_padding_horizontal",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40,
+      "label": "Horizontal padding (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "content_padding_vertical",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 24,
+      "label": "Vertical padding (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "content_padding_horizontal_desktop",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60,
+      "label": "Horizontal padding (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "content_padding_vertical_desktop",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32,
+      "label": "Vertical padding (Desktop)"
+    },
+         {
+       "type": "header",
+       "content": "Mobile Carousel"
+     },
+     {
+       "type": "checkbox",
+       "id": "enable_mobile_carousel",
+       "label": "Enable mobile carousel",
+       "default": true,
+       "info": "Points will rotate automatically on mobile devices"
+     },
+     {
+       "type": "range",
+       "id": "carousel_speed",
+       "min": 2000,
+       "max": 8000,
+       "step": 500,
+       "unit": "ms",
+       "default": 3000,
+       "label": "Carousel speed",
+       "info": "How long each point displays before rotating to the next"
+     },
+     {
+       "type": "header",
+       "content": "Spacing"
+     },
+    {
+      "type": "range",
+      "id": "margin-top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0,
+      "label": "Top margin"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0,
+      "label": "Bottom margin"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "info_point",
+      "name": "Info Point",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "point_text",
+          "label": "Point text",
+          "default": "<p>Plain Cheese Pies Only</p>"
+        },
+        {
+          "type": "select",
+          "id": "icon_type",
+          "label": "Icon type",
+          "options": [
+            {
+              "value": "material",
+              "label": "Google Material Icon"
+            },
+            {
+              "value": "custom",
+              "label": "Custom Character/Emoji"
+            }
+          ],
+          "default": "material"
+        },
+        {
+          "type": "select",
+          "id": "material_icon",
+          "label": "Material Icon",
+          "options": [
+            {
+              "value": "cancel",
+              "label": "❌ Cancel/No"
+            },
+            {
+              "value": "group",
+              "label": "👥 Group/People"
+            },
+            {
+              "value": "info",
+              "label": "ℹ️ Info"
+            },
+            {
+              "value": "check_circle",
+              "label": "✅ Check Circle"
+            },
+            {
+              "value": "local_pizza",
+              "label": "🍕 Pizza"
+            },
+            {
+              "value": "restaurant",
+              "label": "🍽️ Restaurant"
+            },
+            {
+              "value": "star",
+              "label": "⭐ Star"
+            },
+            {
+              "value": "schedule",
+              "label": "⏰ Schedule/Time"
+            },
+            {
+              "value": "location_on",
+              "label": "📍 Location"
+            },
+            {
+              "value": "verified",
+              "label": "✓ Verified"
+            },
+            {
+              "value": "policy",
+              "label": "📋 Policy/Rules"
+            },
+            {
+              "value": "workspace_premium",
+              "label": "💎 Premium"
+            }
+          ],
+          "default": "cancel",
+          "info": "Choose from Google Material Icons"
+        },
+        {
+          "type": "text",
+          "id": "custom_icon",
+          "label": "Custom Icon/Emoji",
+          "default": "ℹ️",
+          "info": "Enter any emoji or single character (only used if Custom type selected)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Competition Info",
+      "blocks": [
+                 {
+           "type": "info_point",
+           "settings": {
+             "point_text": "<p>Plain Cheese Pies Only</p>",
+             "icon_type": "material",
+             "material_icon": "cancel"
+           }
+         },
+         {
+           "type": "info_point",
+           "settings": {
+             "point_text": "<p>Industry & Invite Only</p>",
+             "icon_type": "material",
+             "material_icon": "group"
+           }
+         },
+         {
+           "type": "info_point",
+           "settings": {
+             "point_text": "<p>All Competitors Receive a Browe Gear Bag</p>",
+             "icon_type": "material",
+             "material_icon": "workspace_premium"
+           }
+         }
+      ]
+    }
+  ]
+}
+{% endschema %} 

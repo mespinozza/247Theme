@@ -1,0 +1,948 @@
+<style>
+  [data-section-id="{{ section.id }}"] {
+    {% if section.settings.margin-top %}
+      --section-gap-top: {{ section.settings.margin-top }}px;
+    {% endif %}
+
+    {% if section.settings.margin-bottom %}
+      --section-gap-bottom: {{ section.settings.margin-bottom }}px;
+    {% endif %}
+
+    --font-heading-scale-desk: {{ section.settings.heading_size | divided_by: 100.0 }};
+    --font-heading-scale: {{ section.settings.heading_size_mobile | divided_by: 100.0 }};
+
+    --font-text-scale-desk: {{ section.settings.text_size | divided_by: 100.0 }};
+    --font-text-scale: {{ section.settings.text_size_mobile | divided_by: 100.0 }};
+  }
+
+  [data-section-id="{{ section.id }}"] .event-location-info__container {
+    background-color: {{ section.settings.background_color | default: '#f8f9fa' }};
+    border-radius: {{ section.settings.border_radius | default: 12 }}px;
+    overflow: hidden;
+    box-shadow: {{ section.settings.shadow_intensity | default: 2 | times: 4 }}px {{ section.settings.shadow_intensity | default: 2 | times: 8 }}px {{ section.settings.shadow_intensity | default: 2 | times: 16 }}px rgba(0, 0, 0, {{ section.settings.shadow_intensity | default: 2 | times: 0.05 }});
+    max-width: {{ section.settings.max_width | default: 800 }}px;
+    margin: 0 auto;
+    padding: {{ section.settings.content_padding | default: 0 }}px;
+  }
+
+  [data-section-id="{{ section.id }}"] .event-location-info__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: {{ section.settings.card_height_mobile | default: 300 }}px;
+  }
+
+  @media (min-width: 768px) {
+    [data-section-id="{{ section.id }}"] .event-location-info__content {
+      grid-template-columns: {{ section.settings.map_width_percentage | default: 65 }}% 1fr;
+      min-height: {{ section.settings.card_height | default: 240 }}px;
+    }
+  }
+
+  /* Map Section */
+  [data-section-id="{{ section.id }}"] .event-location-info__map {
+    position: relative;
+    background-color: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    overflow: hidden;
+  }
+
+  @media (max-width: 767px) {
+    [data-section-id="{{ section.id }}"] .event-location-info__map {
+      order: 2;
+      min-height: 180px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .event-location-info__map iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
+  [data-section-id="{{ section.id }}"] .event-location-info__map-placeholder {
+    color: #6c757d;
+    font-size: 14px;
+    text-align: center;
+    padding: 20px;
+    z-index: 1;
+  }
+
+  /* Info Section */
+  [data-section-id="{{ section.id }}"] .event-location-info__info {
+    padding: {{ section.settings.info_padding_vertical | default: 24 }}px {{ section.settings.info_padding_horizontal | default: 24 }}px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: {{ section.settings.info_background_color | default: '#ffffff' }};
+  }
+
+  @media (max-width: 767px) {
+    [data-section-id="{{ section.id }}"] .event-location-info__info {
+      order: 1;
+      padding: {{ section.settings.info_padding_vertical_mobile | default: 20 }}px {{ section.settings.info_padding_horizontal_mobile | default: 20 }}px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .event-location-info__location-name {
+    font-size: calc(var(--font-heading-scale-desk, 1) * {{ section.settings.base_heading_size | default: 20 }}px);
+    font-weight: {{ section.settings.heading_weight | default: 700 }};
+    color: {{ section.settings.heading_color | default: '#212529' }};
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+
+  @media (max-width: 767px) {
+    [data-section-id="{{ section.id }}"] .event-location-info__location-name {
+      font-size: calc(var(--font-heading-scale, 1) * {{ section.settings.base_heading_size_mobile | default: 18 }}px);
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .event-location-info__event-times {
+    font-size: calc(var(--font-text-scale-desk, 1) * {{ section.settings.base_text_size | default: 14 }}px);
+    color: {{ section.settings.text_color | default: '#495057' }};
+    margin-bottom: 4px;
+    font-weight: {{ section.settings.text_weight | default: 500 }};
+  }
+
+  @media (max-width: 767px) {
+    [data-section-id="{{ section.id }}"] .event-location-info__event-times {
+      font-size: calc(var(--font-text-scale, 1) * {{ section.settings.base_text_size_mobile | default: 13 }}px);
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .event-location-info__address {
+    font-size: calc(var(--font-text-scale-desk, 1) * {{ section.settings.base_text_size | default: 14 }}px);
+    color: {{ section.settings.address_color | default: '#6c757d' }};
+    margin-bottom: 16px;
+    line-height: 1.3;
+    font-weight: {{ section.settings.address_weight | default: 400 }};
+  }
+
+  @media (max-width: 767px) {
+    [data-section-id="{{ section.id }}"] .event-location-info__address {
+      font-size: calc(var(--font-text-scale, 1) * {{ section.settings.base_text_size_mobile | default: 13 }}px);
+      margin-bottom: 14px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .event-location-info__button {
+    background-color: {{ section.settings.button_background_color | default: '#ffc107' }};
+    color: {{ section.settings.button_text_color | default: '#212529' }};
+    padding: {{ section.settings.button_padding_vertical | default: 10 }}px {{ section.settings.button_padding_horizontal | default: 20 }}px;
+    border-radius: {{ section.settings.button_border_radius | default: 24 }}px;
+    text-decoration: none;
+    font-weight: {{ section.settings.button_weight | default: 600 }};
+    font-size: calc(var(--font-text-scale-desk, 1) * {{ section.settings.button_text_size | default: 14 }}px);
+    display: inline-block;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    align-self: flex-start;
+    position: relative;
+    overflow: hidden;
+  }
+
+  @media (max-width: 767px) {
+    [data-section-id="{{ section.id }}"] .event-location-info__button {
+      font-size: calc(var(--font-text-scale, 1) * {{ section.settings.button_text_size_mobile | default: 13 }}px);
+      padding: {{ section.settings.button_padding_vertical_mobile | default: 8 }}px {{ section.settings.button_padding_horizontal_mobile | default: 16 }}px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .event-location-info__button:hover {
+    background-color: {{ section.settings.button_background_color_hover | default: '#e0a800' }};
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Button shine effect */
+  [data-section-id="{{ section.id }}"] .event-location-info__button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+    z-index: 1;
+  }
+
+  [data-section-id="{{ section.id }}"] .event-location-info__button:hover::before {
+    left: 100%;
+  }
+
+  /* Wrapper for section */
+  [data-section-id="{{ section.id }}"] .event-location-info {
+    padding: {{ section.settings.section_padding_vertical | default: 40 }}px {{ section.settings.section_padding_horizontal | default: 20 }}px;
+  }
+
+  @media (max-width: 767px) {
+    [data-section-id="{{ section.id }}"] .event-location-info {
+      padding: {{ section.settings.section_padding_vertical_mobile | default: 30 }}px {{ section.settings.section_padding_horizontal_mobile | default: 16 }}px;
+    }
+  }
+</style>
+
+<div
+  data-section-id="{{ section.id }}"
+  class="event-location-info {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
+>
+  <div class="event-location-info__container">
+    <div class="event-location-info__content">
+      <!-- Map Section -->
+      <div class="event-location-info__map">
+        {% if section.settings.google_maps_embed != blank %}
+          {{ section.settings.google_maps_embed }}
+        {% else %}
+          <div class="event-location-info__map-placeholder">
+            <p>📍 Google Maps<br>Paste your Google Maps embed code below</p>
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Info Section -->
+      <div class="event-location-info__info">
+        {% if section.settings.location_name != blank %}
+          <div class="event-location-info__location-name">
+            {{ section.settings.location_name }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.event_times != blank %}
+          <div class="event-location-info__event-times">
+            {{ section.settings.event_times }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.address != blank %}
+          <div class="event-location-info__address">
+            {{ section.settings.address }}
+          </div>
+        {% elsif section.settings.google_maps_embed != blank %}
+          <div class="event-location-info__address" id="extracted-address-{{ section.id }}">
+            <span class="address-loading">Loading address...</span>
+          </div>
+        {% endif %}
+
+        {% if section.settings.button_text != blank %}
+          <a href="{% if section.settings.directions_url != blank %}{{ section.settings.directions_url }}{% else %}#{% endif %}" 
+             class="event-location-info__button"
+             id="directions-button-{{ section.id }}"
+             {% if section.settings.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Extract address from Google Maps embed and display it
+document.addEventListener('DOMContentLoaded', function() {
+  const mapContainers = document.querySelectorAll('.event-location-info__map');
+  
+  mapContainers.forEach(function(mapContainer) {
+    const iframe = mapContainer.querySelector('iframe');
+    const sectionId = mapContainer.closest('[data-section-id]').getAttribute('data-section-id');
+    const addressElement = document.getElementById('extracted-address-' + sectionId);
+    
+    if (iframe && addressElement) {
+      const src = iframe.getAttribute('src');
+      const directionsButton = document.getElementById('directions-button-' + sectionId);
+      
+      if (src) {
+        // Try to extract address from various Google Maps URL formats
+        let extractedAddress = '';
+        let directionsUrl = '';
+        
+        // Method 1: Look for 'q=' parameter (search query)
+        const qMatch = src.match(/[?&]q=([^&]*)/);
+        if (qMatch) {
+          extractedAddress = decodeURIComponent(qMatch[1].replace(/\+/g, ' '));
+          directionsUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(extractedAddress);
+        }
+        
+        // Method 2: Look for place name in the URL path
+        if (!extractedAddress) {
+          const placeMatch = src.match(/\/place\/([^\/]*)/);
+          if (placeMatch) {
+            extractedAddress = decodeURIComponent(placeMatch[1].replace(/\+/g, ' '));
+            directionsUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(extractedAddress);
+          }
+        }
+        
+        // Method 3: Look for coordinates and try to extract nearby text
+        if (!extractedAddress) {
+          const coordMatch = src.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
+          if (coordMatch) {
+            extractedAddress = 'Lat: ' + coordMatch[1] + ', Lng: ' + coordMatch[2];
+            directionsUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + coordMatch[1] + ',' + coordMatch[2];
+          }
+        }
+        
+        // Display extracted address or try to get it from the embed source
+        if (extractedAddress) {
+          // Clean up the address (remove some common URL artifacts)
+          extractedAddress = extractedAddress
+            .replace(/,\+/g, ', ')
+            .replace(/\+/g, ' ')
+            .replace(/%20/g, ' ')
+            .replace(/%2C/g, ', ')
+            .trim();
+          
+          addressElement.innerHTML = extractedAddress;
+        } else {
+          // Try to extract any readable location info from the URL
+          let fallbackAddress = '';
+          
+          // Look for any location-like text in the URL
+          const urlParts = src.split('/');
+          for (let part of urlParts) {
+            if (part.includes(',') && part.length > 5) {
+              fallbackAddress = decodeURIComponent(part.replace(/\+/g, ' '));
+              break;
+            }
+          }
+          
+          // Look for embedded coordinates and format them nicely
+          if (!fallbackAddress) {
+            const coordMatch = src.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
+            if (coordMatch) {
+              const lat = parseFloat(coordMatch[1]).toFixed(4);
+              const lng = parseFloat(coordMatch[2]).toFixed(4);
+              fallbackAddress = lat + ', ' + lng;
+            }
+          }
+          
+          // Show extracted info or a generic message
+          addressElement.innerHTML = fallbackAddress || 'Location shown in map';
+        }
+        
+        // Update directions button URL if no custom URL is set
+        if (directionsButton && directionsButton.getAttribute('href') === '#' && directionsUrl) {
+          directionsButton.setAttribute('href', directionsUrl);
+        }
+      }
+    }
+  });
+});
+
+// Re-run when section is loaded in theme editor
+document.addEventListener('shopify:section:load', function(event) {
+  if (event.target.querySelector('.event-location-info__map')) {
+    setTimeout(function() {
+      const mapContainer = event.target.querySelector('.event-location-info__map');
+      const iframe = mapContainer.querySelector('iframe');
+      const sectionId = mapContainer.closest('[data-section-id]').getAttribute('data-section-id');
+      const addressElement = document.getElementById('extracted-address-' + sectionId);
+      
+             if (iframe && addressElement) {
+         const src = iframe.getAttribute('src');
+         const directionsButton = document.getElementById('directions-button-' + sectionId);
+         
+         if (src) {
+           let extractedAddress = '';
+           let directionsUrl = '';
+           
+           const qMatch = src.match(/[?&]q=([^&]*)/);
+           if (qMatch) {
+             extractedAddress = decodeURIComponent(qMatch[1].replace(/\+/g, ' '));
+             directionsUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(extractedAddress);
+           }
+           
+           if (!extractedAddress) {
+             const placeMatch = src.match(/\/place\/([^\/]*)/);
+             if (placeMatch) {
+               extractedAddress = decodeURIComponent(placeMatch[1].replace(/\+/g, ' '));
+               directionsUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(extractedAddress);
+             }
+           }
+           
+           if (!extractedAddress) {
+             const coordMatch = src.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
+             if (coordMatch) {
+               extractedAddress = 'Lat: ' + coordMatch[1] + ', Lng: ' + coordMatch[2];
+               directionsUrl = 'https://www.google.com/maps/dir/?api=1&destination=' + coordMatch[1] + ',' + coordMatch[2];
+             }
+           }
+           
+           if (extractedAddress) {
+             extractedAddress = extractedAddress
+               .replace(/,\+/g, ', ')
+               .replace(/\+/g, ' ')
+               .replace(/%20/g, ' ')
+               .replace(/%2C/g, ', ')
+               .trim();
+             
+             addressElement.innerHTML = extractedAddress;
+           } else {
+             // Try to extract any readable location info from the URL
+             let fallbackAddress = '';
+             
+             // Look for any location-like text in the URL
+             const urlParts = src.split('/');
+             for (let part of urlParts) {
+               if (part.includes(',') && part.length > 5) {
+                 fallbackAddress = decodeURIComponent(part.replace(/\+/g, ' '));
+                 break;
+               }
+             }
+             
+             // Look for embedded coordinates and format them nicely
+             if (!fallbackAddress) {
+               const coordMatch = src.match(/@(-?\d+\.\d+),(-?\d+\.\d+)/);
+               if (coordMatch) {
+                 const lat = parseFloat(coordMatch[1]).toFixed(4);
+                 const lng = parseFloat(coordMatch[2]).toFixed(4);
+                 fallbackAddress = lat + ', ' + lng;
+               }
+             }
+             
+             // Show extracted info or a generic message
+             addressElement.innerHTML = fallbackAddress || 'Location shown in map';
+           }
+           
+           // Update directions button URL if no custom URL is set
+           if (directionsButton && directionsButton.getAttribute('href') === '#' && directionsUrl) {
+             directionsButton.setAttribute('href', directionsUrl);
+           }
+         }
+       }
+    }, 100);
+  }
+});
+</script>
+
+{% schema %}
+{
+  "name": "Event Location Info",
+  "tag": "section",
+  "class": "event-location-info-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "html",
+      "id": "google_maps_embed",
+      "label": "Google Maps embed code",
+      "info": "Paste the full HTML embed code from Google Maps (includes <iframe>). Go to Google Maps → Share → Embed a map → Copy HTML"
+    },
+    {
+      "type": "text",
+      "id": "location_name",
+      "label": "Location name",
+      "default": "Tolls Location"
+    },
+    {
+      "type": "text",
+      "id": "event_times",
+      "label": "Event times",
+      "default": "Sept. 10 | 11 AM"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address (Optional)",
+      "info": "Leave blank to auto-extract address from Google Maps embed. Fill this in to override the extracted address."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Get Directions"
+    },
+    {
+      "type": "url",
+      "id": "directions_url",
+      "label": "Directions URL (Optional)",
+      "info": "Leave blank to auto-generate from Google Maps embed. Fill this in to override with custom directions link."
+    },
+    {
+      "type": "checkbox",
+      "id": "open_in_new_tab",
+      "label": "Open directions in new tab",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 600,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "default": 800,
+      "label": "Maximum width"
+    },
+    {
+      "type": "range",
+      "id": "map_width_percentage",
+      "min": 50,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "default": 65,
+      "label": "Map width (Desktop)",
+      "info": "Percentage of total width the map takes up"
+    },
+    {
+      "type": "range",
+      "id": "card_height",
+      "min": 200,
+      "max": 400,
+      "step": 20,
+      "unit": "px",
+      "default": 240,
+      "label": "Card height (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "card_height_mobile",
+      "min": 250,
+      "max": 450,
+      "step": 25,
+      "unit": "px",
+      "default": 300,
+      "label": "Card height (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 12,
+      "label": "Border radius"
+    },
+    {
+      "type": "range",
+      "id": "shadow_intensity",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 2,
+      "label": "Shadow intensity"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Card background color",
+      "default": "#f8f9fa"
+    },
+    {
+      "type": "color",
+      "id": "info_background_color",
+      "label": "Info section background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Location name color",
+      "default": "#212529"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Event times color",
+      "default": "#495057"
+    },
+    {
+      "type": "color",
+      "id": "address_color",
+      "label": "Address color",
+      "default": "#6c757d"
+    },
+    {
+      "type": "header",
+      "content": "Button Styling"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color",
+      "label": "Button background",
+      "default": "#ffc107"
+    },
+    {
+      "type": "color",
+      "id": "button_background_color_hover",
+      "label": "Button background (Hover)",
+      "default": "#e0a800"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text color",
+      "default": "#212529"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "min": 4,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 24,
+      "label": "Button border radius"
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 20,
+      "label": "Button horizontal padding (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical",
+      "min": 6,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "default": 10,
+      "label": "Button vertical padding (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "button_padding_horizontal_mobile",
+      "min": 10,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 16,
+      "label": "Button horizontal padding (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "button_padding_vertical_mobile",
+      "min": 6,
+      "max": 12,
+      "step": 1,
+      "unit": "px",
+      "default": 8,
+      "label": "Button vertical padding (Mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "base_heading_size",
+      "min": 16,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 20,
+      "label": "Location name size (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "base_heading_size_mobile",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 18,
+      "label": "Location name size (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 80,
+      "max": 150,
+      "step": 10,
+      "default": 100,
+      "label": "Location name scale (Desktop)",
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 80,
+      "max": 130,
+      "step": 10,
+      "default": 100,
+      "label": "Location name scale (Mobile)",
+      "unit": "%"
+    },
+    {
+      "type": "select",
+      "id": "heading_weight",
+      "label": "Location name weight",
+      "options": [
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        },
+        {
+          "value": "800",
+          "label": "Extra bold"
+        }
+      ],
+      "default": "700"
+    },
+    {
+      "type": "range",
+      "id": "base_text_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14,
+      "label": "Text size (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "base_text_size_mobile",
+      "min": 11,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "default": 13,
+      "label": "Text size (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 80,
+      "max": 130,
+      "step": 10,
+      "default": 100,
+      "label": "Text scale (Desktop)",
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "text_size_mobile",
+      "min": 80,
+      "max": 120,
+      "step": 10,
+      "default": 100,
+      "label": "Text scale (Mobile)",
+      "unit": "%"
+    },
+    {
+      "type": "select",
+      "id": "text_weight",
+      "label": "Event times weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        }
+      ],
+      "default": "500"
+    },
+    {
+      "type": "select",
+      "id": "address_weight",
+      "label": "Address weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "range",
+      "id": "button_text_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14,
+      "label": "Button text size (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "button_text_size_mobile",
+      "min": 11,
+      "max": 16,
+      "step": 1,
+      "unit": "px",
+      "default": 13,
+      "label": "Button text size (Mobile)"
+    },
+    {
+      "type": "select",
+      "id": "button_weight",
+      "label": "Button text weight",
+      "options": [
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi-bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_horizontal",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 20,
+      "label": "Section horizontal padding (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_vertical",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40,
+      "label": "Section vertical padding (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_horizontal_mobile",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 16,
+      "label": "Section horizontal padding (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_vertical_mobile",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 32,
+      "label": "Section vertical padding (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "info_padding_horizontal",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 24,
+      "label": "Info area horizontal padding (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "info_padding_vertical",
+      "min": 16,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 24,
+      "label": "Info area vertical padding (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "info_padding_horizontal_mobile",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 20,
+      "label": "Info area horizontal padding (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "info_padding_vertical_mobile",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 20,
+      "label": "Info area vertical padding (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "content_padding",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 0,
+      "label": "Card inner padding"
+    },
+    {
+      "type": "range",
+      "id": "margin-top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0,
+      "label": "Top margin"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0,
+      "label": "Bottom margin"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Event Location Info"
+    }
+  ]
+}
+{% endschema %} 

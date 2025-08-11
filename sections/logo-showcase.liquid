@@ -1,0 +1,571 @@
+<style>
+  [data-section-id="{{ section.id }}"] {
+    {% if section.settings.margin-top %}
+      --section-gap-top: {{ section.settings.margin-top }}px;
+    {% endif %}
+
+    {% if section.settings.margin-bottom %}
+      --section-gap-bottom: {{ section.settings.margin-bottom }}px;
+    {% endif %}
+  }
+
+  [data-section-id="{{ section.id }}"] .logo-showcase {
+    padding: {{ section.settings.section_padding_vertical | default: 60 }}px {{ section.settings.section_padding_horizontal | default: 20 }}px;
+    background-color: {{ section.settings.background_color | default: '#ffffff' }};
+    overflow: hidden;
+  }
+
+  @media (max-width: 767px) {
+    [data-section-id="{{ section.id }}"] .logo-showcase {
+      padding: {{ section.settings.section_padding_vertical_mobile | default: 40 }}px {{ section.settings.section_padding_horizontal_mobile | default: 16 }}px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .logo-showcase__container {
+    max-width: {{ section.settings.max_width | default: 1200 }}px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* Decorative Lines */
+  [data-section-id="{{ section.id }}"] .logo-showcase__line {
+    height: {{ section.settings.line_thickness | default: 1 }}px;
+    background-color: {{ section.settings.line_color | default: '#e5e5e5' }};
+    width: 100%;
+    margin: {{ section.settings.line_spacing | default: 40 }}px 0;
+  }
+
+  @media (max-width: 767px) {
+    [data-section-id="{{ section.id }}"] .logo-showcase__line {
+      margin: {{ section.settings.line_spacing_mobile | default: 30 }}px 0;
+    }
+  }
+
+  /* Logo Container */
+  [data-section-id="{{ section.id }}"] .logo-showcase__track {
+    display: flex;
+    align-items: center;
+    animation: logoScroll {{ section.settings.scroll_speed | default: 30 }}s linear infinite;
+    width: fit-content;
+  }
+
+  [data-section-id="{{ section.id }}"] .logo-showcase__track:hover {
+    {% if section.settings.pause_on_hover %}
+      animation-play-state: paused;
+    {% endif %}
+  }
+
+  /* Individual Logo */
+  [data-section-id="{{ section.id }}"] .logo-showcase__logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: {{ section.settings.logo_spacing | default: 80 }}px;
+    height: {{ section.settings.logo_height | default: 60 }}px;
+    opacity: {{ section.settings.logo_opacity | default: 70 | divided_by: 100.0 }};
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  @media (max-width: 767px) {
+    [data-section-id="{{ section.id }}"] .logo-showcase__logo {
+      height: {{ section.settings.logo_height_mobile | default: 45 }}px;
+      margin-right: {{ section.settings.logo_spacing_mobile | default: 60 }}px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .logo-showcase__logo:hover {
+    opacity: 1;
+    transform: scale({{ section.settings.hover_scale | default: 105 | divided_by: 100.0 }});
+  }
+
+  [data-section-id="{{ section.id }}"] .logo-showcase__logo img {
+    max-height: 100%;
+    max-width: {{ section.settings.logo_max_width | default: 200 }}px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: {% if section.settings.grayscale_enabled %}grayscale({{ section.settings.grayscale_amount | default: 100 }}%){% else %}none{% endif %};
+    transition: filter 0.3s ease;
+  }
+
+  @media (max-width: 767px) {
+    [data-section-id="{{ section.id }}"] .logo-showcase__logo img {
+      max-width: {{ section.settings.logo_max_width_mobile | default: 150 }}px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .logo-showcase__logo:hover img {
+    filter: none;
+  }
+
+  /* Infinite Scroll Animation */
+  @keyframes logoScroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Fade edges for infinite scroll effect */
+  [data-section-id="{{ section.id }}"] .logo-showcase__wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  {% if section.settings.fade_edges %}
+  [data-section-id="{{ section.id }}"] .logo-showcase__wrapper::before,
+  [data-section-id="{{ section.id }}"] .logo-showcase__wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: {{ section.settings.fade_width | default: 50 }}px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  [data-section-id="{{ section.id }}"] .logo-showcase__wrapper::before {
+    left: 0;
+    background: linear-gradient(to right, {{ section.settings.background_color | default: '#ffffff' }}, transparent);
+  }
+
+  [data-section-id="{{ section.id }}"] .logo-showcase__wrapper::after {
+    right: 0;
+    background: linear-gradient(to left, {{ section.settings.background_color | default: '#ffffff' }}, transparent);
+  }
+  {% endif %}
+
+  /* Responsive logo count adjustments */
+  @media (min-width: 1200px) {
+    [data-section-id="{{ section.id }}"] .logo-showcase__logo {
+      margin-right: {{ section.settings.logo_spacing | default: 80 | times: 1.2 }}px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    [data-section-id="{{ section.id }}"] .logo-showcase__logo {
+      margin-right: {{ section.settings.logo_spacing_mobile | default: 60 | times: 0.8 }}px;
+    }
+  }
+</style>
+
+<div
+  data-section-id="{{ section.id }}"
+  class="logo-showcase {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
+>
+  <div class="logo-showcase__container">
+    <!-- Top decorative line -->
+    <div class="logo-showcase__line"></div>
+    
+    <!-- Logo showcase -->
+    <div class="logo-showcase__wrapper">
+      {% if section.blocks.size > 0 %}
+        <div class="logo-showcase__track" data-logo-count="{{ section.blocks.size }}">
+          <!-- First set of logos -->
+          {% for block in section.blocks %}
+            <div class="logo-showcase__logo" data-block-id="{{ block.id }}">
+              {% if block.settings.logo_image != blank %}
+                {% if block.settings.logo_link != blank %}
+                  <a href="{{ block.settings.logo_link }}" 
+                     {% if block.settings.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
+                    <img src="{{ block.settings.logo_image | image_url: width: 400 }}" 
+                         alt="{{ block.settings.logo_alt | default: 'Partner logo' }}"
+                         loading="lazy">
+                  </a>
+                {% else %}
+                  <img src="{{ block.settings.logo_image | image_url: width: 400 }}" 
+                       alt="{{ block.settings.logo_alt | default: 'Partner logo' }}"
+                       loading="lazy">
+                {% endif %}
+              {% else %}
+                <div style="width: 120px; height: 40px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999;">
+                  Logo {{ forloop.index }}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+          
+          <!-- Duplicate set for infinite scroll -->
+          {% for block in section.blocks %}
+            <div class="logo-showcase__logo" data-block-id="{{ block.id }}-duplicate">
+              {% if block.settings.logo_image != blank %}
+                {% if block.settings.logo_link != blank %}
+                  <a href="{{ block.settings.logo_link }}" 
+                     {% if block.settings.open_in_new_tab %}target="_blank" rel="noopener"{% endif %}>
+                    <img src="{{ block.settings.logo_image | image_url: width: 400 }}" 
+                         alt="{{ block.settings.logo_alt | default: 'Partner logo' }}"
+                         loading="lazy">
+                  </a>
+                {% else %}
+                  <img src="{{ block.settings.logo_image | image_url: width: 400 }}" 
+                       alt="{{ block.settings.logo_alt | default: 'Partner logo' }}"
+                       loading="lazy">
+                {% endif %}
+              {% else %}
+                <div style="width: 120px; height: 40px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999;">
+                  Logo {{ forloop.index }}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <!-- Placeholder when no logos are added -->
+        <div class="logo-showcase__track">
+          {% for i in (1..5) %}
+            <div class="logo-showcase__logo">
+              <div style="width: 120px; height: 40px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999;">
+                Logo {{ i }}
+              </div>
+            </div>
+          {% endfor %}
+          {% for i in (1..5) %}
+            <div class="logo-showcase__logo">
+              <div style="width: 120px; height: 40px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #999;">
+                Logo {{ i }}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    
+    <!-- Bottom decorative line -->
+    <div class="logo-showcase__line"></div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Logo Showcase",
+  "tag": "section",
+  "class": "logo-showcase-section",
+  "max_blocks": 10,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 800,
+      "max": 1400,
+      "step": 50,
+      "unit": "px",
+      "default": 1200,
+      "label": "Maximum width"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Decorative Lines"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Line color",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "range",
+      "id": "line_thickness",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "unit": "px",
+      "default": 1,
+      "label": "Line thickness"
+    },
+    {
+      "type": "range",
+      "id": "line_spacing",
+      "min": 20,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40,
+      "label": "Line spacing (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "line_spacing_mobile",
+      "min": 15,
+      "max": 60,
+      "step": 3,
+      "unit": "px",
+      "default": 30,
+      "label": "Line spacing (Mobile)"
+    },
+    {
+      "type": "header",
+      "content": "Logo Settings"
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "min": 30,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 60,
+      "label": "Logo height (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "logo_height_mobile",
+      "min": 25,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 45,
+      "label": "Logo height (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width",
+      "min": 100,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 200,
+      "label": "Logo max width (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "logo_max_width_mobile",
+      "min": 80,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 150,
+      "label": "Logo max width (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "logo_spacing",
+      "min": 40,
+      "max": 150,
+      "step": 10,
+      "unit": "px",
+      "default": 80,
+      "label": "Logo spacing (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "logo_spacing_mobile",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 60,
+      "label": "Logo spacing (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "logo_opacity",
+      "min": 30,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 70,
+      "label": "Logo opacity"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "range",
+      "id": "scroll_speed",
+      "min": 10,
+      "max": 60,
+      "step": 5,
+      "unit": "s",
+      "default": 30,
+      "label": "Scroll speed",
+      "info": "Lower numbers = faster scrolling"
+    },
+    {
+      "type": "checkbox",
+      "id": "pause_on_hover",
+      "label": "Pause on hover",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Visual Effects"
+    },
+    {
+      "type": "checkbox",
+      "id": "grayscale_enabled",
+      "label": "Enable grayscale effect",
+      "default": true,
+      "info": "Logos appear in grayscale and show color on hover"
+    },
+    {
+      "type": "range",
+      "id": "grayscale_amount",
+      "min": 0,
+      "max": 100,
+      "step": 10,
+      "unit": "%",
+      "default": 100,
+      "label": "Grayscale amount"
+    },
+    {
+      "type": "range",
+      "id": "hover_scale",
+      "min": 100,
+      "max": 120,
+      "step": 5,
+      "unit": "%",
+      "default": 105,
+      "label": "Hover scale effect"
+    },
+    {
+      "type": "checkbox",
+      "id": "fade_edges",
+      "label": "Fade edges",
+      "default": true,
+      "info": "Adds fade effect at left and right edges"
+    },
+    {
+      "type": "range",
+      "id": "fade_width",
+      "min": 20,
+      "max": 100,
+      "step": 10,
+      "unit": "px",
+      "default": 50,
+      "label": "Fade width"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_horizontal",
+      "min": 0,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 20,
+      "label": "Section horizontal padding (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_vertical",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 60,
+      "label": "Section vertical padding (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_horizontal_mobile",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 16,
+      "label": "Section horizontal padding (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "section_padding_vertical_mobile",
+      "min": 20,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40,
+      "label": "Section vertical padding (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "margin-top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0,
+      "label": "Top margin"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0,
+      "label": "Bottom margin"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "Logo image"
+        },
+        {
+          "type": "text",
+          "id": "logo_alt",
+          "label": "Alt text",
+          "default": "Partner logo",
+          "info": "Describe the logo for accessibility"
+        },
+        {
+          "type": "url",
+          "id": "logo_link",
+          "label": "Logo link (Optional)",
+          "info": "Where should this logo link to when clicked?"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_in_new_tab",
+          "label": "Open link in new tab",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Logo Showcase",
+      "blocks": [
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        },
+        {
+          "type": "logo"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %} 

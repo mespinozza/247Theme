@@ -1,0 +1,613 @@
+{{ 'component-image-with-text.css' | asset_url | stylesheet_tag }}
+
+{% assign background_rgb = section.settings['color-overlay'] | color_to_rgb %}
+{% assign text_rgb = section.settings['color-body-text'] | color_to_rgb %}
+
+<style>
+  [data-section-id="{{ section.id }}"] {
+    {% if section.settings.margin-top %}
+      --section-gap-top: {{ section.settings.margin-top }}px;
+    {% endif %}
+
+    {% if section.settings.margin-bottom %}
+      --section-gap-bottom: {{ section.settings.margin-bottom }}px;
+    {% endif %}
+
+    {% if section.settings.full-width-enabled %}
+      --border-radius: 0;
+    {% endif %}
+
+    {% if section.settings.slide_height == 'fixed_height' %}
+      --section-height: {{ section.settings.mobile_fixed_height }}px;
+      --section-height-desk: {{ section.settings.desktop_fixed_height }}px;
+    {% endif %}
+
+    {% if section.settings.slide_height == 'adapt_to_image' %}
+      --first-slide-ratio: {{ section.settings.background_image.aspect_ratio | default: 1 }};
+      --first-slide-ratio-desk: {{ section.settings.background_image.aspect_ratio | default: 2.5 }};
+    {% endif %}
+
+    --font-badge-scale-desk: {{ section.settings.badge_size | divided_by: 100.0 }};
+    --font-badge-scale: {{ section.settings.badge_size_mobile | divided_by: 100.0 }};
+
+    --font-headline-scale-desk: {{ section.settings.heading_size | divided_by: 100.0 }};
+    --font-headline-scale: {{ section.settings.heading_size_mobile | divided_by: 100.0 }};
+
+    --font-subheading-scale-desk: {{ section.settings.subheading_size | divided_by: 100.0 }};
+    --font-subheading-scale: {{ section.settings.subheading_size_mobile | divided_by: 100.0 }};
+  }
+
+  [data-section-id="{{ section.id }}"] .hero__overlay {
+    {% if text_rgb != 'rgba(0, 0, 0, 0.0)' %}
+      --color-custom-text: {{ section.settings.color-body-text }};
+    {% endif %}
+
+    {% if background_rgb != 'rgba(0, 0, 0, 0.0)' %}
+      --color-overlay-rgb: {{ section.settings.color-overlay | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+      --color-overlay-opacity: {{ section.settings.color-overlay-opacity | divided_by: 100.0 }};
+    {% endif %}
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(var(--color-overlay-rgb, 0, 0, 0), var(--color-overlay-opacity, 0.5));
+    display: flex;
+    align-items: center;
+    z-index: 2;
+  }
+
+  [data-section-id="{{ section.id }}"] .hero__overlay {
+    padding: {{ section.settings.content_padding_vertical | default: 40 }}px {{ section.settings.content_padding_horizontal | default: 40 }}px;
+  }
+
+  [data-section-id="{{ section.id }}"] .hero__overlay.hero__text-left {
+    justify-content: flex-start;
+  }
+
+  [data-section-id="{{ section.id }}"] .hero__overlay.hero__text-center {
+    justify-content: center;
+  }
+
+  [data-section-id="{{ section.id }}"] .hero__overlay.hero__text-right {
+    justify-content: flex-end;
+  }
+
+  @media (max-width: 1199px) {
+    [data-section-id="{{ section.id }}"] .hero__overlay {
+      padding: {{ section.settings.content_padding_vertical_mobile | default: 20 }}px {{ section.settings.content_padding_horizontal_mobile | default: 20 }}px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .informational-banner__badge {
+    background-color: {{ section.settings.badge_background_color }};
+    color: {{ section.settings.badge_text_color }};
+    border-radius: {{ section.settings.badge_border_radius }}px;
+    padding: 8px 16px;
+    display: inline-block;
+    font-weight: 600;
+    margin-bottom: 16px;
+    font-size: calc(var(--font-badge-scale-desk, 1) * 16px);
+  }
+
+  @media (max-width: 1199px) {
+    [data-section-id="{{ section.id }}"] .informational-banner__badge {
+      font-size: calc(var(--font-badge-scale, 1) * 16px);
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .informational-banner__heading {
+    font-weight: 900;
+    line-height: 0.9;
+    margin-bottom: 8px;
+    font-size: calc(var(--font-headline-scale-desk, 1) * 48px);
+    color: {{ section.settings.heading_color | default: '#8B0000' }};
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+  }
+
+  @media (max-width: 1199px) {
+    [data-section-id="{{ section.id }}"] .informational-banner__heading {
+      font-size: calc(var(--font-headline-scale, 1) * 36px);
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .informational-banner__subheading {
+    margin-bottom: 24px;
+    opacity: 1;
+    font-size: calc(var(--font-subheading-scale-desk, 1) * 24px);
+    color: {{ section.settings.subheading_color | default: '#2c2c2c' }};
+    font-weight: 500;
+    line-height: 1.2;
+  }
+
+  @media (max-width: 1199px) {
+    [data-section-id="{{ section.id }}"] .informational-banner__subheading {
+      font-size: calc(var(--font-subheading-scale, 1) * 20px);
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .informational-banner__container {
+    background-size: cover;
+    background-position: {{ section.settings.background_position | default: 'center center' }};
+    background-repeat: no-repeat;
+    position: relative;
+    min-height: var(--section-height, 400px);
+    width: 100%;
+    overflow: hidden;
+  }
+
+  @media (min-width: 1200px) {
+    [data-section-id="{{ section.id }}"] .informational-banner__container {
+      min-height: var(--section-height-desk, 400px);
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .informational-banner__button {
+    background-color: #FFC107 !important;
+    color: #000000 !important;
+    border: none !important;
+    font-weight: 700;
+    padding: 12px 24px;
+    border-radius: 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  [data-section-id="{{ section.id }}"] .informational-banner__button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: left 0.6s ease;
+  }
+
+  [data-section-id="{{ section.id }}"] .informational-banner__button:hover {
+    background-color: #E6AC00 !important;
+    color: #000000 !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  [data-section-id="{{ section.id }}"] .informational-banner__button:hover::before {
+    left: 100%;
+  }
+</style>
+
+{% if section.settings['full-width-enabled'] %}
+  {% assign customwrapperclass = 'hero__wrapper--full' %}
+{% else %}
+  {% assign customwrapperclass = 'hero__wrapper' %}
+{% endif %}
+
+<div
+  data-section-id="{{ section.id }}"
+  class="{{ customwrapperclass }} {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
+>
+  <div class="{% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}">
+    <div class="hero hero--grid informational-banner__container"
+         {% if section.settings.background_image %}
+           style="background-image: url('{{ section.settings.background_image | image_url: width: 1920 }}');"
+         {% endif %}>
+      
+      <div class="hero__overlay hero__text-{{ section.settings.text_position }}">
+        <div class="hero__content">
+          {% if section.settings.badge_text != blank %}
+            <div class="informational-banner__badge">
+              {{ section.settings.badge_text }}
+            </div>
+          {% endif %}
+
+          {% if section.settings.heading != blank %}
+            <div class="informational-banner__heading h1">
+              {{ section.settings.heading }}
+            </div>
+          {% endif %}
+
+          {% if section.settings.subheading != blank %}
+            <div class="informational-banner__subheading h3">
+              {{ section.settings.subheading }}
+            </div>
+          {% endif %}
+
+          {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+            <a 
+              href="{{ section.settings.button_link }}" 
+              class="button informational-banner__button {% if section.settings.button_full_width %}button--full-width{% endif %}"
+            >
+              {{ section.settings.button_label }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Informational Banner",
+  "tag": "section",
+  "class": "informational-banner-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image"
+    },
+         {
+       "type": "image_picker",
+       "id": "background_image",
+       "label": "Background image"
+     },
+     {
+       "type": "select",
+       "id": "background_position",
+       "label": "Background image position",
+       "options": [
+         {
+           "value": "center center",
+           "label": "Center"
+         },
+         {
+           "value": "left center",
+           "label": "Left"
+         },
+         {
+           "value": "right center",
+           "label": "Right"
+         },
+         {
+           "value": "center top",
+           "label": "Top"
+         },
+         {
+           "value": "center bottom",
+           "label": "Bottom"
+         }
+       ],
+       "default": "center center"
+     },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge text",
+      "default": "Sept 16 || 11AM"
+    },
+    {
+      "type": "range",
+      "id": "badge_size",
+      "min": 50,
+      "max": 150,
+      "step": 5,
+      "default": 100,
+      "label": "Badge size (Desktop)",
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "badge_size_mobile",
+      "min": 50,
+      "max": 150,
+      "step": 5,
+      "default": 100,
+      "label": "Badge size (Mobile)",
+      "unit": "%"
+    },
+         {
+       "type": "richtext",
+       "id": "heading",
+       "label": "Heading",
+       "default": "<p><strong>PIZZA JAM</strong></p>"
+     },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "default": 150,
+      "label": "Heading size (Desktop)",
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 50,
+      "max": 200,
+      "step": 10,
+      "default": 120,
+      "label": "Heading size (Mobile)",
+      "unit": "%"
+    },
+         {
+       "type": "richtext",
+       "id": "subheading",
+       "label": "Subheading",
+       "default": "<p>Think You've Got The<br>Best Plain Pie in NJ?</p>"
+     },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "min": 50,
+      "max": 200,
+      "step": 10,
+      "default": 100,
+      "label": "Subheading size (Desktop)",
+      "unit": "%"
+    },
+    {
+      "type": "range",
+      "id": "subheading_size_mobile",
+      "min": 50,
+      "max": 150,
+      "step": 10,
+      "default": 100,
+      "label": "Subheading size (Mobile)",
+      "unit": "%"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Claim Your Spot"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "options": [
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "secondary",
+          "label": "Secondary"
+        },
+        {
+          "value": "link",
+          "label": "Link"
+        }
+      ],
+      "default": "primary"
+    },
+    {
+      "type": "checkbox",
+      "id": "button_full_width",
+      "label": "Full width button on mobile",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "text_position",
+      "label": "Text position",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "full-width-enabled",
+      "label": "Full width",
+      "default": true
+    },
+    {
+      "type": "radio",
+      "id": "slide_height",
+      "label": "Section height",
+      "options": [
+        {
+          "value": "adapt_to_image",
+          "label": "Adapt to image"
+        },
+        {
+          "value": "fixed_height",
+          "label": "Fixed height"
+        }
+      ],
+      "default": "fixed_height"
+    },
+    {
+      "type": "range",
+      "id": "desktop_fixed_height",
+      "min": 200,
+      "max": 800,
+      "unit": "px",
+      "step": 20,
+      "default": 400,
+      "label": "Desktop fixed height"
+    },
+    {
+      "type": "range",
+      "id": "mobile_fixed_height",
+      "min": 200,
+      "max": 600,
+      "unit": "px",
+      "step": 20,
+      "default": 400,
+      "label": "Mobile fixed height"
+    },
+         {
+       "type": "header",
+       "content": "Text Colors"
+     },
+     {
+       "type": "color",
+       "id": "heading_color",
+       "label": "Heading color",
+       "default": "#8B0000"
+     },
+     {
+       "type": "color",
+       "id": "subheading_color",
+       "label": "Subheading color",
+       "default": "#2c2c2c"
+     },
+     {
+       "type": "header",
+       "content": "Badge & Button Colors"
+     },
+    {
+      "type": "color",
+      "id": "badge_background_color",
+      "label": "Badge background color",
+      "default": "#FFC107"
+    },
+    {
+      "type": "color",
+      "id": "badge_text_color",
+      "label": "Badge text color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "badge_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "default": 20,
+      "label": "Badge border radius",
+      "unit": "px"
+    },
+         {
+       "type": "header",
+       "content": "Overlay Colors"
+     },
+    {
+      "type": "color",
+      "id": "color-overlay",
+      "label": "Overlay color",
+      "default": "transparent"
+    },
+    {
+      "type": "range",
+      "id": "color-overlay-opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 30,
+      "label": "Overlay opacity"
+    },
+         {
+       "type": "header",
+       "content": "Content Padding"
+     },
+     {
+       "type": "range",
+       "id": "content_padding_horizontal",
+       "min": 0,
+       "max": 120,
+       "step": 4,
+       "unit": "px",
+       "default": 40,
+       "label": "Horizontal padding (Desktop)",
+       "info": "Space from left/right edges"
+     },
+     {
+       "type": "range",
+       "id": "content_padding_vertical",
+       "min": 0,
+       "max": 100,
+       "step": 4,
+       "unit": "px",
+       "default": 40,
+       "label": "Vertical padding (Desktop)",
+       "info": "Space from top/bottom edges"
+     },
+     {
+       "type": "range",
+       "id": "content_padding_horizontal_mobile",
+       "min": 0,
+       "max": 80,
+       "step": 4,
+       "unit": "px",
+       "default": 20,
+       "label": "Horizontal padding (Mobile)",
+       "info": "Space from left/right edges on mobile"
+     },
+     {
+       "type": "range",
+       "id": "content_padding_vertical_mobile",
+       "min": 0,
+       "max": 60,
+       "step": 4,
+       "unit": "px",
+       "default": 20,
+       "label": "Vertical padding (Mobile)",
+       "info": "Space from top/bottom edges on mobile"
+     },
+     {
+       "type": "header",
+       "content": "Section Spacing"
+     },
+    {
+      "type": "range",
+      "id": "margin-top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0,
+      "label": "Top margin"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 20,
+      "label": "Bottom margin"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Informational Banner"
+    }
+  ]
+}
+{% endschema %} 

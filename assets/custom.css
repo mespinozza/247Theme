@@ -1,0 +1,118 @@
+.store_drawer {
+    position: relative;
+}
+.store_drawer button#selectStoreBtn {
+    padding: 0;
+    background: transparent;
+    color: #000;
+    border: 0;
+    gap: 15px;
+}
+.store_drawer__image svg {
+    width: 4rem;
+    height: 4rem;
+}
+.store_drawer__text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.store_drawer_subtext {
+    font-size: 12px;
+    text-transform: none;
+    font-weight: 400;
+}
+.store_drawer_title {
+    text-transform: none;
+}
+#drawerdropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  width: 430px;
+  border-radius: 56px;
+  padding: 30px 20px;
+  display: none;
+  z-index: 1;
+}
+#drawerdropdownMenu .title {
+    font-size: 22px;
+    text-align: center;
+    margin: 0 0 16px 0;
+}
+#drawerdropdownMenu iframe {
+    width: 100%;
+    height: 200px;
+    border-radius: 20px;
+}
+#drawerdropdownMenu .cta {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 26px;
+}
+#drawerdropdownMenu .cta a {
+    font-size: 22px;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid;
+}
+#drawerdropdownMenu .drawer_img {
+    max-width: 250px;
+    margin: 30px auto 0;
+    display: block;
+}
+#drawerdropdownMenu .drawer_img img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.locally-available button {
+    background: #fff;
+    color: #000;
+    width: 100%;
+    border-color: #97999B80;
+    border-radius: 10px;
+    font-size: 20px;
+    text-transform: none;
+    gap: 15px;
+}
+.locally-available button svg {
+    fill: #326FF4;
+    width: 30px;
+    height: 30px;
+}
+
+
+
+@media screen and (max-width: 1199px) {
+  #drawerdropdownMenu {
+    position: unset;
+    transform: unset;
+    width: 100%;
+  }
+  .store_drawer {
+    padding: calc(var(--gap, 8px) * 1) calc(var(--gap, 8px) * 4);
+  }
+  #drawerdropdownMenu .title, #drawerdropdownMenu .cta a {
+    font-size: 18px;
+  }
+  #drawerdropdownMenu .cta {
+    gap: 20px;
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #drawerdropdownMenu .cta a {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+  #drawerdropdownMenu .cta {
+    gap: 16px;
+    margin-top: 16px;
+  }
+}
