@@ -62,7 +62,8 @@
     height: 100%;
     background-color: rgba(var(--color-overlay-rgb, 0, 0, 0), var(--color-overlay-opacity, 0.5));
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
     z-index: 2;
   }
 
@@ -70,27 +71,77 @@
     padding: {{ section.settings.content_padding_vertical | default: 40 }}px {{ section.settings.content_padding_horizontal | default: 40 }}px;
   }
 
-  [data-section-id="{{ section.id }}"] .hero__overlay.hero__text-left {
-    justify-content: flex-start;
-  }
-
-  [data-section-id="{{ section.id }}"] .hero__overlay.hero__text-center {
+  [data-section-id="{{ section.id }}"] .hero__overlay .hero__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
     justify-content: center;
   }
 
-  [data-section-id="{{ section.id }}"] .hero__overlay.hero__text-right {
-    justify-content: flex-end;
+  [data-section-id="{{ section.id }}"] .hero__overlay.hero__text-left .hero__content {
+    align-items: flex-start;
+  }
+
+  [data-section-id="{{ section.id }}"] .hero__overlay.hero__text-center .hero__content {
+    align-items: center;
+  }
+
+  [data-section-id="{{ section.id }}"] .hero__overlay.hero__text-right .hero__content {
+    align-items: flex-end;
+  }
+
+  /* Desktop: Position button in bottom right */
+  @media (min-width: 1200px) {
+    [data-section-id="{{ section.id }}"] .hero__overlay {
+      position: relative;
+    }
+
+    [data-section-id="{{ section.id }}"] .informational-banner__button--desktop {
+      position: absolute;
+      bottom: 40px;
+      right: 40px;
+      margin: 0;
+    }
+
+    [data-section-id="{{ section.id }}"] .hero__content .informational-banner__button {
+      display: none; /* Hide button in content flow on desktop */
+    }
   }
 
   /* Mobile-specific content alignment */
   @media (max-width: 1199px) {
+    [data-section-id="{{ section.id }}"] .hero__overlay {
+      display: flex;
+      align-items: center;
+      flex-direction: row; /* Reset to single column on mobile */
+      justify-content: flex-start;
+    }
+
+    [data-section-id="{{ section.id }}"] .hero__overlay .hero__content {
+      flex: none;
+      width: 100%;
+    }
+
     [data-section-id="{{ section.id }}"] .hero__overlay.mobile-center {
       justify-content: center;
       text-align: center;
     }
 
+    [data-section-id="{{ section.id }}"] .hero__overlay.mobile-center .hero__content {
+      align-items: center;
+    }
+
     [data-section-id="{{ section.id }}"] .hero__overlay.mobile-center .informational-banner__logo {
       justify-content: center;
+    }
+
+    [data-section-id="{{ section.id }}"] .hero__content .informational-banner__button {
+      display: inline-block; /* Show button in content flow on mobile */
+    }
+
+    [data-section-id="{{ section.id }}"] .informational-banner__button--desktop {
+      display: none; /* Hide desktop-positioned button on mobile */
     }
   }
 
@@ -295,6 +346,16 @@
             </a>
           {% endif %}
         </div>
+
+        {% comment %} Desktop-positioned button (bottom right) {% endcomment %}
+        {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+          <a 
+            href="{{ section.settings.button_link }}" 
+            class="informational-banner__button informational-banner__button--desktop {% if section.settings.button_full_width %}button--full-width{% endif %}"
+          >
+            {{ section.settings.button_label }}
+          </a>
+        {% endif %}
       </div>
     </div>
   </div>
