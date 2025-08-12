@@ -35,6 +35,14 @@
 
     --font-subheading-scale-desk: {{ section.settings.subheading_size | divided_by: 100.0 }};
     --font-subheading-scale: {{ section.settings.subheading_size_mobile | divided_by: 100.0 }};
+
+    --logo-scale-desk: {{ section.settings.logo_size | divided_by: 100.0 }};
+    --logo-scale: {{ section.settings.logo_size_mobile | divided_by: 100.0 }};
+
+    --logo-padding-horizontal: {{ section.settings.logo_padding_horizontal | default: 0 }}px;
+    --logo-padding-vertical: {{ section.settings.logo_padding_vertical | default: 0 }}px;
+    --logo-padding-horizontal-mobile: {{ section.settings.logo_padding_horizontal_mobile | default: 0 }}px;
+    --logo-padding-vertical-mobile: {{ section.settings.logo_padding_vertical_mobile | default: 0 }}px;
   }
 
   [data-section-id="{{ section.id }}"] .hero__overlay {
@@ -74,6 +82,18 @@
     justify-content: flex-end;
   }
 
+  /* Mobile-specific content alignment */
+  @media (max-width: 1199px) {
+    [data-section-id="{{ section.id }}"] .hero__overlay.mobile-center {
+      justify-content: center;
+      text-align: center;
+    }
+
+    [data-section-id="{{ section.id }}"] .hero__overlay.mobile-center .informational-banner__logo {
+      justify-content: center;
+    }
+  }
+
   @media (max-width: 1199px) {
     [data-section-id="{{ section.id }}"] .hero__overlay {
       padding: {{ section.settings.content_padding_vertical_mobile | default: 20 }}px {{ section.settings.content_padding_horizontal_mobile | default: 20 }}px;
@@ -110,6 +130,42 @@
   @media (max-width: 1199px) {
     [data-section-id="{{ section.id }}"] .informational-banner__heading {
       font-size: calc(var(--font-headline-scale, 1) * 36px);
+    }
+  }
+
+  /* Logo Styles */
+  [data-section-id="{{ section.id }}"] .informational-banner__logo {
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    line-height: 1;
+  }
+
+  [data-section-id="{{ section.id }}"] .informational-banner__logo.text-center {
+    justify-content: center;
+  }
+
+  [data-section-id="{{ section.id }}"] .informational-banner__logo.text-right {
+    justify-content: flex-end;
+  }
+
+  [data-section-id="{{ section.id }}"] .informational-banner__logo img {
+    height: calc(var(--logo-scale-desk, 1) * {{ section.settings.logo_base_height | default: 80 }}px);
+    max-width: calc(var(--logo-scale-desk, 1) * {{ section.settings.logo_base_max_width | default: 300 }}px);
+    width: auto;
+    object-fit: contain;
+    display: block;
+    margin: 0;
+    padding: var(--logo-padding-vertical) var(--logo-padding-horizontal);
+    vertical-align: top;
+  }
+
+  @media (max-width: 1199px) {
+    [data-section-id="{{ section.id }}"] .informational-banner__logo img {
+      height: calc(var(--logo-scale, 1) * {{ section.settings.logo_base_height_mobile | default: 60 }}px);
+      max-width: calc(var(--logo-scale, 1) * {{ section.settings.logo_base_max_width_mobile | default: 250 }}px);
+      padding: var(--logo-padding-vertical-mobile) var(--logo-padding-horizontal-mobile);
     }
   }
 
@@ -203,7 +259,7 @@
            style="background-image: url('{{ section.settings.background_image | image_url: width: 1920 }}');"
          {% endif %}>
       
-      <div class="hero__overlay hero__text-{{ section.settings.text_position }}">
+      <div class="hero__overlay hero__text-{{ section.settings.text_position }}{% if section.settings.mobile_center_content %} mobile-center{% endif %}">
         <div class="hero__content">
           {% if section.settings.badge_text != blank %}
             <div class="informational-banner__badge">
@@ -211,7 +267,14 @@
             </div>
           {% endif %}
 
-          {% if section.settings.heading != blank %}
+          {% comment %} Display either heading text or logo {% endcomment %}
+          {% if section.settings.content_type == 'logo' and section.settings.logo_image != blank %}
+            <div class="informational-banner__logo text-{{ section.settings.text_position }}">
+              <img src="{{ section.settings.logo_image | image_url: width: 600 }}" 
+                   alt="{{ section.settings.logo_alt_text | default: 'Logo' | escape }}"
+                   loading="lazy">
+            </div>
+          {% elsif section.settings.content_type == 'text' and section.settings.heading != blank %}
             <div class="informational-banner__heading h1">
               {{ section.settings.heading }}
             </div>
@@ -285,6 +348,23 @@
       "content": "Content"
     },
     {
+      "type": "select",
+      "id": "content_type",
+      "label": "Content type",
+      "options": [
+        {
+          "value": "text",
+          "label": "Heading Text"
+        },
+        {
+          "value": "logo",
+          "label": "Logo Image"
+        }
+      ],
+      "default": "text",
+      "info": "Choose whether to display heading text or upload a logo"
+    },
+    {
       "type": "text",
       "id": "badge_text",
       "label": "Badge text",
@@ -310,12 +390,140 @@
       "label": "Badge size (Mobile)",
       "unit": "%"
     },
-         {
-       "type": "richtext",
-       "id": "heading",
-       "label": "Heading",
-       "default": "<p><strong>PIZZA JAM</strong></p>"
-     },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo image",
+      "info": "Upload a logo to display instead of heading text"
+    },
+    {
+      "type": "text",
+      "id": "logo_alt_text",
+      "label": "Logo alt text",
+      "default": "Logo",
+      "info": "Describe the logo for accessibility (only used when logo is selected)"
+    },
+    {
+      "type": "range",
+      "id": "logo_size",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "default": 100,
+      "label": "Logo size (Desktop)",
+      "unit": "%",
+      "info": "Scale the logo size as a percentage"
+    },
+    {
+      "type": "range",
+      "id": "logo_size_mobile",
+      "min": 50,
+      "max": 200,
+      "step": 10,
+      "default": 100,
+      "label": "Logo size (Mobile)",
+      "unit": "%",
+      "info": "Scale the logo size as a percentage on mobile"
+    },
+    {
+      "type": "range",
+      "id": "logo_base_height",
+      "min": 40,
+      "max": 200,
+      "step": 10,
+      "unit": "px",
+      "default": 80,
+      "label": "Logo base height (Desktop)",
+      "info": "Base height that gets scaled by the size percentage"
+    },
+    {
+      "type": "range",
+      "id": "logo_base_height_mobile",
+      "min": 30,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 60,
+      "label": "Logo base height (Mobile)",
+      "info": "Base height for mobile that gets scaled"
+    },
+    {
+      "type": "range",
+      "id": "logo_base_max_width",
+      "min": 100,
+      "max": 500,
+      "step": 25,
+      "unit": "px",
+      "default": 300,
+      "label": "Logo base max width (Desktop)",
+      "info": "Base maximum width that gets scaled"
+    },
+    {
+      "type": "range",
+      "id": "logo_base_max_width_mobile",
+      "min": 100,
+      "max": 350,
+      "step": 25,
+      "unit": "px",
+      "default": 250,
+      "label": "Logo base max width (Mobile)",
+      "info": "Base maximum width for mobile that gets scaled"
+    },
+    {
+      "type": "header",
+      "content": "Logo Spacing"
+    },
+    {
+      "type": "range",
+      "id": "logo_padding_horizontal",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 0,
+      "label": "Logo horizontal padding (Desktop)",
+      "info": "Add space to the left and right of the logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_padding_vertical",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 0,
+      "label": "Logo vertical padding (Desktop)",
+      "info": "Add space above and below the logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_padding_horizontal_mobile",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 0,
+      "label": "Logo horizontal padding (Mobile)",
+      "info": "Add space to the left and right of the logo on mobile"
+    },
+    {
+      "type": "range",
+      "id": "logo_padding_vertical_mobile",
+      "min": 0,
+      "max": 15,
+      "step": 1,
+      "unit": "px",
+      "default": 0,
+      "label": "Logo vertical padding (Mobile)",
+      "info": "Add space above and below the logo on mobile"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p><strong>PIZZA JAM</strong></p>",
+      "info": "Text heading (only used when text content type is selected)"
+    },
     {
       "type": "range",
       "id": "heading_size",
@@ -406,6 +614,13 @@
     {
       "type": "header",
       "content": "Layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_center_content",
+      "label": "Center content on mobile",
+      "default": false,
+      "info": "Override desktop text alignment and center all content on mobile devices"
     },
     {
       "type": "select",
