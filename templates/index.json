@@ -40,7 +40,7 @@
             "second_button_bg_hover_color": "#f0f0f0",
             "second_button_text_hover_color": "#000000",
             "color-body-text": "#ffffff",
-            "color-overlay": "transparent",
+            "color-overlay": "rgba(0,0,0,0)",
             "color-overlay-opacity": 0,
             "desktop_image": "shopify://shop_images/You_header_image.png",
             "desktop_text_vertical_position": "center",
@@ -48,8 +48,8 @@
             "content_alignment": "center",
             "mobile_text_vertical_position": "center",
             "mobile_text_horizontal_position": "center",
-            "out-background-color": "transparent",
-            "out-text-color": "transparent"
+            "out-background-color": "rgba(0,0,0,0)",
+            "out-text-color": "rgba(0,0,0,0)"
           }
         },
         "slide_jTjff6": {
@@ -80,7 +80,7 @@
             "second_button_bg_hover_color": "#f0f0f0",
             "second_button_text_hover_color": "#000000",
             "color-body-text": "#ffffff",
-            "color-overlay": "transparent",
+            "color-overlay": "rgba(0,0,0,0)",
             "color-overlay-opacity": 0,
             "desktop_image": "shopify://shop_images/refrigeration_banner_7ddbcad6-f84f-417b-9bae-fccd779ba401.png",
             "desktop_text_vertical_position": "center",
@@ -88,8 +88,8 @@
             "content_alignment": "center",
             "mobile_text_vertical_position": "center",
             "mobile_text_horizontal_position": "center",
-            "out-background-color": "transparent",
-            "out-text-color": "transparent"
+            "out-background-color": "rgba(0,0,0,0)",
+            "out-text-color": "rgba(0,0,0,0)"
           }
         },
         "slide_HegjrL": {
@@ -119,16 +119,16 @@
             "second_button_text_color": "#000000",
             "second_button_bg_hover_color": "#f0f0f0",
             "second_button_text_hover_color": "#000000",
-            "color-body-text": "transparent",
-            "color-overlay": "transparent",
+            "color-body-text": "rgba(0,0,0,0)",
+            "color-overlay": "rgba(0,0,0,0)",
             "color-overlay-opacity": 0,
             "desktop_text_vertical_position": "center",
             "desktop_text_horizontal_position": "center",
             "content_alignment": "center",
             "mobile_text_vertical_position": "center",
             "mobile_text_horizontal_position": "center",
-            "out-background-color": "transparent",
-            "out-text-color": "transparent"
+            "out-background-color": "rgba(0,0,0,0)",
+            "out-text-color": "rgba(0,0,0,0)"
           }
         }
       },
@@ -147,127 +147,11 @@
         "slide_height": "fixed_height",
         "desktop_fixed_height": 320,
         "mobile_fixed_height": 460,
-        "heading_color": "transparent",
-        "text_color": "transparent",
-        "background_color": "transparent",
-        "out_hero_mobile": false,
-        "margin-top": 20,
-        "margin-bottom": 20
-      }
-    },
-    "slideshow_YwHNk8": {
-      "type": "slideshow",
-      "blocks": {
-        "slide_eb3hkp": {
-          "type": "slide",
-          "settings": {
-            "subheading": "",
-            "subheading_disable_on_mobile": false,
-            "heading": "Taste the\nDifference",
-            "heading_disable_on_mobile": false,
-            "size_heading": 300,
-            "size_heading_mobile": 100,
-            "text": "<p>with the YOU by Sanremo</p>",
-            "text_disable_on_mobile": false,
-            "button_select": "primary",
-            "button_label": "Shop Now",
-            "button_disable_on_mobile": false,
-            "button_link": "shopify://collections/all",
-            "second_button_select": "primary",
-            "second_button_label": "",
-            "button_disable_on_mobile_second": false,
-            "second_button_link": "",
-            "color-body-text": "#ffffff",
-            "color-overlay": "rgba(0,0,0,0)",
-            "color-overlay-opacity": 0,
-            "desktop_image": "shopify://shop_images/You_header_image.png",
-            "desktop_text_vertical_position": "center",
-            "desktop_text_horizontal_position": "left",
-            "mobile_text_vertical_position": "center",
-            "mobile_text_horizontal_position": "center",
-            "out-background-color": "rgba(0,0,0,0)",
-            "out-text-color": "rgba(0,0,0,0)"
-          }
-        },
-        "slide_nMthjp": {
-          "type": "slide",
-          "settings": {
-            "subheading": "",
-            "subheading_disable_on_mobile": false,
-            "heading": "Refrigeration",
-            "heading_disable_on_mobile": false,
-            "size_heading": 300,
-            "size_heading_mobile": 100,
-            "text": "<p>redefined with precision.</p>",
-            "text_disable_on_mobile": false,
-            "button_select": "primary",
-            "button_label": "Shop Now",
-            "button_disable_on_mobile": false,
-            "button_link": "",
-            "second_button_select": "primary",
-            "second_button_label": "",
-            "button_disable_on_mobile_second": false,
-            "second_button_link": "",
-            "color-body-text": "#ffffff",
-            "color-overlay": "rgba(0,0,0,0)",
-            "color-overlay-opacity": 0,
-            "desktop_image": "shopify://shop_images/refrigeration_banner_7ddbcad6-f84f-417b-9bae-fccd779ba401.png",
-            "desktop_text_vertical_position": "center",
-            "desktop_text_horizontal_position": "right",
-            "mobile_text_vertical_position": "center",
-            "mobile_text_horizontal_position": "center",
-            "out-background-color": "rgba(0,0,0,0)",
-            "out-text-color": "rgba(0,0,0,0)"
-          }
-        },
-        "slide_A4QmXy": {
-          "type": "slide",
-          "settings": {
-            "subheading": "",
-            "subheading_disable_on_mobile": false,
-            "heading": "Your kitchen’s secret to the perfect crisp.",
-            "heading_disable_on_mobile": false,
-            "size_heading": 100,
-            "size_heading_mobile": 100,
-            "text": "",
-            "text_disable_on_mobile": false,
-            "button_select": "primary",
-            "button_label": "",
-            "button_disable_on_mobile": false,
-            "button_link": "shopify://collections",
-            "second_button_select": "primary",
-            "second_button_label": "",
-            "button_disable_on_mobile_second": false,
-            "second_button_link": "",
-            "color-body-text": "rgba(0,0,0,0)",
-            "color-overlay": "rgba(0,0,0,0)",
-            "color-overlay-opacity": 0,
-            "desktop_text_vertical_position": "center",
-            "desktop_text_horizontal_position": "center",
-            "mobile_text_vertical_position": "center",
-            "mobile_text_horizontal_position": "center",
-            "out-background-color": "rgba(0,0,0,0)",
-            "out-text-color": "rgba(0,0,0,0)"
-          }
-        }
-      },
-      "block_order": [
-        "slide_eb3hkp",
-        "slide_nMthjp",
-        "slide_A4QmXy"
-      ],
-      "settings": {
-        "heading": "",
-        "full-width-enabled": true,
-        "auto-rotate": true,
-        "slide_height": "adapt_to_first_image",
-        "desktop_fixed_height": 500,
-        "mobile_fixed_height": 460,
         "heading_color": "rgba(0,0,0,0)",
         "text_color": "rgba(0,0,0,0)",
         "background_color": "rgba(0,0,0,0)",
         "out_hero_mobile": false,
-        "margin-top": 0,
+        "margin-top": 20,
         "margin-bottom": 20
       }
     },
@@ -731,7 +615,6 @@
   },
   "order": [
     "slideshow_pro_piyLU3",
-    "slideshow_YwHNk8",
     "collection_list_JKC7NM",
     "collage_qTKhbz",
     "featured_collection_akyMiD",
