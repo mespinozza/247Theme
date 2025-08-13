@@ -52,44 +52,44 @@
   {%- endfor -%}
 
   /* Mobile Swiper Styles */
-  {% if section.settings.enable_mobile_swiper %}
-    @media (max-width: 767px) {
-      [data-section-id="{{ section.id }}"] .wt-mosaic__mobile-swiper {
-        display: block;
-        padding: 0 20px;
-      }
-      
-      [data-section-id="{{ section.id }}"] .wt-mosaic__mobile-swiper .wt-slider__container {
-        margin: 0;
-        overflow: visible;
-        padding: 0;
-      }
-    }
-    
-    [data-section-id="{{ section.id }}"] .wt-mosaic__desktop-layout {
-      display: none;
-    }
-
-    /* Desktop Mosaic Styles */
-    @media (min-width: 768px) {
-      [data-section-id="{{ section.id }}"] .wt-mosaic__mobile-swiper {
-        display: none;
-        padding: 0;
-      }
-      
-      [data-section-id="{{ section.id }}"] .wt-mosaic__desktop-layout {
-        display: block;
-      }
-    }
-  {% else %}
-    [data-section-id="{{ section.id }}"] .wt-mosaic__mobile-swiper {
+  @media (max-width: 767px) {
+    [data-section-id="{{ section.id }}"] .wt-mosaic__container {
       display: none;
     }
     
-    [data-section-id="{{ section.id }}"] .wt-mosaic__desktop-layout {
+    [data-section-id="{{ section.id }}-mobile"].wt-mosaic__mobile-swiper {
       display: block;
+      padding: 0 20px;
+      margin: 20px 0;
     }
-  {% endif %}
+    
+    [data-section-id="{{ section.id }}-mobile"] .wt-slider__container--collage {
+      overflow: visible;
+      padding: 0;
+    }
+    
+    [data-section-id="{{ section.id }}-mobile"] .swiper-slide {
+      height: auto;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    [data-section-id="{{ section.id }}-mobile"] .wt-mosaic__item {
+      height: 100%;
+      margin: 0;
+    }
+  }
+
+  /* Desktop Styles */
+  @media (min-width: 768px) {
+    [data-section-id="{{ section.id }}-mobile"].wt-mosaic__mobile-swiper {
+      display: none;
+    }
+    
+    [data-section-id="{{ section.id }}"] .wt-mosaic__container {
+      display: flex;
+    }
+  }
 </style>
 
 <div class="wt-mosaic" data-section-id="{{ section.id }}">
@@ -97,73 +97,67 @@
   
   <!-- Mobile Swiper Layout -->
   <slideshow-section
-    data-section-id="{{ section.id }}"
-    class="wt-mosaic__mobile-swiper wt-slider wt-slider--hero {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
+    data-section-id="{{ section.id }}-mobile"
+    class="wt-mosaic__mobile-swiper wt-slider wt-slider--collage {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
   >
     <script data-swiper-configuration type="text/json">
       {
         "enableOnMedia": "(max-width: 767px)",
-        "autoHeight": false,
-        "slidesPerView": 1,
-        "loop": false,
-        "lazy": true,
-        "speed": 600,
-        "touchRatio": 1,
-        "touchAngle": 45,
+        "slidesPerView": 1.2,
+        "spaceBetween": 16,
+        "centeredSlides": false,
+        "freeMode": true,
         "grabCursor": true,
         "allowTouchMove": true,
         "simulateTouch": true,
-        "spaceBetween": 16,
-        "pagination": {
-          "el": ".swiper-pagination",
-          "clickable": true,
-          "dynamicBullets": false,
-          "type": "bullets"
+        "touchRatio": 1,
+        "touchAngle": 45,
+        "breakpoints": {
+          "480": {
+            "slidesPerView": 1.5,
+            "spaceBetween": 20
+          }
         }
       }
     </script>
-
+    
     <div
       data-swiper
-      class="wt-slider__container wt-slider__container--hero loading"
+      class="wt-slider__container wt-slider__container--collage"
     >
-      <div data-swiper-container class="loading">
+      <div data-swiper-container class="swiper-wrapper">
         {%- for block in section.blocks -%}
-          <div
-            class="swiper-lazy wt-slideshow__swiper-lazy"
-            data-swiper-slide
-            data-block-id="{{ block.id }}"
-            {{ block.shopify_attributes }}
-          >
-            {% render 'hero',
-              type: 'single',
-              desktop_text_horizontal_position: block.settings.desktop_text_horizontal_position,
-              desktop_text_vertical_position: block.settings.desktop_text_vertical_position,
-              mobile_text_horizontal_position: block.settings.mobile_text_horizontal_position,
-              mobile_text_vertical_position: block.settings.mobile_text_vertical_position,
-              desktop_image: block.settings.desktop_image,
-              mobile_image: block.settings.mobile_image,
-              heading: block.settings.heading,
-              text: block.settings.text,
-              button_label: block.settings.button_label,
-              button_link: block.settings.button_link,
-              heading_disable_on_mobile: block.settings.heading_disable_on_mobile,
-              text_disable_on_mobile: block.settings.text_disable_on_mobile,
-              button_disable_on_mobile: block.settings.button_disable_on_mobile,
-              button_select: block.settings.button_select,
-              placeholder: 'collection-apparel-1'
-            %}
+          <div class="swiper-slide" data-block-id="{{ block.id }}">
+            <div class="wt-mosaic__item">
+              {% render 'hero',
+                type: 'single',
+                desktop_text_horizontal_position: block.settings.desktop_text_horizontal_position,
+                desktop_text_vertical_position: block.settings.desktop_text_vertical_position,
+                mobile_text_horizontal_position: block.settings.mobile_text_horizontal_position,
+                mobile_text_vertical_position: block.settings.mobile_text_vertical_position,
+                desktop_image: block.settings.desktop_image,
+                mobile_image: block.settings.mobile_image,
+                heading: block.settings.heading,
+                text: block.settings.text,
+                button_label: block.settings.button_label,
+                button_link: block.settings.button_link,
+                heading_disable_on_mobile: block.settings.heading_disable_on_mobile,
+                text_disable_on_mobile: block.settings.text_disable_on_mobile,
+                button_disable_on_mobile: block.settings.button_disable_on_mobile,
+                button_select: block.settings.button_select,
+                placeholder: 'collection-apparel-1'
+              %}
+            </div>
           </div>
         {%- endfor -%}
       </div>
-      <div class="swiper-pagination"></div>
     </div>
   </slideshow-section>
-
+  
   <!-- Desktop Mosaic Layout -->
   <div
     data-section-id="{{ section.id }}"
-    class="wt-mosaic__desktop-layout {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}  wt-mosaic__container {% if section.settings.desktop_layout == 'row-reverse' %} wt-mosaic__container--reversed {% endif %}"
+    class=" {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}  wt-mosaic__container {% if section.settings.desktop_layout == 'row-reverse' %} wt-mosaic__container--reversed {% endif %}"
   >
     {% assign i = 0 %}
 
@@ -239,6 +233,8 @@
   </div>
 </div>
 
+
+
 {% schema %}
 {
   "name": "t:sections.collage.name",
@@ -266,13 +262,6 @@
       ],
       "default": "row",
       "info": "t:sections.collage.settings.desktop_layout.default.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_mobile_swiper",
-      "label": "Enable mobile swiper",
-      "default": true,
-      "info": "On mobile devices, show images in a swipeable carousel instead of stacked layout"
     },
     {
       "type": "header",
