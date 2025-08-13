@@ -167,62 +167,56 @@
     "collection_list_JKC7NM": {
       "type": "collection-list",
       "blocks": {
-        "featured_collection_JbbMNM": {
+        "featured_collection_jrM6rU": {
           "type": "featured_collection",
           "settings": {
             "collection": "adcraft",
-            "image_collection": "shopify://shop_images/square_logo.png",
             "text_collection": ""
           }
         },
-        "featured_collection_pz4jDw": {
+        "featured_collection_8RAHM4": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "advance-tabco",
+            "text_collection": ""
+          }
+        },
+        "featured_collection_qAaFC7": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "apw-wyott",
+            "text_collection": ""
+          }
+        },
+        "featured_collection_66CGXN": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "blodgett",
+            "text_collection": ""
+          }
+        },
+        "featured_collection_Fphgcm": {
           "type": "featured_collection",
           "settings": {
             "collection": "blue-air",
-            "image_collection": "shopify://shop_images/square_logo_1.png",
             "text_collection": ""
           }
         },
-        "featured_collection_VFa68K": {
+        "featured_collection_kB3gDF": {
           "type": "featured_collection",
           "settings": {
             "collection": "browne-foodservice",
-            "image_collection": "shopify://shop_images/square_logo_2.png",
-            "text_collection": ""
-          }
-        },
-        "featured_collection_pCNb3b": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "dukers",
-            "image_collection": "shopify://shop_images/square_logo_3.png",
-            "text_collection": ""
-          }
-        },
-        "featured_collection_UCg6ii": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "giorik",
-            "image_collection": "shopify://shop_images/square_logo_4.png",
-            "text_collection": ""
-          }
-        },
-        "featured_collection_DkLLmV": {
-          "type": "featured_collection",
-          "settings": {
-            "collection": "grista",
-            "image_collection": "shopify://shop_images/square_logo_5.png",
             "text_collection": ""
           }
         }
       },
       "block_order": [
-        "featured_collection_JbbMNM",
-        "featured_collection_pz4jDw",
-        "featured_collection_VFa68K",
-        "featured_collection_pCNb3b",
-        "featured_collection_UCg6ii",
-        "featured_collection_DkLLmV"
+        "featured_collection_jrM6rU",
+        "featured_collection_8RAHM4",
+        "featured_collection_qAaFC7",
+        "featured_collection_66CGXN",
+        "featured_collection_Fphgcm",
+        "featured_collection_kB3gDF"
       ],
       "settings": {
         "heading": "Top Brands",
