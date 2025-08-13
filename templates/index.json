@@ -125,45 +125,6 @@
         "margin-bottom": 20
       }
     },
-    "rich_text_with_image_d9iPb9": {
-      "type": "rich-text-with-image",
-      "blocks": {
-        "heading_xqAqaP": {
-          "type": "heading",
-          "settings": {
-            "subheading": "<p>Customize Your Visual Layout</p>",
-            "font_uppercase": "none",
-            "disable_on_mobile": false
-          }
-        },
-        "text_yXHg9h": {
-          "type": "text",
-          "settings": {
-            "text": "Type PICTURE1 to insert the first icon – place it where you want a visual cue. Insert PICTURE2 by typing it where a second visual element is needed. Use PICTURE3 for adding a third icon – ensure it has its own space.",
-            "font_uppercase": "none",
-            "disable_on_mobile": false,
-            "size_heading": 100,
-            "size_heading_mobile": 100,
-            "line_height": 1.5,
-            "button_link1": "",
-            "button_link2": "",
-            "button_link3": ""
-          }
-        }
-      },
-      "block_order": [
-        "heading_xqAqaP",
-        "text_yXHg9h"
-      ],
-      "disabled": true,
-      "settings": {
-        "desktop_text_horizontal_position": "center",
-        "color-body-text": "rgba(0,0,0,0)",
-        "background_color": "rgba(0,0,0,0)",
-        "margin-top": 20,
-        "margin-bottom": 20
-      }
-    },
     "collection_list_JKC7NM": {
       "type": "collection-list",
       "blocks": {
@@ -291,7 +252,7 @@
             "button_select": "link",
             "button_label": "Shop Now",
             "button_disable_on_mobile": false,
-            "button_link": "",
+            "button_link": "shopify://collections/vulcan",
             "desktop_image": "shopify://shop_images/ChatGPT_Image_Apr_24_2025_10_51_41_AM.png",
             "desktop_text_vertical_position": "bottom",
             "desktop_text_horizontal_position": "right",
@@ -624,7 +585,6 @@
   },
   "order": [
     "slideshow_YwHNk8",
-    "rich_text_with_image_d9iPb9",
     "collection_list_JKC7NM",
     "collage_qTKhbz",
     "featured_collection_akyMiD",
