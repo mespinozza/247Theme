@@ -27,6 +27,56 @@
     position: relative;
   }
 
+  /* Heading Styles */
+  [data-section-id="{{ section.id }}"] .logo-showcase__heading {
+    {% assign base_font_size = section.settings.heading_font_size | default: 36 %}
+    {% assign text_scale = section.settings.heading_text_scale | default: 100 | divided_by: 100.0 %}
+    {% assign adjusted_font_size = base_font_size | times: text_scale %}
+    {% assign responsive_margin = section.settings.heading_margin_bottom | default: 40 | times: text_scale %}
+    
+    font-size: {{ adjusted_font_size }}px;
+    margin-bottom: {{ responsive_margin }}px;
+    line-height: {{ section.settings.heading_line_height | default: 1.2 }};
+    color: {{ section.settings.heading_color | default: '#000000' }};
+    font-weight: {{ section.settings.heading_font_weight | default: 600 }};
+    letter-spacing: {{ section.settings.heading_letter_spacing | default: 0 }}px;
+    text-transform: {% if section.settings.heading_text_transform %}{{ section.settings.heading_text_transform }}{% else %}none{% endif %};
+  }
+
+  @media (max-width: 767px) {
+    [data-section-id="{{ section.id }}"] .logo-showcase__heading {
+      {% assign base_font_size_mobile = section.settings.heading_font_size_mobile | default: 28 %}
+      {% assign mobile_text_scale = section.settings.heading_text_scale_mobile | default: 100 | divided_by: 100.0 %}
+      {% assign adjusted_font_size_mobile = base_font_size_mobile | times: mobile_text_scale %}
+      {% assign responsive_margin_mobile = section.settings.heading_margin_bottom_mobile | default: 30 | times: mobile_text_scale %}
+      
+      font-size: {{ adjusted_font_size_mobile }}px;
+      margin-bottom: {{ responsive_margin_mobile }}px;
+      line-height: {{ section.settings.heading_line_height_mobile | default: 1.1 }};
+      letter-spacing: {{ section.settings.heading_letter_spacing_mobile | default: 0 }}px;
+    }
+  }
+
+  /* Desktop Alignment */
+  @media (min-width: 768px) {
+    [data-section-id="{{ section.id }}"] .logo-showcase__heading {
+      {% if section.settings.desktop_alignment == 'left' %}
+        text-align: left;
+      {% elsif section.settings.desktop_alignment == 'right' %}
+        text-align: right;
+      {% else %}
+        text-align: center;
+      {% endif %}
+    }
+  }
+
+  /* Mobile alignment is always center */
+  @media (max-width: 767px) {
+    [data-section-id="{{ section.id }}"] .logo-showcase__heading {
+      text-align: center;
+    }
+  }
+
   /* Decorative Lines */
   [data-section-id="{{ section.id }}"] .logo-showcase__line {
     height: {{ section.settings.line_thickness | default: 1 }}px;
@@ -157,8 +207,15 @@
   class="logo-showcase {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
 >
   <div class="logo-showcase__container">
+    <!-- Section Heading -->
+    {% if section.settings.heading and section.settings.heading != blank %}
+      <h2 class="logo-showcase__heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    
     <!-- Top decorative line -->
-    <div class="logo-showcase__line"></div>
+    {% if section.settings.show_decorative_lines %}
+      <div class="logo-showcase__line"></div>
+    {% endif %}
     
     <!-- Logo showcase -->
     <div class="logo-showcase__wrapper">
@@ -234,7 +291,9 @@
     </div>
     
     <!-- Bottom decorative line -->
-    <div class="logo-showcase__line"></div>
+    {% if section.settings.show_decorative_lines %}
+      <div class="logo-showcase__line"></div>
+    {% endif %}
   </div>
 </div>
 
@@ -245,6 +304,195 @@
   "class": "logo-showcase-section",
   "max_blocks": 10,
   "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading text",
+      "info": "Optional heading text to display above the logos"
+    },
+    {
+      "type": "select",
+      "id": "desktop_alignment",
+      "label": "Desktop alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "info": "Heading alignment on desktop (mobile is always center)"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 36,
+      "label": "Base heading font size (Desktop)"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "min": 20,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 28,
+      "label": "Base heading font size (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "heading_text_scale",
+      "min": 50,
+      "max": 200,
+      "step": 5,
+      "unit": "%",
+      "default": 100,
+      "label": "Text size scale (Desktop)",
+      "info": "Adjust the overall heading size - affects font size and spacing"
+    },
+    {
+      "type": "range",
+      "id": "heading_text_scale_mobile",
+      "min": 50,
+      "max": 200,
+      "step": 5,
+      "unit": "%",
+      "default": 100,
+      "label": "Text size scale (Mobile)",
+      "info": "Adjust the overall heading size on mobile"
+    },
+    {
+      "type": "select",
+      "id": "heading_font_weight",
+      "label": "Heading font weight",
+      "options": [
+        {
+          "value": "400",
+          "label": "Normal"
+        },
+        {
+          "value": "500",
+          "label": "Medium"
+        },
+        {
+          "value": "600",
+          "label": "Semi Bold"
+        },
+        {
+          "value": "700",
+          "label": "Bold"
+        }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "range",
+      "id": "heading_line_height",
+      "min": 0.8,
+      "max": 2.0,
+      "step": 0.1,
+      "default": 1.2,
+      "label": "Line height (Desktop)",
+      "info": "Adjust the space between lines of text"
+    },
+    {
+      "type": "range",
+      "id": "heading_line_height_mobile",
+      "min": 0.8,
+      "max": 2.0,
+      "step": 0.1,
+      "default": 1.1,
+      "label": "Line height (Mobile)"
+    },
+    {
+      "type": "range",
+      "id": "heading_letter_spacing",
+      "min": -2,
+      "max": 5,
+      "step": 0.5,
+      "unit": "px",
+      "default": 0,
+      "label": "Letter spacing (Desktop)",
+      "info": "Adjust the space between letters"
+    },
+    {
+      "type": "range",
+      "id": "heading_letter_spacing_mobile",
+      "min": -2,
+      "max": 5,
+      "step": 0.5,
+      "unit": "px",
+      "default": 0,
+      "label": "Letter spacing (Mobile)"
+    },
+    {
+      "type": "select",
+      "id": "heading_text_transform",
+      "label": "Text transform",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "uppercase",
+          "label": "UPPERCASE"
+        },
+        {
+          "value": "lowercase",
+          "label": "lowercase"
+        },
+        {
+          "value": "capitalize",
+          "label": "Capitalize Each Word"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "heading_margin_bottom",
+      "min": 20,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40,
+      "label": "Base bottom margin (Desktop)",
+      "info": "This will be scaled with text size adjustments"
+    },
+    {
+      "type": "range",
+      "id": "heading_margin_bottom_mobile",
+      "min": 15,
+      "max": 60,
+      "step": 3,
+      "unit": "px",
+      "default": 30,
+      "label": "Base bottom margin (Mobile)",
+      "info": "This will be scaled with text size adjustments"
+    },
     {
       "type": "header",
       "content": "Layout"
@@ -268,6 +516,13 @@
     {
       "type": "header",
       "content": "Decorative Lines"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_decorative_lines",
+      "label": "Show decorative lines",
+      "default": true,
+      "info": "Display lines above and below the logo showcase"
     },
     {
       "type": "color",
