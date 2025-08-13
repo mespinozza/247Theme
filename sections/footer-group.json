@@ -1,1 +1,61 @@
-{"type":"footer","name":"Footer Group","sections":{"footer":{"type":"page-footer","blocks":{"custom_liquid_wQDnG3":{"type":"custom_liquid","settings":{"custom_liquid":"<style>\n  .footer-content {\n    display: flex;\n    align-items: center;\n    gap: 2rem;\n    max-width: 1200px;\n    margin: 0 auto;\n    padding: 2rem;\n    background-color: #f8f8f8;\n  }\n  \n  .footer-logo {\n    flex-shrink: 0;\n    width: 150px;\n    height: 150px;\n  }\n  \n  .footer-text {\n    font-family: \"Harmonia Sans\", sans-serif;\n    font-size: 1.2rem;\n    line-height: 1.8;\n    color: #111;\n    font-weight: 300;\n  }\n  \n  @media (max-width: 768px) {\n    .footer-content {\n      flex-direction: column;\n      text-align: center;\n      gap: 1rem;\n    }\n    \n    .footer-logo {\n      width: 120px;\n      height: 120px;\n    }\n  }\n<\/style>\n\n<div class=\"footer-content\">\n  <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/0566\/4043\/8327\/files\/247logo-square.png?v=1709738059\" \n       alt=\"24\/7 Restaurant Equipment Logo\" \n       class=\"footer-logo\">\n  <p class=\"footer-text\">\n    Your complete foodservice solutions partner. We handle every step - from specifying the right equipment to removal of existing units, delivery, factory-authorized installation, and certified start-up. Our end-to-end service includes full warranty coverage, giving you peace of mind with just one call.\n  <\/p>\n<\/div>"}},"menu_g8gLjt":{"type":"menu","settings":{"heading_links":"Help Menu","links":"footer"}},"newsletter_HRMwBD":{"type":"newsletter","settings":{"heading_newsletter":"Sign up to our Newsletter!","text_newsletter":"<p>Be the first to hear about new releases, exclusives and offers!<\/p>","button_type":"primary"}}},"block_order":["custom_liquid_wQDnG3","menu_g8gLjt","newsletter_HRMwBD"],"settings":{"show-social-media-icons":true,"show-language-selector":true,"show-country_region_selector":true,"enable_follow_on_shop":true,"show-payments-icons":true,"show-copyright":true,"text":"© 2024 Wonder-theme. Powered by Shopify.","big-logo-width":100,"margin-top":20,"margin-bottom":20}}},"order":["footer"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "type": "footer",
+  "name": "Footer Group",
+  "sections": {
+    "footer": {
+      "type": "page-footer",
+      "blocks": {
+        "custom_liquid_wQDnG3": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<style>\n  .footer-content {\n    display: flex;\n    align-items: center;\n    gap: 2rem;\n    max-width: 1200px;\n    margin: 0 auto;\n    padding: 2rem;\n    background-color: #f8f8f8;\n  }\n  \n  .footer-logo {\n    flex-shrink: 0;\n    width: 150px;\n    height: 150px;\n  }\n  \n  .footer-text {\n    font-family: \"Harmonia Sans\", sans-serif;\n    font-size: 1.2rem;\n    line-height: 1.8;\n    color: #111;\n    font-weight: 300;\n  }\n  \n  @media (max-width: 768px) {\n    .footer-content {\n      flex-direction: column;\n      text-align: center;\n      gap: 1rem;\n    }\n    \n    .footer-logo {\n      width: 120px;\n      height: 120px;\n    }\n  }\n</style>\n\n<div class=\"footer-content\">\n  <img src=\"https://cdn.shopify.com/s/files/1/0566/4043/8327/files/247logo-square.png?v=1709738059\" \n       alt=\"24/7 Restaurant Equipment Logo\" \n       class=\"footer-logo\">\n  <p class=\"footer-text\">\n    Your complete foodservice solutions partner. We handle every step - from specifying the right equipment to removal of existing units, delivery, factory-authorized installation, and certified start-up. Our end-to-end service includes full warranty coverage, giving you peace of mind with just one call.\n  </p>\n</div>"
+          }
+        },
+        "menu_g8gLjt": {
+          "type": "menu",
+          "settings": {
+            "heading_links": "Help Menu",
+            "links": "footer"
+          }
+        },
+        "newsletter_HRMwBD": {
+          "type": "newsletter",
+          "settings": {
+            "heading_newsletter": "Sign up to our Newsletter!",
+            "text_newsletter": "<p>Be the first to hear about new releases, exclusives and offers!</p>",
+            "button_type": "primary"
+          }
+        }
+      },
+      "block_order": [
+        "custom_liquid_wQDnG3",
+        "menu_g8gLjt",
+        "newsletter_HRMwBD"
+      ],
+      "settings": {
+        "show-social-media-icons": true,
+        "show-language-selector": true,
+        "show-country_region_selector": false,
+        "enable_follow_on_shop": false,
+        "show-payments-icons": true,
+        "show-copyright": false,
+        "text": "© 2024 Wonder-theme. Powered by Shopify.",
+        "big-logo-width": 100,
+        "margin-top": 20,
+        "margin-bottom": 20
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}
