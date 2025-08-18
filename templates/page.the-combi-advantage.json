@@ -12,26 +12,19 @@
     "banner_fade_CkDtx8": {
       "type": "banner-fade",
       "blocks": {
-        "subheading_TTQJPR": {
-          "type": "subheading",
-          "settings": {
-            "subheading": "Tell your story",
-            "subheading_disable_on_mobile": false
-          }
-        },
         "heading_3aBX3i": {
           "type": "heading",
           "settings": {
-            "heading": "Image banner with fade",
+            "heading": "We take care of everything - so you don't have to.",
             "disable_on_mobile": false,
-            "size_heading": 100,
+            "size_heading": 200,
             "size_heading_mobile": 100
           }
         },
         "text_wxeD8F": {
           "type": "text",
           "settings": {
-            "text": "<p>Give customers details about the banner image or content with a beautiful fade effect.</p>",
+            "text": "<p>From install to training, its all included.</p>",
             "disable_on_mobile": false
           }
         },
@@ -39,7 +32,7 @@
           "type": "button",
           "settings": {
             "button_select": "primary",
-            "button_label": "Button label",
+            "button_label": "Get Started Today",
             "button_link": "/",
             "button_link_in_new_window": false,
             "disable_on_mobile": false,
@@ -50,7 +43,6 @@
         }
       },
       "block_order": [
-        "subheading_TTQJPR",
         "heading_3aBX3i",
         "text_wxeD8F",
         "button_KAYbrw"
@@ -64,13 +56,14 @@
         "desktop_fixed_height": 460,
         "mobile_fixed_height": 500,
         "fade-intensity": 70,
+        "desktop_image": "shopify://shop_images/ChatGPT_Image_Aug_14_2025_10_17_54_AM.png",
         "desktop_content_vertical_position": "center",
         "desktop_content_horizontal_position": "flex-start",
         "mobile_content_vertical_position": "center",
         "mobile_content_horizontal_position": "center",
-        "content-background-color": "#f8f8f8",
+        "content-background-color": "#eff4f8",
         "color-heading": "transparent",
-        "color-body-text": "transparent",
+        "color-body-text": "#000000",
         "section-color-overlay": "transparent",
         "section-color-overlay-opacity": 100,
         "margin-top": 20,
@@ -166,6 +159,33 @@
         "margin-bottom": 20
       }
     },
+    "featured_collection_U8DAWp": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "Popular Equipment",
+        "disable_on_mobile": false,
+        "collection": "",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "button_select": "primary",
+        "number_of_column_desktop": 4,
+        "spacing_desktop": "16",
+        "make_products_full_width": true,
+        "number_of_column_mobile": 2.1,
+        "text_alignment": "left",
+        "image_ratio": "square",
+        "show_video": false,
+        "show_secondary_image": false,
+        "show_vendor": true,
+        "show_product_rating": true,
+        "enable_quick_add_button": false,
+        "color-body-text": "transparent",
+        "background_color": "transparent",
+        "margin-top": 20,
+        "margin-bottom": 20
+      }
+    },
     "comparison_showcase_CtcM7j": {
       "type": "comparison-showcase",
       "blocks": {
@@ -221,33 +241,6 @@
         "color-overlay-opacity": 100,
         "margin-top": 40,
         "margin-bottom": 0
-      }
-    },
-    "featured_collection_U8DAWp": {
-      "type": "featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
-      "settings": {
-        "title": "Popular Equipment",
-        "disable_on_mobile": false,
-        "collection": "",
-        "products_to_show": 4,
-        "show_view_all": true,
-        "button_select": "primary",
-        "number_of_column_desktop": 4,
-        "spacing_desktop": "16",
-        "make_products_full_width": true,
-        "number_of_column_mobile": 2.1,
-        "text_alignment": "left",
-        "image_ratio": "square",
-        "show_video": false,
-        "show_secondary_image": false,
-        "show_vendor": true,
-        "show_product_rating": true,
-        "enable_quick_add_button": false,
-        "color-body-text": "transparent",
-        "background_color": "transparent",
-        "margin-top": 20,
-        "margin-bottom": 20
       }
     }
   },
