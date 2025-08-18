@@ -1,0 +1,610 @@
+{{ 'section-banner-fade.css' | asset_url | stylesheet_tag }}
+
+{% assign heading_rgb = section.settings['color-heading'] | color_to_rgb %}
+{% assign background_rgb = section.settings['section-color-overlay'] | color_to_rgb %}
+{% assign content_bg_rgb = section.settings['content-background-color'] | color_to_rgb %}
+{% assign text_rgb = section.settings['color-body-text'] | color_to_rgb %}
+
+<style>
+  section[id="shopify-section-{{ section.id }}"] {
+    {% if background_rgb != 'rgba(0, 0, 0, 0.0)' %}
+      --color-overlay-rgb: {{ section.settings.section-color-overlay | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+      --color-overlay-opacity: {{ section.settings.section-color-overlay-opacity | divided_by: 100.0 }};
+    {% endif %}
+
+    {% if content_bg_rgb != 'rgba(0, 0, 0, 0.0)' %}
+      --content-bg-color: {{ section.settings.content-background-color }};
+      --content-bg-rgb: {{ section.settings.content-background-color | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+    {% else %}
+      --content-bg-color: rgba(var(--color-background-rgb, 255, 255, 255), 1);
+      --content-bg-rgb: var(--color-background-rgb, 255, 255, 255);
+    {% endif %}
+
+    {% if section.settings.margin-top %}
+      --section-gap-top: {{ section.settings.margin-top }}px;
+    {% endif %}
+
+    {% if section.settings.margin-bottom %}
+      --section-gap-bottom: {{ section.settings.margin-bottom }}px;
+    {% endif %}
+
+    --fade-intensity: {{ section.settings.fade-intensity | divided_by: 100.0 }};
+  }
+
+  section[id="shopify-section-{{ section.id }}"] .banner-fade__heading {
+    {% if heading_rgb != 'rgba(0, 0, 0, 0.0)' %}
+      --color-custom-text: {{ section.settings.color-heading }};
+    {% endif %}
+  }
+
+  section[id="shopify-section-{{ section.id }}"] .banner-fade__content {
+    {% if text_rgb != 'rgba(0, 0, 0, 0.0)' %}
+      --color-custom-text: {{ section.settings.color-body-text }};
+    {% endif %}
+  }
+
+  [data-section-id="{{ section.id }}"] {
+    {% if section.settings.full-width-enabled %}
+      --border-radius: 0;
+    {% endif %}
+
+    {% if section.settings.slide_height == 'fixed_height' %}
+      --section-height: {{ section.settings.mobile_fixed_height }}px;
+      --section-height-desk: {{ section.settings.desktop_fixed_height }}px;
+    {% endif %}
+
+    {% if section.settings.slide_height == 'adapt_to_first_image' %}
+      --first-slide-ratio: {{ section.settings.mobile_image.aspect_ratio | default: 1 }};
+      --first-slide-ratio-desk: {{ section.settings.desktop_image.aspect_ratio | default: 2.5 }};
+    {% endif %}
+
+    --desktop-content-position-x: {{ section.settings.desktop_content_horizontal_position }};
+    --desktop-content-position-y: {{ section.settings.desktop_content_vertical_position }};
+    --mobile-content-position-x: {{ section.settings.mobile_content_horizontal_position }};
+    --mobile-content-position-y: {{ section.settings.mobile_content_vertical_position }};
+  }
+
+  {%- for block in section.blocks -%}
+  [data-block-id="{{ block.id }}"] {
+    --font-headline-scale-desk: {{ block.settings.size_heading | divided_by: 100.0 }};
+    --font-headline-scale: {{ block.settings.size_heading_mobile | divided_by: 100.0 }};
+  }
+  {%- endfor -%}
+</style>
+
+{% if section.settings['full-width-enabled'] %}
+  {% assign width_line = 'banner-fade__wrapper--full' %}
+{% else %}
+  {% assign width_line = 'banner-fade__wrapper' %}
+{% endif %}
+
+{% if section.settings.layout == 'content_first' %}
+  {% assign layout_class = 'banner-fade__container--reversed' %}
+{% else %}
+  {% assign layout_class = '' %}
+{% endif %}
+
+<div
+  data-section-id="{{ section.id }}"
+  class="banner-fade {{ width_line }} {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
+>
+  {% render 'headline', title: section.settings.heading %}
+
+  <div class="{% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}">
+    <div class="banner-fade__container {{ layout_class }}">
+      
+      <!-- Content Side (Left on Desktop, Bottom on Mobile) -->
+      <div class="banner-fade__content">
+        <div class="banner-fade__content-background"></div>
+        <div class="banner-fade__fade-overlay"></div>
+        <div class="banner-fade__text-content">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'heading' %}
+                <h2 class="banner-fade__heading {% if block.settings.disable_on_mobile %}banner-fade__heading--mobile-hidden{% endif %}" data-block-id="{{ block.id }}" {{ block.shopify_attributes }}>
+                  {{ block.settings.heading | newline_to_br }}
+                </h2>
+
+              {% when 'subheading' %}
+                <div class="banner-fade__subheading {% if block.settings.subheading_disable_on_mobile %}banner-fade__subheading--mobile-hidden{% endif %}" data-block-id="{{ block.id }}" {{ block.shopify_attributes }}>
+                  {{ block.settings.subheading | newline_to_br }}
+                </div>
+
+              {% when 'text' %}
+                <div class="banner-fade__text rte {% if block.settings.disable_on_mobile %}banner-fade__text--mobile-hidden{% endif %}" data-block-id="{{ block.id }}" {{ block.shopify_attributes }}>
+                  {{ block.settings.text }}
+                </div>
+
+              {% when 'button' %}
+                <div class="banner-fade__buttons {% if block.settings.disable_on_mobile %}banner-fade__buttons--mobile-hidden{% endif %}" data-block-id="{{ block.id }}" {{ block.shopify_attributes }}>
+                  {% if block.settings.button_label != blank %}
+                    <a
+                      href="{{ block.settings.button_link | default: '#' }}"
+                      class="banner-fade__button banner-fade__button--primary {% if block.settings.button_select != 'primary' %}banner-fade__button--secondary{% endif %}{% if block.settings.button_select == 'link' %} banner-fade__button--link{% endif %}"
+                      {% if block.settings.button_link_in_new_window %}target="_blank" rel="noreferrer noopener"{% endif %}
+                    >
+                      <span>{{ block.settings.button_label }}</span>
+                    </a>
+                  {% endif %}
+
+                  {% if block.settings.second_button_label != blank %}
+                    <a
+                      href="{{ block.settings.second_button_link | default: '#' }}"
+                      class="banner-fade__button banner-fade__button--primary {% if block.settings.second_button_select != 'primary' %}banner-fade__button--secondary{% endif %}{% if block.settings.second_button_select == 'link' %} banner-fade__button--link{% endif %}"
+                      {% if block.settings.button_link_in_new_window %}target="_blank" rel="noreferrer noopener"{% endif %}
+                    >
+                      <span>{{ block.settings.second_button_label }}</span>
+                    </a>
+                  {% endif %}
+                </div>
+            {% endcase %}
+          {% endfor %}
+        </div>
+      </div>
+
+      <!-- Image Side (Right on Desktop, Top on Mobile) -->
+      <div class="banner-fade__image">
+        {% if section.settings.desktop_image or section.settings.mobile_image %}
+          {% render 'picture',
+            desktop_image: section.settings.desktop_image,
+            mobile_image: section.settings.mobile_image,
+            placeholder: 'detailed-apparel-1'
+          %}
+        {% else %}
+          <div class="banner-fade__placeholder">
+            {{ 'detailed-apparel-1' | placeholder_svg_tag: 'banner-fade__placeholder-svg' }}
+          </div>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Banner (fade)",
+  "tag": "section",
+  "class": "section-banner-fade",
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:sections.global.general"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Banner with fade effect"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "options": [
+        {
+          "value": "image_first",
+          "label": "Image first (Image right, Content left)"
+        },
+        {
+          "value": "content_first",
+          "label": "Content first (Content right, Image left)"
+        }
+      ],
+      "default": "image_first",
+      "label": "Desktop layout"
+    },
+    {
+      "type": "checkbox",
+      "id": "full-width-enabled",
+      "label": "Full width section",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Section height"
+    },
+    {
+      "type": "radio",
+      "id": "slide_height",
+      "label": "Section height",
+      "options": [
+        {
+          "value": "adapt_to_first_image",
+          "label": "Adapt to image"
+        },
+        {
+          "value": "fixed_height",
+          "label": "Fixed height"
+        }
+      ],
+      "default": "fixed_height"
+    },
+    {
+      "type": "range",
+      "id": "desktop_fixed_height",
+      "min": 300,
+      "max": 1000,
+      "unit": "px",
+      "step": 20,
+      "default": 600,
+      "label": "Desktop fixed height"
+    },
+    {
+      "type": "range",
+      "id": "mobile_fixed_height",
+      "min": 200,
+      "max": 800,
+      "unit": "px",
+      "step": 20,
+      "default": 500,
+      "label": "Mobile fixed height"
+    },
+    {
+      "type": "header",
+      "content": "Fade effect"
+    },
+    {
+      "type": "range",
+      "id": "fade-intensity",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 70,
+      "label": "Fade intensity",
+      "info": "Controls how strong the fade effect appears"
+    },
+    {
+      "type": "header",
+      "content": "Desktop version"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop image"
+    },
+    {
+      "type": "select",
+      "id": "desktop_content_vertical_position",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center",
+      "label": "Content vertical position"
+    },
+    {
+      "type": "select",
+      "id": "desktop_content_horizontal_position",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "flex-start",
+      "label": "Content horizontal position"
+    },
+    {
+      "type": "header",
+      "content": "Mobile version"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image"
+    },
+    {
+      "type": "select",
+      "id": "mobile_content_vertical_position",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center",
+      "label": "Content vertical position"
+    },
+    {
+      "type": "select",
+      "id": "mobile_content_horizontal_position",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Content horizontal position"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "content-background-color",
+      "default": "#f8f8f8",
+      "label": "Content background color",
+      "info": "The solid color that fades to transparent"
+    },
+    {
+      "type": "color",
+      "id": "color-heading",
+      "default": "transparent",
+      "label": "Heading color"
+    },
+    {
+      "type": "color",
+      "id": "color-body-text",
+      "default": "transparent",
+      "label": "Text color"
+    },
+    {
+      "type": "color",
+      "id": "section-color-overlay",
+      "default": "transparent",
+      "label": "Section background color"
+    },
+    {
+      "type": "range",
+      "id": "section-color-overlay-opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "label": "Section background opacity"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin-top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "Margin top"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "Margin bottom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "heading",
+          "default": "Image banner with fade",
+          "label": "Heading"
+        },
+        {
+          "type": "checkbox",
+          "id": "disable_on_mobile",
+          "label": "Hide on mobile",
+          "default": false
+        },
+        {
+          "type": "range",
+          "id": "size_heading",
+          "min": 50,
+          "max": 500,
+          "step": 10,
+          "default": 100,
+          "label": "Desktop heading size",
+          "unit": "%"
+        },
+        {
+          "type": "range",
+          "id": "size_heading_mobile",
+          "min": 80,
+          "max": 300,
+          "step": 10,
+          "default": 100,
+          "label": "Mobile heading size",
+          "unit": "%"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "name": "Subheading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "Subheading",
+          "default": "Tell your story"
+        },
+        {
+          "type": "checkbox",
+          "id": "subheading_disable_on_mobile",
+          "label": "Hide on mobile",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Text",
+          "default": "<p>Give customers details about the banner image or content with a beautiful fade effect.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "disable_on_mobile",
+          "label": "Hide on mobile",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "Buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Button 1"
+        },
+        {
+          "type": "select",
+          "id": "button_select",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "link",
+              "label": "Link"
+            }
+          ],
+          "default": "primary",
+          "label": "Button style"
+        },
+        {
+          "id": "button_label",
+          "type": "text",
+          "default": "Button label",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button link",
+          "default": "/"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_link_in_new_window",
+          "label": "Open link in new window",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "disable_on_mobile",
+          "label": "Hide on mobile",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Button 2"
+        },
+        {
+          "type": "select",
+          "id": "second_button_select",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "link",
+              "label": "Link"
+            }
+          ],
+          "default": "secondary",
+          "label": "Button style"
+        },
+        {
+          "id": "second_button_label",
+          "type": "text",
+          "label": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "second_button_link",
+          "label": "Button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Banner (fade)",
+      "blocks": [
+        {
+          "type": "subheading"
+        },
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "button"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}

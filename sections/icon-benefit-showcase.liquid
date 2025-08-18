@@ -1,0 +1,476 @@
+{{ 'section-icon-benefit-showcase.css' | asset_url | stylesheet_tag }}
+
+{% assign heading_rgb = section.settings['color-heading'] | color_to_rgb %}
+{% assign background_rgb = section.settings['section-background-color'] | color_to_rgb %}
+{% assign text_rgb = section.settings['color-body-text'] | color_to_rgb %}
+{% assign icon_rgb = section.settings['icon-color'] | color_to_rgb %}
+
+<style>
+  section[id="shopify-section-{{ section.id }}"] {
+    {% if background_rgb != 'rgba(0, 0, 0, 0.0)' %}
+      --section-bg-color: {{ section.settings.section-background-color }};
+      --section-bg-rgb: {{ section.settings.section-background-color | color_to_rgb | remove: 'rgb(' | remove: ')' }};
+    {% else %}
+      --section-bg-color: var(--color-background);
+      --section-bg-rgb: var(--color-background-rgb);
+    {% endif %}
+
+    {% if heading_rgb != 'rgba(0, 0, 0, 0.0)' %}
+      --heading-color: {{ section.settings.color-heading }};
+    {% else %}
+      --heading-color: var(--color-foreground);
+    {% endif %}
+
+    {% if text_rgb != 'rgba(0, 0, 0, 0.0)' %}
+      --text-color: {{ section.settings.color-body-text }};
+    {% else %}
+      --text-color: var(--color-foreground);
+    {% endif %}
+
+    {% if icon_rgb != 'rgba(0, 0, 0, 0.0)' %}
+      --icon-color: {{ section.settings.icon-color }};
+    {% else %}
+      --icon-color: var(--color-button-primary-background);
+    {% endif %}
+
+    {% assign icon_hover_rgb = section.settings['icon-hover-color'] | color_to_rgb %}
+    {% if icon_hover_rgb != 'rgba(0, 0, 0, 0.0)' %}
+      --icon-hover-color: {{ section.settings.icon-hover-color }};
+    {% else %}
+      --icon-hover-color: var(--color-button-primary-background-hover);
+    {% endif %}
+
+    {% if section.settings.margin-top %}
+      --section-gap-top: {{ section.settings.margin-top }}px;
+    {% endif %}
+
+    {% if section.settings.margin-bottom %}
+      --section-gap-bottom: {{ section.settings.margin-bottom }}px;
+    {% endif %}
+
+    --items-count: {{ section.blocks.size }};
+    --grid-gap: {{ section.settings.grid-gap | default: 32 }}px;
+    --icon-size: {{ section.settings.icon-size | default: 56 }}px;
+  }
+
+  {%- for block in section.blocks -%}
+  [data-block-id="{{ block.id }}"] {
+    --item-icon-color: {% if block.settings.custom-icon-color != 'rgba(0,0,0,0)' %}{{ block.settings.custom-icon-color }}{% else %}var(--icon-color){% endif %};
+    {% assign block_hover_rgb = block.settings['custom-icon-hover-color'] | color_to_rgb %}
+    --item-icon-hover-color: {% if block_hover_rgb != 'rgba(0,0,0,0)' %}{{ block.settings.custom-icon-hover-color }}{% else %}var(--icon-hover-color){% endif %};
+  }
+  {%- endfor -%}
+</style>
+
+{% if section.settings['full-width-enabled'] %}
+  {% assign width_class = 'icon-showcase__wrapper--full' %}
+{% else %}
+  {% assign width_class = 'icon-showcase__wrapper' %}
+{% endif %}
+
+<div
+  data-section-id="{{ section.id }}"
+  class="icon-benefit-showcase {{ width_class }} {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
+>
+  {% if section.settings.heading != blank %}
+    {% render 'headline', title: section.settings.heading %}
+  {% endif %}
+
+  {% if section.settings.subheading != blank %}
+    <div class="icon-showcase__subheading">
+      {{ section.settings.subheading }}
+    </div>
+  {% endif %}
+
+  <div class="{% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}">
+    
+    <!-- Desktop Grid Layout -->
+    <div class="icon-showcase__grid-container desktop-only">
+      <div 
+        class="icon-showcase__grid" 
+        data-count="{{ section.blocks.size }}"
+        data-alignment="{{ section.settings.text_alignment }}"
+      >
+        {% for block in section.blocks %}
+          <div class="icon-showcase__item" data-block-id="{{ block.id }}" {{ block.shopify_attributes }}>
+            <div class="icon-showcase__icon-container">
+              {% if block.settings.google_icon != blank %}
+                <span class="material-icons icon-showcase__icon" style="color: var(--item-icon-color);">
+                  {{ block.settings.google_icon }}
+                </span>
+              {% elsif block.settings.custom_icon %}
+                <div class="icon-showcase__custom-icon">
+                  {{ block.settings.custom_icon | image_tag: loading: 'lazy', width: 64, height: 64 }}
+                </div>
+              {% else %}
+                <span class="material-icons icon-showcase__icon" style="color: var(--item-icon-color);">
+                  star
+                </span>
+              {% endif %}
+            </div>
+            
+            {% if block.settings.title != blank %}
+              <h3 class="icon-showcase__title">
+                {{ block.settings.title }}
+              </h3>
+            {% endif %}
+            
+            {% if block.settings.description != blank %}
+              <div class="icon-showcase__description rte">
+                {{ block.settings.description }}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Mobile Swiper Layout -->
+    <slideshow-section
+      class="icon-showcase__swiper mobile-only {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
+      data-section-id="{{ section.id }}-mobile"
+    >
+      <script data-swiper-configuration type="text/json">
+        {
+          "enableOnMedia": "(max-width: 899px)",
+          "slidesPerView": 1.1,
+          "spaceBetween": 20,
+          "centeredSlides": true,
+          "freeMode": false,
+          "grabCursor": true,
+          "allowTouchMove": true,
+          "simulateTouch": true,
+          "touchRatio": 1,
+          "touchAngle": 45,
+          "initialSlide": 0,
+          "breakpoints": {
+            "480": {
+              "slidesPerView": 1.3,
+              "spaceBetween": 24,
+              "centeredSlides": true
+            },
+            "600": {
+              "slidesPerView": 1.8,
+              "spaceBetween": 28,
+              "centeredSlides": true
+            }
+          }
+        }
+      </script>
+      
+      <div
+        data-swiper
+        class="icon-showcase__swiper-container"
+      >
+        <div data-swiper-container class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide" data-block-id="{{ block.id }}" {{ block.shopify_attributes }}>
+              <div class="icon-showcase__item icon-showcase__item--mobile">
+                <div class="icon-showcase__icon-container">
+                  {% if block.settings.google_icon != blank %}
+                    <span class="material-icons icon-showcase__icon" style="color: var(--item-icon-color);">
+                      {{ block.settings.google_icon }}
+                    </span>
+                  {% elsif block.settings.custom_icon %}
+                    <div class="icon-showcase__custom-icon">
+                      {{ block.settings.custom_icon | image_tag: loading: 'lazy', width: 64, height: 64 }}
+                    </div>
+                  {% else %}
+                    <span class="material-icons icon-showcase__icon" style="color: var(--item-icon-color);">
+                      star
+                    </span>
+                  {% endif %}
+                </div>
+                
+                {% if block.settings.title != blank %}
+                  <h3 class="icon-showcase__title">
+                    {{ block.settings.title }}
+                  </h3>
+                {% endif %}
+                
+                {% if block.settings.description != blank %}
+                  <div class="icon-showcase__description rte">
+                    {{ block.settings.description }}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </slideshow-section>
+
+  </div>
+</div>
+
+<!-- Google Material Icons Font -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+{% schema %}
+{
+  "name": "Icon Benefit Showcase",
+  "tag": "section",
+  "class": "section-icon-benefit-showcase",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "header",
+      "content": "General"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Why Choose Us"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "info": "Optional subheading text"
+    },
+    {
+      "type": "checkbox",
+      "id": "full-width-enabled",
+      "label": "Full width section",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Text alignment"
+    },
+    {
+      "type": "range",
+      "id": "grid-gap",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32,
+      "label": "Grid spacing"
+    },
+    {
+      "type": "range",
+      "id": "icon-size",
+      "min": 32,
+      "max": 96,
+      "step": 4,
+      "unit": "px",
+      "default": 56,
+      "label": "Icon size"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section-background-color",
+      "label": "Section background",
+      "info": "Leave empty to use theme default"
+    },
+    {
+      "type": "color",
+      "id": "color-heading",
+      "label": "Heading color",
+      "info": "Leave empty to use theme default"
+    },
+    {
+      "type": "color",
+      "id": "color-body-text",
+      "label": "Text color",
+      "info": "Leave empty to use theme default"
+    },
+    {
+      "type": "color",
+      "id": "icon-color",
+      "label": "Default icon color",
+      "info": "Leave empty to use theme accent color"
+    },
+    {
+      "type": "color",
+      "id": "icon-hover-color",
+      "label": "Icon hover color",
+      "info": "Leave empty to use theme hover color"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "margin-top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "Margin top"
+    },
+    {
+      "type": "range",
+      "id": "margin-bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 20,
+      "unit": "px",
+      "label": "Margin bottom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Icon Benefit",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Icon"
+        },
+        {
+          "type": "select",
+          "id": "google_icon",
+          "label": "Google Material Icon",
+          "options": [
+            { "value": "", "label": "Select an icon" },
+            { "value": "star", "label": "⭐ Star" },
+            { "value": "favorite", "label": "❤️ Heart" },
+            { "value": "thumb_up", "label": "👍 Thumbs Up" },
+            { "value": "verified", "label": "✅ Verified" },
+            { "value": "security", "label": "🔒 Security" },
+            { "value": "local_shipping", "label": "🚚 Shipping" },
+            { "value": "support_agent", "label": "🎧 Support" },
+            { "value": "payment", "label": "💳 Payment" },
+            { "value": "eco", "label": "🌱 Eco Friendly" },
+            { "value": "schedule", "label": "⏰ Fast Delivery" },
+            { "value": "workspace_premium", "label": "⭐ Premium" },
+            { "value": "award_star", "label": "🏆 Award" },
+            { "value": "shield", "label": "🛡️ Protection" },
+            { "value": "rocket_launch", "label": "🚀 Fast" },
+            { "value": "handshake", "label": "🤝 Trust" },
+            { "value": "diamond", "label": "💎 Quality" },
+            { "value": "savings", "label": "💰 Savings" },
+            { "value": "auto_awesome", "label": "✨ Awesome" },
+            { "value": "celebration", "label": "🎉 Celebration" },
+            { "value": "new_releases", "label": "🆕 New" }
+          ],
+          "default": "star",
+          "info": "Choose from popular Google Material Icons"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_icon",
+          "label": "Custom icon (overrides Google icon)",
+          "info": "Upload a custom icon image. Recommended size: 64x64px"
+        },
+        {
+          "type": "color",
+          "id": "custom-icon-color",
+          "label": "Custom icon color",
+          "info": "Override default icon color for this item only"
+        },
+        {
+          "type": "color",
+          "id": "custom-icon-hover-color",
+          "label": "Custom icon hover color",
+          "info": "Override default hover color for this item only"
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Benefit Title"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Describe the benefit or feature that sets you apart from the competition.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Icon Benefit Showcase",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "google_icon": "local_shipping",
+            "title": "FREE Shipping",
+            "description": "<p>Free shipping on all orders over $50. Fast and reliable delivery to your door.</p>"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "google_icon": "support_agent",
+            "title": "24/7 Support",
+            "description": "<p>Our dedicated support team is here to help you anytime, anywhere.</p>"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "google_icon": "verified",
+            "title": "Quality Guaranteed",
+            "description": "<p>All products are thoroughly tested and come with our quality guarantee.</p>"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "google_icon": "security",
+            "title": "Secure Checkout",
+            "description": "<p>Your payment information is protected with industry-standard encryption.</p>"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "google_icon": "schedule",
+            "title": "Fast Processing",
+            "description": "<p>Orders are processed quickly and shipped within 24 hours on business days.</p>"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "google_icon": "eco",
+            "title": "Eco-Friendly",
+            "description": "<p>Sustainable packaging and environmentally conscious shipping practices.</p>"
+          }
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}
