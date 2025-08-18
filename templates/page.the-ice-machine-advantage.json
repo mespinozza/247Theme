@@ -23,70 +23,227 @@
         "margin-bottom": 0
       }
     },
-    "banner_fade_EPeiFU": {
-      "type": "banner-fade",
+    "three_layer_banner_f4ejXA": {
+      "type": "three-layer-banner",
       "blocks": {
-        "subheading_7pj9jk": {
-          "type": "subheading",
-          "settings": {
-            "subheading": "Tell your story",
-            "subheading_disable_on_mobile": false
-          }
-        },
-        "heading_cWLp9j": {
+        "heading_nXM3zK": {
           "type": "heading",
           "settings": {
-            "heading": "Image banner with fade",
+            "heading": "THE ICE MACHINE ADVANTAGE",
             "disable_on_mobile": false,
             "size_heading": 100,
             "size_heading_mobile": 100
           }
         },
-        "text_jLrPQr": {
-          "type": "text",
+        "subheading_6Np6Vi": {
+          "type": "subheading",
           "settings": {
-            "text": "<p>Give customers details about the banner image or content with a beautiful fade effect.</p>",
+            "subheading": "We handle the cold — so you can focus on your business.",
             "disable_on_mobile": false
           }
         },
-        "button_3qdEWb": {
-          "type": "button",
+        "text_gQAr6w": {
+          "type": "text",
           "settings": {
-            "button_select": "primary",
-            "button_label": "Button label",
-            "button_link": "/",
+            "text": "<p>Add additional text content here with rich formatting support.</p>",
+            "disable_on_mobile": false
+          }
+        },
+        "buttons_J8iGKB": {
+          "type": "buttons",
+          "settings": {
+            "button_style": "primary",
+            "button_label": "GET STARTED TODAY",
+            "button_link": "",
             "button_link_in_new_window": false,
-            "disable_on_mobile": false,
-            "second_button_select": "secondary",
+            "second_button_style": "secondary",
             "second_button_label": "",
-            "second_button_link": ""
+            "second_button_link": "",
+            "disable_on_mobile": false
+          }
+        },
+        "image_content_jVUNeN": {
+          "type": "image_content",
+          "settings": {
+            "right_image_width": 80
           }
         }
       },
       "block_order": [
-        "subheading_7pj9jk",
-        "heading_cWLp9j",
-        "text_jLrPQr",
-        "button_3qdEWb"
+        "heading_nXM3zK",
+        "subheading_6Np6Vi",
+        "text_gQAr6w",
+        "buttons_J8iGKB",
+        "image_content_jVUNeN"
       ],
-      "name": "Banner (fade)",
+      "name": "3-Layer Banner",
       "settings": {
-        "heading": "Banner with fade effect",
-        "layout": "image_first",
-        "full-width-enabled": false,
-        "slide_height": "fixed_height",
-        "desktop_fixed_height": 600,
-        "mobile_fixed_height": 500,
-        "fade-intensity": 70,
+        "overlay_opacity": 50,
+        "section_height": "medium",
+        "custom_height": 550,
         "desktop_content_vertical_position": "center",
         "desktop_content_horizontal_position": "flex-start",
         "mobile_content_vertical_position": "center",
         "mobile_content_horizontal_position": "center",
-        "content-background-color": "#f8f8f8",
-        "color-heading": "transparent",
+        "heading_color": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)"
+      }
+    },
+    "icon_benefit_showcase_PVqnMg": {
+      "type": "icon-benefit-showcase",
+      "blocks": {
+        "benefit_CiM6Th": {
+          "type": "benefit",
+          "settings": {
+            "google_icon": "local_shipping",
+            "custom-icon-color": "",
+            "custom-icon-hover-color": "",
+            "title": "FREE Shipping",
+            "description": "<p>Free shipping on all orders over $50. Fast and reliable delivery to your door.</p>"
+          }
+        },
+        "benefit_r4TnBJ": {
+          "type": "benefit",
+          "settings": {
+            "google_icon": "support_agent",
+            "custom-icon-color": "",
+            "custom-icon-hover-color": "",
+            "title": "24/7 Support",
+            "description": "<p>Our dedicated support team is here to help you anytime, anywhere.</p>"
+          }
+        },
+        "benefit_hCKzjT": {
+          "type": "benefit",
+          "settings": {
+            "google_icon": "verified",
+            "custom-icon-color": "",
+            "custom-icon-hover-color": "",
+            "title": "Quality Guaranteed",
+            "description": "<p>All products are thoroughly tested and come with our quality guarantee.</p>"
+          }
+        },
+        "benefit_tYMLDK": {
+          "type": "benefit",
+          "settings": {
+            "google_icon": "security",
+            "custom-icon-color": "",
+            "custom-icon-hover-color": "",
+            "title": "Secure Checkout",
+            "description": "<p>Your payment information is protected with industry-standard encryption.</p>"
+          }
+        },
+        "benefit_qHkBeQ": {
+          "type": "benefit",
+          "settings": {
+            "google_icon": "schedule",
+            "custom-icon-color": "",
+            "custom-icon-hover-color": "",
+            "title": "Fast Processing",
+            "description": "<p>Orders are processed quickly and shipped within 24 hours on business days.</p>"
+          }
+        },
+        "benefit_jTpHbz": {
+          "type": "benefit",
+          "settings": {
+            "google_icon": "eco",
+            "custom-icon-color": "",
+            "custom-icon-hover-color": "",
+            "title": "Eco-Friendly",
+            "description": "<p>Sustainable packaging and environmentally conscious shipping practices.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_CiM6Th",
+        "benefit_r4TnBJ",
+        "benefit_hCKzjT",
+        "benefit_tYMLDK",
+        "benefit_qHkBeQ",
+        "benefit_jTpHbz"
+      ],
+      "name": "Icon Benefit Showcase",
+      "settings": {
+        "heading": "Why Choose Us",
+        "subheading": "",
+        "full-width-enabled": false,
+        "text_alignment": "center",
+        "grid-gap": 32,
+        "icon-size": 56,
+        "section-background-color": "",
+        "color-heading": "",
+        "color-body-text": "",
+        "icon-color": "",
+        "icon-hover-color": "",
+        "margin-top": 20,
+        "margin-bottom": 20
+      }
+    },
+    "featured_collection_cmbgKR": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "Featured collection",
+        "disable_on_mobile": false,
+        "collection": "",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "button_select": "primary",
+        "number_of_column_desktop": 4,
+        "spacing_desktop": "16",
+        "make_products_full_width": true,
+        "number_of_column_mobile": 2.1,
+        "text_alignment": "left",
+        "image_ratio": "square",
+        "show_video": false,
+        "show_secondary_image": false,
+        "show_vendor": true,
+        "show_product_rating": true,
+        "enable_quick_add_button": false,
         "color-body-text": "transparent",
-        "section-color-overlay": "transparent",
-        "section-color-overlay-opacity": 100,
+        "background_color": "transparent",
+        "margin-top": 20,
+        "margin-bottom": 20
+      }
+    },
+    "comparison_showcase_yFnqGM": {
+      "type": "comparison-showcase",
+      "blocks": {
+        "comparison_a_CXQh6Y": {
+          "type": "comparison_a",
+          "settings": {
+            "heading": "Before",
+            "description": "<p>The current situation or traditional approach with its limitations and challenges.</p>",
+            "features": "<ul><li>Manual processes</li><li>Time consuming</li><li>Higher costs</li><li>Limited scalability</li></ul>",
+            "block-background-color": "",
+            "block-text-color": ""
+          }
+        },
+        "comparison_b_qMUp7b": {
+          "type": "comparison_b",
+          "settings": {
+            "heading": "After",
+            "description": "<p>The improved solution with enhanced capabilities and better outcomes.</p>",
+            "features": "<ul><li>Automated workflows</li><li>Fast and efficient</li><li>Cost effective</li><li>Unlimited scalability</li></ul>",
+            "block-background-color": "",
+            "block-text-color": ""
+          }
+        }
+      },
+      "block_order": [
+        "comparison_a_CXQh6Y",
+        "comparison_b_qMUp7b"
+      ],
+      "name": "Comparison Showcase",
+      "settings": {
+        "heading": "Compare Your Options",
+        "subheading": "",
+        "full-width-enabled": false,
+        "comparison-gap": 24,
+        "block-border-radius": 12,
+        "section-background-color": "",
+        "color-heading": "",
+        "color-body-text": "",
+        "accent-color": "",
         "margin-top": 20,
         "margin-bottom": 20
       }
@@ -94,6 +251,9 @@
   },
   "order": [
     "main",
-    "banner_fade_EPeiFU"
+    "three_layer_banner_f4ejXA",
+    "icon_benefit_showcase_PVqnMg",
+    "featured_collection_cmbgKR",
+    "comparison_showcase_yFnqGM"
   ]
 }
