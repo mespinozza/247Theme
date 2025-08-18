@@ -118,7 +118,7 @@
           "settings": {
             "google_icon": "support_agent",
             "custom-icon-color": "",
-            "custom-icon-hover-color": "",
+            "custom-icon-hover-color": "#0031ff",
             "title": "Training & Demo",
             "description": "<p>for your staff</p>"
           }
@@ -128,7 +128,7 @@
           "settings": {
             "google_icon": "eco",
             "custom-icon-color": "",
-            "custom-icon-hover-color": "",
+            "custom-icon-hover-color": "#0031ff",
             "title": "One FREE Bucket",
             "description": "<p>of cleaning tablets</p>"
           }
@@ -216,7 +216,7 @@
       ],
       "name": "Comparison Showcase",
       "settings": {
-        "heading": "Compare Your Options",
+        "heading": "Why Us?",
         "subheading": "",
         "full-width-enabled": false,
         "comparison-gap": 24,
