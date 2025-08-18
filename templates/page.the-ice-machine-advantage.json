@@ -65,7 +65,8 @@
         "image_content_jVUNeN": {
           "type": "image_content",
           "settings": {
-            "right_image_width": 80
+            "right_image_width": 80,
+            "right_image": "shopify://shop_images/ice_machine.png"
           }
         }
       },
@@ -79,14 +80,15 @@
       "name": "3-Layer Banner",
       "settings": {
         "overlay_opacity": 50,
-        "section_height": "medium",
+        "section_height": "small",
         "custom_height": 550,
         "desktop_content_vertical_position": "center",
         "desktop_content_horizontal_position": "flex-start",
         "mobile_content_vertical_position": "center",
         "mobile_content_horizontal_position": "center",
         "heading_color": "rgba(0,0,0,0)",
-        "text_color": "rgba(0,0,0,0)"
+        "text_color": "rgba(0,0,0,0)",
+        "background_image": "shopify://shop_images/ChatGPT_Image_Aug_18_2025_01_37_32_PM.png"
       }
     },
     "icon_benefit_showcase_PVqnMg": {
