@@ -31,7 +31,7 @@
           "settings": {
             "heading": "THE ICE MACHINE ADVANTAGE",
             "disable_on_mobile": false,
-            "size_heading": 100,
+            "size_heading": 160,
             "size_heading_mobile": 100
           }
         },
@@ -54,7 +54,7 @@
           "settings": {
             "button_style": "primary",
             "button_label": "GET STARTED TODAY",
-            "button_link": "",
+            "button_link": "shopify://pages/contact",
             "button_link_in_new_window": false,
             "second_button_style": "secondary",
             "second_button_label": "",
