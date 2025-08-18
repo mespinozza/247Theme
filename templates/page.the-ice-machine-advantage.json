@@ -22,9 +22,78 @@
         "margin-top": 40,
         "margin-bottom": 0
       }
+    },
+    "banner_fade_EPeiFU": {
+      "type": "banner-fade",
+      "blocks": {
+        "subheading_7pj9jk": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Tell your story",
+            "subheading_disable_on_mobile": false
+          }
+        },
+        "heading_cWLp9j": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner with fade",
+            "disable_on_mobile": false,
+            "size_heading": 100,
+            "size_heading_mobile": 100
+          }
+        },
+        "text_jLrPQr": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Give customers details about the banner image or content with a beautiful fade effect.</p>",
+            "disable_on_mobile": false
+          }
+        },
+        "button_3qdEWb": {
+          "type": "button",
+          "settings": {
+            "button_select": "primary",
+            "button_label": "Button label",
+            "button_link": "/",
+            "button_link_in_new_window": false,
+            "disable_on_mobile": false,
+            "second_button_select": "secondary",
+            "second_button_label": "",
+            "second_button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_7pj9jk",
+        "heading_cWLp9j",
+        "text_jLrPQr",
+        "button_3qdEWb"
+      ],
+      "name": "Banner (fade)",
+      "settings": {
+        "heading": "Banner with fade effect",
+        "layout": "image_first",
+        "full-width-enabled": false,
+        "slide_height": "fixed_height",
+        "desktop_fixed_height": 600,
+        "mobile_fixed_height": 500,
+        "fade-intensity": 70,
+        "desktop_content_vertical_position": "center",
+        "desktop_content_horizontal_position": "flex-start",
+        "mobile_content_vertical_position": "center",
+        "mobile_content_horizontal_position": "center",
+        "content-background-color": "#f8f8f8",
+        "color-heading": "transparent",
+        "color-body-text": "transparent",
+        "section-color-overlay": "transparent",
+        "section-color-overlay-opacity": 100,
+        "margin-top": 20,
+        "margin-bottom": 20
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "banner_fade_EPeiFU"
   ]
 }
