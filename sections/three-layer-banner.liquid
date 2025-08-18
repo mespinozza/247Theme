@@ -1,0 +1,572 @@
+{{ 'section-three-layer-banner.css' | asset_url | stylesheet_tag }}
+
+{%- assign heading_rgb = section.settings['heading_color'] | color_to_rgb -%}
+{%- assign text_rgb = section.settings['text_color'] | color_to_rgb -%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    {%- if section.settings.background_image -%}
+      --background-image: url('{{ section.settings.background_image | image_url }}');
+    {%- endif -%}
+    --overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    --banner-height: {% case section.settings.section_height %}
+      {%- when 'small' -%}400px
+      {%- when 'medium' -%}550px
+      {%- when 'large' -%}700px
+      {%- when 'custom' -%}{{ section.settings.custom_height | default: 550 }}px
+      {%- else -%}550px
+    {%- endcase %};
+
+
+    --desktop-content-position-x: {{ section.settings.desktop_content_horizontal_position }};
+    --desktop-content-position-y: {{ section.settings.desktop_content_vertical_position }};
+    --mobile-content-position-x: {{ section.settings.mobile_content_horizontal_position }};
+    --mobile-content-position-y: {{ section.settings.mobile_content_vertical_position }};
+  }
+
+  #shopify-section-{{ section.id }} .three-layer-banner__heading {
+    {%- if heading_rgb != 'rgba(0, 0, 0, 0.0)' -%}
+      --color-custom-text: {{ section.settings.heading_color }};
+    {%- endif -%}
+  }
+
+  #shopify-section-{{ section.id }} .three-layer-banner__subheading,
+  #shopify-section-{{ section.id }} .three-layer-banner__text {
+    {%- if text_rgb != 'rgba(0, 0, 0, 0.0)' -%}
+      --color-custom-text: {{ section.settings.text_color }};
+    {%- endif -%}
+  }
+
+  {%- for block in section.blocks -%}
+    {%- if block.type == 'heading' -%}
+      [data-block-id="{{ block.id }}"] {
+        --font-headline-scale-desk: {{ block.settings.size_heading | divided_by: 100.0 }};
+        --font-headline-scale: {{ block.settings.size_heading_mobile | divided_by: 100.0 }};
+      }
+    {%- endif -%}
+  {%- endfor -%}
+{%- endstyle -%}
+
+<div class="three-layer-banner">
+  <div class="three-layer-banner__container">
+    
+    {%- comment -%} Layer 1: Background Image {%- endcomment -%}
+    <div class="three-layer-banner__background">
+      {%- if section.settings.background_image -%}
+        {%- assign background_image = section.settings.background_image -%}
+        <img 
+          src="{{ background_image | image_url: width: 1920 }}"
+          alt="{{ background_image.alt | escape }}"
+          class="three-layer-banner__bg-image"
+          loading="lazy"
+          width="{{ background_image.width }}"
+          height="{{ background_image.height }}"
+        >
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Layer 2: Blue Overlay Tint {%- endcomment -%}
+    <div class="three-layer-banner__overlay"></div>
+
+    {%- comment -%} Layer 3: Foreground Content {%- endcomment -%}
+    <div class="three-layer-banner__content">
+      <div class="three-layer-banner__inner">
+        
+        {%- comment -%} Left Column: Text Content {%- endcomment -%}
+        <div class="three-layer-banner__text-column">
+          <div class="three-layer-banner__text-content">
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when 'heading' -%}
+                  <h2 class="three-layer-banner__heading {% if block.settings.disable_on_mobile %}three-layer-banner__heading--mobile-hidden{% endif %}" data-block-id="{{ block.id }}" {{ block.shopify_attributes }}>
+                    {{ block.settings.heading | newline_to_br }}
+                  </h2>
+
+                {%- when 'subheading' -%}
+                  <div class="three-layer-banner__subheading {% if block.settings.disable_on_mobile %}three-layer-banner__subheading--mobile-hidden{% endif %}" data-block-id="{{ block.id }}" {{ block.shopify_attributes }}>
+                    {{ block.settings.subheading | newline_to_br }}
+                  </div>
+
+                {%- when 'text' -%}
+                  <div class="three-layer-banner__text rte {% if block.settings.disable_on_mobile %}three-layer-banner__text--mobile-hidden{% endif %}" data-block-id="{{ block.id }}" {{ block.shopify_attributes }}>
+                    {{ block.settings.text }}
+                  </div>
+
+                {%- when 'buttons' -%}
+                  <div class="three-layer-banner__buttons {% if block.settings.disable_on_mobile %}three-layer-banner__buttons--mobile-hidden{% endif %}" data-block-id="{{ block.id }}" {{ block.shopify_attributes }}>
+                    
+                    {%- if block.settings.button_label != blank -%}
+                      <a 
+                        href="{{ block.settings.button_link | default: '#' }}"
+                        class="three-layer-banner__button three-layer-banner__button--primary {% if block.settings.button_style != 'primary' %}three-layer-banner__button--secondary{% endif %}{% if block.settings.button_style == 'link' %} three-layer-banner__button--link{% endif %}"
+                        {%- if block.settings.button_link_in_new_window -%}target="_blank" rel="noreferrer noopener"{%- endif -%}
+                        {%- if block.settings.button_link == blank -%} role="link" aria-disabled="true"{%- endif -%}
+                      >
+                        <span>{{ block.settings.button_label }}</span>
+                      </a>
+                    {%- endif -%}
+
+                    {%- if block.settings.second_button_label != blank -%}
+                      <a 
+                        href="{{ block.settings.second_button_link | default: '#' }}"
+                        class="three-layer-banner__button three-layer-banner__button--primary {% if block.settings.second_button_style != 'primary' %}three-layer-banner__button--secondary{% endif %}{% if block.settings.second_button_style == 'link' %} three-layer-banner__button--link{% endif %}"
+                        {%- if block.settings.button_link_in_new_window -%}target="_blank" rel="noreferrer noopener"{%- endif -%}
+                        {%- if block.settings.second_button_link == blank -%} role="link" aria-disabled="true"{%- endif -%}
+                      >
+                        <span>{{ block.settings.second_button_label }}</span>
+                      </a>
+                    {%- endif -%}
+
+                  </div>
+
+              {%- endcase -%}
+            {%- endfor -%}
+          </div>
+        </div>
+
+        {%- comment -%} Right Column: Image Content {%- endcomment -%}
+        <div class="three-layer-banner__image-column">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'image_content' -%}
+                <div class="three-layer-banner__image-content" {{ block.shopify_attributes }}>
+                  
+                  {%- if block.settings.right_image -%}
+                    {%- assign right_image = block.settings.right_image -%}
+                    {%- assign image_width = block.settings.right_image_width | default: 80 -%}
+                    
+                    <div class="three-layer-banner__image-wrapper" style="max-width: {{ image_width }}%;">
+                      <img 
+                        src="{{ right_image | image_url: width: 800 }}"
+                        alt="{{ right_image.alt | escape }}"
+                        class="three-layer-banner__right-image"
+                        loading="lazy"
+                        width="{{ right_image.width }}"
+                        height="{{ right_image.height }}"
+                      >
+                    </div>
+
+                  {%- else -%}
+                    {%- comment -%} Placeholder when no image is set {%- endcomment -%}
+                    <div class="three-layer-banner__image-placeholder">
+                      <svg class="three-layer-banner__placeholder-icon" width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 19 20.1 19 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="currentColor"/>
+                      </svg>
+                      <p class="three-layer-banner__placeholder-text">Add an image</p>
+                    </div>
+                  {%- endif -%}
+
+                </div>
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "3-Layer Banner",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background Settings"
+    },
+    {
+      "id": "background_image",
+      "type": "image_picker",
+      "label": "Background image",
+      "info": "Recommended: 1920x800px or larger for best quality"
+    },
+    {
+      "id": "overlay_opacity",
+      "type": "range",
+      "label": "Blue overlay opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 50,
+      "unit": "%"
+    },
+
+    {
+      "type": "header",
+      "content": "Banner Dimensions"
+    },
+    {
+      "id": "section_height",
+      "type": "select",
+      "label": "Banner height",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small (400px)"
+        },
+        {
+          "value": "medium",
+          "label": "Medium (550px)"
+        },
+        {
+          "value": "large",
+          "label": "Large (700px)"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "id": "custom_height",
+      "type": "number",
+      "label": "Custom height (px)",
+      "default": 550,
+      "info": "Only applies when 'Custom' height is selected"
+    },
+    {
+      "type": "header",
+      "content": "Desktop Content Positioning"
+    },
+    {
+      "id": "desktop_content_vertical_position",
+      "type": "select",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center",
+      "label": "Content vertical position"
+    },
+    {
+      "id": "desktop_content_horizontal_position",
+      "type": "select",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "flex-start",
+      "label": "Content horizontal position"
+    },
+    {
+      "type": "header",
+      "content": "Mobile Content Positioning"
+    },
+    {
+      "id": "mobile_content_vertical_position",
+      "type": "select",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Top"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Bottom"
+        }
+      ],
+      "default": "center",
+      "label": "Content vertical position"
+    },
+    {
+      "id": "mobile_content_horizontal_position",
+      "type": "select",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "Right"
+        }
+      ],
+      "default": "center",
+      "label": "Content horizontal position"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "id": "heading_color",
+      "type": "color",
+      "label": "Heading color",
+      "default": "rgba(0,0,0,0)",
+      "info": "Leave transparent to use theme default"
+    },
+    {
+      "id": "text_color",
+      "type": "color",
+      "label": "Text color",
+      "default": "rgba(0,0,0,0)",
+      "info": "Leave transparent to use theme default"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "heading",
+      "name": "Heading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Heading Content"
+        },
+        {
+          "id": "heading",
+          "type": "textarea",
+          "label": "Heading",
+          "default": "THE ICE MACHINE ADVANTAGE"
+        },
+        {
+          "type": "checkbox",
+          "id": "disable_on_mobile",
+          "label": "Hide on mobile",
+          "default": false
+        },
+        {
+          "type": "range",
+          "id": "size_heading",
+          "min": 50,
+          "max": 500,
+          "step": 10,
+          "default": 100,
+          "label": "Desktop heading size",
+          "unit": "%"
+        },
+        {
+          "type": "range",
+          "id": "size_heading_mobile",
+          "min": 80,
+          "max": 300,
+          "step": 10,
+          "default": 100,
+          "label": "Mobile heading size",
+          "unit": "%"
+        }
+      ]
+    },
+    {
+      "type": "subheading",
+      "name": "Subheading",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Subheading Content"
+        },
+        {
+          "id": "subheading",
+          "type": "text",
+          "label": "Subheading",
+          "default": "We handle the cold — so you can focus on your business."
+        },
+        {
+          "type": "checkbox",
+          "id": "disable_on_mobile",
+          "label": "Hide on mobile",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Text",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Text Content"
+        },
+        {
+          "id": "text",
+          "type": "richtext",
+          "label": "Text",
+          "default": "<p>Add additional text content here with rich formatting support.</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "disable_on_mobile",
+          "label": "Hide on mobile",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "buttons",
+      "name": "Buttons",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Primary Button"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "link",
+              "label": "Link"
+            }
+          ],
+          "default": "primary",
+          "label": "Button style"
+        },
+        {
+          "id": "button_label",
+          "type": "text",
+          "label": "Button label",
+          "default": "GET STARTED TODAY"
+        },
+        {
+          "id": "button_link",
+          "type": "url",
+          "label": "Button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "button_link_in_new_window",
+          "label": "Open link in new window",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Secondary Button"
+        },
+        {
+          "type": "select",
+          "id": "second_button_style",
+          "options": [
+            {
+              "value": "primary",
+              "label": "Primary"
+            },
+            {
+              "value": "secondary",
+              "label": "Secondary"
+            },
+            {
+              "value": "link",
+              "label": "Link"
+            }
+          ],
+          "default": "secondary",
+          "label": "Button style"
+        },
+        {
+          "id": "second_button_label",
+          "type": "text",
+          "label": "Button label"
+        },
+        {
+          "id": "second_button_link",
+          "type": "url",
+          "label": "Button link"
+        },
+        {
+          "type": "checkbox",
+          "id": "disable_on_mobile",
+          "label": "Hide on mobile",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "image_content",
+      "name": "Image Content",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "header",
+          "content": "Right Image"
+        },
+        {
+          "id": "right_image",
+          "type": "image_picker",
+          "label": "Right side image",
+          "info": "Recommended: Square or portrait orientation for best results"
+        },
+        {
+          "id": "right_image_width",
+          "type": "range",
+          "label": "Image width",
+          "min": 40,
+          "max": 100,
+          "step": 5,
+          "default": 80,
+          "unit": "%",
+          "info": "Adjust the width of the right image relative to its column"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "3-Layer Banner",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "subheading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "buttons"
+        },
+        {
+          "type": "image_content"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
