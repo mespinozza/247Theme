@@ -76,21 +76,21 @@
         "benefit_GEqeix": {
           "type": "benefit",
           "settings": {
-            "google_icon": "local_shipping",
+            "google_icon": "star",
             "custom-icon-color": "",
-            "custom-icon-hover-color": "",
-            "title": "FREE Shipping",
-            "description": "<p>Free shipping on all orders over $50. Fast and reliable delivery to your door.</p>"
+            "custom-icon-hover-color": "#0031ff",
+            "title": "Combi Oven",
+            "description": "<p>(Any Model, Any Manufacturer)</p>"
           }
         },
         "benefit_fN4TUC": {
           "type": "benefit",
           "settings": {
-            "google_icon": "support_agent",
+            "google_icon": "rocket_launch",
             "custom-icon-color": "",
-            "custom-icon-hover-color": "",
-            "title": "24/7 Support",
-            "description": "<p>Our dedicated support team is here to help you anytime, anywhere.</p>"
+            "custom-icon-hover-color": "#0031ff",
+            "title": "Certified Installation",
+            "description": "<p>by Factory Authorized Technicians</p>"
           }
         },
         "benefit_DtKipd": {
@@ -98,29 +98,29 @@
           "settings": {
             "google_icon": "verified",
             "custom-icon-color": "",
-            "custom-icon-hover-color": "",
-            "title": "Quality Guaranteed",
-            "description": "<p>All products are thoroughly tested and come with our quality guarantee.</p>"
+            "custom-icon-hover-color": "#0031ff",
+            "title": "FREE Quarterly PM",
+            "description": "<p>During the 1st Year</p>"
           }
         },
         "benefit_hyFLeQ": {
           "type": "benefit",
           "settings": {
-            "google_icon": "security",
+            "google_icon": "local_shipping",
             "custom-icon-color": "",
-            "custom-icon-hover-color": "",
-            "title": "Secure Checkout",
-            "description": "<p>Your payment information is protected with industry-standard encryption.</p>"
+            "custom-icon-hover-color": "#0031ff",
+            "title": "FREE Haul Away",
+            "description": "<p>of existing equipment</p>"
           }
         },
         "benefit_7T7qtT": {
           "type": "benefit",
           "settings": {
-            "google_icon": "schedule",
+            "google_icon": "support_agent",
             "custom-icon-color": "",
             "custom-icon-hover-color": "",
-            "title": "Fast Processing",
-            "description": "<p>Orders are processed quickly and shipped within 24 hours on business days.</p>"
+            "title": "Training & Demo",
+            "description": "<p>for your staff</p>"
           }
         },
         "benefit_JkUH89": {
@@ -129,8 +129,8 @@
             "google_icon": "eco",
             "custom-icon-color": "",
             "custom-icon-hover-color": "",
-            "title": "Eco-Friendly",
-            "description": "<p>Sustainable packaging and environmentally conscious shipping practices.</p>"
+            "title": "One FREE Bucket",
+            "description": "<p>of cleaning tablets</p>"
           }
         }
       },
