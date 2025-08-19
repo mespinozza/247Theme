@@ -1,5 +1,6 @@
 {{ 'photoswipe.css' | asset_url | stylesheet_tag }}
 {{ 'module-product-gallery.css' | asset_url | stylesheet_tag }}
+{{ 'silverchef-financing.css' | asset_url | stylesheet_tag }}
 
 <style>
   [data-section-id="{{ section.id }}"]
@@ -605,11 +606,30 @@
                 {%- endif -%}
               </div>
               <div {{ block.shopify_attributes }}>
-                {%- assign product_form_installment_id = 'product-form-installment-' | append: section.id -%}
-                {%- form 'product', product, id: product_form_installment_id, class: 'installment caption-large' -%}
-                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                  {{ form | payment_terms }}
-                {%- endform -%}
+                {% comment %} Silverchef Financing Display {% endcomment %}
+                {% if block.settings.show_silverchef_financing %}
+                  {% assign min_amount_cents = block.settings.min_finance_amount | times: 100 %}
+                  {% if product.price >= min_amount_cents and product.gift_card? != true and product.type != 'Gift Card' %}
+                    {% assign weekly_payment = product.price | times: 0.019 | round %}
+                    {% assign weekly_display = weekly_payment | money %}
+                    
+                    <div class="installment caption-large silverchef-financing">
+                      <p class="financing-text">
+                        From {{ weekly_display }}/week with 
+                        <span class="silverchef-brand">
+                          <img src="{{ 'silverchef-logo.png' | asset_url }}" 
+                               alt="Silverchef Finance" 
+                               class="silverchef-logo"
+                               onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                          <span class="silverchef-fallback-text" style="display: none;">Silverchef Finance</span>
+                        </span>
+                      </p>
+                                          <small class="financing-details">
+                        <button type="button" class="financing-link" data-silverchef-calculator data-product-price="{{ product.price }}">Calculate exact payments →</button>
+                    </small>
+                    </div>
+                  {% endif %}
+                {% endif %}
               </div>
             {%- when 'separator' -%}
               <div data-block-id="{{ block.id }}">
@@ -1493,6 +1513,92 @@
   </div>
 </section>
 
+<!-- Silverchef Calculator Modal -->
+<div id="silverchef-modal" class="silverchef-modal" aria-hidden="true" role="dialog" aria-labelledby="silverchef-modal-title">
+  <div class="silverchef-modal__overlay" data-modal-close></div>
+  <div class="silverchef-modal__content">
+    <div class="silverchef-modal__header">
+      <h3 id="silverchef-modal-title" class="silverchef-modal__title">Silverchef Finance Calculator</h3>
+      <button type="button" class="silverchef-modal__close" data-modal-close aria-label="Close calculator">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <div class="silverchef-modal__body">
+      <div class="silverchef-calculator">
+        <div class="silverchef-calculator__form">
+          <div class="silverchef-calculator__field">
+            <label for="finance-amount" class="silverchef-calculator__label">Finance Amount</label>
+            <div class="silverchef-calculator__input-wrapper">
+              <span class="silverchef-calculator__currency">$</span>
+              <input 
+                type="number" 
+                id="finance-amount" 
+                class="silverchef-calculator__input" 
+                min="500" 
+                step="10"
+                placeholder="1000"
+              >
+            </div>
+          </div>
+          <button type="button" class="silverchef-calculator__calculate btn btn--primary">Calculate Payments</button>
+        </div>
+        
+        <div class="silverchef-calculator__results" id="calculator-results" style="display: none;">
+          <div class="silverchef-calculator__loading" id="calculator-loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Calculating your payments...</p>
+          </div>
+          
+          <div class="silverchef-calculator__breakdown" id="calculator-breakdown" style="display: none;">
+            <div class="silverchef-result__item silverchef-result__item--primary">
+              <span class="silverchef-result__label">Weekly Payment</span>
+              <span class="silverchef-result__value" id="weekly-payment">--</span>
+            </div>
+            
+            <div class="silverchef-result__section">
+              <h4 class="silverchef-result__section-title">Upfront Costs</h4>
+              <div class="silverchef-result__item">
+                <span class="silverchef-result__label">Advance Payment</span>
+                <span class="silverchef-result__value" id="advance-payment">--</span>
+              </div>
+              <div class="silverchef-result__item">
+                <span class="silverchef-result__label">Security Bond</span>
+                <span class="silverchef-result__value" id="security-bond">--</span>
+              </div>
+              <div class="silverchef-result__item silverchef-result__item--total">
+                <span class="silverchef-result__label">Total Upfront</span>
+                <span class="silverchef-result__value" id="total-upfront">--</span>
+              </div>
+            </div>
+            
+            <div class="silverchef-result__section">
+              <h4 class="silverchef-result__section-title">12 Month Contract</h4>
+              <div class="silverchef-result__item">
+                <span class="silverchef-result__label">Total Rent Paid</span>
+                <span class="silverchef-result__value" id="total-rent">--</span>
+              </div>
+              <div class="silverchef-result__item">
+                <span class="silverchef-result__label">Out of Pocket Cost</span>
+                <span class="silverchef-result__value" id="out-of-pocket">--</span>
+              </div>
+            </div>
+            
+            <div class="silverchef-calculator__disclaimer">
+              <p><small>Calculations are estimates. Final terms subject to credit approval. <a href="#" target="_blank">Terms and conditions apply</a>.</small></p>
+            </div>
+          </div>
+          
+          <div class="silverchef-calculator__error" id="calculator-error" style="display: none;">
+            <p>Unable to calculate payments at this time. Please try again or contact us for a quote.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% if section.settings['desktop-layout'] == fashion_type %}
   </gallery-fashion>
 {% endif %}
@@ -1552,6 +1658,7 @@
 
 <script type="module" src="{{ 'gallery.js' | asset_url }}" defer="defer"></script>
 <script type="module" src="{{ 'pdp.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'silverchef-calculator.js' | asset_url }}" defer></script>
 
 {% schema %}
 {
@@ -2092,6 +2199,24 @@
           "default": 100,
           "label": "t:sections.settings.settings.size-text-mobile.label",
           "unit": "%"
+        },
+        {
+          "type": "header",
+          "content": "Silverchef Financing"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_silverchef_financing",
+          "label": "Show Silverchef financing",
+          "default": true,
+          "info": "Display weekly payment options for eligible products"
+        },
+        {
+          "type": "number",
+          "id": "min_finance_amount",
+          "label": "Minimum finance amount",
+          "default": 500,
+          "info": "Minimum product price to show financing (in dollars)"
         }
       ]
     },
