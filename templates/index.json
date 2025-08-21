@@ -343,7 +343,7 @@
         "image_cYFD8M"
       ],
       "settings": {
-        "heading": "",
+        "heading": "⭐ Trusted Partners ⭐",
         "animation": "marquee",
         "animation_speed": "100",
         "color-body-text": "rgba(0,0,0,0)",
@@ -401,54 +401,6 @@
         "color-overlay-opacity": 100,
         "margin-top": 20,
         "margin-bottom": 20
-      }
-    },
-    "parallax_DN3CiH": {
-      "type": "parallax",
-      "blocks": {
-        "heading_F6CFcx": {
-          "type": "heading",
-          "settings": {
-            "heading": "Equipment built to scale.",
-            "disable_on_mobile": false,
-            "size_heading": 100,
-            "size_heading_mobile": 100
-          }
-        },
-        "text_eQXDxP": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make annuncements, or welcome customers to your store.</p>",
-            "disable_on_mobile": false
-          }
-        },
-        "button_MGPjem": {
-          "type": "button",
-          "settings": {
-            "button_select": "primary",
-            "button_label": "Learn More",
-            "button_link": "shopify://pages/about-us",
-            "disable_on_mobile": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_F6CFcx",
-        "text_eQXDxP",
-        "button_MGPjem"
-      ],
-      "disabled": true,
-      "settings": {
-        "desktop_text_horizontal_position": "center",
-        "rotation": 5,
-        "image_1": "shopify://shop_images/picture_9127c3f4-e1ef-42a9-a0b2-fa1ec98140b4.png",
-        "button_link1": "",
-        "image_2": "shopify://shop_images/picture_a0bf9722-969a-4422-8959-106546b49bb0.png",
-        "button_link2": "",
-        "color-body-text": "rgba(0,0,0,0)",
-        "background_color": "rgba(0,0,0,0)",
-        "margin-top": 0,
-        "margin-bottom": 0
       }
     },
     "blog_posts_pjgHYE": {
@@ -540,7 +492,6 @@
     "featured_collection_AygJbi",
     "brands_cygNdd",
     "shoppable_image_T44bqq",
-    "parallax_DN3CiH",
     "blog_posts_pjgHYE",
     "features_banner_rnAYGJ"
   ]
