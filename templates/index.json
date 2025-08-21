@@ -280,6 +280,82 @@
         "margin-bottom": 20
       }
     },
+    "shoppable_image_T44bqq": {
+      "type": "shoppable-image",
+      "blocks": {
+        "dots_DDQD9a": {
+          "type": "dots",
+          "settings": {
+            "coordinate_width": 38,
+            "coordinate_height": 66,
+            "coordinate_width_mobile": 66,
+            "coordinate_height_mobile": 40,
+            "featured_product": ""
+          }
+        },
+        "dots_qxqkBf": {
+          "type": "dots",
+          "settings": {
+            "coordinate_width": 68,
+            "coordinate_height": 31,
+            "coordinate_width_mobile": 80,
+            "coordinate_height_mobile": 61,
+            "featured_product": ""
+          }
+        },
+        "dots_QqcfKD": {
+          "type": "dots",
+          "settings": {
+            "coordinate_width": 24,
+            "coordinate_height": 32,
+            "coordinate_width_mobile": 13,
+            "coordinate_height_mobile": 44,
+            "featured_product": ""
+          }
+        }
+      },
+      "block_order": [
+        "dots_DDQD9a",
+        "dots_qxqkBf",
+        "dots_QqcfKD"
+      ],
+      "name": "t:sections.shoppable-image.settings.presets.name",
+      "settings": {
+        "heading": "Shop Kitchen Set Ups 🤌",
+        "desktop_image": "shopify://shop_images/ChatGPT_Image_Apr_30_2025_02_51_58_PM.png",
+        "full-width-enabled": false,
+        "color-body-text": "rgba(0,0,0,0)",
+        "color-overlay": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "margin-top": 20,
+        "margin-bottom": 20
+      }
+    },
+    "blog_posts_pjgHYE": {
+      "type": "blog-posts",
+      "name": "t:sections.blog-posts.presets.name",
+      "settings": {
+        "heading": "24/7 Restaurant Scoop",
+        "swipe_on_mobile": true,
+        "full-width-enabled": false,
+        "blog": "24-7-restaurant-scoop",
+        "post_limit": 3,
+        "show_date": false,
+        "show_author": false,
+        "show_view_all": true,
+        "view_all_button_select": "link",
+        "show_image": true,
+        "image_ratio": "adapt",
+        "column_alignment": "left",
+        "button_select": "primary",
+        "size_heading": 100,
+        "size_heading_mobile": 100,
+        "color-body-text": "rgba(0,0,0,0)",
+        "background_color": "rgba(0,0,0,0)",
+        "margin-top": 20,
+        "margin-bottom": 20
+      }
+    },
     "brands_cygNdd": {
       "type": "brands",
       "blocks": {
@@ -352,82 +428,6 @@
         "margin-bottom": 20
       }
     },
-    "shoppable_image_T44bqq": {
-      "type": "shoppable-image",
-      "blocks": {
-        "dots_DDQD9a": {
-          "type": "dots",
-          "settings": {
-            "coordinate_width": 38,
-            "coordinate_height": 66,
-            "coordinate_width_mobile": 66,
-            "coordinate_height_mobile": 40,
-            "featured_product": ""
-          }
-        },
-        "dots_qxqkBf": {
-          "type": "dots",
-          "settings": {
-            "coordinate_width": 68,
-            "coordinate_height": 31,
-            "coordinate_width_mobile": 80,
-            "coordinate_height_mobile": 61,
-            "featured_product": ""
-          }
-        },
-        "dots_QqcfKD": {
-          "type": "dots",
-          "settings": {
-            "coordinate_width": 24,
-            "coordinate_height": 32,
-            "coordinate_width_mobile": 13,
-            "coordinate_height_mobile": 44,
-            "featured_product": ""
-          }
-        }
-      },
-      "block_order": [
-        "dots_DDQD9a",
-        "dots_qxqkBf",
-        "dots_QqcfKD"
-      ],
-      "name": "t:sections.shoppable-image.settings.presets.name",
-      "settings": {
-        "heading": "",
-        "desktop_image": "shopify://shop_images/ChatGPT_Image_Apr_30_2025_02_51_58_PM.png",
-        "full-width-enabled": false,
-        "color-body-text": "rgba(0,0,0,0)",
-        "color-overlay": "rgba(0,0,0,0)",
-        "color-overlay-opacity": 100,
-        "margin-top": 20,
-        "margin-bottom": 20
-      }
-    },
-    "blog_posts_pjgHYE": {
-      "type": "blog-posts",
-      "name": "t:sections.blog-posts.presets.name",
-      "settings": {
-        "heading": "24/7 Restaurant Scoop",
-        "swipe_on_mobile": true,
-        "full-width-enabled": false,
-        "blog": "24-7-restaurant-scoop",
-        "post_limit": 3,
-        "show_date": false,
-        "show_author": false,
-        "show_view_all": true,
-        "view_all_button_select": "link",
-        "show_image": true,
-        "image_ratio": "adapt",
-        "column_alignment": "left",
-        "button_select": "primary",
-        "size_heading": 100,
-        "size_heading_mobile": 100,
-        "color-body-text": "rgba(0,0,0,0)",
-        "background_color": "rgba(0,0,0,0)",
-        "margin-top": 20,
-        "margin-bottom": 20
-      }
-    },
     "features_banner_rnAYGJ": {
       "type": "features-banner",
       "blocks": {
@@ -490,9 +490,9 @@
     "collage_qTKhbz",
     "featured_collection_akyMiD",
     "featured_collection_AygJbi",
-    "brands_cygNdd",
     "shoppable_image_T44bqq",
     "blog_posts_pjgHYE",
+    "brands_cygNdd",
     "features_banner_rnAYGJ"
   ]
 }
