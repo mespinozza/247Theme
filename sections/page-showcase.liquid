@@ -1,0 +1,241 @@
+{{ 'section-page-showcase.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .page-showcase-{{ section.id }} {
+    --overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    --banner-padding-top: {{ section.settings.banner_padding_top }}px;
+    --banner-padding-bottom: {{ section.settings.banner_padding_bottom }}px;
+    --blocks-gap: {{ section.settings.blocks_gap }}px;
+  }
+{%- endstyle -%}
+
+<div class="page-showcase page-showcase-{{ section.id }}">
+  {%- comment -%} Banner Section {%- endcomment -%}
+  <div class="page-showcase__banner">
+    {%- if section.settings.banner_image != blank -%}
+      <div class="page-showcase__banner-image">
+        {{- section.settings.banner_image | image_url: width: 1920 | image_tag: loading: 'lazy', alt: section.settings.banner_image.alt, class: 'page-showcase__banner-img' -}}
+      </div>
+    {%- endif -%}
+    
+    <div class="page-showcase__banner-overlay"></div>
+    
+    <div class="page-showcase__banner-content">
+      <div class="page-showcase__banner-text">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="page-showcase__heading">
+            {{ section.settings.heading | newline_to_br }}
+          </h2>
+        {%- endif -%}
+        
+        {%- if section.settings.subheading != blank -%}
+          <div class="page-showcase__subheading">
+            {{ section.settings.subheading | newline_to_br }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} Linked Blocks Section {%- endcomment -%}
+  {%- if section.blocks.size > 0 -%}
+    <div class="page-showcase__blocks">
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'linked_block' -%}
+            <div class="page-showcase__block" data-block-id="{{ block.id }}" {{ block.shopify_attributes }}>
+              {%- if block.settings.block_link != blank -%}
+                <a href="{{ block.settings.block_link }}" class="page-showcase__block-link">
+              {%- endif -%}
+              
+              <div class="page-showcase__block-content">
+                {%- if block.settings.block_image != blank -%}
+                  <div class="page-showcase__block-image">
+                    {{- block.settings.block_image | image_url: width: 800 | image_tag: loading: 'lazy', alt: block.settings.block_image.alt, class: 'page-showcase__block-img' -}}
+                  </div>
+                {%- else -%}
+                  <div class="page-showcase__block-placeholder">
+                    {{ 'image' | placeholder_svg_tag: 'page-showcase__block-placeholder-svg' }}
+                  </div>
+                {%- endif -%}
+                
+                {%- if block.settings.button_text != blank -%}
+                  <div class="page-showcase__block-button-container">
+                    <span class="page-showcase__block-button" 
+                          style="background-color: {{ block.settings.button_bg_color | default: '#0000FF' }}; 
+                                 color: {{ block.settings.button_text_color | default: '#FFFFFF' }}; 
+                                 border: {{ block.settings.button_border_width | default: '2' }}px solid {{ block.settings.button_border_color | default: '#FF0000' }};">
+                      {{ block.settings.button_text }}
+                    </span>
+                  </div>
+                {%- endif -%}
+              </div>
+              
+              {%- if block.settings.block_link != blank -%}
+                </a>
+              {%- endif -%}
+            </div>
+        {%- endcase -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Page Showcase",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner Settings"
+    },
+    {
+      "id": "banner_image",
+      "type": "image_picker",
+      "label": "Banner background image"
+    },
+    {
+      "id": "overlay_opacity",
+      "type": "range",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "unit": "%",
+      "default": 40,
+      "info": "Darkens the background image for better text readability"
+    },
+    {
+      "id": "heading",
+      "type": "text",
+      "label": "Heading",
+      "default": "What's the 24/7 Advantage?"
+    },
+    {
+      "id": "subheading",
+      "type": "textarea",
+      "label": "Subheading",
+      "default": "As your turnkey solution, we want to make sure we take care of everything for you. That's why we offer the 24/7 Advantage package with each combi oven and ice machine purchase."
+    },
+    {
+      "type": "header",
+      "content": "Banner Spacing"
+    },
+    {
+      "id": "banner_padding_top",
+      "type": "range",
+      "label": "Top padding",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "id": "banner_padding_bottom",
+      "type": "range",
+      "label": "Bottom padding",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Linked Blocks Settings"
+    },
+    {
+      "id": "blocks_gap",
+      "type": "range",
+      "label": "Gap between blocks",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 0,
+      "info": "Space between linked blocks on desktop"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "linked_block",
+      "name": "Linked Block",
+      "settings": [
+        {
+          "id": "block_image",
+          "type": "image_picker",
+          "label": "Block image"
+        },
+        {
+          "id": "block_link",
+          "type": "url",
+          "label": "Block link",
+          "info": "Where this block should link to (e.g., /pages/combi-advantage)"
+        },
+        {
+          "id": "button_text",
+          "type": "text",
+          "label": "Button text",
+          "default": "Learn More"
+        },
+        {
+          "type": "header",
+          "content": "Button Styling"
+        },
+        {
+          "id": "button_bg_color",
+          "type": "color",
+          "label": "Button background color",
+          "default": "#0000FF"
+        },
+        {
+          "id": "button_text_color",
+          "type": "color",
+          "label": "Button text color",
+          "default": "#FFFFFF"
+        },
+        {
+          "id": "button_border_color",
+          "type": "color",
+          "label": "Button border color",
+          "default": "#FF0000"
+        },
+        {
+          "id": "button_border_width",
+          "type": "range",
+          "label": "Button border width",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "unit": "px",
+          "default": 2
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Page Showcase",
+      "blocks": [
+        {
+          "type": "linked_block",
+          "settings": {
+            "button_text": "Combi Advantage",
+            "block_link": "/pages/combi-advantage"
+          }
+        },
+        {
+          "type": "linked_block",
+          "settings": {
+            "button_text": "Ice Machine Advantage",
+            "block_link": "/pages/ice-machine-advantage"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
