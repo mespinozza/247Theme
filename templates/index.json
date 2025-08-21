@@ -254,6 +254,49 @@
         "margin-bottom": 20
       }
     },
+    "page_showcase_7PBqXB": {
+      "type": "page-showcase",
+      "blocks": {
+        "linked_block_dXhW8Y": {
+          "type": "linked_block",
+          "settings": {
+            "block_image": "shopify://shop_images/ChatGPT_Image_Aug_21_2025_11_20_49_AM.png",
+            "block_link": "shopify://pages/the-combi-advantage",
+            "button_text": "Combi Advantage",
+            "button_bg_color": "#0000FF",
+            "button_text_color": "#FFFFFF",
+            "button_border_color": "#FF0000",
+            "button_border_width": 2
+          }
+        },
+        "linked_block_4HUEg3": {
+          "type": "linked_block",
+          "settings": {
+            "block_image": "shopify://shop_images/ChatGPT_Image_Aug_21_2025_11_16_55_AM.png",
+            "block_link": "shopify://pages/the-ice-machine-advantage",
+            "button_text": "Ice Machine Advantage",
+            "button_bg_color": "#0000FF",
+            "button_text_color": "#FFFFFF",
+            "button_border_color": "#FF0000",
+            "button_border_width": 2
+          }
+        }
+      },
+      "block_order": [
+        "linked_block_dXhW8Y",
+        "linked_block_4HUEg3"
+      ],
+      "name": "Page Showcase",
+      "settings": {
+        "banner_image": "shopify://shop_images/ChatGPT_Image_Aug_21_2025_10_41_09_AM.png",
+        "overlay_opacity": 40,
+        "heading": "What's the 24/7 Advantage?",
+        "subheading": "As your turnkey solution, we want to make sure we take care of everything for you. That's why we offer the 24/7 Advantage package with each combi oven and ice machine purchase.",
+        "banner_padding_top": 60,
+        "banner_padding_bottom": 60,
+        "blocks_gap": 0
+      }
+    },
     "featured_collection_AygJbi": {
       "type": "featured-collection",
       "settings": {
@@ -489,6 +532,7 @@
     "collection_list_JKC7NM",
     "collage_qTKhbz",
     "featured_collection_akyMiD",
+    "page_showcase_7PBqXB",
     "featured_collection_AygJbi",
     "shoppable_image_T44bqq",
     "blog_posts_pjgHYE",
