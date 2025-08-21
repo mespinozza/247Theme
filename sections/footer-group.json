@@ -23,7 +23,7 @@
         "menu_g8gLjt": {
           "type": "menu",
           "settings": {
-            "heading_links": "Help Menu",
+            "heading_links": "Help",
             "links": "footer"
           }
         },
@@ -31,7 +31,7 @@
           "type": "newsletter",
           "settings": {
             "heading_newsletter": "Sign up to our Newsletter!",
-            "text_newsletter": "<p>Be the first to hear about new releases, exclusives and offers!</p>",
+            "text_newsletter": "<p>Be the first to hear about discounts, exclusive deals and offers!</p>",
             "button_type": "primary"
           }
         }
