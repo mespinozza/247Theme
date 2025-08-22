@@ -201,7 +201,7 @@
             "button_select": "link",
             "button_label": "Shop Now",
             "button_disable_on_mobile": false,
-            "button_link": "shopify://collections/vulcan",
+            "button_link": "shopify://collections/fryers",
             "desktop_image": "shopify://shop_images/ChatGPT_Image_Apr_24_2025_10_51_41_AM.png",
             "desktop_text_vertical_position": "bottom",
             "desktop_text_horizontal_position": "right",
