@@ -1,16 +1,31 @@
 {{ 'section-brand-showcase.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'brand-showcase.js' | asset_url }}" defer></script>
 
+{%- comment -%} Build vendor collection handles string {%- endcomment -%}
+{%- assign vendor_handles = '' -%}
+{%- for collection in collections -%}
+  {%- if collection.metafields.custom.collection_type == 'Vendor' -%}
+    {%- if vendor_handles == '' -%}
+      {%- assign vendor_handles = collection.handle -%}
+    {%- else -%}
+      {%- assign vendor_handles = vendor_handles | append: ',' | append: collection.handle -%}
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- comment -%} Convert handles back to collections {%- endcomment -%}
+{%- assign vendor_collection_handles = vendor_handles | split: ',' -%}
+{%- assign sorted_collections = '' | split: '' -%}
+
+{%- comment -%} Use a different approach - iterate directly in display {%- endcomment -%}
+{%- assign vendor_collections_count = 0 -%}
+{%- for handle in vendor_collection_handles -%}
+  {%- if handle != blank and collections[handle] -%}
+    {%- assign vendor_collections_count = vendor_collections_count | plus: 1 -%}
+  {%- endif -%}
+{%- endfor -%}
+
 {%- liquid
-  comment
-    Filter collections by metafield 'custom.collection' = 'Vendor'
-  endcomment
-  assign vendor_collections = collections | where: 'metafields.custom.collection_type', 'Vendor'
-  
-  comment
-    Sort collections alphabetically by title
-  endcomment
-  assign sorted_collections = vendor_collections | sort: 'title'
   
   comment
     Create alphabet array and group collections by first letter
@@ -60,66 +75,80 @@
     </div>
   {%- endif -%}
 
-  {%- if sorted_collections.size > 0 -%}
+  {%- if vendor_collections_count > 0 -%}
     {%- comment -%} Alphabet Navigation {%- endcomment -%}
     <div class="brand-showcase__alphabet-nav">
       <div class="brand-showcase__alphabet-container">
-        <button type="button" class="brand-showcase__alphabet-btn brand-showcase__alphabet-btn--all active" data-letter="all" aria-pressed="true">
+        <button type="button" class="brand-showcase__alphabet-btn brand-showcase__alphabet-btn--all" data-letter="all" aria-pressed="false">
           All
         </button>
         
-        {%- for letter in alphabet -%}
-          {%- assign has_collections = false -%}
-          {%- for collection in sorted_collections -%}
-            {%- assign first_letter = collection.title | slice: 0, 1 | upcase -%}
-            {%- if first_letter == letter -%}
-              {%- assign has_collections = true -%}
-              {%- break -%}
-            {%- endif -%}
-          {%- endfor -%}
-          
-          <button type="button" 
-                  class="brand-showcase__alphabet-btn{% unless has_collections %} brand-showcase__alphabet-btn--disabled{% endunless %}" 
-                  data-letter="{{ letter | downcase }}"
-                  {% unless has_collections %}disabled{% endunless %}
-                  aria-pressed="false">
-            {{ letter }}
-          </button>
+        {%- comment -%} Build list of available letters first {%- endcomment -%}
+        {%- assign available_letters = '' -%}
+        {%- for handle in vendor_collection_handles -%}
+          {%- if handle != blank and collections[handle] -%}
+            {%- assign first_letter = collections[handle].title | slice: 0, 1 | upcase -%}
+            {%- unless available_letters contains first_letter -%}
+              {%- if available_letters == '' -%}
+                {%- assign available_letters = first_letter -%}
+              {%- else -%}
+                {%- assign available_letters = available_letters | append: ',' | append: first_letter -%}
+              {%- endif -%}
+            {%- endunless -%}
+          {%- endif -%}
+        {%- endfor -%}
+        
+        {%- comment -%} Convert to array and sort alphabetically {%- endcomment -%}
+        {%- assign available_letters_array = available_letters | split: ',' | sort -%}
+        
+        {%- comment -%} Display only available letters {%- endcomment -%}
+        {%- for letter in available_letters_array -%}
+          {%- if letter != blank -%}
+            <button type="button" 
+                    class="brand-showcase__alphabet-btn" 
+                    data-letter="{{ letter | downcase }}"
+                    aria-pressed="false">
+              {{ letter }}
+            </button>
+          {%- endif -%}
         {%- endfor -%}
       </div>
     </div>
 
     {%- comment -%} Collections Grid {%- endcomment -%}
     <div class="brand-showcase__grid" id="brand-grid">
-      {%- for collection in sorted_collections -%}
-        {%- assign first_letter = collection.title | slice: 0, 1 | upcase | downcase -%}
-        <div class="brand-showcase__card" data-letter="{{ first_letter }}" data-collection-id="{{ collection.id }}">
-          <a href="{{ collection.url }}" class="brand-showcase__card-link">
-            <div class="brand-showcase__card-image">
-              {%- if collection.featured_image != blank -%}
-                {{- collection.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: collection.title, class: 'brand-showcase__image' -}}
-              {%- else -%}
-                <div class="brand-showcase__image-placeholder">
-                  {{ 'collection-1' | placeholder_svg_tag: 'brand-showcase__placeholder-svg' }}
-                </div>
-              {%- endif -%}
-            </div>
-            
-            <div class="brand-showcase__card-content">
-              <h3 class="brand-showcase__card-title">{{ collection.title }}</h3>
-              {%- if section.settings.show_product_count -%}
-                <div class="brand-showcase__card-count">
-                  {{ collection.products_count }} 
-                  {%- if collection.products_count == 1 -%}
-                    product
-                  {%- else -%}
-                    products
-                  {%- endif -%}
-                </div>
-              {%- endif -%}
-            </div>
-          </a>
-        </div>
+      {%- for handle in vendor_collection_handles -%}
+        {%- if handle != blank and collections[handle] -%}
+          {%- assign collection = collections[handle] -%}
+          {%- assign first_letter = collection.title | slice: 0, 1 | upcase | downcase -%}
+          <div class="brand-showcase__card" data-letter="{{ first_letter }}" data-collection-id="{{ collection.id }}">
+            <a href="{{ collection.url }}" class="brand-showcase__card-link">
+              <div class="brand-showcase__card-image">
+                {%- if collection.featured_image != blank -%}
+                  {{- collection.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: collection.title, class: 'brand-showcase__image' -}}
+                {%- else -%}
+                  <div class="brand-showcase__image-placeholder">
+                    {{ 'collection-1' | placeholder_svg_tag: 'brand-showcase__placeholder-svg' }}
+                  </div>
+                {%- endif -%}
+              </div>
+              
+              <div class="brand-showcase__card-content">
+                <h3 class="brand-showcase__card-title">{{ collection.title }}</h3>
+                {%- if section.settings.show_product_count -%}
+                  <div class="brand-showcase__card-count">
+                    {{ collection.products_count }} 
+                    {%- if collection.products_count == 1 -%}
+                      product
+                    {%- else -%}
+                      products
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            </a>
+          </div>
+        {%- endif -%}
       {%- endfor -%}
     </div>
 
@@ -149,15 +178,71 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const brandShowcase = document.querySelector('.brand-showcase[data-section-id="{{ section.id }}"]');
-    if (brandShowcase && typeof BrandShowcase !== 'undefined') {
-      new BrandShowcase(brandShowcase, {
-        enableAnimation: {{ section.settings.enable_filtering_animation | json }},
-        animationDuration: 300
+document.addEventListener('DOMContentLoaded', function() {
+  // Target this specific section only
+  const sectionId = '{{ section.id }}';
+  const section = document.querySelector('.brand-showcase-' + sectionId);
+  
+  if (!section) return;
+  
+  // Get elements
+  const buttons = section.querySelectorAll('.brand-showcase__alphabet-btn');
+  const cards = section.querySelectorAll('.brand-showcase__card');
+  
+  // Simple click handler with forced reset
+  buttons.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const selectedLetter = this.getAttribute('data-letter');
+      
+      // FORCE RESET: Remove all active states with brute force
+      buttons.forEach(button => {
+        // Check if it's the ALL button before reset
+        const isAllButton = button.classList.contains('brand-showcase__alphabet-btn--all');
+        
+        // Remove ALL possible active classes
+        button.className = 'brand-showcase__alphabet-btn';
+        if (isAllButton) {
+          button.classList.add('brand-showcase__alphabet-btn--all');
+        }
+        button.setAttribute('aria-pressed', 'false');
+        
+        // Force inline style reset
+        button.style.background = '';
+        button.style.color = '';
+        button.style.borderColor = '';
+        button.style.fontWeight = '';
+        button.style.transform = '';
+        button.style.boxShadow = '';
       });
-    }
+      
+      // Wait for reset to complete
+      setTimeout(() => {
+        // Activate ONLY the clicked button
+        this.classList.add('active');
+        this.setAttribute('aria-pressed', 'true');
+        
+        // Filter cards
+        cards.forEach(card => {
+          const cardLetter = card.getAttribute('data-letter');
+          if (selectedLetter === 'all' || cardLetter === selectedLetter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }, 10);
+    });
   });
+  
+  // Set default active state
+  const defaultBtn = section.querySelector('[data-letter="all"]');
+  if (defaultBtn) {
+    defaultBtn.classList.add('active');
+    defaultBtn.setAttribute('aria-pressed', 'true');
+  }
+});
 </script>
 
 {% schema %}

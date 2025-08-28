@@ -89,13 +89,15 @@
   transform: translateY(-1px);
 }
 
+/* Base active state for all buttons */
 .brand-showcase__alphabet-btn.active {
-  background: rgb(var(--color-button-primary-background));
-  color: rgb(var(--color-button-primary-text));
-  border-color: rgb(var(--color-button-primary-background));
-  font-weight: var(--font-weight-bold, 600);
+  background: rgb(var(--color-button-primary-background)) !important;
+  color: rgb(var(--color-button-primary-text)) !important;
+  border-color: rgb(var(--color-button-primary-background)) !important;
+  font-weight: var(--font-weight-bold, 600) !important;
 }
 
+/* ALL button base styling */
 .brand-showcase__alphabet-btn--all {
   background: rgb(var(--color-background));
   border-color: rgb(var(--color-border));
@@ -104,10 +106,70 @@
   padding: 8px 16px;
 }
 
+/* ALL button when active */
 .brand-showcase__alphabet-btn--all.active {
-  background: rgb(var(--color-button-primary-background));
-  color: rgb(var(--color-button-primary-text));
-  border-color: rgb(var(--color-button-primary-background));
+  background: rgb(var(--color-button-primary-background)) !important;
+  color: rgb(var(--color-button-primary-text)) !important;
+  border-color: rgb(var(--color-button-primary-background)) !important;
+}
+
+/* FORCE inactive state - highest specificity */
+.brand-showcase__alphabet-container .brand-showcase__alphabet-btn--all:not(.active) {
+  background: rgb(var(--color-background)) !important;
+  color: rgb(var(--color-foreground)) !important;
+  border-color: rgb(var(--color-border)) !important;
+  font-weight: var(--font-weight-medium, 500) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Force inactive class - JavaScript controlled */
+.brand-showcase__alphabet-btn.force-inactive {
+  background: transparent !important;
+  color: rgb(var(--color-foreground)) !important;
+  border-color: transparent !important;
+  font-weight: var(--font-weight-medium, 500) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.brand-showcase__alphabet-btn--all.force-inactive {
+  background: rgb(var(--color-background)) !important;
+  color: rgb(var(--color-foreground)) !important;
+  border-color: rgb(var(--color-border)) !important;
+  font-weight: var(--font-weight-medium, 500) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.brand-showcase__alphabet-btn--all:not(.active) {
+  background: rgb(var(--color-background)) !important;
+  color: rgb(var(--color-foreground)) !important;
+  border-color: rgb(var(--color-border)) !important;
+}
+
+/* Force inactive state for ALL button when other letters are selected */
+.brand-showcase__alphabet-btn--all:not(.active):not(:hover) {
+  background: rgb(var(--color-background)) !important;
+  color: rgb(var(--color-foreground)) !important;
+  border-color: rgb(var(--color-border)) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Override ANY active styling when not actually active */
+.brand-showcase__alphabet-btn:not(.active) {
+  background: transparent !important;
+  color: rgb(var(--color-foreground)) !important;
+  border-color: transparent !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.brand-showcase__alphabet-btn--all:not(.active) {
+  background: rgb(var(--color-background)) !important;
+  color: rgb(var(--color-foreground)) !important;
+  border-color: rgb(var(--color-border)) !important;
 }
 
 .brand-showcase__alphabet-btn--disabled {
@@ -171,7 +233,7 @@
 .brand-showcase__image {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   object-position: center;
   transition: transform 0.3s ease;
 }
