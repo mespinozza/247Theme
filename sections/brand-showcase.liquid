@@ -5,7 +5,7 @@
   comment
     Filter collections by metafield 'custom.collection' = 'Vendor'
   endcomment
-  assign vendor_collections = collections | where: 'metafields.custom.collection', 'Vendor'
+  assign vendor_collections = collections | where: 'metafields.custom.collection_type', 'Vendor'
   
   comment
     Sort collections alphabetically by title
