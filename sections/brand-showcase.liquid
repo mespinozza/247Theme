@@ -1,0 +1,266 @@
+{{ 'section-brand-showcase.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'brand-showcase.js' | asset_url }}" defer></script>
+
+{%- liquid
+  comment
+    Filter collections by metafield 'custom.collection' = 'Vendor'
+  endcomment
+  assign vendor_collections = collections | where: 'metafields.custom.collection', 'Vendor'
+  
+  comment
+    Sort collections alphabetically by title
+  endcomment
+  assign sorted_collections = vendor_collections | sort: 'title'
+  
+  comment
+    Create alphabet array and group collections by first letter
+  endcomment
+  assign alphabet = 'A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z' | split: ','
+  assign collections_by_letter = '' | split: ''
+  
+  comment
+    Group collections by first letter of title
+  endcomment
+  for letter in alphabet
+    assign letter_collections = '' | split: ''
+    for collection in sorted_collections
+      assign first_letter = collection.title | slice: 0, 1 | upcase
+      if first_letter == letter
+        assign letter_collections = letter_collections | concat: collection
+      endif
+    endfor
+    if letter_collections.size > 0
+      assign collections_by_letter = collections_by_letter | concat: letter_collections
+    endif
+  endfor
+-%}
+
+{%- style -%}
+  .brand-showcase-{{ section.id }} {
+    --grid-columns-desktop: {{ section.settings.grid_columns_desktop }};
+    --grid-columns-mobile: {{ section.settings.grid_columns_mobile }};
+    --brand-card-gap: {{ section.settings.card_gap }}px;
+    --alphabet-spacing: {{ section.settings.alphabet_spacing }}px;
+  }
+{%- endstyle -%}
+
+<div class="brand-showcase brand-showcase-{{ section.id }}" data-section-id="{{ section.id }}">
+  {%- if section.settings.show_page_title -%}
+    <div class="brand-showcase__header">
+      <div class="brand-showcase__header-content">
+        {%- if section.settings.page_title != blank -%}
+          <h1 class="brand-showcase__title">{{ section.settings.page_title }}</h1>
+        {%- endif -%}
+        {%- if section.settings.page_description != blank -%}
+          <div class="brand-showcase__description">
+            {{ section.settings.page_description | newline_to_br }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  {%- endif -%}
+
+  {%- if sorted_collections.size > 0 -%}
+    {%- comment -%} Alphabet Navigation {%- endcomment -%}
+    <div class="brand-showcase__alphabet-nav">
+      <div class="brand-showcase__alphabet-container">
+        <button type="button" class="brand-showcase__alphabet-btn brand-showcase__alphabet-btn--all active" data-letter="all" aria-pressed="true">
+          All
+        </button>
+        
+        {%- for letter in alphabet -%}
+          {%- assign has_collections = false -%}
+          {%- for collection in sorted_collections -%}
+            {%- assign first_letter = collection.title | slice: 0, 1 | upcase -%}
+            {%- if first_letter == letter -%}
+              {%- assign has_collections = true -%}
+              {%- break -%}
+            {%- endif -%}
+          {%- endfor -%}
+          
+          <button type="button" 
+                  class="brand-showcase__alphabet-btn{% unless has_collections %} brand-showcase__alphabet-btn--disabled{% endunless %}" 
+                  data-letter="{{ letter | downcase }}"
+                  {% unless has_collections %}disabled{% endunless %}
+                  aria-pressed="false">
+            {{ letter }}
+          </button>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- comment -%} Collections Grid {%- endcomment -%}
+    <div class="brand-showcase__grid" id="brand-grid">
+      {%- for collection in sorted_collections -%}
+        {%- assign first_letter = collection.title | slice: 0, 1 | upcase | downcase -%}
+        <div class="brand-showcase__card" data-letter="{{ first_letter }}" data-collection-id="{{ collection.id }}">
+          <a href="{{ collection.url }}" class="brand-showcase__card-link">
+            <div class="brand-showcase__card-image">
+              {%- if collection.featured_image != blank -%}
+                {{- collection.featured_image | image_url: width: 400 | image_tag: loading: 'lazy', alt: collection.title, class: 'brand-showcase__image' -}}
+              {%- else -%}
+                <div class="brand-showcase__image-placeholder">
+                  {{ 'collection-1' | placeholder_svg_tag: 'brand-showcase__placeholder-svg' }}
+                </div>
+              {%- endif -%}
+            </div>
+            
+            <div class="brand-showcase__card-content">
+              <h3 class="brand-showcase__card-title">{{ collection.title }}</h3>
+              {%- if section.settings.show_product_count -%}
+                <div class="brand-showcase__card-count">
+                  {{ collection.products_count }} 
+                  {%- if collection.products_count == 1 -%}
+                    product
+                  {%- else -%}
+                    products
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            </div>
+          </a>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- comment -%} Empty State {%- endcomment -%}
+    <div class="brand-showcase__empty-state" id="empty-state" style="display: none;">
+      <div class="brand-showcase__empty-content">
+        <h3 class="brand-showcase__empty-title">No brands found</h3>
+        <p class="brand-showcase__empty-description">
+          There are no brands starting with this letter. Try selecting another letter or view all brands.
+        </p>
+        <button type="button" class="brand-showcase__show-all-btn" data-letter="all">
+          Show All Brands
+        </button>
+      </div>
+    </div>
+  {%- else -%}
+    {%- comment -%} No Collections State {%- endcomment -%}
+    <div class="brand-showcase__no-collections">
+      <div class="brand-showcase__no-collections-content">
+        <h3 class="brand-showcase__no-collections-title">No brands available</h3>
+        <p class="brand-showcase__no-collections-description">
+          Collections with the "Vendor" metafield will appear here once they're set up.
+        </p>
+      </div>
+    </div>
+  {%- endif -%}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const brandShowcase = document.querySelector('.brand-showcase[data-section-id="{{ section.id }}"]');
+    if (brandShowcase && typeof BrandShowcase !== 'undefined') {
+      new BrandShowcase(brandShowcase, {
+        enableAnimation: {{ section.settings.enable_filtering_animation | json }},
+        animationDuration: 300
+      });
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Brand Showcase",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Page Header"
+    },
+    {
+      "id": "show_page_title",
+      "type": "checkbox",
+      "label": "Show page header",
+      "default": true
+    },
+    {
+      "id": "page_title",
+      "type": "text",
+      "label": "Page title",
+      "default": "Shop by Brand",
+      "info": "Leave blank to use page title"
+    },
+    {
+      "id": "page_description",
+      "type": "textarea",
+      "label": "Page description",
+      "default": "Discover products from your favorite brands. Browse alphabetically to find exactly what you're looking for."
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "id": "grid_columns_desktop",
+      "type": "range",
+      "label": "Desktop columns",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4,
+      "info": "Number of brand cards per row on desktop"
+    },
+    {
+      "id": "grid_columns_mobile",
+      "type": "range",
+      "label": "Mobile columns",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2,
+      "info": "Number of brand cards per row on mobile"
+    },
+    {
+      "id": "card_gap",
+      "type": "range",
+      "label": "Gap between cards",
+      "min": 16,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Display Options"
+    },
+    {
+      "id": "show_product_count",
+      "type": "checkbox",
+      "label": "Show product count",
+      "default": true,
+      "info": "Display number of products in each collection"
+    },
+    {
+      "id": "enable_filtering_animation",
+      "type": "checkbox",
+      "label": "Enable filtering animations",
+      "default": true,
+      "info": "Smooth transitions when filtering by letter"
+    },
+    {
+      "type": "header",
+      "content": "Alphabet Navigation"
+    },
+    {
+      "id": "alphabet_spacing",
+      "type": "range",
+      "label": "Letter spacing",
+      "min": 8,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 12,
+      "info": "Space between alphabet letters"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Brand Showcase"
+    }
+  ]
+}
+{% endschema %}
