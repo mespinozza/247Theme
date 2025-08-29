@@ -573,7 +573,17 @@
                 class="{% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
               >
                 <div class="wt-product__brand ">
-                  <span class="wt-product__brand__name">{{ block.settings.brand }}</span>
+                  {%- if product.vendor != blank -%}
+                    {%- assign vendor_handle = product.vendor | handle -%}
+                    {%- assign vendor_collection = collections[vendor_handle] -%}
+                    {%- if vendor_collection != blank -%}
+                      <a href="{{ vendor_collection.url }}" class="wt-product__brand__name wt-product__brand__link">{{ product.vendor }}</a>
+                    {%- else -%}
+                      <a href="{{ routes.search_url }}?q=vendor:{{ product.vendor | url_encode }}" class="wt-product__brand__name wt-product__brand__link">{{ product.vendor }}</a>
+                    {%- endif -%}
+                  {%- else -%}
+                    <span class="wt-product__brand__name">{{ block.settings.brand }}</span>
+                  {%- endif -%}
                 </div>
                 <h1 class="wt-product__name">{{ product.title }}</h1>
               </div>
@@ -617,7 +627,7 @@
                       <p class="financing-text">
                         From {{ weekly_display }}/week with 
                         <span class="silverchef-brand">
-                          <img src="{{ 'silverchef-logo.png' | asset_url }}" 
+                          <img src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/silverchef_logo.png?v=1755614460" 
                                alt="Silverchef Finance" 
                                class="silverchef-logo"
                                onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">

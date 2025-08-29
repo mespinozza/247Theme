@@ -5806,6 +5806,15 @@ input.disabled + .f-swatch__list__link .f-swatch__list__link__content {
   display: block;
   text-align: left;
 }
+
+.wt-product__brand__link {
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.wt-product__brand__link:hover {
+  color: rgb(var(--color-button-primary-background)) !important;
+}
 .wt-product__price {
   line-height: normal;
   margin-top: calc(var(--gap, 8px) * 1.5);

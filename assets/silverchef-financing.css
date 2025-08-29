@@ -11,8 +11,10 @@
 .silverchef-financing .financing-text {
   margin: 0;
   font-size: inherit;
-  line-height: 1.4;
+  line-height: 1;
   color: inherit;
+  display: flex;
+  align-items: center;
 }
 
 .silverchef-financing .silverchef-brand {
@@ -23,7 +25,7 @@
 }
 
 .silverchef-financing .silverchef-logo {
-  height: 1.2em;
+  height: 2.4em;
   width: auto;
   vertical-align: middle;
   display: inline-block;
@@ -80,7 +82,7 @@
 /* Mobile responsiveness for logo */
 @media screen and (max-width: 749px) {
   .silverchef-financing .silverchef-logo {
-    height: 1.1em;
+    height: 2.0em;
   }
   
   .silverchef-financing .financing-link {
