@@ -1,0 +1,245 @@
+{{ 'section-video-text-banner.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .video-text-banner-{{ section.id }} {
+    --video-banner-overlay-color: {{ section.settings.overlay_color }};
+    --video-banner-overlay-opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+    --video-banner-text-color: {{ section.settings.text_color }};
+    --video-banner-height-desktop: {{ section.settings.height_desktop }}px;
+    --video-banner-height-mobile: {{ section.settings.height_mobile }}px;
+    --font-size-desktop: {{ section.settings.font_size_desktop }}px;
+    --font-size-mobile: {{ section.settings.font_size_mobile }}px;
+  }
+{%- endstyle -%}
+
+<div class="video-text-banner video-text-banner-{{ section.id }}" 
+     data-section-id="{{ section.id }}"
+     data-autoplay="{{ section.settings.autoplay }}"
+     data-muted="{{ section.settings.muted }}"
+     data-loop="{{ section.settings.loop }}"
+     data-text-alignment="{{ section.settings.text_alignment }}">
+  
+  {%- if section.settings.youtube_url != blank -%}
+    {%- assign youtube_id = section.settings.youtube_url | split: '/' | last | split: '?v=' | last | split: '&' | first -%}
+    {%- if youtube_id == section.settings.youtube_url -%}
+      {%- assign youtube_id = section.settings.youtube_url | split: 'youtu.be/' | last | split: '?' | first -%}
+    {%- endif -%}
+    
+    <div class="video-text-banner__video-container">
+      <iframe 
+        class="video-text-banner__video"
+        src="https://www.youtube.com/embed/{{ youtube_id }}?autoplay={% if section.settings.autoplay %}1{% else %}0{% endif %}&mute={% if section.settings.muted %}1{% else %}0{% endif %}&loop={% if section.settings.loop %}1{% else %}0{% endif %}&playlist={{ youtube_id }}&controls={% if section.settings.show_controls %}1{% else %}0{% endif %}&showinfo=0&rel={% if section.settings.hide_related_videos %}0{% else %}1{% endif %}&modestbranding=1&playsinline=1&iv_load_policy=3&cc_load_policy=0&fs=0&disablekb=1"
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+  {%- endif -%}
+  
+  <div class="video-text-banner__overlay"></div>
+  
+  <div class="video-text-banner__content">
+    <div class="video-text-banner__container">
+      {%- if section.settings.banner_text != blank -%}
+        <div class="video-text-banner__heading rte">{{ section.settings.banner_text }}</div>
+      {%- endif -%}
+      
+      {%- if section.settings.subtext != blank -%}
+        <p class="video-text-banner__subtext">{{ section.settings.subtext }}</p>
+      {%- endif -%}
+      
+      {%- if section.settings.button_text != blank and section.settings.button_url != blank -%}
+        <div class="video-text-banner__button-container">
+          <a href="{{ section.settings.button_url }}" class="video-text-banner__button">
+            {{ section.settings.button_text }}
+          </a>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Video Text Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Video Background"
+    },
+    {
+      "id": "youtube_url",
+      "type": "url",
+      "label": "YouTube URL",
+      "info": "Enter full YouTube URL (e.g., https://www.youtube.com/watch?v=VIDEO_ID)"
+    },
+    {
+      "id": "autoplay",
+      "type": "checkbox",
+      "label": "Autoplay video",
+      "default": true,
+      "info": "Video will start playing automatically"
+    },
+    {
+      "id": "muted",
+      "type": "checkbox",
+      "label": "Mute video",
+      "default": true,
+      "info": "Required for autoplay to work in most browsers"
+    },
+    {
+      "id": "loop",
+      "type": "checkbox",
+      "label": "Loop video",
+      "default": true,
+      "info": "Video will replay continuously"
+    },
+    {
+      "id": "show_controls",
+      "type": "checkbox",
+      "label": "Show video controls",
+      "default": false,
+      "info": "Display play/pause and volume controls"
+    },
+    {
+      "id": "hide_related_videos",
+      "type": "checkbox",
+      "label": "Hide related videos",
+      "default": true,
+      "info": "Prevent YouTube from showing recommended videos at the end"
+    },
+    {
+      "type": "header",
+      "content": "Overlay"
+    },
+    {
+      "id": "overlay_color",
+      "type": "color",
+      "label": "Overlay color",
+      "default": "#000000",
+      "info": "Color of the overlay on top of video"
+    },
+    {
+      "id": "overlay_opacity",
+      "type": "range",
+      "label": "Overlay opacity",
+      "min": 0,
+      "max": 90,
+      "step": 10,
+      "unit": "%",
+      "default": 50,
+      "info": "How dark the overlay appears"
+    },
+    {
+      "type": "header",
+      "content": "Banner Content"
+    },
+    {
+      "id": "banner_text",
+      "type": "richtext",
+      "label": "Banner text",
+      "default": "<p><strong>WE'VE ACTUALLY BEEN PROVIDING COMMERCIAL COOKING, REFRIGERATION, DISHWASHING AND FOOD PREP EQUIPMENT THROUGHOUT NJ FOR OVER 30 YEARS!</strong></p>",
+      "info": "Main banner text with formatting options"
+    },
+    {
+      "id": "subtext",
+      "type": "textarea",
+      "label": "Subtext (optional)",
+      "info": "Additional text below the main banner"
+    },
+    {
+      "id": "button_text",
+      "type": "text",
+      "label": "Button text (optional)",
+      "info": "Text for call-to-action button"
+    },
+    {
+      "id": "button_url",
+      "type": "url",
+      "label": "Button URL",
+      "info": "Where the button should link to"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "id": "text_color",
+      "type": "color",
+      "label": "Text color",
+      "default": "#FFFFFF",
+      "info": "Color of the banner text"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "id": "text_alignment",
+      "type": "select",
+      "label": "Text alignment",
+      "options": [
+        {"value": "left", "label": "Left"},
+        {"value": "center", "label": "Center"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "center"
+    },
+    {
+      "id": "height_desktop",
+      "type": "range",
+      "label": "Height (desktop)",
+      "min": 150,
+      "max": 800,
+      "step": 25,
+      "unit": "px",
+      "default": 500,
+      "info": "Banner height on desktop"
+    },
+    {
+      "id": "height_mobile",
+      "type": "range",
+      "label": "Height (mobile)",
+      "min": 100,
+      "max": 600,
+      "step": 25,
+      "unit": "px",
+      "default": 350,
+      "info": "Banner height on mobile"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "id": "font_size_desktop",
+      "type": "range",
+      "label": "Font size (desktop)",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 48,
+      "info": "Text size on desktop"
+    },
+    {
+      "id": "font_size_mobile",
+      "type": "range",
+      "label": "Font size (mobile)",
+      "min": 18,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 28,
+      "info": "Text size on mobile"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Text Banner"
+    }
+  ]
+}
+{% endschema %}

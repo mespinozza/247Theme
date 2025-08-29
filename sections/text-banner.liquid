@@ -1,0 +1,169 @@
+{{ 'section-text-banner.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .text-banner-{{ section.id }} {
+    --text-banner-bg-color: {{ section.settings.background_color }};
+    --text-banner-text-color: {{ section.settings.text_color }};
+    --text-banner-padding-top: {{ section.settings.padding_top }}px;
+    --text-banner-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --font-size-desktop: {{ section.settings.font_size_desktop }}px;
+    --font-size-mobile: {{ section.settings.font_size_mobile }}px;
+  }
+{%- endstyle -%}
+
+<div class="text-banner text-banner-{{ section.id }}" 
+     data-section-id="{{ section.id }}"
+     data-full-width="{{ section.settings.full_width }}"
+     data-text-alignment="{{ section.settings.text_alignment }}"
+     data-uppercase="{{ section.settings.uppercase }}"
+     data-bold="{{ section.settings.bold_text }}">
+  <div class="text-banner__container">
+    <div class="text-banner__content">
+             {%- if section.settings.banner_text != blank -%}
+         <div class="text-banner__heading rte">{{ section.settings.banner_text }}</div>
+       {%- endif -%}
+      
+      {%- if section.settings.subtext != blank -%}
+        <p class="text-banner__subtext">{{ section.settings.subtext }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Text Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Banner Content"
+    },
+         {
+       "id": "banner_text",
+       "type": "richtext",
+       "label": "Banner text",
+       "default": "<p><strong>24/7 RESTAURANT EQUIPMENT IS NOT THE NEW GUY ON THE BLOCK</strong></p>",
+       "info": "Main announcement text with formatting options"
+     },
+    {
+      "id": "subtext",
+      "type": "textarea",
+      "label": "Subtext (optional)",
+      "info": "Additional text below the main banner"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "id": "background_color",
+      "type": "color",
+      "label": "Background color",
+      "default": "#0066CC",
+      "info": "Banner background color"
+    },
+    {
+      "id": "text_color",
+      "type": "color",
+      "label": "Text color",
+      "default": "#FFFFFF",
+      "info": "Text color for the banner"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "id": "full_width",
+      "type": "checkbox",
+      "label": "Full width",
+      "default": true,
+      "info": "Make banner span full width of page"
+    },
+    {
+      "id": "text_alignment",
+      "type": "select",
+      "label": "Text alignment",
+      "options": [
+        {"value": "left", "label": "Left"},
+        {"value": "center", "label": "Center"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "id": "padding_top",
+      "type": "range",
+      "label": "Top padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 24,
+      "info": "Space above the text"
+    },
+    {
+      "id": "padding_bottom",
+      "type": "range",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 24,
+      "info": "Space below the text"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "id": "font_size_desktop",
+      "type": "range",
+      "label": "Font size (desktop)",
+      "min": 16,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 36,
+      "info": "Text size on desktop"
+    },
+    {
+      "id": "font_size_mobile",
+      "type": "range",
+      "label": "Font size (mobile)",
+      "min": 14,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 24,
+      "info": "Text size on mobile"
+    },
+    {
+      "id": "uppercase",
+      "type": "checkbox",
+      "label": "Uppercase text",
+      "default": true,
+      "info": "Transform text to uppercase"
+    },
+    {
+      "id": "bold_text",
+      "type": "checkbox",
+      "label": "Bold text",
+      "default": true,
+      "info": "Make text bold"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Banner"
+    }
+  ]
+}
+{% endschema %}

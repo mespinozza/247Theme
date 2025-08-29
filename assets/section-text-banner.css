@@ -1,0 +1,189 @@
+.text-banner {
+  width: 100%;
+  background-color: var(--text-banner-bg-color, #0066CC);
+  color: var(--text-banner-text-color, #FFFFFF);
+  padding-top: var(--text-banner-padding-top, 24px);
+  padding-bottom: var(--text-banner-padding-bottom, 24px);
+  margin: 0;
+}
+
+.text-banner__container {
+  max-width: var(--site-max-width, 1200px);
+  margin: 0 auto;
+  padding-left: calc(var(--gap, 8px) * 2);
+  padding-right: calc(var(--gap, 8px) * 2);
+}
+
+/* Full width option */
+[data-full-width="true"] .text-banner__container {
+  max-width: none;
+  padding-left: calc(var(--gap, 8px) * 4);
+  padding-right: calc(var(--gap, 8px) * 4);
+}
+
+.text-banner__content {
+  text-align: var(--text-alignment, center);
+}
+
+.text-banner__heading {
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+  font-size: var(--font-size-mobile, 24px);
+  font-weight: var(--bold-text, 700);
+  text-transform: var(--uppercase-text, uppercase);
+  letter-spacing: 0.5px;
+  word-spacing: 2px;
+}
+
+/* Rich text content styling */
+.text-banner__heading.rte * {
+  margin: 0;
+  padding: 0;
+  line-height: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  word-spacing: inherit;
+  color: inherit;
+}
+
+.text-banner__heading.rte p {
+  margin: 0;
+  display: inline;
+}
+
+.text-banner__heading.rte h1,
+.text-banner__heading.rte h2,
+.text-banner__heading.rte h3,
+.text-banner__heading.rte h4,
+.text-banner__heading.rte h5,
+.text-banner__heading.rte h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  text-transform: inherit;
+  margin: 0;
+  display: inline;
+}
+
+.text-banner__heading.rte strong,
+.text-banner__heading.rte b {
+  font-weight: 700;
+}
+
+.text-banner__heading.rte em,
+.text-banner__heading.rte i {
+  font-style: italic;
+}
+
+.text-banner__heading.rte u {
+  text-decoration: underline;
+}
+
+.text-banner__heading.rte a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.text-banner__heading.rte ul,
+.text-banner__heading.rte ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline;
+}
+
+.text-banner__heading.rte li {
+  display: inline;
+}
+
+.text-banner__heading.rte li:not(:last-child):after {
+  content: " ";
+}
+
+.text-banner__subtext {
+  margin: calc(var(--gap, 8px) * 1) 0 0 0;
+  padding: 0;
+  line-height: 1.4;
+  font-size: calc(var(--font-size-mobile, 24px) * 0.7);
+  opacity: 0.9;
+}
+
+/* Desktop styles */
+@media (min-width: 900px) {
+  .text-banner__heading {
+    font-size: var(--font-size-desktop, 36px);
+  }
+  
+  .text-banner__subtext {
+    font-size: calc(var(--font-size-desktop, 36px) * 0.7);
+  }
+}
+
+/* Large desktop optimization */
+@media (min-width: 1200px) {
+  .text-banner__container {
+    padding-left: calc(var(--gap, 8px) * 4);
+    padding-right: calc(var(--gap, 8px) * 4);
+  }
+}
+
+/* Text alignment options */
+.text-banner[data-text-alignment="left"] .text-banner__content {
+  text-align: left;
+}
+
+.text-banner[data-text-alignment="center"] .text-banner__content {
+  text-align: center;
+}
+
+.text-banner[data-text-alignment="right"] .text-banner__content {
+  text-align: right;
+}
+
+/* Typography options */
+.text-banner[data-uppercase="true"] .text-banner__heading {
+  text-transform: uppercase;
+}
+
+.text-banner[data-uppercase="false"] .text-banner__heading {
+  text-transform: none;
+}
+
+.text-banner[data-bold="true"] .text-banner__heading {
+  font-weight: 700;
+}
+
+.text-banner[data-bold="false"] .text-banner__heading {
+  font-weight: 400;
+}
+
+/* Responsive font scaling */
+@media (max-width: 749px) {
+  .text-banner__heading {
+    font-size: calc(var(--font-size-mobile, 24px) * 0.9);
+    word-spacing: 1px;
+    letter-spacing: 0.3px;
+  }
+  
+  .text-banner__container {
+    padding-left: calc(var(--gap, 8px) * 1.5);
+    padding-right: calc(var(--gap, 8px) * 1.5);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .text-banner {
+    border: 2px solid var(--text-banner-text-color, #FFFFFF);
+  }
+}
+
+/* Print styles */
+@media print {
+  .text-banner {
+    background-color: transparent !important;
+    color: #000000 !important;
+    border: 1px solid #000000;
+  }
+}

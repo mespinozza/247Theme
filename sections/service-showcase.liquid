@@ -1,0 +1,264 @@
+{{ 'section-service-showcase.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .service-showcase-{{ section.id }} {
+    --service-showcase-bg-color: {{ section.settings.background_color }};
+    --service-showcase-text-color: {{ section.settings.text_color }};
+    --service-showcase-heading-color: {{ section.settings.heading_color }};
+    --service-showcase-gap: {{ section.settings.item_spacing }}px;
+    --service-showcase-padding-top: {{ section.settings.padding_top }}px;
+    --service-showcase-padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+{%- endstyle -%}
+
+<div class="service-showcase service-showcase-{{ section.id }}" 
+     data-section-id="{{ section.id }}"
+     data-text-alignment="{{ section.settings.text_alignment }}">
+  
+  <div class="service-showcase__container">
+    {%- if section.settings.section_title != blank -%}
+      <div class="service-showcase__header">
+        <h2 class="service-showcase__section-title">{{ section.settings.section_title }}</h2>
+        {%- if section.settings.section_description != blank -%}
+          <p class="service-showcase__section-description">{{ section.settings.section_description }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+    
+    <div class="service-showcase__grid">
+      {%- for block in section.blocks -%}
+        <div class="service-showcase__item" data-block-id="{{ block.id }}" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <div class="service-showcase__image-container">
+              {%- if block.settings.link_url != blank -%}
+                <a href="{{ block.settings.link_url }}" class="service-showcase__image-link">
+              {%- endif -%}
+              
+              {{ block.settings.image | image_url: width: 600 | image_tag: 
+                loading: 'lazy', 
+                alt: block.settings.image.alt | default: block.settings.heading,
+                class: 'service-showcase__image' }}
+              
+              {%- if block.settings.link_url != blank -%}
+                </a>
+              {%- endif -%}
+            </div>
+          {%- else -%}
+            <div class="service-showcase__image-placeholder">
+              {{ 'image' | placeholder_svg_tag: 'service-showcase__placeholder-svg' }}
+            </div>
+          {%- endif -%}
+          
+          <div class="service-showcase__content">
+            {%- if block.settings.heading != blank -%}
+              <h3 class="service-showcase__heading">
+                {%- if block.settings.link_url != blank -%}
+                  <a href="{{ block.settings.link_url }}" class="service-showcase__heading-link">{{ block.settings.heading }}</a>
+                {%- else -%}
+                  {{ block.settings.heading }}
+                {%- endif -%}
+              </h3>
+            {%- endif -%}
+            
+            {%- if block.settings.description != blank -%}
+              <div class="service-showcase__description rte">{{ block.settings.description }}</div>
+            {%- endif -%}
+            
+            {%- if block.settings.button_text != blank and block.settings.button_url != blank -%}
+              <div class="service-showcase__button-container">
+                <a href="{{ block.settings.button_url }}" class="service-showcase__button">
+                  {{ block.settings.button_text }}
+                </a>
+              </div>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Service Showcase",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "id": "section_title",
+      "type": "text",
+      "label": "Section title",
+      "info": "Optional heading above the services"
+    },
+    {
+      "id": "section_description",
+      "type": "textarea",
+      "label": "Section description",
+      "info": "Optional description below the section title"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "id": "background_color",
+      "type": "color",
+      "label": "Background color",
+      "default": "#FFFFFF",
+      "info": "Section background color"
+    },
+    {
+      "id": "heading_color",
+      "type": "color",
+      "label": "Heading color",
+      "default": "#000000",
+      "info": "Color for service headings"
+    },
+    {
+      "id": "text_color",
+      "type": "color",
+      "label": "Text color",
+      "default": "#666666",
+      "info": "Color for service descriptions"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "id": "text_alignment",
+      "type": "select",
+      "label": "Text alignment",
+      "options": [
+        {"value": "left", "label": "Left"},
+        {"value": "center", "label": "Center"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "center"
+    },
+    {
+      "id": "item_spacing",
+      "type": "range",
+      "label": "Space between items",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32,
+      "info": "Gap between service items"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "id": "padding_top",
+      "type": "range",
+      "label": "Top padding",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "unit": "px",
+      "default": 64,
+      "info": "Space above the section"
+    },
+    {
+      "id": "padding_bottom",
+      "type": "range",
+      "label": "Bottom padding",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "unit": "px",
+      "default": 64,
+      "info": "Space below the section"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "service_item",
+      "name": "Service Item",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Service Content"
+        },
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "Service image",
+          "info": "Upload an image for this service"
+        },
+        {
+          "id": "heading",
+          "type": "text",
+          "label": "Service heading",
+          "default": "Service Title",
+          "info": "Title for this service"
+        },
+        {
+          "id": "description",
+          "type": "richtext",
+          "label": "Service description",
+          "default": "<p>Describe your service here with details about what you offer.</p>",
+          "info": "Description text with formatting options"
+        },
+        {
+          "type": "header",
+          "content": "Call to Action"
+        },
+        {
+          "id": "button_text",
+          "type": "text",
+          "label": "Button text (optional)",
+          "info": "Text for the call-to-action button"
+        },
+        {
+          "id": "button_url",
+          "type": "url",
+          "label": "Button URL",
+          "info": "Where the button should link to"
+        },
+        {
+          "id": "link_url",
+          "type": "url",
+          "label": "Link URL (optional)",
+          "info": "Make the entire image and heading clickable"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Service Showcase",
+      "blocks": [
+        {
+          "type": "service_item",
+          "settings": {
+            "heading": "Commercial Cooking",
+            "description": "<p>Professional-grade cooking equipment for restaurants, cafes, and commercial kitchens.</p>"
+          }
+        },
+        {
+          "type": "service_item",
+          "settings": {
+            "heading": "Refrigeration Solutions",
+            "description": "<p>Keep your ingredients fresh with our range of commercial refrigeration units.</p>"
+          }
+        },
+        {
+          "type": "service_item",
+          "settings": {
+            "heading": "Food Prep Equipment",
+            "description": "<p>Efficient food preparation tools to streamline your kitchen operations.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
