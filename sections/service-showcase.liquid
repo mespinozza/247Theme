@@ -34,10 +34,13 @@
                 <a href="{{ block.settings.link_url }}" class="service-showcase__image-link">
               {%- endif -%}
               
-              {{ block.settings.image | image_url: width: 600 | image_tag: 
-                loading: 'lazy', 
-                alt: block.settings.image.alt | default: block.settings.heading,
-                class: 'service-showcase__image' }}
+              <img src="{{ block.settings.image | image_url: width: 600 }}" 
+                   loading="lazy" 
+                   alt="{{ block.settings.image.alt | default: block.settings.heading }}"
+                   class="service-showcase__image"
+                   style="object-position: {{ block.settings.image_position | default: 'center' }};"
+                   width="600"
+                   height="{{ 600 | divided_by: block.settings.image.aspect_ratio | round }}">
               
               {%- if block.settings.link_url != blank -%}
                 </a>
@@ -192,6 +195,24 @@
           "type": "image_picker",
           "label": "Service image",
           "info": "Upload an image for this service"
+        },
+        {
+          "id": "image_position",
+          "type": "select",
+          "label": "Image focus position",
+          "options": [
+            {"value": "center", "label": "Center"},
+            {"value": "top", "label": "Top"},
+            {"value": "bottom", "label": "Bottom"},
+            {"value": "left", "label": "Left"},
+            {"value": "right", "label": "Right"},
+            {"value": "top left", "label": "Top Left"},
+            {"value": "top right", "label": "Top Right"},
+            {"value": "bottom left", "label": "Bottom Left"},
+            {"value": "bottom right", "label": "Bottom Right"}
+          ],
+          "default": "center",
+          "info": "Choose which part of the image to focus on when cropped"
         },
         {
           "id": "heading",
