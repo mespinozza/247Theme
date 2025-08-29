@@ -25,15 +25,6 @@
     "form": {
       "type": "contact-form",
       "blocks": {
-        "f7540b5e-8608-433d-bf4e-2ca6b4e12cf1": {
-          "type": "heading",
-          "settings": {
-            "heading": "Heading",
-            "heading_disable_on_mobile": false,
-            "size_heading": 140,
-            "size_heading_mobile": 100
-          }
-        },
         "e44258d7-7299-4647-b930-6950bb2f925b": {
           "type": "email_form",
           "settings": {
@@ -42,7 +33,6 @@
         }
       },
       "block_order": [
-        "f7540b5e-8608-433d-bf4e-2ca6b4e12cf1",
         "e44258d7-7299-4647-b930-6950bb2f925b"
       ],
       "settings": {
