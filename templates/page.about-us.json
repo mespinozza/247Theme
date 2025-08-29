@@ -29,8 +29,8 @@
       "settings": {
         "banner_text": "<p><strong>24/7 RESTAURANT EQUIPMENT IS NOT THE NEW GUY ON THE BLOCK</strong></p>",
         "subtext": "",
-        "background_color": "#0066CC",
-        "text_color": "#FFFFFF",
+        "background_color": "#ffffff",
+        "text_color": "#0000c1",
         "full_width": true,
         "text_alignment": "center",
         "padding_top": 24,
@@ -45,7 +45,7 @@
       "type": "video-text-banner",
       "name": "Video Text Banner",
       "settings": {
-        "youtube_url": "",
+        "youtube_url": "https://www.youtube.com/watch?v=lcU3pruVyUw",
         "autoplay": true,
         "muted": true,
         "loop": true,
@@ -59,10 +59,10 @@
         "button_url": "",
         "text_color": "#FFFFFF",
         "text_alignment": "center",
-        "height_desktop": 500,
-        "height_mobile": 350,
-        "font_size_desktop": 48,
-        "font_size_mobile": 28
+        "height_desktop": 150,
+        "height_mobile": 200,
+        "font_size_desktop": 24,
+        "font_size_mobile": 20
       }
     },
     "service_showcase_pn9jJi": {
