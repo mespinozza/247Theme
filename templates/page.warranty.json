@@ -22,33 +22,16 @@
         "margin-bottom": 32
       }
     },
-    "rich_text_HDhqgi": {
-      "type": "rich-text",
-      "blocks": {
-        "text_pCxEMB": {
-          "type": "text",
-          "settings": {
-            "text": "<p>If your food equipment is experiencing any issues or malfunctions, you’re in the right place to request warranty service. We understand how crucial it is to keep your kitchen running smoothly, and our dedicated team is here to assist you promptly. Simply fill out the form with details about the equipment, the problem you’re facing, and your preferred time for the service visit. Our skilled professionals will quickly assess the situation and provide efficient solutions to get your equipment back up and running in no time. Your satisfaction is our top priority, and we’re committed to ensuring that your culinary operations remain uninterrupted. Don’t hesitate to reach out – we’re your turnkey solution for all of your food equipment needs!<br/><br/></p>",
-            "disable_on_mobile": false
-          }
-        }
-      },
-      "block_order": [
-        "text_pCxEMB"
-      ],
-      "name": "t:sections.rich-text.presets.name",
+    "custom_liquid_baBJfi": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "section_width": "regular",
-        "desktop_text_horizontal_position": "center",
-        "color-body-text": "transparent",
-        "background_color": "transparent",
-        "margin-top": 20,
-        "margin-bottom": 20
+        "custom_liquid": "<div style=\"margin:0 auto;\" class=\"pxFormGenerator\" id=\"NL2K50h7hsovk3DtTCqe0g\"></div>"
       }
     }
   },
   "order": [
     "main",
-    "rich_text_HDhqgi"
+    "custom_liquid_baBJfi"
   ]
 }
