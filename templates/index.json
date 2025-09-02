@@ -146,7 +146,7 @@
         "image_t4nhc3": {
           "type": "image",
           "settings": {
-            "heading": "Refrigeration",
+            "heading": "Pizza Equipment",
             "heading_disable_on_mobile": false,
             "size_heading": 100,
             "size_heading_mobile": 100,
@@ -155,8 +155,7 @@
             "button_select": "link",
             "button_label": "Shop Now",
             "button_disable_on_mobile": false,
-            "button_link": "shopify://collections/refrigeration",
-            "desktop_image": "shopify://shop_images/refrigeration_banner.png",
+            "button_link": "",
             "desktop_text_vertical_position": "center",
             "desktop_text_horizontal_position": "center",
             "mobile_text_vertical_position": "center",
@@ -169,7 +168,7 @@
         "image_76Lxwr": {
           "type": "image",
           "settings": {
-            "heading": "Cooling",
+            "heading": "Refrigeration",
             "heading_disable_on_mobile": false,
             "size_heading": 100,
             "size_heading_mobile": 100,
@@ -178,8 +177,8 @@
             "button_select": "link",
             "button_label": "Shop Now",
             "button_disable_on_mobile": false,
-            "button_link": "shopify://collections/cooling",
-            "desktop_image": "shopify://shop_images/ChatGPT_Image_Apr_24_2025_11_27_31_AM.png",
+            "button_link": "shopify://collections/refrigeration",
+            "desktop_image": "shopify://shop_images/refrigeration_banner.png",
             "desktop_text_vertical_position": "top",
             "desktop_text_horizontal_position": "right",
             "mobile_text_vertical_position": "center",
