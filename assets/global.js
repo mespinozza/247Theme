@@ -8,6 +8,29 @@ function debounce(fn, wait) {
   };
 }
 
+// Collection Description Expandable Toggle
+function toggleCollectionDescription(button) {
+  const container = button.closest('.collection-description');
+  const preview = container.querySelector('.collection-description__preview');
+  const full = container.querySelector('.collection-description__full');
+  const moreText = button.querySelector('.collection-description__more');
+  const lessText = button.querySelector('.collection-description__less');
+  
+  if (full.style.display === 'none') {
+    // Show full description
+    preview.style.display = 'none';
+    full.style.display = 'block';
+    moreText.style.display = 'none';
+    lessText.style.display = 'inline';
+  } else {
+    // Show preview
+    preview.style.display = 'block';
+    full.style.display = 'none';
+    moreText.style.display = 'inline';
+    lessText.style.display = 'none';
+  }
+}
+
 function getStyleProperty(element, property) {
   return window.getComputedStyle(element).getPropertyValue(property);
 }

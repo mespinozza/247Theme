@@ -214,12 +214,13 @@
   display: block;
   text-decoration: none;
   color: inherit;
-  background: rgb(var(--color-background));
+  background: rgb(var(--color-background-secondary, 248, 248, 248));
   border-radius: calc(var(--border-radius, 4px) * 2);
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(var(--color-foreground-rgb), 0.08);
   transition: all 0.3s ease;
   height: 100%;
+  border: 1px solid rgba(var(--color-foreground-rgb), 0.1);
 }
 
 .brand-showcase__card-image {
@@ -227,7 +228,7 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: rgb(var(--color-background-secondary, 248, 248, 248));
+  background: #ffffff;
 }
 
 .brand-showcase__image {
@@ -236,6 +237,7 @@
   object-fit: contain;
   object-position: center;
   transition: transform 0.3s ease;
+  background-color: #ffffff;
 }
 
 .brand-showcase__image-placeholder {
@@ -244,7 +246,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgb(var(--color-background-secondary, 248, 248, 248));
+  background: #ffffff;
 }
 
 .brand-showcase__placeholder-svg {

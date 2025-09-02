@@ -1,8 +1,61 @@
 .collection-banner .hero__img {
   height: var(--section-height);
+  object-fit: contain;
+  object-position: center;
+  background-color: #ffffff;
 }
 @media (min-width: 900px) {
   .collection-banner .hero__img {
     height: var(--section-height-desk);
+    object-fit: contain;
+    object-position: center;
+    background-color: #ffffff;
+  }
+}
+
+/* Collection Description Expandable Functionality */
+.collection-description {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.collection-description__toggle {
+  background: none;
+  border: none;
+  color: rgb(var(--color-button-primary-background));
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  text-decoration: underline;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.collection-description__toggle:hover {
+  background-color: rgb(var(--color-button-primary-background));
+  color: rgb(var(--color-button-primary-text));
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.collection-description__toggle:focus {
+  outline: 2px solid rgb(var(--color-button-primary-background));
+  outline-offset: 2px;
+}
+
+.collection-description__full {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

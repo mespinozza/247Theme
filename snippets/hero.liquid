@@ -156,7 +156,29 @@
 
         {% if text != blank and show_collection_description != false %}
           <div class="hero__text hero__richtext {% if text_disable_on_mobile %}hero__text--mobile{% endif %}">
-            {{ text | newline_to_br }}
+            {% comment %} Check if this is a collection description that should be expandable {% endcomment %}
+            {% if collection and collection.description %}
+              {% assign description_words = text | strip_html | split: ' ' %}
+              {% if description_words.size > 30 %}
+                {% assign preview_words = description_words | slice: 0, 30 | join: ' ' %}
+                <div class="collection-description">
+                  <div class="collection-description__preview">
+                    {{ preview_words | newline_to_br }}...
+                  </div>
+                  <div class="collection-description__full" style="display: none;">
+                    {{ text | newline_to_br }}
+                  </div>
+                  <button type="button" class="collection-description__toggle" onclick="toggleCollectionDescription(this)">
+                    <span class="collection-description__more">Read more</span>
+                    <span class="collection-description__less" style="display: none;">Read less</span>
+                  </button>
+                </div>
+              {% else %}
+                {{ text | newline_to_br }}
+              {% endif %}
+            {% else %}
+              {{ text | newline_to_br }}
+            {% endif %}
           </div>
         {% endif %}
         {% if button_label != blank or second_button_label != blank %}
