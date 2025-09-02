@@ -1,0 +1,65 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "compact-size-enabled": true,
+        "size_heading": 140,
+        "size_heading_mobile": 100,
+        "color-body-text": "rgba(0,0,0,0)",
+        "color-bg-overlay": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "margin-top": 40,
+        "margin-bottom": 32
+      }
+    },
+    "rich_text_MxUXgw": {
+      "type": "rich-text",
+      "blocks": {
+        "text_rjHdEH": {
+          "type": "text",
+          "settings": {
+            "text": "<h1><strong>SilverChef and 24/7 Restaurant Equipment</strong></h1><p><br/>SilverChef is a proud partner of 24/7 Restaurant Equipment, helping hospitality businesses<br/>achieve their dreams. Together we're proud to offer flexible financing solutions that help<br/>our customers start their businesses and grow.</p><p><br/><strong>Equipment financing made for hospitality</strong><br/>Established in 1986, SilverChef is dedicated to turning hospitality dreams into reality.<br/>SilverChef Group has invested $1.6bn into supporting nearly 90,000 hospitality businesses<br/>across the world. By offering a flexible finance solution, SilverChef enables entrepreneurs<br/>to establish and grow their ventures without the heavy upfront costs that typically come<br/>with opening or scaling a business.</p><p><br/>Learn more about SilverChef <a href=\"https://www.silverchef.com/\" target=\"_blank\">HERE</a></p><p><br/>Their core offering is the Rent-Try-Buy solution, which allows businesses to rent<br/>equipment with the option to purchase later. This approach provides the flexibility to adjust to changing business needs while minimizing financial risk. Whether a business is just starting or looking to expand, SilverChef’s flexible financing solutions cater to a variety of needs, making equipment financing more accessible to everyone in the industry.</p><p><br/>SilverChef's commitment to fostering growth in the hospitality sector extends across the<br/>world, with tailored financing solutions that help businesses achieve their goals, no matter<br/>the size or stage. From small cafés to hospitality groups, their innovative financing<br/>methods have made them a trusted partner for decades, empowering hospitality<br/>entrepreneurs to achieve success and stability in their ventures.</p><p><br/><strong>Rent-Try-Buy®</strong><br/>SilverChef's Rent-Try-Buy is a flexible, 12 month rental agreement that allows you to get<br/>the hospitality equipment you need, with the flexibility to change, upgrade or buy your<br/>equipment at any time. All while keeping your cash flow healthy, with low weekly payments that are 100% tax deductible.</p><p><br/><strong>With a 12 month Rent-Try-Buy rental agreement you can,</strong><br/><strong>Upgrade, change or buy your equipment at any time.</strong><br/>If your new equipment isn’t quite the right fit, or you’re ready to buy, we can help you easily switch.<br/><strong>Maintain cash flow.</strong><br/>Renting equipment keeps your cash available for everyday business needs while allowing flexibility to upgrade or change as required.<br/><strong>Enjoy tax benefits.</strong><br/>Rent-Try-Buy payments are fully tax-deductible. Work with your tax agent to make the most of these weekly payments.<br/><strong>Room to grow.</strong><br/>Need more equipment? Your initial SilverChef finance limit is valid for 90 days after approval, so let's make the most of it?<br/><strong>After your 12-month rental agreement.</strong><br/>The flexibility won't end!</p><p><br/>You’ll have the choice between continuing to rent with discounted payments, upgrading,<br/>buying, or returning your equipment.<br/>Learn more about SilverChef or APPLY NOW 👇</p>",
+            "disable_on_mobile": false
+          }
+        },
+        "button_KT3zRe": {
+          "type": "button",
+          "settings": {
+            "button_select": "primary",
+            "button_label": "APPLY NOW",
+            "button_link": "/",
+            "disable_on_mobile": false
+          }
+        }
+      },
+      "block_order": [
+        "text_rjHdEH",
+        "button_KT3zRe"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "section_width": "regular",
+        "desktop_text_horizontal_position": "center",
+        "color-body-text": "transparent",
+        "background_color": "transparent",
+        "margin-top": 20,
+        "margin-bottom": 20
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_MxUXgw"
+  ]
+}

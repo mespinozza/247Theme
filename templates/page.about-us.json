@@ -1,0 +1,191 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "compact-size-enabled": true,
+        "size_heading": 140,
+        "size_heading_mobile": 100,
+        "color-body-text": "rgba(0,0,0,0)",
+        "color-bg-overlay": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 100,
+        "margin-top": 40,
+        "margin-bottom": 0
+      }
+    },
+    "text_banner_rqgLtg": {
+      "type": "text-banner",
+      "name": "Text Banner",
+      "settings": {
+        "banner_text": "<p><strong>24/7 RESTAURANT EQUIPMENT IS NOT THE NEW GUY ON THE BLOCK</strong></p>",
+        "subtext": "",
+        "background_color": "#ffffff",
+        "text_color": "#0000c1",
+        "full_width": true,
+        "text_alignment": "center",
+        "padding_top": 24,
+        "padding_bottom": 24,
+        "font_size_desktop": 36,
+        "font_size_mobile": 24,
+        "uppercase": true,
+        "bold_text": true
+      }
+    },
+    "video_text_banner_rLP6Nj": {
+      "type": "video-text-banner",
+      "name": "Video Text Banner",
+      "settings": {
+        "youtube_url": "https://www.youtube.com/watch?v=lcU3pruVyUw",
+        "autoplay": true,
+        "muted": true,
+        "loop": true,
+        "show_controls": false,
+        "hide_related_videos": true,
+        "overlay_color": "#000000",
+        "overlay_opacity": 50,
+        "banner_text": "<p><strong>WE'VE ACTUALLY BEEN PROVIDING COMMERCIAL COOKING, REFRIGERATION, DISHWASHING AND FOOD PREP EQUIPMENT THROUGHOUT NJ FOR OVER 30 YEARS!</strong></p>",
+        "subtext": "",
+        "button_text": "",
+        "button_url": "",
+        "text_color": "#FFFFFF",
+        "text_alignment": "center",
+        "height_desktop": 150,
+        "height_mobile": 200,
+        "font_size_desktop": 24,
+        "font_size_mobile": 20
+      }
+    },
+    "service_showcase_pn9jJi": {
+      "type": "service-showcase",
+      "blocks": {
+        "service_item_tMVMKT": {
+          "type": "service_item",
+          "settings": {
+            "image": "shopify://shop_images/DSC04576-1-scaled.png",
+            "image_position": "center",
+            "heading": "Commercial Cooking Service",
+            "description": "<p>Led by Christian Hernandez, you are getting a company that cares about you and your business.</p>",
+            "button_text": "",
+            "button_url": "",
+            "link_url": ""
+          }
+        },
+        "service_item_XC88f4": {
+          "type": "service_item",
+          "settings": {
+            "image": "shopify://shop_images/DSC04654-1024x819.png",
+            "image_position": "center",
+            "heading": "We take care of EVERYTHING for you!",
+            "description": "<p>First, we specify the right piece of equipment for your foodservice operation, then we get to work.  Our tech team will uninstall the existing equipment in your facility, remove and dispose of safely, deliver the new equipment, set in place, perform factory authorized installation and a certified equipment start-up that locks in your warranty that is also provided by US!  One call truly gets it all done.</p>",
+            "button_text": "",
+            "button_url": "",
+            "link_url": ""
+          }
+        },
+        "service_item_FqmNxR": {
+          "type": "service_item",
+          "settings": {
+            "image": "shopify://shop_images/DSC04617-scaled-qv55pks2k3ta4041so96zfpd5s2r9gnsp63p5074p4.jpg",
+            "image_position": "center",
+            "heading": "Turnkey:",
+            "description": "<p>‘of or involving the provision of a complete product or service that is for immediate use.’</p>",
+            "button_text": "",
+            "button_url": "",
+            "link_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "service_item_tMVMKT",
+        "service_item_XC88f4",
+        "service_item_FqmNxR"
+      ],
+      "name": "Service Showcase",
+      "settings": {
+        "section_title": "",
+        "section_description": "",
+        "background_color": "#FFFFFF",
+        "heading_color": "#000000",
+        "text_color": "#666666",
+        "text_alignment": "center",
+        "item_spacing": 32,
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "event_location_info_8DP9TL": {
+      "type": "event-location-info",
+      "name": "Event Location Info",
+      "settings": {
+        "google_maps_embed": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3057.073124106262!2d-74.21231912401034!3d39.98447117151236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c19d36e9da54f1%3A0xab4971d58002b128!2s247%20Restaurant%20Equipment!5e0!3m2!1sen!2sus!4v1756493540919!5m2!1sen!2sus\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+        "location_name": "Visit our Showroom",
+        "event_times": "Open Mon-Fri (9 AM - 5 PM)",
+        "address": "1231 Lakewood Rd, Toms River, NJ 08753",
+        "button_text": "Get Directions",
+        "directions_url": "https://share.google/yJJcdiYbVTbyH40As",
+        "open_in_new_tab": true,
+        "max_width": 800,
+        "map_width_percentage": 65,
+        "card_height": 240,
+        "card_height_mobile": 300,
+        "border_radius": 12,
+        "shadow_intensity": 2,
+        "background_color": "#f8f9fa",
+        "info_background_color": "#ffffff",
+        "heading_color": "#212529",
+        "text_color": "#495057",
+        "address_color": "#6c757d",
+        "button_background_color": "#ffc107",
+        "button_background_color_hover": "#e0a800",
+        "button_text_color": "#212529",
+        "button_border_radius": 24,
+        "button_padding_horizontal": 20,
+        "button_padding_vertical": 10,
+        "button_padding_horizontal_mobile": 16,
+        "button_padding_vertical_mobile": 8,
+        "base_heading_size": 20,
+        "base_heading_size_mobile": 18,
+        "heading_size": 100,
+        "heading_size_mobile": 100,
+        "heading_weight": "700",
+        "base_text_size": 14,
+        "base_text_size_mobile": 13,
+        "text_size": 100,
+        "text_size_mobile": 100,
+        "text_weight": "500",
+        "address_weight": "400",
+        "button_text_size": 14,
+        "button_text_size_mobile": 13,
+        "button_weight": "600",
+        "section_padding_horizontal": 20,
+        "section_padding_vertical": 40,
+        "section_padding_horizontal_mobile": 16,
+        "section_padding_vertical_mobile": 32,
+        "info_padding_horizontal": 24,
+        "info_padding_vertical": 24,
+        "info_padding_horizontal_mobile": 20,
+        "info_padding_vertical_mobile": 20,
+        "content_padding": 0,
+        "margin-top": 0,
+        "margin-bottom": 32
+      }
+    }
+  },
+  "order": [
+    "main",
+    "text_banner_rqgLtg",
+    "video_text_banner_rLP6Nj",
+    "service_showcase_pn9jJi",
+    "event_location_info_8DP9TL"
+  ]
+}

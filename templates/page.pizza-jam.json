@@ -1,29 +1,54 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "informational_banner": {
       "type": "informational-banner",
       "settings": {
-        "badge_text": "Sept 16 || 11AM",
+        "background_image": "shopify://shop_images/ChatGPT_Image_Aug_8_2025_10_36_12_AM.png",
+        "background_position": "center bottom",
+        "content_type": "logo",
+        "badge_text": "Sept 16 | 11AM",
         "badge_size": 100,
         "badge_size_mobile": 90,
+        "logo_image": "shopify://shop_images/NJ_Pizza_Jam_2025_-_Edited.png",
+        "logo_alt_text": "Logo",
+        "logo_size": 100,
+        "logo_size_mobile": 150,
+        "logo_base_height": 80,
+        "logo_base_height_mobile": 60,
+        "logo_base_max_width": 300,
+        "logo_base_max_width_mobile": 250,
+        "logo_padding_horizontal": 0,
+        "logo_padding_vertical": 0,
+        "logo_padding_horizontal_mobile": 0,
+        "logo_padding_vertical_mobile": 0,
         "heading": "<p><strong>PIZZA JAM</strong></p>",
         "heading_size": 200,
         "heading_size_mobile": 150,
-        "subheading": "<p>Think You've Got The<br>Best Plain Pie in NJ?</p>",
+        "subheading": "<p>Think You've Got The<br/>Best Plain Pie in NJ?</p>",
         "subheading_size": 110,
         "subheading_size_mobile": 100,
         "button_label": "Claim Your Spot",
-        "button_link": "",
+        "button_link": "shopify://pages/contact",
         "button_style": "primary",
         "button_full_width": false,
+        "mobile_center_content": true,
         "text_position": "left",
         "full-width-enabled": true,
         "slide_height": "fixed_height",
         "desktop_fixed_height": 400,
         "mobile_fixed_height": 400,
-        "heading_color": "#8B0000",
-        "subheading_color": "#2c2c2c",
-        "badge_background_color": "#FFC107",
+        "heading_color": "#ff0000",
+        "subheading_color": "#ffffff",
+        "badge_background_color": "#ffc107",
         "badge_text_color": "#000000",
         "badge_border_radius": 20,
         "color-overlay": "#000000",
@@ -35,7 +60,351 @@
         "margin-top": 0,
         "margin-bottom": 0
       }
+    },
+    "breakdown_banner_YD3nB9": {
+      "type": "breakdown-banner",
+      "blocks": {
+        "point_XedAFe": {
+          "type": "point",
+          "settings": {
+            "point_text": "$500 Cash Prize",
+            "icon_type": "material",
+            "material_icon": "attach_money",
+            "custom_icon": "💰"
+          }
+        },
+        "point_GtRBW9": {
+          "type": "point",
+          "settings": {
+            "point_text": "Entry to International Pizza Challenge",
+            "icon_type": "material",
+            "material_icon": "emoji_events",
+            "custom_icon": "💰"
+          }
+        },
+        "point_WXkUdF": {
+          "type": "point",
+          "settings": {
+            "point_text": "Show Pass to Pizza Expo in Las Vegas",
+            "icon_type": "material",
+            "material_icon": "confirmation_number",
+            "custom_icon": "💰"
+          }
+        },
+        "point_TyWTBy": {
+          "type": "point",
+          "settings": {
+            "point_text": "$250 Equipment Credit for People's Choice",
+            "icon_type": "material",
+            "material_icon": "stars",
+            "custom_icon": "💰"
+          }
+        }
+      },
+      "block_order": [
+        "point_XedAFe",
+        "point_GtRBW9",
+        "point_WXkUdF",
+        "point_TyWTBy"
+      ],
+      "name": "Breakdown Banner",
+      "settings": {
+        "heading": "WHAT'S AT STAKE?",
+        "heading_size": 100,
+        "heading_size_mobile": 100,
+        "background_position": "center center",
+        "side_image": "shopify://shop_images/ChatGPT_Image_Aug_8_2025_10_36_12_AM.png",
+        "image_border_radius": 12,
+        "background_color": "#ffffff",
+        "heading_color": "#000000",
+        "point_text_color": "#000000",
+        "icon_background_color": "#ffc107",
+        "icon_color": "#000000",
+        "color-overlay": "rgba(0,0,0,0)",
+        "color-overlay-opacity": 0,
+        "enable_mobile_carousel": true,
+        "carousel_speed": 3000,
+        "full-width-enabled": true,
+        "content_padding_horizontal": 60,
+        "content_padding_vertical": 60,
+        "margin-top": 0,
+        "margin-bottom": 20
+      }
+    },
+    "competition_info_xYyJGd": {
+      "type": "competition-info",
+      "blocks": {
+        "info_point_DD4hKB": {
+          "type": "info_point",
+          "settings": {
+            "point_text": "<p>Plain Cheese Pies Only</p>",
+            "icon_type": "material",
+            "material_icon": "cancel",
+            "custom_icon": "ℹ️"
+          }
+        },
+        "info_point_3AQKgH": {
+          "type": "info_point",
+          "settings": {
+            "point_text": "<p>Industry & Invite Only</p>",
+            "icon_type": "material",
+            "material_icon": "group",
+            "custom_icon": "ℹ️"
+          }
+        },
+        "info_point_GzzTCd": {
+          "type": "info_point",
+          "settings": {
+            "point_text": "<p>All Competitors Receive a Browe Gear Bag</p>",
+            "icon_type": "material",
+            "material_icon": "workspace_premium",
+            "custom_icon": "ℹ️"
+          }
+        }
+      },
+      "block_order": [
+        "info_point_DD4hKB",
+        "info_point_3AQKgH",
+        "info_point_GzzTCd"
+      ],
+      "name": "Competition Info",
+      "settings": {
+        "heading": "<p><strong>ONLY 20 PIZZERIAS CAN COMPETE</strong></p>",
+        "heading_size": 100,
+        "heading_size_mobile": 100,
+        "point_text_size": 100,
+        "point_text_size_mobile": 100,
+        "background_color": "#c41e3a",
+        "text_color": "#ffffff",
+        "content_padding_horizontal": 40,
+        "content_padding_vertical": 24,
+        "content_padding_horizontal_desktop": 60,
+        "content_padding_vertical_desktop": 32,
+        "enable_mobile_carousel": true,
+        "carousel_speed": 3000,
+        "margin-top": 0,
+        "margin-bottom": 0
+      }
+    },
+    "sub_event_showcase_nNDV43": {
+      "type": "sub-event-showcase",
+      "blocks": {
+        "sub_event_dCY9zM": {
+          "type": "sub_event",
+          "settings": {
+            "text": "<p>Broaster Chicken<br>Tasting</p>",
+            "link": ""
+          }
+        },
+        "sub_event_WHeGxm": {
+          "type": "sub_event",
+          "settings": {
+            "text": "<p>Judge's Choice &<br>People's Choice Awards</p>",
+            "link": ""
+          }
+        },
+        "sub_event_VATQTY": {
+          "type": "sub_event",
+          "settings": {
+            "text": "<p>Toms River, NJ</p>",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "sub_event_dCY9zM",
+        "sub_event_WHeGxm",
+        "sub_event_VATQTY"
+      ],
+      "name": "Sub-Event Showcase",
+      "settings": {
+        "card_height": 200,
+        "card_height_mobile": 160,
+        "border_radius": 8,
+        "content_padding_horizontal": 20,
+        "content_padding_vertical": 40,
+        "text_color": "#ffffff",
+        "base_text_size": 18,
+        "base_text_size_mobile": 16,
+        "text_size": 100,
+        "text_size_mobile": 100,
+        "text_weight": "600",
+        "text_transform": "none",
+        "letter_spacing": 0,
+        "overlay_opacity": 50,
+        "overlay_opacity_hover": 70,
+        "enable_mobile_carousel": true,
+        "carousel_speed": 3000,
+        "margin-top": 0,
+        "margin-bottom": 0
+      }
+    },
+    "event_location_info_ENC48C": {
+      "type": "event-location-info",
+      "name": "Event Location Info",
+      "settings": {
+        "google_maps_embed": "",
+        "location_name": "Pizza Jam Location",
+        "event_times": "Sept. 10 | 11 AM",
+        "address": "",
+        "button_text": "Get Directions",
+        "directions_url": "",
+        "open_in_new_tab": true,
+        "max_width": 800,
+        "map_width_percentage": 65,
+        "card_height": 240,
+        "card_height_mobile": 300,
+        "border_radius": 12,
+        "shadow_intensity": 2,
+        "background_color": "#f8f9fa",
+        "info_background_color": "#ffffff",
+        "heading_color": "#212529",
+        "text_color": "#495057",
+        "address_color": "#6c757d",
+        "button_background_color": "#ffc107",
+        "button_background_color_hover": "#e0a800",
+        "button_text_color": "#212529",
+        "button_border_radius": 24,
+        "button_padding_horizontal": 20,
+        "button_padding_vertical": 10,
+        "button_padding_horizontal_mobile": 16,
+        "button_padding_vertical_mobile": 8,
+        "base_heading_size": 20,
+        "base_heading_size_mobile": 18,
+        "heading_size": 100,
+        "heading_size_mobile": 100,
+        "heading_weight": "700",
+        "base_text_size": 14,
+        "base_text_size_mobile": 13,
+        "text_size": 100,
+        "text_size_mobile": 100,
+        "text_weight": "500",
+        "address_weight": "400",
+        "button_text_size": 14,
+        "button_text_size_mobile": 13,
+        "button_weight": "600",
+        "section_padding_horizontal": 20,
+        "section_padding_vertical": 40,
+        "section_padding_horizontal_mobile": 16,
+        "section_padding_vertical_mobile": 32,
+        "info_padding_horizontal": 24,
+        "info_padding_vertical": 24,
+        "info_padding_horizontal_mobile": 20,
+        "info_padding_vertical_mobile": 20,
+        "content_padding": 0,
+        "margin-top": 0,
+        "margin-bottom": 0
+      }
+    },
+    "logo_showcase_dRyPUT": {
+      "type": "logo-showcase",
+      "blocks": {
+        "logo_UeMCLi": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/serieS_black_logo.png",
+            "logo_alt": "Partner logo",
+            "logo_link": "",
+            "open_in_new_tab": true
+          }
+        },
+        "logo_9AT8HQ": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/CuttlerProduceLogo-1200x262_1.png",
+            "logo_alt": "Partner logo",
+            "logo_link": "",
+            "open_in_new_tab": true
+          }
+        },
+        "logo_i3fwrF": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/image.png",
+            "logo_alt": "Partner logo",
+            "logo_link": "",
+            "open_in_new_tab": true
+          }
+        },
+        "logo_QEVJcE": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/image_1.png",
+            "logo_alt": "Partner logo",
+            "logo_link": "",
+            "open_in_new_tab": true
+          }
+        },
+        "logo_P7FhMH": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/moretti_forni_logo_background.jpg",
+            "logo_alt": "Partner logo",
+            "logo_link": "",
+            "open_in_new_tab": true
+          }
+        }
+      },
+      "block_order": [
+        "logo_UeMCLi",
+        "logo_9AT8HQ",
+        "logo_i3fwrF",
+        "logo_QEVJcE",
+        "logo_P7FhMH"
+      ],
+      "name": "Logo Showcase",
+      "settings": {
+        "heading": "",
+        "desktop_alignment": "center",
+        "heading_color": "#000000",
+        "heading_font_size": 36,
+        "heading_font_size_mobile": 28,
+        "heading_text_scale": 100,
+        "heading_text_scale_mobile": 100,
+        "heading_font_weight": "600",
+        "heading_line_height": 1.2,
+        "heading_line_height_mobile": 1.1,
+        "heading_letter_spacing": 0,
+        "heading_letter_spacing_mobile": 0,
+        "heading_text_transform": "none",
+        "heading_margin_bottom": 40,
+        "heading_margin_bottom_mobile": 30,
+        "max_width": 1200,
+        "background_color": "#ffffff",
+        "show_decorative_lines": true,
+        "line_color": "#e5e5e5",
+        "line_thickness": 1,
+        "line_spacing": 40,
+        "line_spacing_mobile": 30,
+        "logo_height": 60,
+        "logo_height_mobile": 45,
+        "logo_max_width": 200,
+        "logo_max_width_mobile": 150,
+        "logo_spacing": 80,
+        "logo_spacing_mobile": 60,
+        "logo_opacity": 70,
+        "scroll_speed": 30,
+        "pause_on_hover": true,
+        "grayscale_enabled": true,
+        "grayscale_amount": 100,
+        "hover_scale": 105,
+        "fade_edges": true,
+        "fade_width": 50,
+        "section_padding_horizontal": 20,
+        "section_padding_vertical": 60,
+        "section_padding_horizontal_mobile": 16,
+        "section_padding_vertical_mobile": 40,
+        "margin-top": 0,
+        "margin-bottom": 0
+      }
     }
   },
-  "order": ["informational_banner"]
+  "order": [
+    "informational_banner",
+    "breakdown_banner_YD3nB9",
+    "competition_info_xYyJGd",
+    "sub_event_showcase_nNDV43",
+    "event_location_info_ENC48C",
+    "logo_showcase_dRyPUT"
+  ]
 }
