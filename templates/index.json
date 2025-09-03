@@ -156,6 +156,7 @@
             "button_label": "Shop Now",
             "button_disable_on_mobile": false,
             "button_link": "",
+            "desktop_image": "shopify://shop_images/pizza_equipment_banner.png",
             "desktop_text_vertical_position": "center",
             "desktop_text_horizontal_position": "center",
             "mobile_text_vertical_position": "center",
