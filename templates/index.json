@@ -61,7 +61,7 @@
         "heading": "",
         "full-width-enabled": true,
         "show_navigation_arrows": false,
-        "auto_rotate_interval": 5,
+        "auto_rotate_interval": 0,
         "slideshow_size": "medium",
         "slide_height": "fixed_height",
         "desktop_fixed_height": 320,
