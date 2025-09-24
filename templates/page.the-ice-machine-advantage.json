@@ -42,13 +42,6 @@
             "disable_on_mobile": false
           }
         },
-        "text_gQAr6w": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Add additional text content here with rich formatting support.</p>",
-            "disable_on_mobile": false
-          }
-        },
         "buttons_J8iGKB": {
           "type": "buttons",
           "settings": {
@@ -73,7 +66,6 @@
       "block_order": [
         "heading_nXM3zK",
         "subheading_6Np6Vi",
-        "text_gQAr6w",
         "buttons_J8iGKB",
         "image_content_jVUNeN"
       ],
