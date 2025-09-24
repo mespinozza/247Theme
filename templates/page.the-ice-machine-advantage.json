@@ -199,7 +199,7 @@
         "show_video": false,
         "show_secondary_image": false,
         "show_vendor": true,
-        "show_product_rating": true,
+        "show_product_rating": false,
         "enable_quick_add_button": false,
         "color-body-text": "rgba(0,0,0,0)",
         "background_color": "rgba(0,0,0,0)",
