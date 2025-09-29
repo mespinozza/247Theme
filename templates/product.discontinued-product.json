@@ -1,0 +1,240 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "main-breadcrumbs",
+      "settings": {
+        "full-width-enabled": true,
+        "text_color": "rgba(0,0,0,0)",
+        "background_color": "rgba(0,0,0,0)",
+        "margin-top": 8,
+        "margin-bottom": 8
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "brand": "{{ product.vendor }}",
+            "size_text": 210,
+            "size_text_mobile": 200
+          }
+        },
+        "90ea3cd3-aa22-44f6-b6de-365eb7f85b9c": {
+          "type": "separator",
+          "settings": {
+            "show-separator-line": false,
+            "color-background": "#ffffff",
+            "margin-top": 8,
+            "margin-bottom": 8
+          }
+        },
+        "rating": {
+          "type": "rating",
+          "disabled": true,
+          "settings": {}
+        },
+        "locally_available_VPtXVc": {
+          "type": "locally-available",
+          "settings": {
+            "location-popup": true,
+            "location-popup_title": "24/7 Restaurant Equipment - Toms River, NJ",
+            "location-popup_map": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d391305.6186068305!2d-74.209615!3d39.984426!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c19d845bb31351%3A0x5f8ecabbc646e623!2s1231%20NJ-166%20%233%2C%20Toms%20River%2C%20NJ%2008753!5e0!3m2!1sen!2sus!4v1744189332692!5m2!1sen!2sus\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
+            "location-popup_button1_label": "Book a Tour",
+            "location-popup_button1_bg_color": "#222321",
+            "location-popup_button1_bg-hover_color": "#000000",
+            "location-popup_button1_link": "",
+            "location-popup_button2_label": "Get Directions",
+            "location-popup_button2_bg_color": "#222321",
+            "location-popup_button2_bg-hover_color": "#000000",
+            "location-popup_button2_link": "",
+            "location-popup_promotion": true,
+            "location-popup_img": "shopify://shop_images/350f4388c37950a4a07c0870f244b45a.jpg",
+            "location-popup_img_link": "#",
+            "location-popup_phone": 7325080943
+          }
+        },
+        "separator_46mxVr": {
+          "type": "separator",
+          "settings": {
+            "show-separator-line": false,
+            "color-background": "#ffffff",
+            "margin-top": 8,
+            "margin-bottom": 8
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {
+            "show_tax_included": true,
+            "size_text": 130,
+            "size_text_mobile": 120,
+            "show_silverchef_financing": true,
+            "min_finance_amount": 500
+          }
+        },
+        "separator_RrKQ4A": {
+          "type": "separator",
+          "settings": {
+            "show-separator-line": false,
+            "color-background": "#ffffff",
+            "margin-top": 8,
+            "margin-bottom": 8
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "color_swatch_names": "",
+            "variant_picture_swatch_names": "",
+            "dropdown_swatch_names": "",
+            "margin-top": 8,
+            "margin-bottom": 8
+          }
+        },
+        "c1ba8695-94d2-40ad-ac06-93ec3b8cf38e": {
+          "type": "separator",
+          "settings": {
+            "show-separator-line": false,
+            "color-background": "#ffffff",
+            "margin-top": 8,
+            "margin-bottom": 16
+          }
+        },
+        "inventory_JWQnXt": {
+          "type": "inventory",
+          "settings": {
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true,
+            "show_qty_selector": true
+          }
+        },
+        "bulletpoints_iWtDxJ": {
+          "type": "bulletpoints",
+          "disabled": true,
+          "settings": {
+            "metafield": "",
+            "default_text": "Bullet points text 1\nBullet points text 2\nBullet points text 3\nBullet points text 4"
+          }
+        },
+        "separator_HcYGiH": {
+          "type": "separator",
+          "settings": {
+            "show-separator-line": true,
+            "color-background": "#dedede",
+            "margin-top": 0,
+            "margin-bottom": 0
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+            "is_open": false,
+            "icon": "none"
+          }
+        },
+        "a05fcf3e-8e1a-4f1f-8d97-2055eb17138d": {
+          "type": "separator",
+          "settings": {
+            "show-separator-line": true,
+            "color-background": "#dedede",
+            "margin-top": 0,
+            "margin-bottom": 0
+          }
+        },
+        "collapsible_tab_Q7UFgL": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Shipping and Delivery",
+            "content": "<p>Experience the convenience of swift order fulfillment with our top-notch Shipping services.</p>",
+            "page": "",
+            "icon": "none"
+          }
+        },
+        "separator_gDwzxi": {
+          "type": "separator",
+          "settings": {
+            "show-separator-line": true,
+            "color-background": "#dedede",
+            "margin-top": 0,
+            "margin-bottom": 0
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "90ea3cd3-aa22-44f6-b6de-365eb7f85b9c",
+        "rating",
+        "locally_available_VPtXVc",
+        "separator_46mxVr",
+        "price",
+        "separator_RrKQ4A",
+        "variant_picker",
+        "c1ba8695-94d2-40ad-ac06-93ec3b8cf38e",
+        "inventory_JWQnXt",
+        "buy_buttons",
+        "bulletpoints_iWtDxJ",
+        "separator_HcYGiH",
+        "description",
+        "a05fcf3e-8e1a-4f1f-8d97-2055eb17138d",
+        "collapsible_tab_Q7UFgL",
+        "separator_gDwzxi"
+      ],
+      "settings": {
+        "full-width-enabled": false,
+        "desktop-media-size": "normal",
+        "desktop-layout": "horizontal-scroll",
+        "desktop-image-ratio": "original",
+        "enable_video_looping": true,
+        "enable-image-zoom": true,
+        "mobile-image": "normal",
+        "margin-top": 12,
+        "margin-bottom": 0
+      }
+    },
+    "product_recommendations_AYz6xL": {
+      "type": "product-recommendations",
+      "name": "t:sections.product-recommendations.presets.name",
+      "settings": {
+        "heading": "Customers also grab:",
+        "disable_on_mobile": false,
+        "products_to_show": 12,
+        "number_of_column_desktop": 5,
+        "make_products_full_width": true,
+        "show_secondary_image_on_hover": true,
+        "number_of_column_mobile": 2.1,
+        "text_alignment": "left",
+        "image_ratio": "square",
+        "show_vendor": true,
+        "show_product_rating": false,
+        "color-body-text": "transparent",
+        "background_color": "transparent",
+        "margin-top": 20,
+        "margin-bottom": 20
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "product_recommendations_AYz6xL"
+  ]
+}
