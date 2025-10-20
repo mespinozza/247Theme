@@ -578,6 +578,12 @@
         "errors": {
           "only_remote_merchandise_lines": "El proceso de pago solo incluye mercancía remota. Se requiere una redirección a la tienda remota para completar el proceso de pago."
         }
+      },
+      "payment_errors": {
+        "captcha_required": "Ingrese la información de pago y resuelva el captcha para completar su compra."
+      },
+      "payment_gateway": {
+        "bank_account_label": "Cuenta bancaria"
       }
     }
   },
