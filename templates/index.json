@@ -42,7 +42,7 @@
             "color-body-text": "#ffffff",
             "color-overlay": "rgba(0,0,0,0)",
             "color-overlay-opacity": 0,
-            "desktop_image": "shopify://shop_images/You_header_image.png",
+            "desktop_image": "shopify://shop_images/mf_banner.png",
             "desktop_text_vertical_position": "center",
             "desktop_text_horizontal_position": "left",
             "content_alignment": "left",
