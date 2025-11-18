@@ -231,7 +231,7 @@
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "title": "Kitchen Solutions Done Right– Atosa 🔧",
+        "title": "Kitchen Solutions Done Right – Atosa 🔧",
         "disable_on_mobile": false,
         "collection": "atosa",
         "products_to_show": 8,
