@@ -42,13 +42,6 @@
             "disable_on_mobile": false
           }
         },
-        "text_gQAr6w": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Add additional text content here with rich formatting support.</p>",
-            "disable_on_mobile": false
-          }
-        },
         "buttons_J8iGKB": {
           "type": "buttons",
           "settings": {
@@ -65,20 +58,20 @@
         "image_content_jVUNeN": {
           "type": "image_content",
           "settings": {
-            "right_image_width": 80,
-            "right_image": "shopify://shop_images/ice_machine.png"
+            "right_image": "shopify://shop_images/ice_machine.png",
+            "right_image_width": 80
           }
         }
       },
       "block_order": [
         "heading_nXM3zK",
         "subheading_6Np6Vi",
-        "text_gQAr6w",
         "buttons_J8iGKB",
         "image_content_jVUNeN"
       ],
       "name": "3-Layer Banner",
       "settings": {
+        "background_image": "shopify://shop_images/ChatGPT_Image_Aug_18_2025_01_37_32_PM.png",
         "overlay_opacity": 50,
         "section_height": "small",
         "custom_height": 550,
@@ -87,8 +80,7 @@
         "mobile_content_vertical_position": "center",
         "mobile_content_horizontal_position": "center",
         "heading_color": "rgba(0,0,0,0)",
-        "text_color": "rgba(0,0,0,0)",
-        "background_image": "shopify://shop_images/ChatGPT_Image_Aug_18_2025_01_37_32_PM.png"
+        "text_color": "rgba(0,0,0,0)"
       }
     },
     "icon_benefit_showcase_PVqnMg": {
@@ -186,7 +178,7 @@
       "settings": {
         "title": "Featured collection",
         "disable_on_mobile": false,
-        "collection": "",
+        "collection": "ice-machines-1",
         "products_to_show": 4,
         "show_view_all": true,
         "button_select": "primary",
@@ -199,10 +191,10 @@
         "show_video": false,
         "show_secondary_image": false,
         "show_vendor": true,
-        "show_product_rating": true,
+        "show_product_rating": false,
         "enable_quick_add_button": false,
-        "color-body-text": "transparent",
-        "background_color": "transparent",
+        "color-body-text": "rgba(0,0,0,0)",
+        "background_color": "rgba(0,0,0,0)",
         "margin-top": 20,
         "margin-bottom": 20
       }

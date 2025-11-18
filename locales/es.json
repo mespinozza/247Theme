@@ -555,6 +555,42 @@
     "checkout": {
       "merchant_instruction_errors": {
         "invalid_entrypoint_for_remote_negotiation": "La instrucción de negociación remota no se puede proporcionar a una sesión de negociación que no sea remota."
+      },
+      "billing": {
+        "billing_address_rollup_accessibility_label": "Factura a opciones"
+      },
+      "contact": {
+        "email_rollup_accessibility_label": "Opciones de correo electrónico",
+        "phone_rollup_accessibility_label": "Opciones de teléfono"
+      },
+      "customer_account": {
+        "rollup_accessibility_label": "Opciones de cuenta"
+      },
+      "payment": {
+        "markets_pro_disclaimer_express_privacy_policy": "política de privacidad",
+        "markets_pro_disclaimer_express_terms_and_conditions": "términos",
+        "markets_pro_disclaimer_label_express_checkout": "Al comprar, usted acepta los términos y condiciones %{markets_pro_terms} y %{privacy_policy} de Global-e, nuestro proveedor de servicios internacional",
+        "usdc_cashback_additional_info": "Obtén un reembolso del 1% en USDC directamente en tu billetera.",
+        "usdc_cashback_terms": "Se aplican términos",
+        "usdc_cashback_title": "1% de reembolso"
+      },
+      "remote": {
+        "errors": {
+          "only_remote_merchandise_lines": "El proceso de pago solo incluye mercancía remota. Se requiere una redirección a la tienda remota para completar el proceso de pago."
+        }
+      },
+      "payment_errors": {
+        "captcha_required": "Ingrese la información de pago y resuelva el captcha para completar su compra."
+      },
+      "payment_gateway": {
+        "bank_account_label": "Cuenta bancaria"
+      }
+    }
+  },
+  "customer_accounts": {
+    "account_information": {
+      "verify_new_email_modal": {
+        "email_resend_button_error_banner_message": "No se pudo enviar el código de verificación"
       }
     }
   }
