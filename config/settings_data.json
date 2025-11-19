@@ -72,6 +72,7 @@
     "type_headings_font_size_desk": 26,
     "type_navigation_font_size_desk": 17,
     "type_button_font_size_desk": 16,
+    "cart_type": "page",
     "currency_code_enabled": false,
     "iconset": "option_3",
     "enable-bag-icon": false,
