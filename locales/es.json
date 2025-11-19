@@ -592,6 +592,13 @@
       "verify_new_email_modal": {
         "email_resend_button_error_banner_message": "No se pudo enviar el código de verificación"
       }
+    },
+    "payment_methods": {
+      "pay_pal": {
+        "errors": {
+          "generic": "Hubo un problema con PayPal. Inténtalo de nuevo o usa otro método de pago."
+        }
+      }
     }
   }
 }
