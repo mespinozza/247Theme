@@ -122,13 +122,6 @@
           </div>
         {%- endfor -%}
       </div>
-      <!-- Add Arrows -->
-      <div class="swiper-button-next wt-slider__nav-btn wt-slider__nav-next wt-slider__nav-next--featured">
-        {% render 'icons', id: 'arrow-right' %}
-      </div>
-      <div class="swiper-button-prev wt-slider__nav-btn wt-slider__nav-prev wt-slider__nav-prev--featured">
-        {% render 'icons', id: 'arrow-left' %}
-      </div>
 
       <!-- If we need scrollbar -->
       <div
@@ -157,10 +150,7 @@
               "spaceBetween": {{ section.settings.spacing_desktop | floor }}
             }
           },
-          "navigation": {
-            "nextEl": ".wt-slider__nav-next--featured",
-            "prevEl": ".wt-slider__nav-prev--featured"
-          },
+          "navigation": false,
           "scrollbar": {
             "el": ".wt-slider__scrollbar--featured",
             "draggable": true
