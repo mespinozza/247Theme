@@ -69,15 +69,52 @@
     }
     
     [data-section-id="{{ section.id }}-mobile"] .swiper-slide {
-      min-height: 45vw;
-      height: auto;
+      height: 250px !important;
+      min-height: 250px !important;
+      max-height: 250px !important;
       border-radius: 8px;
       overflow: hidden;
+      display: flex !important;
+      align-items: stretch !important;
+      box-sizing: border-box !important;
     }
     
     [data-section-id="{{ section.id }}-mobile"] .wt-mosaic__item {
-      height: 100%;
-      margin: 0;
+      height: 250px !important;
+      min-height: 250px !important;
+      max-height: 250px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      box-sizing: border-box !important;
+    }
+    
+    [data-section-id="{{ section.id }}-mobile"] .wt-mosaic__item .hero {
+      height: 250px !important;
+      min-height: 250px !important;
+      max-height: 250px !important;
+      display: flex !important;
+      position: relative !important;
+    }
+    
+    [data-section-id="{{ section.id }}-mobile"] .wt-mosaic__item .hero__pic,
+    [data-section-id="{{ section.id }}-mobile"] .wt-mosaic__item .hero__img {
+      height: 250px !important;
+      min-height: 250px !important;
+      max-height: 250px !important;
+      width: 100% !important;
+      object-fit: cover !important;
+      display: block !important;
+    }
+    
+    [data-section-id="{{ section.id }}-mobile"] .wt-mosaic__item .hero__overlay {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      height: 250px !important;
     }
   }
 
