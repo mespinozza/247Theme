@@ -168,6 +168,7 @@
         },
         "collapsible_tab_Q7UFgL": {
           "type": "collapsible_tab",
+          "disabled": true,
           "settings": {
             "heading": "Shipping and Delivery",
             "content": "<p>Experience the convenience of swift order fulfillment with our top-notch Shipping services.</p>",
