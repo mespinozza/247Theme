@@ -329,43 +329,43 @@
         "dots_DDQD9a": {
           "type": "dots",
           "settings": {
-            "coordinate_width": 38,
-            "coordinate_height": 66,
-            "coordinate_width_mobile": 66,
-            "coordinate_height_mobile": 40,
-            "featured_product": ""
-          }
-        },
-        "dots_qxqkBf": {
-          "type": "dots",
-          "settings": {
-            "coordinate_width": 68,
-            "coordinate_height": 31,
-            "coordinate_width_mobile": 80,
-            "coordinate_height_mobile": 61,
+            "coordinate_width": 20,
+            "coordinate_height": 39,
+            "coordinate_width_mobile": 48,
+            "coordinate_height_mobile": 66,
             "featured_product": ""
           }
         },
         "dots_QqcfKD": {
           "type": "dots",
           "settings": {
-            "coordinate_width": 24,
-            "coordinate_height": 32,
+            "coordinate_width": 50,
+            "coordinate_height": 72,
             "coordinate_width_mobile": 13,
             "coordinate_height_mobile": 44,
+            "featured_product": ""
+          }
+        },
+        "dots_qxqkBf": {
+          "type": "dots",
+          "settings": {
+            "coordinate_width": 72,
+            "coordinate_height": 31,
+            "coordinate_width_mobile": 69,
+            "coordinate_height_mobile": 43,
             "featured_product": ""
           }
         }
       },
       "block_order": [
         "dots_DDQD9a",
-        "dots_qxqkBf",
-        "dots_QqcfKD"
+        "dots_QqcfKD",
+        "dots_qxqkBf"
       ],
       "name": "t:sections.shoppable-image.settings.presets.name",
       "settings": {
         "heading": "Shop Kitchen Set Ups 🤌",
-        "desktop_image": "shopify://shop_images/ChatGPT_Image_Apr_30_2025_02_51_58_PM.png",
+        "desktop_image": "shopify://shop_images/ChatGPT_Image_Jan_20_2026_09_42_43_AM.png",
         "full-width-enabled": false,
         "color-body-text": "rgba(0,0,0,0)",
         "color-overlay": "rgba(0,0,0,0)",
