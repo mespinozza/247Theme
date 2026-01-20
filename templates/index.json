@@ -333,7 +333,9 @@
             "coordinate_height": 39,
             "coordinate_width_mobile": 48,
             "coordinate_height_mobile": 66,
-            "featured_product": ""
+            "link_type": "collection",
+            "featured_product": "",
+            "featured_collection": "hobart-planetary-mixers"
           }
         },
         "dots_QqcfKD": {
@@ -343,7 +345,9 @@
             "coordinate_height": 72,
             "coordinate_width_mobile": 13,
             "coordinate_height_mobile": 44,
-            "featured_product": ""
+            "link_type": "collection",
+            "featured_product": "",
+            "featured_collection": "vulcan-commercial-gas-ranges"
           }
         },
         "dots_qxqkBf": {
@@ -353,7 +357,9 @@
             "coordinate_height": 31,
             "coordinate_width_mobile": 69,
             "coordinate_height_mobile": 43,
-            "featured_product": ""
+            "link_type": "collection",
+            "featured_product": "",
+            "featured_collection": "true-2-door-reach-in-refrigerators"
           }
         }
       },
