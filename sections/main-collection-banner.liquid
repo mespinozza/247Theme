@@ -63,6 +63,27 @@
 
 {% endif %}
 
+{%- comment -%} Use collection image, or fallback to placeholder image settings {%- endcomment -%}
+{%- if collection.image != blank -%}
+  {%- assign banner_image_desktop = collection.image -%}
+  {%- assign banner_image_mobile = collection.image -%}
+{%- else -%}
+  {%- comment -%} No collection image - use fallback images {%- endcomment -%}
+  {%- if section.settings.fallback_image_desktop != blank -%}
+    {%- assign banner_image_desktop = section.settings.fallback_image_desktop -%}
+  {%- else -%}
+    {%- assign banner_image_desktop = blank -%}
+  {%- endif -%}
+  
+  {%- if section.settings.fallback_image_mobile != blank -%}
+    {%- assign banner_image_mobile = section.settings.fallback_image_mobile -%}
+  {%- elsif section.settings.fallback_image_desktop != blank -%}
+    {%- assign banner_image_mobile = section.settings.fallback_image_desktop -%}
+  {%- else -%}
+    {%- assign banner_image_mobile = blank -%}
+  {%- endif -%}
+{%- endif -%}
+
 <div data-section-id="{{ section.id }}" class="{{ customwrapperclass }}">
   {% render 'headline', title: section.settings.heading %}
   <div class="{% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}">
@@ -72,8 +93,8 @@
       desktop_text_horizontal_position: section.settings.desktop_text_horizontal_position,
       desktop_text_vertical_position: section.settings.desktop_text_vertical_position,
       mobile_text_horizontal_position: section.settings.mobile_text_horizontal_position,
-      desktop_image: collection.image,
-      mobile_image: collection.image,
+      desktop_image: banner_image_desktop,
+      mobile_image: banner_image_mobile,
       placeholder: 'collection-apparel-1',
       heading: collection.title,
       text: collection.description,
@@ -98,6 +119,25 @@
       "id": "show_collection_description",
       "default": false,
       "label": "t:sections.main-collection-banner.settings.show_collection_description.label"
+    },
+    {
+      "type": "header",
+      "content": "Fallback image"
+    },
+    {
+      "type": "paragraph",
+      "content": "Displayed when a collection has no image set"
+    },
+    {
+      "type": "image_picker",
+      "id": "fallback_image_desktop",
+      "label": "Desktop fallback image"
+    },
+    {
+      "type": "image_picker",
+      "id": "fallback_image_mobile",
+      "label": "Mobile fallback image",
+      "info": "Optional - uses desktop image if not set"
     },
     {
       "type": "header",
