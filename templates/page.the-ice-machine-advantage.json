@@ -209,7 +209,7 @@
             "description": "<p>The current situation or traditional approach with its limitations and challenges.</p>",
             "features": "<ul><li>Manual processes</li><li>Time consuming</li><li>Higher costs</li><li>Limited scalability</li></ul>",
             "block-background-color": "",
-            "block-text-color": ""
+            "block-text-color": "#ff0000"
           }
         },
         "comparison_b_qMUp7b": {
@@ -219,7 +219,7 @@
             "description": "<p>The improved solution with enhanced capabilities and better outcomes.</p>",
             "features": "<ul><li>Automated workflows</li><li>Fast and efficient</li><li>Cost effective</li><li>Unlimited scalability</li></ul>",
             "block-background-color": "",
-            "block-text-color": ""
+            "block-text-color": "#0031ff"
           }
         }
       },
@@ -236,7 +236,7 @@
         "block-border-radius": 12,
         "section-background-color": "",
         "color-heading": "",
-        "color-body-text": "",
+        "color-body-text": "#000000",
         "accent-color": "",
         "margin-top": 20,
         "margin-bottom": 20
