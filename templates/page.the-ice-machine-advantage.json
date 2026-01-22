@@ -92,8 +92,8 @@
             "google_icon": "local_shipping",
             "custom-icon-color": "",
             "custom-icon-hover-color": "",
-            "title": "FREE Shipping",
-            "description": "<p>Free shipping on all orders over $50. Fast and reliable delivery to your door.</p>"
+            "title": "Insured Shipping",
+            "description": "<p>Fast and reliable delivery to your door.</p>"
           }
         },
         "benefit_r4TnBJ": {
@@ -139,11 +139,11 @@
         "benefit_jTpHbz": {
           "type": "benefit",
           "settings": {
-            "google_icon": "eco",
+            "google_icon": "handshake",
             "custom-icon-color": "",
             "custom-icon-hover-color": "",
-            "title": "Eco-Friendly",
-            "description": "<p>Sustainable packaging and environmentally conscious shipping practices.</p>"
+            "title": "Trusted Partners",
+            "description": "<p>Work with trusted partners committed to outstanding service and high quality products.</p>"
           }
         }
       },
