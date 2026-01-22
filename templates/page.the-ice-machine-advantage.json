@@ -179,7 +179,7 @@
         "title": "Customer Favorites",
         "disable_on_mobile": false,
         "collection": "ice-machines-1",
-        "products_to_show": 4,
+        "products_to_show": 8,
         "show_view_all": true,
         "button_select": "primary",
         "number_of_column_desktop": 4,
