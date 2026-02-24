@@ -146,7 +146,9 @@
           {% if block.settings.heading_nowrap %}
             white-space: nowrap !important;
           {% endif %}
+          margin-top: {{ block.settings.heading_margin_top }}px !important;
           margin-bottom: {{ block.settings.heading_margin_bottom }}px !important;
+          padding-top: 0 !important;
         }
 
         @media (max-width: 767px) {
@@ -641,6 +643,16 @@
           "default": 0,
           "label": "Heading letter spacing",
           "info": "Value is divided by 10. e.g. 10 = 1px spacing"
+        },
+        {
+          "type": "range",
+          "id": "heading_margin_top",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 8,
+          "label": "Space above heading"
         },
         {
           "type": "range",
