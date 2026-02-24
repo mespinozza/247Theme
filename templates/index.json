@@ -254,6 +254,7 @@
       "blocks": {
         "image_t4nhc3": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "heading": "Pizza Equipment",
             "heading_disable_on_mobile": false,
