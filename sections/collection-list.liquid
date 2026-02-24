@@ -27,6 +27,10 @@
       --color-custom-text: {{ section.settings.color-body-text }};
     {% endif %}
   }
+
+  [data-section-id="{{ section.id }}"] .card__title {
+  display: none !important;
+}
 </style>
 
 <div
