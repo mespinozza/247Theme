@@ -136,3 +136,23 @@
   margin-top: 24px !important;
 }
 
+[data-section-id="template--16523672977463__collection_list_JKC7NM"] .card__picture {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  aspect-ratio: unset !important;
+  height: 80px !important;
+}
+
+[data-section-id="template--16523672977463__collection_list_JKC7NM"] .card__img {
+  object-fit: contain !important;
+  object-position: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  position: relative !important;
+}
+
+[data-section-id="template--16523672977463__collection_list_JKC7NM"] .card__title,
+[data-section-id="template--16523672977463__collection_list_JKC7NM"] a[tabindex="-1"] {
+  display: none !important;
+}
