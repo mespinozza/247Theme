@@ -117,7 +117,8 @@
   }
 }
 
-h2 {
+.hero_overlay__content h2,
+.hero__overlay__content h2 {
   font-size: 72px !important;
   line-height: 0.95 !important;
   white-space: nowrap !important;
