@@ -155,42 +155,42 @@
         "featured_collection_jrM6rU": {
           "type": "featured_collection",
           "settings": {
-            "collection": "adcraft",
+            "collection": "royal-range",
             "text_collection": ""
           }
         },
         "featured_collection_8RAHM4": {
           "type": "featured_collection",
           "settings": {
-            "collection": "advance-tabco",
+            "collection": "migali",
             "text_collection": ""
           }
         },
         "featured_collection_qAaFC7": {
           "type": "featured_collection",
           "settings": {
-            "collection": "apw-wyott",
+            "collection": "browne-foodservice",
             "text_collection": ""
           }
         },
         "featured_collection_66CGXN": {
           "type": "featured_collection",
           "settings": {
-            "collection": "blodgett",
+            "collection": "giorik",
             "text_collection": ""
           }
         },
         "featured_collection_Fphgcm": {
           "type": "featured_collection",
           "settings": {
-            "collection": "blue-air",
+            "collection": "hoshizaki",
             "text_collection": ""
           }
         },
         "featured_collection_kB3gDF": {
           "type": "featured_collection",
           "settings": {
-            "collection": "browne-foodservice",
+            "collection": "accutemp",
             "text_collection": ""
           }
         }
@@ -207,7 +207,7 @@
         "heading": "Our Brands",
         "enable_swipe": true,
         "disable_images": false,
-        "number_of_column_desktop": 6,
+        "number_of_column_desktop": 4,
         "number_of_column_mobile": 3.5,
         "color-body-text": "rgba(0,0,0,0)",
         "background_color": "rgba(0,0,0,0)",
