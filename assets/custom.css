@@ -135,3 +135,36 @@
 .hero__button--gap {
   margin-top: 24px !important;
 }
+
+/* Brand logos - hide title */
+.collection-list-section .card__title,
+.collection-list-section a[data-omit-tabindex] h3,
+.collection-list-section a[tabindex="-1"] {
+  display: none !important;
+}
+
+/* Center logo images */
+.collection-list-section .card__picture-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.collection-list-section .card__picture {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  aspect-ratio: unset !important;
+  height: auto !important;
+}
+
+.collection-list-section .card__img {
+  object-fit: contain !important;
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Hide color swatch counter */
+.collection-list-section .card__color-swatcher--container {
+  display: none !important;
+}
