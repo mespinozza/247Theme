@@ -329,8 +329,8 @@
         "dots_DDQD9a": {
           "type": "dots",
           "settings": {
-            "coordinate_width": 20,
-            "coordinate_height": 39,
+            "coordinate_width": 27,
+            "coordinate_height": 45,
             "coordinate_width_mobile": 48,
             "coordinate_height_mobile": 66,
             "link_type": "collection",
