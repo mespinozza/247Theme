@@ -370,9 +370,9 @@
       ],
       "name": "t:sections.shoppable-image.settings.presets.name",
       "settings": {
-        "heading": "Shop Kitchen Set Ups 🤌",
-        "desktop_image": "shopify://shop_images/ChatGPT_Image_Jan_20_2026_09_42_43_AM.png",
-        "full-width-enabled": false,
+        "heading": "Shop For Equipment",
+        "desktop_image": "shopify://shop_images/DSC02029.jpg",
+        "full-width-enabled": true,
         "color-body-text": "rgba(0,0,0,0)",
         "color-overlay": "rgba(0,0,0,0)",
         "color-overlay-opacity": 100,
