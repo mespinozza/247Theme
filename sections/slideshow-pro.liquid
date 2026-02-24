@@ -122,35 +122,18 @@
             --second-button-text-hover-color: {{ block.settings.second_button_text_hover_color | default: '#000000' }};
         }
 
-        {% comment %} Content Alignment CSS {% endcomment %}
+        {% comment %} Content Position CSS {% endcomment %}
         @media (min-width: 768px) {
           [data-block-id="{{ block.id }}"] .hero__overlay {
-            {% if block.settings.content_alignment == 'left' %}
-              justify-content: flex-start;
-              padding-left: 8%;
-              padding-right: 25%;
-            {% elsif block.settings.content_alignment == 'right' %}
-              justify-content: flex-end;
-              padding-left: 25%;
-              padding-right: 8%;
-            {% else %}
-              justify-content: center;
-              padding-left: 15%;
-              padding-right: 15%;
-            {% endif %}
+            justify-content: flex-start !important;
+            align-items: {% if block.settings.desktop_text_vertical_position == 'top' %}flex-start{% elsif block.settings.desktop_text_vertical_position == 'bottom' %}flex-end{% else %}center{% endif %} !important;
+            padding-left: {{ block.settings.content_offset_left }}px !important;
+            padding-right: 5% !important;
           }
 
           [data-block-id="{{ block.id }}"] .hero__overlay__content {
-            {% if block.settings.content_alignment == 'left' %}
-              text-align: left;
-              max-width: {{ block.settings.content_max_width }}px;
-            {% elsif block.settings.content_alignment == 'right' %}
-              text-align: right;
-              max-width: {{ block.settings.content_max_width }}px;
-            {% else %}
-              text-align: center;
-              max-width: {{ block.settings.content_max_width }}px;
-            {% endif %}
+            text-align: {{ block.settings.content_text_align }} !important;
+            max-width: {{ block.settings.content_max_width }}px !important;
           }
         }
 
@@ -179,6 +162,10 @@
           letter-spacing: {{ block.settings.subheading_letter_spacing | divided_by: 10.0 }}px !important;
           opacity: {{ block.settings.subheading_opacity | divided_by: 100.0 }};
           margin-bottom: {{ block.settings.subheading_margin_bottom }}px !important;
+          margin-top: 0 !important;
+          padding-bottom: 0 !important;
+          padding-top: 0 !important;
+          line-height: 1.2 !important;
         }
 
         [data-block-id="{{ block.id }}"] .hero__text {
@@ -990,25 +977,35 @@
           "label": "t:sections.slideshow.settings.slide.desktop_text_horizontal_position.default.label"
         },
         {
+          "type": "range",
+          "id": "content_offset_left",
+          "min": 0,
+          "max": 800,
+          "step": 10,
+          "unit": "px",
+          "default": 80,
+          "label": "Content horizontal position (desktop)",
+          "info": "Distance from the left edge. 0 = flush left, increase to move right."
+        },
+        {
           "type": "select",
-          "id": "content_alignment",
-          "label": "Content alignment (Desktop only)",
+          "id": "content_text_align",
+          "label": "Text alignment",
           "options": [
             {
               "value": "left",
-              "label": "Left aligned"
+              "label": "Left"
             },
             {
               "value": "center",
-              "label": "Center aligned"
+              "label": "Center"
             },
             {
               "value": "right",
-              "label": "Right aligned"
+              "label": "Right"
             }
           ],
-          "default": "center",
-          "info": "Position content horizontally with proper spacing. Mobile stays centered."
+          "default": "left"
         },
         {
           "type": "header",
