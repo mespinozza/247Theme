@@ -43,7 +43,7 @@
             "color-overlay": "rgba(0,0,0,0)",
             "color-overlay-opacity": 0,
             "desktop_image": "shopify://shop_images/DSC02059.jpg",
-            "desktop_text_vertical_position": "center",
+            "desktop_text_vertical_position": "bottom",
             "desktop_text_horizontal_position": "left",
             "content_alignment": "left",
             "mobile_text_vertical_position": "center",
