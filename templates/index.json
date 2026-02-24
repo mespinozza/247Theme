@@ -51,10 +51,51 @@
             "out-background-color": "rgba(0,0,0,0)",
             "out-text-color": "rgba(0,0,0,0)"
           }
+        },
+        "slide_FVyAAG": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "subheading": "Tell your story",
+            "subheading_disable_on_mobile": false,
+            "heading": "<p>Image slide</p>",
+            "heading_disable_on_mobile": false,
+            "size_heading": 100,
+            "size_heading_mobile": 100,
+            "text": "<p>Tell your brand's story through images</p>",
+            "text_disable_on_mobile": false,
+            "button_select": "primary",
+            "button_label": "Button label",
+            "button_disable_on_mobile": false,
+            "button_link": "",
+            "button_bg_color": "#000000",
+            "button_text_color": "#ffffff",
+            "button_bg_hover_color": "#333333",
+            "button_text_hover_color": "#ffffff",
+            "second_button_select": "primary",
+            "second_button_label": "",
+            "button_disable_on_mobile_second": false,
+            "second_button_link": "",
+            "second_button_bg_color": "#ffffff",
+            "second_button_text_color": "#000000",
+            "second_button_bg_hover_color": "#f0f0f0",
+            "second_button_text_hover_color": "#000000",
+            "color-body-text": "rgba(0,0,0,0)",
+            "color-overlay": "rgba(0,0,0,0)",
+            "color-overlay-opacity": 0,
+            "desktop_text_vertical_position": "center",
+            "desktop_text_horizontal_position": "center",
+            "content_alignment": "center",
+            "mobile_text_vertical_position": "center",
+            "mobile_text_horizontal_position": "center",
+            "out-background-color": "rgba(0,0,0,0)",
+            "out-text-color": "rgba(0,0,0,0)"
+          }
         }
       },
       "block_order": [
-        "slide_taCEjT"
+        "slide_taCEjT",
+        "slide_FVyAAG"
       ],
       "name": "Slideshow Pro",
       "settings": {
@@ -138,6 +179,74 @@
         "background_color": "rgba(0,0,0,0)",
         "margin-top": 0,
         "margin-bottom": 0
+      }
+    },
+    "three_layer_banner_6Wzmx9": {
+      "type": "three-layer-banner",
+      "blocks": {
+        "heading_aDXmiB": {
+          "type": "heading",
+          "settings": {
+            "heading": "BUILT FOR PIZZERIAS. BACKED BY EXPERTS.",
+            "disable_on_mobile": false,
+            "size_heading": 100,
+            "size_heading_mobile": 100
+          }
+        },
+        "subheading_LgnNtR": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "24/7 Restaurant Equipment is the trusted partner for high-performance pizza kitchens with over 30 years of expertise.",
+            "disable_on_mobile": false
+          }
+        },
+        "text_UPB6PD": {
+          "type": "text",
+          "settings": {
+            "text": "<h5>Ovens. Mixers. Sheeters. Rounders. Refrigeration. Automation.<br/>Everything your pizza line needs — from startup to scale.</h5>",
+            "disable_on_mobile": false
+          }
+        },
+        "buttons_xnfPLg": {
+          "type": "buttons",
+          "settings": {
+            "button_style": "primary",
+            "button_label": "Shop All Pizzeria Equipment",
+            "button_link": "shopify://collections/pizza-equipment",
+            "button_link_in_new_window": false,
+            "second_button_style": "secondary",
+            "second_button_label": "",
+            "second_button_link": "",
+            "disable_on_mobile": false
+          }
+        },
+        "image_content_yKPVJC": {
+          "type": "image_content",
+          "settings": {
+            "right_image": "shopify://shop_images/247_Article_Thumnail_2.png",
+            "right_image_width": 80
+          }
+        }
+      },
+      "block_order": [
+        "heading_aDXmiB",
+        "subheading_LgnNtR",
+        "text_UPB6PD",
+        "buttons_xnfPLg",
+        "image_content_yKPVJC"
+      ],
+      "name": "3-Layer Banner",
+      "settings": {
+        "background_image": "shopify://shop_images/ChatGPT_Image_Jan_20_2026_09_42_43_AM.png",
+        "overlay_opacity": 50,
+        "section_height": "medium",
+        "custom_height": 550,
+        "desktop_content_vertical_position": "center",
+        "desktop_content_horizontal_position": "flex-start",
+        "mobile_content_vertical_position": "center",
+        "mobile_content_horizontal_position": "center",
+        "heading_color": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)"
       }
     },
     "collage_qTKhbz": {
@@ -536,6 +645,7 @@
   "order": [
     "slideshow_pro_piyLU3",
     "collection_list_JKC7NM",
+    "three_layer_banner_6Wzmx9",
     "collage_qTKhbz",
     "featured_collection_akyMiD",
     "page_showcase_7PBqXB",
