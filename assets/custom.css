@@ -117,19 +117,21 @@
   }
 }
 
-.hero_overlay__content h2,
-.hero__overlay__content h2 {
+.hero__overlay__content h2,
+.hero_overlay__content h2 {
   font-size: 60px !important;
   line-height: 0.95 !important;
   white-space: nowrap !important;
+  margin-bottom: 16px !important;
 }
 
 .hero__subheading {
   font-size: 13px !important;
   letter-spacing: 3px !important;
   opacity: 0.8;
+  margin-bottom: 12px !important;
 }
 
-.hero__text {
-  display: none !important;
+.hero__button--gap {
+  margin-top: 24px !important;
 }
