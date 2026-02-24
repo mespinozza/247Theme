@@ -116,18 +116,3 @@
     margin-top: 16px;
   }
 }
-
-.hero__title {
-  font-size: 72px !important;
-  line-height: 1 !important;
-}
-
-.hero__subheading {
-  font-size: 13px !important;
-  letter-spacing: 3px !important;
-  opacity: 0.8;
-}
-
-.hero__text {
-  display: none !important;
-}
