@@ -116,3 +116,8 @@
     margin-top: 16px;
   }
 }
+
+.slideshow__slide .heading {
+  font-size: 72px !important;
+  line-height: 0.95 !important;
+}
