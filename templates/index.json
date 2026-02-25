@@ -248,7 +248,7 @@
             "button_label": "Shop All Pizzeria Equipment",
             "button_link": "shopify://collections/pizza-equipment",
             "button_link_in_new_window": false,
-            "second_button_style": "secondary",
+            "second_button_style": "primary",
             "second_button_label": "",
             "second_button_link": "",
             "disable_on_mobile": false
