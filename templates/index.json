@@ -237,6 +237,7 @@
         "category_hMLAzk": {
           "type": "category",
           "settings": {
+            "image": "shopify://shop_images/Untitled_design_1.jpg",
             "heading": "Fryers",
             "button_label": "Shop Now",
             "link": "",
