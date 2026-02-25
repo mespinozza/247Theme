@@ -226,7 +226,7 @@
             "image": "shopify://shop_images/Untitled_design.jpg",
             "heading": "Refrigeration",
             "button_label": "Shop Now",
-            "link": "",
+            "link": "shopify://collections/refrigeration",
             "override_position": false,
             "block_text_vertical": "bottom",
             "block_text_horizontal": "right",
