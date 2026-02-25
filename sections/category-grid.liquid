@@ -105,6 +105,7 @@
     color: {{ section.settings.text_color }};
     font-size: {{ section.settings.heading_size }}px;
     font-weight: {{ section.settings.heading_weight }};
+    font-family: var(--font-heading-family, inherit);
     line-height: 1;
     margin: 0 0 {{ section.settings.heading_button_gap }}px 0;
     text-transform: {{ section.settings.heading_transform }};
@@ -155,7 +156,7 @@
 <div data-section-id="{{ section.id }}">
   <div class="cat-grid__wrapper">
 
-    {% if section.settings.section_heading != blank %}
+    {% if section.settings.show_section_heading and section.settings.section_heading != blank %}
       <h2 class="cat-grid__section-heading">{{ section.settings.section_heading }}</h2>
     {% endif %}
 
@@ -208,6 +209,12 @@
     {
       "type": "header",
       "content": "Section Heading"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_heading",
+      "label": "Show section heading",
+      "default": false
     },
     {
       "type": "text",
