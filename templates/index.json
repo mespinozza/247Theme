@@ -221,23 +221,16 @@
         "heading_aDXmiB": {
           "type": "heading",
           "settings": {
-            "heading": "BUILT FOR PIZZERIAS. BACKED BY EXPERTS.",
+            "heading": "BUILT FOR PIZZERIAS. \nBACKED BY EXPERTS.",
             "disable_on_mobile": false,
-            "size_heading": 100,
+            "size_heading": 180,
             "size_heading_mobile": 100
-          }
-        },
-        "subheading_LgnNtR": {
-          "type": "subheading",
-          "settings": {
-            "subheading": "24/7 Restaurant Equipment is the trusted partner for high-performance pizza kitchens with over 30 years of expertise.",
-            "disable_on_mobile": false
           }
         },
         "text_UPB6PD": {
           "type": "text",
           "settings": {
-            "text": "<h5>Ovens. Mixers. Sheeters. Rounders. Refrigeration. Automation.<br/>Everything your pizza line needs — from startup to scale.</h5>",
+            "text": "<p>24/7 Restaurant Equipment is the trusted partner for high-performance pizza kitchens with over 30 years of expertise.<br/>Ovens. Mixers. Sheeters. Rounders. Refrigeration. Automation.<br/>Everything your pizza line needs — from startup to scale.</p>",
             "disable_on_mobile": false
           }
         },
@@ -264,7 +257,6 @@
       },
       "block_order": [
         "heading_aDXmiB",
-        "subheading_LgnNtR",
         "text_UPB6PD",
         "buttons_xnfPLg",
         "image_content_yKPVJC"
