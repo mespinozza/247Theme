@@ -215,6 +215,73 @@
         "margin-bottom": 0
       }
     },
+    "category_grid_e7qRkr": {
+      "type": "category-grid",
+      "blocks": {
+        "category_rrQD9N": {
+          "type": "category",
+          "settings": {
+            "heading": "Refrigeration",
+            "button_label": "Shop Now",
+            "link": "",
+            "override_position": false,
+            "block_text_vertical": "bottom",
+            "block_text_horizontal": "right",
+            "override_heading_size": false,
+            "block_heading_size": 40
+          }
+        },
+        "category_VHPLTF": {
+          "type": "category",
+          "settings": {
+            "heading": "Fryers",
+            "button_label": "Shop Now",
+            "link": "",
+            "override_position": false,
+            "block_text_vertical": "bottom",
+            "block_text_horizontal": "right",
+            "override_heading_size": false,
+            "block_heading_size": 40
+          }
+        }
+      },
+      "block_order": [
+        "category_rrQD9N",
+        "category_VHPLTF"
+      ],
+      "name": "Category Grid",
+      "settings": {
+        "show_section_heading": false,
+        "section_heading": "Shop by Category",
+        "section_heading_size": 32,
+        "section_heading_align": "left",
+        "section_heading_gap": 20,
+        "columns_desktop": 2,
+        "columns_mobile": 1,
+        "gap": 12,
+        "gap_mobile": 8,
+        "border_radius": 12,
+        "image_ratio": 75,
+        "text_vertical": "bottom",
+        "text_horizontal": "right",
+        "card_padding": 24,
+        "overlay_direction": "top",
+        "overlay_opacity": 50,
+        "heading_size": 40,
+        "heading_weight": "700",
+        "heading_transform": "uppercase",
+        "heading_letter_spacing": 0,
+        "heading_button_gap": 8,
+        "text_color": "#ffffff",
+        "button_size": 13,
+        "button_color": "#ffffff",
+        "button_underline": 1,
+        "section_padding": 0,
+        "background_color": "rgba(0,0,0,0)",
+        "margin_top": 20,
+        "margin_bottom": 20
+      }
+    },
     "three_layer_banner_6Wzmx9": {
       "type": "three-layer-banner",
       "blocks": {
@@ -580,10 +647,10 @@
         "margin-bottom": 40
       }
     },
-    "category_grid_e7qRkr": {
+    "category_grid_8eMfdC": {
       "type": "category-grid",
       "blocks": {
-        "category_rrQD9N": {
+        "category_9LbXw6": {
           "type": "category",
           "settings": {
             "heading": "Refrigeration",
@@ -596,7 +663,7 @@
             "block_heading_size": 40
           }
         },
-        "category_VHPLTF": {
+        "category_hMLAzk": {
           "type": "category",
           "settings": {
             "heading": "Fryers",
@@ -611,11 +678,12 @@
         }
       },
       "block_order": [
-        "category_rrQD9N",
-        "category_VHPLTF"
+        "category_9LbXw6",
+        "category_hMLAzk"
       ],
       "name": "Category Grid",
       "settings": {
+        "show_section_heading": false,
         "section_heading": "Shop by Category",
         "section_heading_size": 32,
         "section_heading_align": "left",
@@ -652,6 +720,7 @@
     "collection_list_JKC7NM",
     "category_grid_e7qRkr",
     "three_layer_banner_6Wzmx9",
+    "category_grid_8eMfdC",
     "featured_collection_akyMiD",
     "page_showcase_7PBqXB",
     "featured_collection_AygJbi",
