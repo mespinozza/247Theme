@@ -68,68 +68,10 @@
             "out-background-color": "rgba(0,0,0,0)",
             "out-text-color": "rgba(0,0,0,0)"
           }
-        },
-        "slide_FVyAAG": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "subheading": "Tell your story",
-            "subheading_disable_on_mobile": false,
-            "heading": "<p>Image slide</p>",
-            "heading_disable_on_mobile": false,
-            "size_heading": 100,
-            "size_heading_mobile": 100,
-            "text": "<p>Tell your brand's story through images</p>",
-            "text_disable_on_mobile": false,
-            "heading_font_size": 48,
-            "heading_font_size_mobile": 32,
-            "heading_line_height": 100,
-            "heading_letter_spacing": 0,
-            "heading_margin_top": 8,
-            "heading_margin_bottom": 16,
-            "heading_nowrap": false,
-            "subheading_font_size": 13,
-            "subheading_letter_spacing": 10,
-            "subheading_opacity": 80,
-            "subheading_margin_bottom": 8,
-            "hide_body_text": false,
-            "body_font_size": 16,
-            "body_margin_bottom": 12,
-            "button_margin_top": 16,
-            "content_max_width": 600,
-            "button_select": "primary",
-            "button_label": "Button label",
-            "button_disable_on_mobile": false,
-            "button_link": "",
-            "button_bg_color": "#000000",
-            "button_text_color": "#ffffff",
-            "button_bg_hover_color": "#333333",
-            "button_text_hover_color": "#ffffff",
-            "second_button_select": "primary",
-            "second_button_label": "",
-            "button_disable_on_mobile_second": false,
-            "second_button_link": "",
-            "second_button_bg_color": "#ffffff",
-            "second_button_text_color": "#000000",
-            "second_button_bg_hover_color": "#f0f0f0",
-            "second_button_text_hover_color": "#000000",
-            "color-body-text": "rgba(0,0,0,0)",
-            "color-overlay": "rgba(0,0,0,0)",
-            "color-overlay-opacity": 0,
-            "desktop_text_vertical_position": "center",
-            "desktop_text_horizontal_position": "center",
-            "content_offset_left": 80,
-            "content_text_align": "left",
-            "mobile_text_vertical_position": "center",
-            "mobile_text_horizontal_position": "center",
-            "out-background-color": "rgba(0,0,0,0)",
-            "out-text-color": "rgba(0,0,0,0)"
-          }
         }
       },
       "block_order": [
-        "slide_taCEjT",
-        "slide_FVyAAG"
+        "slide_taCEjT"
       ],
       "name": "Slideshow Pro",
       "settings": {
@@ -146,7 +88,7 @@
         "background_color": "rgba(0,0,0,0)",
         "out_hero_mobile": false,
         "margin-top": 20,
-        "margin-bottom": 20
+        "margin-bottom": 0
       }
     },
     "collection_list_JKC7NM": {
@@ -212,74 +154,7 @@
         "color-body-text": "rgba(0,0,0,0)",
         "background_color": "rgba(0,0,0,0)",
         "margin-top": 0,
-        "margin-bottom": 0
-      }
-    },
-    "category_grid_e7qRkr": {
-      "type": "category-grid",
-      "blocks": {
-        "category_rrQD9N": {
-          "type": "category",
-          "settings": {
-            "heading": "Refrigeration",
-            "button_label": "Shop Now",
-            "link": "",
-            "override_position": false,
-            "block_text_vertical": "bottom",
-            "block_text_horizontal": "right",
-            "override_heading_size": false,
-            "block_heading_size": 40
-          }
-        },
-        "category_VHPLTF": {
-          "type": "category",
-          "settings": {
-            "heading": "Fryers",
-            "button_label": "Shop Now",
-            "link": "",
-            "override_position": false,
-            "block_text_vertical": "bottom",
-            "block_text_horizontal": "right",
-            "override_heading_size": false,
-            "block_heading_size": 40
-          }
-        }
-      },
-      "block_order": [
-        "category_rrQD9N",
-        "category_VHPLTF"
-      ],
-      "name": "Category Grid",
-      "settings": {
-        "show_section_heading": false,
-        "section_heading": "Shop by Category",
-        "section_heading_size": 32,
-        "section_heading_align": "left",
-        "section_heading_gap": 20,
-        "columns_desktop": 2,
-        "columns_mobile": 1,
-        "gap": 12,
-        "gap_mobile": 8,
-        "border_radius": 12,
-        "image_ratio": 75,
-        "text_vertical": "bottom",
-        "text_horizontal": "right",
-        "card_padding": 24,
-        "overlay_direction": "top",
-        "overlay_opacity": 50,
-        "heading_size": 40,
-        "heading_weight": "700",
-        "heading_transform": "uppercase",
-        "heading_letter_spacing": 0,
-        "heading_button_gap": 8,
-        "text_color": "#ffffff",
-        "button_size": 13,
-        "button_color": "#ffffff",
-        "button_underline": 1,
-        "section_padding": 0,
-        "background_color": "rgba(0,0,0,0)",
-        "margin_top": 20,
-        "margin_bottom": 20
+        "margin-bottom": 40
       }
     },
     "three_layer_banner_6Wzmx9": {
@@ -340,6 +215,74 @@
         "mobile_content_horizontal_position": "center",
         "heading_color": "rgba(0,0,0,0)",
         "text_color": "rgba(0,0,0,0)"
+      }
+    },
+    "category_grid_8eMfdC": {
+      "type": "category-grid",
+      "blocks": {
+        "category_9LbXw6": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design.jpg",
+            "heading": "Refrigeration",
+            "button_label": "Shop Now",
+            "link": "",
+            "override_position": false,
+            "block_text_vertical": "bottom",
+            "block_text_horizontal": "right",
+            "override_heading_size": false,
+            "block_heading_size": 40
+          }
+        },
+        "category_hMLAzk": {
+          "type": "category",
+          "settings": {
+            "heading": "Fryers",
+            "button_label": "Shop Now",
+            "link": "",
+            "override_position": false,
+            "block_text_vertical": "bottom",
+            "block_text_horizontal": "right",
+            "override_heading_size": false,
+            "block_heading_size": 40
+          }
+        }
+      },
+      "block_order": [
+        "category_9LbXw6",
+        "category_hMLAzk"
+      ],
+      "name": "Category Grid",
+      "settings": {
+        "show_section_heading": false,
+        "section_heading": "Shop by Category",
+        "section_heading_size": 32,
+        "section_heading_align": "left",
+        "section_heading_gap": 20,
+        "columns_desktop": 2,
+        "columns_mobile": 1,
+        "gap": 12,
+        "gap_mobile": 8,
+        "border_radius": 12,
+        "image_ratio": 75,
+        "text_vertical": "bottom",
+        "text_horizontal": "right",
+        "card_padding": 24,
+        "overlay_direction": "top",
+        "overlay_opacity": 50,
+        "heading_size": 40,
+        "heading_weight": "700",
+        "heading_transform": "uppercase",
+        "heading_letter_spacing": 0,
+        "heading_button_gap": 8,
+        "text_color": "#ffffff",
+        "button_size": 13,
+        "button_color": "#ffffff",
+        "button_underline": 1,
+        "section_padding": 0,
+        "background_color": "rgba(0,0,0,0)",
+        "margin_top": 20,
+        "margin_bottom": 20
       }
     },
     "featured_collection_akyMiD": {
@@ -646,79 +589,11 @@
         "margin-top": 40,
         "margin-bottom": 40
       }
-    },
-    "category_grid_8eMfdC": {
-      "type": "category-grid",
-      "blocks": {
-        "category_9LbXw6": {
-          "type": "category",
-          "settings": {
-            "heading": "Refrigeration",
-            "button_label": "Shop Now",
-            "link": "",
-            "override_position": false,
-            "block_text_vertical": "bottom",
-            "block_text_horizontal": "right",
-            "override_heading_size": false,
-            "block_heading_size": 40
-          }
-        },
-        "category_hMLAzk": {
-          "type": "category",
-          "settings": {
-            "heading": "Fryers",
-            "button_label": "Shop Now",
-            "link": "",
-            "override_position": false,
-            "block_text_vertical": "bottom",
-            "block_text_horizontal": "right",
-            "override_heading_size": false,
-            "block_heading_size": 40
-          }
-        }
-      },
-      "block_order": [
-        "category_9LbXw6",
-        "category_hMLAzk"
-      ],
-      "name": "Category Grid",
-      "settings": {
-        "show_section_heading": false,
-        "section_heading": "Shop by Category",
-        "section_heading_size": 32,
-        "section_heading_align": "left",
-        "section_heading_gap": 20,
-        "columns_desktop": 2,
-        "columns_mobile": 1,
-        "gap": 12,
-        "gap_mobile": 8,
-        "border_radius": 12,
-        "image_ratio": 75,
-        "text_vertical": "bottom",
-        "text_horizontal": "right",
-        "card_padding": 24,
-        "overlay_direction": "top",
-        "overlay_opacity": 50,
-        "heading_size": 40,
-        "heading_weight": "700",
-        "heading_transform": "uppercase",
-        "heading_letter_spacing": 0,
-        "heading_button_gap": 8,
-        "text_color": "#ffffff",
-        "button_size": 13,
-        "button_color": "#ffffff",
-        "button_underline": 1,
-        "section_padding": 0,
-        "background_color": "transparent",
-        "margin_top": 20,
-        "margin_bottom": 20
-      }
     }
   },
   "order": [
     "slideshow_pro_piyLU3",
     "collection_list_JKC7NM",
-    "category_grid_e7qRkr",
     "three_layer_banner_6Wzmx9",
     "category_grid_8eMfdC",
     "featured_collection_akyMiD",
