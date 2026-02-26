@@ -1,135 +1,14 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "hero_banner_pizza": {
-      "type": "image-with-text",
-      "blocks": {
-        "subheading_hero": {
-          "type": "subheading",
-          "settings": {
-            "subheading": "247 Restaurant Equipment",
-            "subheading_disable_on_mobile": false
-          }
-        },
-        "heading_hero": {
-          "type": "heading",
-          "settings": {
-            "heading": "Your Pizza Kitchen Partners",
-            "disable_on_mobile": false,
-            "size_heading": 140,
-            "size_heading_mobile": 100
-          }
-        },
-        "text_hero": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Expert guidance from concept to kitchen. We help you build the perfect pizza operation.</p>",
-            "text_style": "body",
-            "disable_on_mobile": false
-          }
-        },
-        "button_hero": {
-          "type": "button",
-          "settings": {
-            "button_select": "primary",
-            "button_label": "Meet Our Expert",
-            "button_link": "#meet-the-expert",
-            "disable_on_mobile": false
-          }
-        }
-      },
-      "block_order": [
-        "subheading_hero",
-        "heading_hero",
-        "text_hero",
-        "button_hero"
-      ],
-      "settings": {
-        "title": "",
-        "layout": "image_first",
-        "desktop-percentage-image-width": 50,
-        "full-width-enabled": false,
-        "slide_height": "fixed_height",
-        "desktop_fixed_height": 500,
-        "mobile_fixed_height": 460,
-        "section-color-body-text": "rgba(0,0,0,0)",
-        "section-color-overlay": "rgba(0,0,0,0)",
-        "section-color-overlay-opacity": 100,
-        "color-body-text": "rgba(0,0,0,0)",
-        "color-overlay": "rgba(0,0,0,0)",
-        "color-overlay-opacity": 100,
-        "desktop_text_vertical_position": "center",
-        "desktop_text_horizontal_position": "left",
-        "mobile_text_horizontal_position": "center",
-        "margin-top": 20,
-        "margin-bottom": 20
-      }
-    },
-    "benefits_row": {
-      "type": "icon-benefit-showcase",
-      "blocks": {
-        "benefit_consultation": {
-          "type": "benefit",
-          "settings": {
-            "google_icon": "support_agent",
-            "custom-icon-color": "",
-            "custom-icon-hover-color": "",
-            "title": "Expert Consultation",
-            "description": "<p>Free consultations with our in-house pizzaiola</p>"
-          }
-        },
-        "benefit_experience": {
-          "type": "benefit",
-          "settings": {
-            "google_icon": "workspace_premium",
-            "custom-icon-color": "",
-            "custom-icon-hover-color": "",
-            "title": "20+ Years Experience",
-            "description": "<p>Decades of pizza industry knowledge</p>"
-          }
-        },
-        "benefit_training": {
-          "type": "benefit",
-          "settings": {
-            "google_icon": "school",
-            "custom-icon-color": "",
-            "custom-icon-hover-color": "",
-            "title": "Hands-On Training",
-            "description": "<p>Equipment training and technique workshops</p>"
-          }
-        },
-        "benefit_design": {
-          "type": "benefit",
-          "settings": {
-            "google_icon": "architecture",
-            "custom-icon-color": "",
-            "custom-icon-hover-color": "",
-            "title": "Kitchen Design",
-            "description": "<p>Complete pizza kitchen layout assistance</p>"
-          }
-        }
-      },
-      "block_order": [
-        "benefit_consultation",
-        "benefit_experience",
-        "benefit_training",
-        "benefit_design"
-      ],
-      "settings": {
-        "heading": "Why Work With Us",
-        "subheading": "",
-        "full-width-enabled": false,
-        "text_alignment": "center",
-        "grid-gap": 32,
-        "icon-size": 48,
-        "section-background-color": "#f8f8f8",
-        "color-heading": "",
-        "color-body-text": "",
-        "icon-color": "#c8102e",
-        "icon-hover-color": "",
-        "margin-top": 0,
-        "margin-bottom": 0
-      }
-    },
     "expert_profile_section": {
       "type": "expert-profile",
       "blocks": {
@@ -163,6 +42,12 @@
       "settings": {
         "section_title": "Meet Our Pizza Expert",
         "section_subtitle": "Your partner in building the perfect pizza kitchen",
+        "title_size": 40,
+        "title_size_mobile": 28,
+        "header_spacing": 48,
+        "video_url": "",
+        "video_autoplay": false,
+        "video_controls": true,
         "name": "Expert Name",
         "title": "Master Pizzaiola",
         "bio": "<p>With over two decades of experience in the pizza industry, our in-house expert brings unmatched knowledge to help you select the right equipment for your operation.</p><p>From traditional wood-fired ovens to high-volume conveyor systems, she understands what it takes to build a successful pizza kitchen.</p>",
@@ -175,9 +60,7 @@
         "text_color": "#333333",
         "accent_color": "#c8102e",
         "padding_top": 64,
-        "padding_bottom": 64,
-        "video_autoplay": false,
-        "video_controls": true
+        "padding_bottom": 64
       }
     },
     "services_showcase": {
@@ -190,7 +73,8 @@
             "heading": "Kitchen Consultation",
             "description": "<p>From layout planning to equipment selection, we guide you through building the perfect pizza station for your space and volume needs.</p>",
             "button_text": "Learn More",
-            "button_url": "/pages/contact"
+            "button_url": "/pages/contact",
+            "link_url": ""
           }
         },
         "service_training": {
@@ -200,7 +84,8 @@
             "heading": "Equipment Training",
             "description": "<p>Learn proper operation, maintenance, and get tips to maximize your pizza output. We'll have your team making perfect pies in no time.</p>",
             "button_text": "Learn More",
-            "button_url": "/pages/contact"
+            "button_url": "/pages/contact",
+            "link_url": ""
           }
         },
         "service_support": {
@@ -210,7 +95,8 @@
             "heading": "Ongoing Support",
             "description": "<p>Technical support, maintenance advice, and troubleshooting whenever you need it. We're here for the long haul.</p>",
             "button_text": "Learn More",
-            "button_url": "/pages/contact"
+            "button_url": "/pages/contact",
+            "link_url": ""
           }
         }
       },
@@ -222,6 +108,9 @@
       "settings": {
         "section_title": "Our Expertise",
         "section_description": "Comprehensive support for your pizza kitchen journey",
+        "title_size": 40,
+        "title_size_mobile": 28,
+        "header_spacing": 48,
         "background_color": "#f8f8f8",
         "heading_color": "#000000",
         "text_color": "#666666",
@@ -264,6 +153,9 @@
       "settings": {
         "section_title": "Kitchen Transformations",
         "section_subtitle": "See the results of our pizza kitchen designs",
+        "title_size": 40,
+        "title_size_mobile": 28,
+        "header_spacing": 48,
         "before_label": "Before",
         "after_label": "After",
         "background_color": "#ffffff",
@@ -280,7 +172,7 @@
       "settings": {
         "title": "Professional Pizza Equipment",
         "disable_on_mobile": false,
-        "collection": "",
+        "collection": "pizza-equipment",
         "products_to_show": 8,
         "show_view_all": true,
         "button_select": "primary",
@@ -297,8 +189,8 @@
         "enable_quick_add_button": true,
         "color-body-text": "rgba(0,0,0,0)",
         "background_color": "#f8f8f8",
-        "margin-top": 0,
-        "margin-bottom": 0
+        "margin-top": 20,
+        "margin-bottom": 32
       }
     },
     "final_cta": {
@@ -308,24 +200,25 @@
           "type": "heading",
           "settings": {
             "heading": "Ready to Build Your Pizza Kitchen?",
-            "heading_size": "h1"
+            "disable_on_mobile": false,
+            "size_heading": 100,
+            "size_heading_mobile": 100
           }
         },
         "text_cta": {
           "type": "text",
           "settings": {
-            "text": "<p>Schedule a free consultation with our pizzaiola and let's create your perfect pizza operation together.</p>"
+            "text": "<p>Schedule a free consultation with our pizzaiola and let's create your perfect pizza operation together.</p>",
+            "disable_on_mobile": false
           }
         },
         "button_cta": {
           "type": "button",
           "settings": {
+            "button_select": "primary",
             "button_label": "Contact Us Today",
             "button_link": "/pages/contact",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "disable_on_mobile": false
           }
         }
       },
@@ -335,12 +228,12 @@
         "button_cta"
       ],
       "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 60,
-        "padding_bottom": 60
+        "section_width": "regular",
+        "desktop_text_horizontal_position": "center",
+        "color-body-text": "rgba(0,0,0,0)",
+        "background_color": "rgba(0,0,0,0)",
+        "margin-top": 20,
+        "margin-bottom": 20
       }
     },
     "main": {
@@ -359,8 +252,6 @@
     }
   },
   "order": [
-    "hero_banner_pizza",
-    "benefits_row",
     "expert_profile_section",
     "services_showcase",
     "before_after_kitchens",
