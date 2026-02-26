@@ -15,18 +15,34 @@
         "slide_taCEjT": {
           "type": "slide",
           "settings": {
-            "subheading": "",
+            "subheading": "FROM IDEA TO REALITY AND THE SUPPORT AFTER",
             "subheading_disable_on_mobile": false,
-            "heading": "<h1>Taste the Difference</h1>",
+            "heading": "<h2>EXPERIENCE THE DIFFERENCE</h2>",
             "heading_disable_on_mobile": false,
             "size_heading": 100,
             "size_heading_mobile": 100,
-            "text": "<p>with Moretti Forni</p>",
+            "text": "<p>with 24/7 Restaurant Equipment</p>",
             "text_disable_on_mobile": false,
+            "heading_font_size": 50,
+            "heading_font_size_mobile": 32,
+            "heading_line_height": 100,
+            "heading_letter_spacing": 0,
+            "heading_margin_top": 0,
+            "heading_margin_bottom": 16,
+            "heading_nowrap": false,
+            "subheading_font_size": 17,
+            "subheading_letter_spacing": 5,
+            "subheading_opacity": 100,
+            "subheading_margin_bottom": 0,
+            "hide_body_text": true,
+            "body_font_size": 12,
+            "body_margin_bottom": 0,
+            "button_margin_top": 4,
+            "content_max_width": 600,
             "button_select": "primary",
             "button_label": "Shop Now",
             "button_disable_on_mobile": false,
-            "button_link": "shopify://collections/moretti-forni",
+            "button_link": "shopify://collections/all",
             "button_bg_color": "#000000",
             "button_text_color": "#ffffff",
             "button_bg_hover_color": "#ff0000",
@@ -42,10 +58,11 @@
             "color-body-text": "#ffffff",
             "color-overlay": "rgba(0,0,0,0)",
             "color-overlay-opacity": 0,
-            "desktop_image": "shopify://shop_images/mf_banner_b5952d6f-9c9e-45b1-b829-437f73e9ff79.png",
+            "desktop_image": "shopify://shop_images/DSC02059.jpg",
             "desktop_text_vertical_position": "center",
             "desktop_text_horizontal_position": "left",
-            "content_alignment": "left",
+            "content_offset_left": 50,
+            "content_text_align": "left",
             "mobile_text_vertical_position": "center",
             "mobile_text_horizontal_position": "center",
             "out-background-color": "rgba(0,0,0,0)",
@@ -71,160 +88,201 @@
         "background_color": "rgba(0,0,0,0)",
         "out_hero_mobile": false,
         "margin-top": 20,
-        "margin-bottom": 20
+        "margin-bottom": 0
       }
     },
-    "collection_list_JKC7NM": {
-      "type": "collection-list",
+    "brands_8ANAqG": {
+      "type": "brands",
       "blocks": {
-        "featured_collection_jrM6rU": {
-          "type": "featured_collection",
+        "image_98bFVM": {
+          "type": "image",
           "settings": {
-            "collection": "adcraft",
-            "text_collection": ""
+            "desktop_image": "shopify://shop_images/Jade-Logo-Black.png",
+            "link": "shopify://collections/jade-range"
           }
         },
-        "featured_collection_8RAHM4": {
-          "type": "featured_collection",
+        "image_cBcNzJ": {
+          "type": "image",
           "settings": {
-            "collection": "advance-tabco",
-            "text_collection": ""
+            "desktop_image": "shopify://shop_images/frymaster-1-logo-png-transparent.png",
+            "link": "shopify://collections/frymaster"
           }
         },
-        "featured_collection_qAaFC7": {
-          "type": "featured_collection",
+        "image_UNWMam": {
+          "type": "image",
           "settings": {
-            "collection": "apw-wyott",
-            "text_collection": ""
+            "desktop_image": "shopify://shop_images/1280px-Rational_AG_Logo_svg.png",
+            "link": "shopify://collections/rational"
           }
         },
-        "featured_collection_66CGXN": {
-          "type": "featured_collection",
+        "image_hDwGdc": {
+          "type": "image",
           "settings": {
-            "collection": "blodgett",
-            "text_collection": ""
+            "desktop_image": "shopify://shop_images/AccuTemp-logo.png",
+            "link": "shopify://collections/accutemp"
           }
         },
-        "featured_collection_Fphgcm": {
-          "type": "featured_collection",
+        "image_tUD7ry": {
+          "type": "image",
           "settings": {
-            "collection": "blue-air",
-            "text_collection": ""
+            "desktop_image": "shopify://shop_images/logo-mf.png",
+            "link": "shopify://collections/moretti-forni"
           }
         },
-        "featured_collection_kB3gDF": {
-          "type": "featured_collection",
+        "image_8FjYMX": {
+          "type": "image",
           "settings": {
-            "collection": "browne-foodservice",
-            "text_collection": ""
+            "desktop_image": "shopify://shop_images/MaxxIce_394x_6b9d9262-2e6a-4dd9-removebg-preview.png",
+            "link": "shopify://collections/maxx-ice"
           }
         }
       },
       "block_order": [
-        "featured_collection_jrM6rU",
-        "featured_collection_8RAHM4",
-        "featured_collection_qAaFC7",
-        "featured_collection_66CGXN",
-        "featured_collection_Fphgcm",
-        "featured_collection_kB3gDF"
+        "image_98bFVM",
+        "image_cBcNzJ",
+        "image_UNWMam",
+        "image_hDwGdc",
+        "image_tUD7ry",
+        "image_8FjYMX"
       ],
+      "name": "t:sections.brands.settings.presets.name",
       "settings": {
-        "heading": "Top Brands",
-        "enable_swipe": true,
-        "disable_images": false,
-        "number_of_column_desktop": 6,
-        "number_of_column_mobile": 3.5,
-        "color-body-text": "rgba(0,0,0,0)",
-        "background_color": "rgba(0,0,0,0)",
+        "heading": "Partners",
+        "animation": "marquee",
+        "animation_speed": "100",
+        "color-body-text": "transparent",
+        "background_color": "transparent",
         "margin-top": 0,
         "margin-bottom": 0
       }
     },
-    "collage_qTKhbz": {
-      "type": "collage",
+    "three_layer_banner_6Wzmx9": {
+      "type": "three-layer-banner",
       "blocks": {
-        "image_t4nhc3": {
-          "type": "image",
+        "heading_aDXmiB": {
+          "type": "heading",
           "settings": {
-            "heading": "Pizza Equipment",
-            "heading_disable_on_mobile": false,
-            "size_heading": 100,
-            "size_heading_mobile": 100,
-            "text": "",
-            "text_disable_on_mobile": false,
-            "button_select": "link",
-            "button_label": "Shop Now",
-            "button_disable_on_mobile": false,
+            "heading": "BUILT FOR PIZZERIAS. \nBACKED BY EXPERTS.",
+            "disable_on_mobile": false,
+            "size_heading": 180,
+            "size_heading_mobile": 100
+          }
+        },
+        "text_UPB6PD": {
+          "type": "text",
+          "settings": {
+            "text": "<p>24/7 Restaurant Equipment is the trusted partner for high-performance pizza kitchens with over 30 years of expertise.<br/>Ovens. Mixers. Sheeters. Rounders. Refrigeration. Automation.<br/>Everything your pizza line needs — from startup to scale.</p>",
+            "disable_on_mobile": false
+          }
+        },
+        "buttons_xnfPLg": {
+          "type": "buttons",
+          "settings": {
+            "button_style": "primary",
+            "button_label": "Shop All Pizzeria Equipment",
             "button_link": "shopify://collections/pizza-equipment",
-            "desktop_image": "shopify://shop_images/pizza_equipment_banner_403e9c50-0323-47b1-a704-e46754cd5bf2.png",
-            "desktop_text_vertical_position": "center",
-            "desktop_text_horizontal_position": "left",
-            "mobile_text_vertical_position": "center",
-            "mobile_text_horizontal_position": "center",
-            "color-body-text": "#ffffff",
-            "color-overlay": "rgba(0,0,0,0)",
-            "color-overlay-opacity": 100
+            "button_link_in_new_window": false,
+            "second_button_style": "primary",
+            "second_button_label": "",
+            "second_button_link": "",
+            "disable_on_mobile": false
           }
         },
-        "image_76Lxwr": {
-          "type": "image",
+        "image_content_yKPVJC": {
+          "type": "image_content",
           "settings": {
-            "heading": "Refrigeration",
-            "heading_disable_on_mobile": false,
-            "size_heading": 100,
-            "size_heading_mobile": 100,
-            "text": "",
-            "text_disable_on_mobile": false,
-            "button_select": "link",
-            "button_label": "Shop Now",
-            "button_disable_on_mobile": false,
-            "button_link": "shopify://collections/refrigeration",
-            "desktop_image": "shopify://shop_images/refrigeration_banner.png",
-            "desktop_text_vertical_position": "top",
-            "desktop_text_horizontal_position": "right",
-            "mobile_text_vertical_position": "center",
-            "mobile_text_horizontal_position": "center",
-            "color-body-text": "#ffffff",
-            "color-overlay": "rgba(0,0,0,0)",
-            "color-overlay-opacity": 100
-          }
-        },
-        "image_kHa4dV": {
-          "type": "image",
-          "settings": {
-            "heading": "Fryers",
-            "heading_disable_on_mobile": false,
-            "size_heading": 100,
-            "size_heading_mobile": 100,
-            "text": "",
-            "text_disable_on_mobile": false,
-            "button_select": "link",
-            "button_label": "Shop Now",
-            "button_disable_on_mobile": false,
-            "button_link": "shopify://collections/fryers",
-            "desktop_image": "shopify://shop_images/ChatGPT_Image_Apr_24_2025_10_51_41_AM.png",
-            "desktop_text_vertical_position": "bottom",
-            "desktop_text_horizontal_position": "right",
-            "mobile_text_vertical_position": "center",
-            "mobile_text_horizontal_position": "center",
-            "color-body-text": "#ffffff",
-            "color-overlay": "rgba(0,0,0,0)",
-            "color-overlay-opacity": 100
+            "right_image": "shopify://shop_images/DSC08731.jpg",
+            "right_image_width": 50
           }
         }
       },
       "block_order": [
-        "image_t4nhc3",
-        "image_76Lxwr",
-        "image_kHa4dV"
+        "heading_aDXmiB",
+        "text_UPB6PD",
+        "buttons_xnfPLg",
+        "image_content_yKPVJC"
       ],
+      "name": "3-Layer Banner",
       "settings": {
-        "heading": "",
-        "desktop_layout": "row",
-        "color-body-text": "rgba(0,0,0,0)",
+        "background_image": "shopify://shop_images/Copy_of_White_Collage_A_Day_In_My_Life_Vlog_YouTube_Thumbnail_2.jpg",
+        "overlay_opacity": 50,
+        "section_height": "medium",
+        "custom_height": 550,
+        "desktop_content_vertical_position": "center",
+        "desktop_content_horizontal_position": "flex-start",
+        "mobile_content_vertical_position": "center",
+        "mobile_content_horizontal_position": "center",
+        "heading_color": "rgba(0,0,0,0)",
+        "text_color": "rgba(0,0,0,0)"
+      }
+    },
+    "category_grid_8eMfdC": {
+      "type": "category-grid",
+      "blocks": {
+        "category_9LbXw6": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design.jpg",
+            "heading": "Refrigeration",
+            "button_label": "Shop Now",
+            "link": "shopify://collections/refrigeration",
+            "override_position": false,
+            "block_text_vertical": "bottom",
+            "block_text_horizontal": "right",
+            "override_heading_size": false,
+            "block_heading_size": 40
+          }
+        },
+        "category_hMLAzk": {
+          "type": "category",
+          "settings": {
+            "image": "shopify://shop_images/Untitled_design_1.jpg",
+            "heading": "Fryers",
+            "button_label": "Shop Now",
+            "link": "",
+            "override_position": false,
+            "block_text_vertical": "bottom",
+            "block_text_horizontal": "right",
+            "override_heading_size": false,
+            "block_heading_size": 40
+          }
+        }
+      },
+      "block_order": [
+        "category_9LbXw6",
+        "category_hMLAzk"
+      ],
+      "name": "Category Grid",
+      "settings": {
+        "show_section_heading": false,
+        "section_heading": "Shop by Category",
+        "section_heading_size": 32,
+        "section_heading_align": "left",
+        "section_heading_gap": 20,
+        "columns_desktop": 2,
+        "columns_mobile": 1,
+        "gap": 12,
+        "gap_mobile": 8,
+        "border_radius": 12,
+        "image_ratio": 75,
+        "text_vertical": "bottom",
+        "text_horizontal": "right",
+        "card_padding": 24,
+        "overlay_direction": "top",
+        "overlay_opacity": 50,
+        "heading_size": 40,
+        "heading_weight": "700",
+        "heading_transform": "uppercase",
+        "heading_letter_spacing": 0,
+        "heading_button_gap": 8,
+        "text_color": "#ffffff",
+        "button_size": 13,
+        "button_color": "#ffffff",
+        "button_underline": 1,
+        "section_padding": 0,
         "background_color": "rgba(0,0,0,0)",
-        "margin-top": 20,
-        "margin-bottom": 20
+        "margin_top": 20,
+        "margin_bottom": 20
       }
     },
     "featured_collection_akyMiD": {
@@ -329,11 +387,13 @@
         "dots_DDQD9a": {
           "type": "dots",
           "settings": {
-            "coordinate_width": 20,
-            "coordinate_height": 39,
+            "coordinate_width": 27,
+            "coordinate_height": 45,
             "coordinate_width_mobile": 48,
             "coordinate_height_mobile": 66,
-            "featured_product": ""
+            "link_type": "collection",
+            "featured_product": "",
+            "featured_collection": "hobart-planetary-mixers"
           }
         },
         "dots_QqcfKD": {
@@ -343,7 +403,9 @@
             "coordinate_height": 72,
             "coordinate_width_mobile": 13,
             "coordinate_height_mobile": 44,
-            "featured_product": ""
+            "link_type": "collection",
+            "featured_product": "",
+            "featured_collection": "vulcan-commercial-gas-ranges"
           }
         },
         "dots_qxqkBf": {
@@ -353,7 +415,9 @@
             "coordinate_height": 31,
             "coordinate_width_mobile": 69,
             "coordinate_height_mobile": 43,
-            "featured_product": ""
+            "link_type": "collection",
+            "featured_product": "",
+            "featured_collection": "true-2-door-reach-in-refrigerators"
           }
         }
       },
@@ -364,9 +428,9 @@
       ],
       "name": "t:sections.shoppable-image.settings.presets.name",
       "settings": {
-        "heading": "Shop Kitchen Set Ups 🤌",
-        "desktop_image": "shopify://shop_images/ChatGPT_Image_Jan_20_2026_09_42_43_AM.png",
-        "full-width-enabled": false,
+        "heading": "Shop For Equipment",
+        "desktop_image": "shopify://shop_images/DSC02029.jpg",
+        "full-width-enabled": true,
         "color-body-text": "rgba(0,0,0,0)",
         "color-overlay": "rgba(0,0,0,0)",
         "color-overlay-opacity": 100,
@@ -450,6 +514,13 @@
             "desktop_image": "shopify://shop_images/square_logo_13.png",
             "link": "shopify://collections/glastender"
           }
+        },
+        "image_k7ReCw": {
+          "type": "image",
+          "settings": {
+            "desktop_image": "shopify://shop_images/1280px-Rational_AG_Logo_svg.png",
+            "link": "shopify://collections/rational"
+          }
         }
       },
       "block_order": [
@@ -459,10 +530,11 @@
         "image_Dg4baM",
         "image_aiBdUf",
         "image_rXica8",
-        "image_cYFD8M"
+        "image_cYFD8M",
+        "image_k7ReCw"
       ],
       "settings": {
-        "heading": "⭐ Trusted Partners ⭐",
+        "heading": "Trusted Partners",
         "animation": "marquee",
         "animation_speed": "100",
         "color-body-text": "rgba(0,0,0,0)",
@@ -529,8 +601,9 @@
   },
   "order": [
     "slideshow_pro_piyLU3",
-    "collection_list_JKC7NM",
-    "collage_qTKhbz",
+    "brands_8ANAqG",
+    "three_layer_banner_6Wzmx9",
+    "category_grid_8eMfdC",
     "featured_collection_akyMiD",
     "page_showcase_7PBqXB",
     "featured_collection_AygJbi",

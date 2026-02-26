@@ -4,28 +4,59 @@
 {% assign text_rgb = section.settings['color-body-text'] | color_to_rgb %}
 
 <style>
-  [data-section-id="{{ section.id }}"]
-  {
+  [data-section-id="{{ section.id }}"] {
 
-      {% if section.settings.margin-top %}
+    {% if section.settings.margin-top %}
       --section-gap-top: {{ section.settings.margin-top }}px;
-      {% endif %}
+    {% endif %}
 
-      {% if section.settings.margin-bottom %}
+    {% if section.settings.margin-bottom %}
       --section-gap-bottom: {{ section.settings.margin-bottom }}px;
-      {% endif %}
+    {% endif %}
 
-      {% if background_rgb != 'rgba(0, 0, 0, 0.0)' %}
-        --color-background: {{ section.settings.background_color }};
-      {% endif %}
+    {% if background_rgb != 'rgba(0, 0, 0, 0.0)' %}
+      --color-background: {{ section.settings.background_color }};
+    {% endif %}
 
   }
 
-  [data-section-id="{{ section.id }}"]
-  {
+  [data-section-id="{{ section.id }}"] {
     {% if text_rgb != 'rgba(0, 0, 0, 0.0)' %}
       --color-custom-text: {{ section.settings.color-body-text }};
     {% endif %}
+  }
+
+  /* Hide redundant brand name text under logos */
+  [data-section-id="{{ section.id }}"] .card__title,
+  [data-section-id="{{ section.id }}"] .card__heading,
+  [data-section-id="{{ section.id }}"] .card-information {
+    display: none !important;
+  }
+
+  /* Center logos within their cards */
+  [data-section-id="{{ section.id }}"] .card,
+  [data-section-id="{{ section.id }}"] .card__inner {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    height: 100% !important;
+  }
+
+  [data-section-id="{{ section.id }}"] .card__media,
+  [data-section-id="{{ section.id }}"] .card__media img,
+  [data-section-id="{{ section.id }}"] .media {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+    object-fit: contain !important;
+  }
+
+  [data-section-id="{{ section.id }}"] .collection-list__item {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 </style>
 
@@ -93,9 +124,10 @@
         "slidesPerView": "auto",
         "spaceBetween": 8,
         "freeMode": false,
-        "speed": 150,
-        "grabCursor": false,
-        "enableOnMedia": "{% if section.settings.enable_swipe %}(min-width: 0px){% else %}0{% endif %}",
+        "speed": 300,
+        "grabCursor": true,
+        "allowTouchMove": true,
+        "enableOnMedia": "(min-width: 0px)",
         "paginationType": "bullets",
         "breakpoints": {
           "320": {
@@ -134,7 +166,7 @@
     {
       "type": "checkbox",
       "id": "enable_swipe",
-      "default": false,
+      "default": true,
       "label": "t:sections.collection-list.settings.enable_swipe.label"
     },
     {
@@ -147,9 +179,9 @@
       "type": "range",
       "id": "number_of_column_desktop",
       "min": 3,
-      "max": 6,
+      "max": 8,
       "step": 1,
-      "default": 4,
+      "default": 6,
       "label": "t:sections.collection-list.settings.number_of_column_desktop.label",
       "info": "t:sections.collection-list.settings.number_of_column_desktop.info"
     },

@@ -99,7 +99,6 @@
         {
 
             --font-headline-scale-desk: {{ block.settings.size_heading | divided_by: 100.0 }};
-
             --font-headline-scale: {{ block.settings.size_heading_mobile | divided_by: 100.0 }};
 
             {% if section.settings.out_hero_mobile %}
@@ -123,37 +122,67 @@
             --second-button-text-hover-color: {{ block.settings.second_button_text_hover_color | default: '#000000' }};
         }
 
-        {% comment %} Content Alignment CSS {% endcomment %}
+        {% comment %} Content Position CSS {% endcomment %}
         @media (min-width: 768px) {
           [data-block-id="{{ block.id }}"] .hero__overlay {
-            {% if block.settings.content_alignment == 'left' %}
-              justify-content: flex-start;
-              padding-left: 8%;
-              padding-right: 25%;
-            {% elsif block.settings.content_alignment == 'right' %}
-              justify-content: flex-end;
-              padding-left: 25%;
-              padding-right: 8%;
-            {% else %}
-              justify-content: center;
-              padding-left: 15%;
-              padding-right: 15%;
-            {% endif %}
+            justify-content: flex-start !important;
+            align-items: {% if block.settings.desktop_text_vertical_position == 'top' %}flex-start{% elsif block.settings.desktop_text_vertical_position == 'bottom' %}flex-end{% else %}center{% endif %} !important;
+            padding-left: {{ block.settings.content_offset_left }}px !important;
+            padding-right: 5% !important;
           }
 
           [data-block-id="{{ block.id }}"] .hero__overlay__content {
-            {% if block.settings.content_alignment == 'left' %}
-              text-align: left;
-              max-width: 600px;
-            {% elsif block.settings.content_alignment == 'right' %}
-              text-align: right;
-              max-width: 600px;
-            {% else %}
-              text-align: center;
-              max-width: 800px;
-            {% endif %}
+            text-align: {{ block.settings.content_text_align }} !important;
+            max-width: {{ block.settings.content_max_width }}px !important;
           }
         }
+
+        {% comment %} Typography Controls {% endcomment %}
+        [data-block-id="{{ block.id }}"] .hero__title,
+        [data-block-id="{{ block.id }}"] .hero__overlay__content h2 {
+          font-size: {{ block.settings.heading_font_size }}px !important;
+          line-height: {{ block.settings.heading_line_height | divided_by: 100.0 }} !important;
+          letter-spacing: {{ block.settings.heading_letter_spacing | divided_by: 10.0 }}px !important;
+          {% if block.settings.heading_nowrap %}
+            white-space: nowrap !important;
+          {% endif %}
+          margin-top: {{ block.settings.heading_margin_top }}px !important;
+          margin-bottom: {{ block.settings.heading_margin_bottom }}px !important;
+          padding-top: 0 !important;
+        }
+
+        @media (max-width: 767px) {
+          [data-block-id="{{ block.id }}"] .hero__title,
+          [data-block-id="{{ block.id }}"] .hero__overlay__content h2 {
+            font-size: {{ block.settings.heading_font_size_mobile }}px !important;
+            white-space: normal !important;
+          }
+        }
+
+        [data-block-id="{{ block.id }}"] .hero__subheading {
+          font-size: {{ block.settings.subheading_font_size }}px !important;
+          letter-spacing: {{ block.settings.subheading_letter_spacing | divided_by: 10.0 }}px !important;
+          opacity: {{ block.settings.subheading_opacity | divided_by: 100.0 }};
+          margin-bottom: {{ block.settings.subheading_margin_bottom }}px !important;
+          margin-top: 0 !important;
+          padding-bottom: 0 !important;
+          padding-top: 0 !important;
+          line-height: 1.2 !important;
+        }
+
+        [data-block-id="{{ block.id }}"] .hero__text {
+          {% if block.settings.hide_body_text %}
+            display: none !important;
+          {% else %}
+            font-size: {{ block.settings.body_font_size }}px !important;
+            margin-bottom: {{ block.settings.body_margin_bottom }}px !important;
+          {% endif %}
+        }
+
+        [data-block-id="{{ block.id }}"] .hero__button--gap {
+          margin-top: {{ block.settings.button_margin_top }}px !important;
+        }
+
     {%- endfor -%}
 
   /* Custom Button Styling */
@@ -184,7 +213,6 @@
       border-color: var(--second-button-bg-hover-color) !important;
     }
 
-    /* Apply first button colors to all primary buttons in this slide */
     [data-block-id="{{ block.id }}"] .hero__button.hero__button--primary {
       background-color: var(--button-bg-color) !important;
       color: var(--button-text-color) !important;
@@ -198,7 +226,6 @@
       border-color: var(--button-bg-hover-color) !important;
     }
     
-    /* Apply second button colors to all secondary buttons in this slide */
     [data-block-id="{{ block.id }}"] .hero__button.hero__button--secondary {
       background-color: var(--second-button-bg-color) !important;
       color: var(--second-button-text-color) !important;
@@ -573,6 +600,184 @@
         },
         {
           "type": "header",
+          "content": "Heading Typography"
+        },
+        {
+          "type": "range",
+          "id": "heading_font_size",
+          "min": 20,
+          "max": 120,
+          "step": 2,
+          "unit": "px",
+          "default": 48,
+          "label": "Heading font size (desktop)"
+        },
+        {
+          "type": "range",
+          "id": "heading_font_size_mobile",
+          "min": 18,
+          "max": 72,
+          "step": 2,
+          "unit": "px",
+          "default": 32,
+          "label": "Heading font size (mobile)"
+        },
+        {
+          "type": "range",
+          "id": "heading_line_height",
+          "min": 80,
+          "max": 150,
+          "step": 5,
+          "unit": "%",
+          "default": 100,
+          "label": "Heading line height",
+          "info": "100% = tight, 120% = normal, 150% = loose"
+        },
+        {
+          "type": "range",
+          "id": "heading_letter_spacing",
+          "min": 0,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "default": 0,
+          "label": "Heading letter spacing",
+          "info": "Value is divided by 10. e.g. 10 = 1px spacing"
+        },
+        {
+          "type": "range",
+          "id": "heading_margin_top",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 8,
+          "label": "Space above heading"
+        },
+        {
+          "type": "range",
+          "id": "heading_margin_bottom",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "unit": "px",
+          "default": 16,
+          "label": "Space below heading"
+        },
+        {
+          "type": "checkbox",
+          "id": "heading_nowrap",
+          "label": "Force heading to single line",
+          "default": false,
+          "info": "Prevents heading from wrapping. Use with caution on mobile."
+        },
+        {
+          "type": "header",
+          "content": "Subheading Typography"
+        },
+        {
+          "type": "range",
+          "id": "subheading_font_size",
+          "min": 10,
+          "max": 30,
+          "step": 1,
+          "unit": "px",
+          "default": 13,
+          "label": "Subheading font size"
+        },
+        {
+          "type": "range",
+          "id": "subheading_letter_spacing",
+          "min": 0,
+          "max": 50,
+          "step": 5,
+          "unit": "px",
+          "default": 10,
+          "label": "Subheading letter spacing",
+          "info": "Value is divided by 10. e.g. 20 = 2px spacing"
+        },
+        {
+          "type": "range",
+          "id": "subheading_opacity",
+          "min": 40,
+          "max": 100,
+          "step": 5,
+          "unit": "%",
+          "default": 80,
+          "label": "Subheading opacity"
+        },
+        {
+          "type": "range",
+          "id": "subheading_margin_bottom",
+          "min": 0,
+          "max": 40,
+          "step": 2,
+          "unit": "px",
+          "default": 8,
+          "label": "Space below subheading"
+        },
+        {
+          "type": "header",
+          "content": "Body Text"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_body_text",
+          "label": "Hide body text",
+          "default": false,
+          "info": "Hide the text field below the heading"
+        },
+        {
+          "type": "range",
+          "id": "body_font_size",
+          "min": 12,
+          "max": 28,
+          "step": 1,
+          "unit": "px",
+          "default": 16,
+          "label": "Body text font size"
+        },
+        {
+          "type": "range",
+          "id": "body_margin_bottom",
+          "min": 0,
+          "max": 40,
+          "step": 2,
+          "unit": "px",
+          "default": 12,
+          "label": "Space below body text"
+        },
+        {
+          "type": "header",
+          "content": "Button Spacing"
+        },
+        {
+          "type": "range",
+          "id": "button_margin_top",
+          "min": 0,
+          "max": 60,
+          "step": 4,
+          "unit": "px",
+          "default": 16,
+          "label": "Space above button"
+        },
+        {
+          "type": "header",
+          "content": "Content Container"
+        },
+        {
+          "type": "range",
+          "id": "content_max_width",
+          "min": 300,
+          "max": 1000,
+          "step": 20,
+          "unit": "px",
+          "default": 600,
+          "label": "Content max width (desktop)",
+          "info": "Controls how wide the text block can grow"
+        },
+        {
+          "type": "header",
           "content": "t:sections.global.button_1"
         },
         {
@@ -784,25 +989,35 @@
           "label": "t:sections.slideshow.settings.slide.desktop_text_horizontal_position.default.label"
         },
         {
+          "type": "range",
+          "id": "content_offset_left",
+          "min": 0,
+          "max": 800,
+          "step": 10,
+          "unit": "px",
+          "default": 80,
+          "label": "Content horizontal position (desktop)",
+          "info": "Distance from the left edge. 0 = flush left, increase to move right."
+        },
+        {
           "type": "select",
-          "id": "content_alignment",
-          "label": "Content alignment (Desktop only)",
+          "id": "content_text_align",
+          "label": "Text alignment",
           "options": [
             {
               "value": "left",
-              "label": "Left aligned"
+              "label": "Left"
             },
             {
               "value": "center",
-              "label": "Center aligned"
+              "label": "Center"
             },
             {
               "value": "right",
-              "label": "Right aligned"
+              "label": "Right"
             }
           ],
-          "default": "center",
-          "info": "Position content horizontally with proper spacing. Mobile stays centered."
+          "default": "left"
         },
         {
           "type": "header",

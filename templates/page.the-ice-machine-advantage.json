@@ -92,8 +92,8 @@
             "google_icon": "local_shipping",
             "custom-icon-color": "",
             "custom-icon-hover-color": "",
-            "title": "FREE Shipping",
-            "description": "<p>Free shipping on all orders over $50. Fast and reliable delivery to your door.</p>"
+            "title": "Insured Shipping",
+            "description": "<p>Fast and reliable delivery to your door.</p>"
           }
         },
         "benefit_r4TnBJ": {
@@ -139,11 +139,11 @@
         "benefit_jTpHbz": {
           "type": "benefit",
           "settings": {
-            "google_icon": "eco",
+            "google_icon": "handshake",
             "custom-icon-color": "",
             "custom-icon-hover-color": "",
-            "title": "Eco-Friendly",
-            "description": "<p>Sustainable packaging and environmentally conscious shipping practices.</p>"
+            "title": "Trusted Partners",
+            "description": "<p>Work with trusted partners committed to outstanding service and high quality products.</p>"
           }
         }
       },
@@ -176,10 +176,10 @@
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "title": "Featured collection",
+        "title": "Customer Favorites",
         "disable_on_mobile": false,
         "collection": "ice-machines-1",
-        "products_to_show": 4,
+        "products_to_show": 8,
         "show_view_all": true,
         "button_select": "primary",
         "number_of_column_desktop": 4,
@@ -209,7 +209,7 @@
             "description": "<p>The current situation or traditional approach with its limitations and challenges.</p>",
             "features": "<ul><li>Manual processes</li><li>Time consuming</li><li>Higher costs</li><li>Limited scalability</li></ul>",
             "block-background-color": "",
-            "block-text-color": ""
+            "block-text-color": "#ff0000"
           }
         },
         "comparison_b_qMUp7b": {
@@ -219,7 +219,7 @@
             "description": "<p>The improved solution with enhanced capabilities and better outcomes.</p>",
             "features": "<ul><li>Automated workflows</li><li>Fast and efficient</li><li>Cost effective</li><li>Unlimited scalability</li></ul>",
             "block-background-color": "",
-            "block-text-color": ""
+            "block-text-color": "#0031ff"
           }
         }
       },
@@ -236,7 +236,7 @@
         "block-border-radius": 12,
         "section-background-color": "",
         "color-heading": "",
-        "color-body-text": "",
+        "color-body-text": "#000000",
         "accent-color": "",
         "margin-top": 20,
         "margin-bottom": 20
