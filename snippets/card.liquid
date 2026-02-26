@@ -216,27 +216,24 @@
       {% endif %}
     </div>
 
-    <a
-      href="{{ url }}"
-      tabindex="-1"
-      data-omit-tabindex
-      class="card{% if text_alignment %} card--{{ text_alignment }}{% endif %}"
-    >
-      {% if section.settings.show_vendor == true %}
-        <p class="card__subtitle">{{ subtitle }}</p>
+    <div class="card__info{% if text_alignment %} card--{{ text_alignment }}{% endif %}">
+      {% if section.settings.show_vendor == true and subtitle != blank %}
+        <a href="{{ routes.collections_url }}/vendors?q={{ subtitle | url_encode }}" class="card__subtitle card__subtitle--link">{{ subtitle }}</a>
       {% endif %}
 
-      {% if show_vendor_prop == true %}
-        <p class="card__subtitle">{{ subtitle }}</p>
+      {% if show_vendor_prop == true and subtitle != blank %}
+        <a href="{{ routes.collections_url }}/vendors?q={{ subtitle | url_encode }}" class="card__subtitle card__subtitle--link">{{ subtitle }}</a>
       {% endif %}
 
-      <{{ title_tag }} class="card__title">
-        {% if title %}
-          {{ title }}
-        {% else %}
-          {% if default_title %}{{ default_title }}{% else %}{{ placeholder_title }}{% endif %}
-        {% endif %}
-      </{{ title_tag }}>
+      <a href="{{ url }}" tabindex="-1" data-omit-tabindex class="card__title-link">
+        <{{ title_tag }} class="card__title">
+          {% if title %}
+            {{ title }}
+          {% else %}
+            {% if default_title %}{{ default_title }}{% else %}{{ placeholder_title }}{% endif %}
+          {% endif %}
+        </{{ title_tag }}>
+      </a>
       {% if price and collection_list != true %}
         <div class="card__price">
           {% if price_old -%}
@@ -257,7 +254,7 @@
       {% if rating and reviews %}
         {% render 'rating', reviews: reviews, text_alignment: text_alignment %}
       {% endif %}
-    </a>
+    </div>
 
     {% if settings.enable_color_swatch %}
       <div

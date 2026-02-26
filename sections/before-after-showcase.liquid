@@ -1,0 +1,349 @@
+{{ 'section-before-after-showcase.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .before-after-showcase-{{ section.id }} {
+    --ba-bg-color: {{ section.settings.background_color }};
+    --ba-text-color: {{ section.settings.text_color }};
+    --ba-heading-color: {{ section.settings.heading_color }};
+    --ba-accent-color: {{ section.settings.accent_color }};
+    --ba-padding-top: {{ section.settings.padding_top }}px;
+    --ba-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --ba-slider-color: {{ section.settings.slider_color }};
+    --ba-title-size: {{ section.settings.title_size }}px;
+    --ba-title-size-mobile: {{ section.settings.title_size_mobile }}px;
+    --ba-header-spacing: {{ section.settings.header_spacing }}px;
+  }
+{%- endstyle -%}
+
+<section class="before-after-showcase before-after-showcase-{{ section.id }}"
+         data-section-id="{{ section.id }}">
+  
+  <div class="before-after-showcase__container">
+    {%- if section.settings.section_title != blank -%}
+      <div class="before-after-showcase__header">
+        <h2 class="before-after-showcase__section-title">{{ section.settings.section_title }}</h2>
+        {%- if section.settings.section_subtitle != blank -%}
+          <p class="before-after-showcase__section-subtitle">{{ section.settings.section_subtitle }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="before-after-showcase__grid" data-columns="{{ section.blocks.size | at_most: 3 }}">
+      {%- for block in section.blocks -%}
+        <div class="before-after-showcase__item" data-block-id="{{ block.id }}" {{ block.shopify_attributes }}>
+          
+          <div class="before-after-showcase__comparison" data-before-after>
+            <div class="before-after-showcase__image-container">
+              {%- if block.settings.before_image != blank -%}
+                <img 
+                  src="{{ block.settings.before_image | image_url: width: 800 }}"
+                  srcset="{{ block.settings.before_image | image_url: width: 400 }} 400w,
+                          {{ block.settings.before_image | image_url: width: 600 }} 600w,
+                          {{ block.settings.before_image | image_url: width: 800 }} 800w"
+                  sizes="(max-width: 599px) 100vw, (max-width: 899px) 50vw, 33vw"
+                  alt="{{ block.settings.before_image.alt | default: 'Before' }}"
+                  loading="lazy"
+                  class="before-after-showcase__image before-after-showcase__image--before"
+                >
+              {%- else -%}
+                <div class="before-after-showcase__placeholder">
+                  {{ 'image' | placeholder_svg_tag: 'before-after-showcase__placeholder-svg' }}
+                </div>
+              {%- endif -%}
+
+              <div class="before-after-showcase__after-wrapper" data-after-wrapper>
+                {%- if block.settings.after_image != blank -%}
+                  <img 
+                    src="{{ block.settings.after_image | image_url: width: 800 }}"
+                    srcset="{{ block.settings.after_image | image_url: width: 400 }} 400w,
+                            {{ block.settings.after_image | image_url: width: 600 }} 600w,
+                            {{ block.settings.after_image | image_url: width: 800 }} 800w"
+                    sizes="(max-width: 599px) 100vw, (max-width: 899px) 50vw, 33vw"
+                    alt="{{ block.settings.after_image.alt | default: 'After' }}"
+                    loading="lazy"
+                    class="before-after-showcase__image before-after-showcase__image--after"
+                  >
+                {%- else -%}
+                  <div class="before-after-showcase__placeholder">
+                    {{ 'image' | placeholder_svg_tag: 'before-after-showcase__placeholder-svg' }}
+                  </div>
+                {%- endif -%}
+              </div>
+
+              <div class="before-after-showcase__slider" data-slider>
+                <div class="before-after-showcase__slider-line"></div>
+                <div class="before-after-showcase__slider-handle">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M8 5v14l-6-7 6-7zm8 0v14l6-7-6-7z"/>
+                  </svg>
+                </div>
+              </div>
+
+              <span class="before-after-showcase__label before-after-showcase__label--before">{{ section.settings.before_label }}</span>
+              <span class="before-after-showcase__label before-after-showcase__label--after">{{ section.settings.after_label }}</span>
+            </div>
+          </div>
+
+          {%- if block.settings.title != blank or block.settings.description != blank -%}
+            <div class="before-after-showcase__content">
+              {%- if block.settings.title != blank -%}
+                <h3 class="before-after-showcase__title">{{ block.settings.title }}</h3>
+              {%- endif -%}
+              {%- if block.settings.description != blank -%}
+                <p class="before-after-showcase__description">{{ block.settings.description }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const comparisons = document.querySelectorAll('[data-before-after]');
+    
+    comparisons.forEach(function(comparison) {
+      const slider = comparison.querySelector('[data-slider]');
+      const afterWrapper = comparison.querySelector('[data-after-wrapper]');
+      let isDragging = false;
+
+      function updateSlider(x) {
+        const rect = comparison.getBoundingClientRect();
+        let percentage = ((x - rect.left) / rect.width) * 100;
+        percentage = Math.max(0, Math.min(100, percentage));
+        
+        slider.style.left = percentage + '%';
+        afterWrapper.style.clipPath = 'inset(0 0 0 ' + percentage + '%)';
+      }
+
+      function startDrag(e) {
+        isDragging = true;
+        e.preventDefault();
+      }
+
+      function endDrag() {
+        isDragging = false;
+      }
+
+      function drag(e) {
+        if (!isDragging) return;
+        const x = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+        updateSlider(x);
+      }
+
+      slider.addEventListener('mousedown', startDrag);
+      slider.addEventListener('touchstart', startDrag, { passive: false });
+      
+      document.addEventListener('mouseup', endDrag);
+      document.addEventListener('touchend', endDrag);
+      
+      document.addEventListener('mousemove', drag);
+      document.addEventListener('touchmove', drag, { passive: false });
+
+      comparison.addEventListener('click', function(e) {
+        if (e.target === slider || slider.contains(e.target)) return;
+        updateSlider(e.clientX);
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Before/After Showcase",
+  "tag": "section",
+  "class": "section-before-after-showcase",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section title",
+      "default": "Kitchen Transformations"
+    },
+    {
+      "type": "textarea",
+      "id": "section_subtitle",
+      "label": "Section subtitle",
+      "default": "See the results of our pizza kitchen designs"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 40,
+      "label": "Title size (desktop)"
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 28,
+      "label": "Title size (mobile)"
+    },
+    {
+      "type": "range",
+      "id": "header_spacing",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 48,
+      "label": "Space below header",
+      "info": "Space between section title and content"
+    },
+    {
+      "type": "header",
+      "content": "Labels"
+    },
+    {
+      "type": "text",
+      "id": "before_label",
+      "label": "Before label",
+      "default": "Before"
+    },
+    {
+      "type": "text",
+      "id": "after_label",
+      "label": "After label",
+      "default": "After"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#c8102e"
+    },
+    {
+      "type": "color",
+      "id": "slider_color",
+      "label": "Slider color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "unit": "px",
+      "default": 64,
+      "label": "Top padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "unit": "px",
+      "default": 64,
+      "label": "Bottom padding"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "comparison",
+      "name": "Before/After Item",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Images"
+        },
+        {
+          "type": "image_picker",
+          "id": "before_image",
+          "label": "Before image"
+        },
+        {
+          "type": "image_picker",
+          "id": "after_image",
+          "label": "After image"
+        },
+        {
+          "type": "header",
+          "content": "Content"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Kitchen Project Name"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Brief description of this kitchen transformation project."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Before/After Showcase",
+      "blocks": [
+        {
+          "type": "comparison",
+          "settings": {
+            "title": "Downtown Pizzeria",
+            "description": "Complete kitchen redesign with new pizza ovens and prep stations."
+          }
+        },
+        {
+          "type": "comparison",
+          "settings": {
+            "title": "Family Restaurant",
+            "description": "Added dedicated pizza station with deck ovens."
+          }
+        },
+        {
+          "type": "comparison",
+          "settings": {
+            "title": "Fast Casual Concept",
+            "description": "High-volume setup with conveyor ovens."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

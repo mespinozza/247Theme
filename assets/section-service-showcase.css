@@ -21,31 +21,33 @@
 /* Section Header */
 .service-showcase__header {
   text-align: center;
-  margin-bottom: calc(var(--service-showcase-gap, 32px) * 1.5);
+  margin-bottom: var(--service-showcase-header-spacing, 48px);
 }
 
 .service-showcase__section-title {
-  margin: 0 0 calc(var(--gap, 8px) * 2) 0;
-  font-size: 2.5rem;
+  font-family: var(--font-headline, sans-serif);
+  margin: 0 0 12px 0;
+  font-size: var(--service-showcase-title-size, 40px);
   font-weight: 700;
   color: var(--service-showcase-heading-color, #000000);
   line-height: 1.2;
 }
 
-@media (max-width: 749px) {
+@media (max-width: 899px) {
   .service-showcase__section-title {
-    font-size: 2rem;
+    font-size: var(--service-showcase-title-size-mobile, 28px);
   }
 }
 
 .service-showcase__section-description {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 18px;
   color: var(--service-showcase-text-color, #666666);
-  line-height: 1.5;
+  line-height: 1.6;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  opacity: 0.85;
 }
 
 /* Grid Layout */

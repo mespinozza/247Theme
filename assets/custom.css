@@ -116,3 +116,108 @@
     margin-top: 16px;
   }
 }
+
+.hero__overlay__content h2,
+.hero_overlay__content h2 {
+  font-size: 60px !important;
+  line-height: 0.95 !important;
+  white-space: nowrap !important;
+  margin-bottom: 5px !important;
+}
+
+.hero__subheading {
+  font-size: 13px !important;
+  letter-spacing: 3px !important;
+  opacity: 0.8;
+  margin-bottom: 5px !important;
+}
+
+.hero__button--gap {
+  margin-top: 24px !important;
+}
+
+[data-section-id="template--16523672977463__collection_list_JKC7NM"] .card__picture {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  aspect-ratio: unset !important;
+  height: 80px !important;
+}
+
+[data-section-id="template--16523672977463__collection_list_JKC7NM"] .card__img {
+  object-fit: contain !important;
+  object-position: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  position: relative !important;
+}
+
+[data-section-id="template--16523672977463__collection_list_JKC7NM"] .card__title,
+[data-section-id="template--16523672977463__collection_list_JKC7NM"] a[tabindex="-1"] {
+  display: none !important;
+}
+
+/* ==============================================
+   Product Card Improvements
+   ============================================== */
+
+/* Card info container - better spacing */
+.card__info {
+  display: block;
+  padding-top: 12px;
+}
+
+/* Vendor/subtitle - clickable with hover */
+.card__subtitle--link {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-brand, #666);
+  transition: color 0.2s ease;
+}
+
+.card__subtitle--link:hover {
+  color: rgb(var(--color-button-primary-background));
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Title link wrapper */
+.card__title-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Title - truncate to 2 lines with ellipsis */
+.card__title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+  max-height: calc(1.4em * 2);
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+/* Ensure subtitle has proper spacing */
+.card__subtitle {
+  margin-bottom: 4px;
+}
+
+/* Price spacing */
+.card__price {
+  margin-top: 4px;
+}
+
+/* Card container - add bottom padding for breathing room */
+.card__container {
+  padding-bottom: 8px;
+}
+
+/* Featured collection specific - more gap between cards */
+.wt-featured-collection .swiper-slide,
+.wt-slider [data-swiper-slide] {
+  padding-bottom: 16px;
+}

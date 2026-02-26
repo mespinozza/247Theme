@@ -1,0 +1,421 @@
+{{ 'section-expert-profile.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .expert-profile-{{ section.id }} {
+    --expert-bg-color: {{ section.settings.background_color }};
+    --expert-text-color: {{ section.settings.text_color }};
+    --expert-heading-color: {{ section.settings.heading_color }};
+    --expert-accent-color: {{ section.settings.accent_color }};
+    --expert-padding-top: {{ section.settings.padding_top }}px;
+    --expert-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --expert-title-size: {{ section.settings.title_size }}px;
+    --expert-title-size-mobile: {{ section.settings.title_size_mobile }}px;
+    --expert-header-spacing: {{ section.settings.header_spacing }}px;
+  }
+{%- endstyle -%}
+
+<section class="expert-profile expert-profile-{{ section.id }} {% if section.settings.layout == 'media_right' %}expert-profile--reversed{% endif %}"
+         data-section-id="{{ section.id }}">
+  
+  <div class="expert-profile__container">
+    {%- if section.settings.section_title != blank -%}
+      <div class="expert-profile__section-header">
+        <h2 class="expert-profile__section-title">{{ section.settings.section_title }}</h2>
+        {%- if section.settings.section_subtitle != blank -%}
+          <p class="expert-profile__section-subtitle">{{ section.settings.section_subtitle }}</p>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="expert-profile__grid">
+      
+      <div class="expert-profile__media">
+        {%- if section.settings.video != blank -%}
+          <div class="expert-profile__video-wrapper">
+            <video 
+              class="expert-profile__video"
+              {% if section.settings.video_autoplay %}autoplay muted loop playsinline{% endif %}
+              {% if section.settings.video_controls %}controls{% endif %}
+              poster="{{ section.settings.image | image_url: width: 800 }}"
+            >
+              {{ section.settings.video | video_tag }}
+            </video>
+            {%- unless section.settings.video_autoplay -%}
+              <button class="expert-profile__play-btn" aria-label="Play video">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M8 5v14l11-7z"/>
+                </svg>
+              </button>
+            {%- endunless -%}
+          </div>
+        {%- elsif section.settings.video_url != blank -%}
+          <div class="expert-profile__video-wrapper expert-profile__video-wrapper--external">
+            {%- if section.settings.video_url.type == 'youtube' -%}
+              <iframe 
+                src="https://www.youtube.com/embed/{{ section.settings.video_url.id }}?rel=0" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen
+                class="expert-profile__iframe"
+                title="{{ section.settings.name }}"
+              ></iframe>
+            {%- elsif section.settings.video_url.type == 'vimeo' -%}
+              <iframe 
+                src="https://player.vimeo.com/video/{{ section.settings.video_url.id }}" 
+                frameborder="0" 
+                allow="autoplay; fullscreen; picture-in-picture" 
+                allowfullscreen
+                class="expert-profile__iframe"
+                title="{{ section.settings.name }}"
+              ></iframe>
+            {%- endif -%}
+          </div>
+        {%- elsif section.settings.image != blank -%}
+          <div class="expert-profile__image-wrapper">
+            <img 
+              src="{{ section.settings.image | image_url: width: 800 }}"
+              srcset="{{ section.settings.image | image_url: width: 400 }} 400w,
+                      {{ section.settings.image | image_url: width: 600 }} 600w,
+                      {{ section.settings.image | image_url: width: 800 }} 800w"
+              sizes="(max-width: 899px) 100vw, 50vw"
+              alt="{{ section.settings.image.alt | default: section.settings.name }}"
+              loading="lazy"
+              class="expert-profile__image"
+            >
+          </div>
+        {%- else -%}
+          <div class="expert-profile__image-placeholder">
+            {{ 'image' | placeholder_svg_tag: 'expert-profile__placeholder-svg' }}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="expert-profile__content">
+        {%- if section.settings.name != blank -%}
+          <h3 class="expert-profile__name">{{ section.settings.name }}</h3>
+        {%- endif -%}
+
+        {%- if section.settings.title != blank -%}
+          <p class="expert-profile__title">{{ section.settings.title }}</p>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <div class="expert-profile__credentials">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'credential' -%}
+                <div class="expert-profile__credential" {{ block.shopify_attributes }}>
+                  {%- if block.settings.icon != blank -%}
+                    <span class="material-icons expert-profile__credential-icon">{{ block.settings.icon }}</span>
+                  {%- endif -%}
+                  <span class="expert-profile__credential-text">{{ block.settings.text }}</span>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.bio != blank -%}
+          <div class="expert-profile__bio rte">
+            {{ section.settings.bio }}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.quote != blank -%}
+          <blockquote class="expert-profile__quote">
+            <span class="expert-profile__quote-mark">"</span>
+            {{ section.settings.quote }}
+          </blockquote>
+        {%- endif -%}
+
+        {%- if section.settings.button_text != blank and section.settings.button_url != blank -%}
+          <div class="expert-profile__cta">
+            <a href="{{ section.settings.button_url }}" class="expert-profile__button">
+              {{ section.settings.button_text }}
+            </a>
+          </div>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const playButtons = document.querySelectorAll('.expert-profile__play-btn');
+    playButtons.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        const video = this.previousElementSibling;
+        if (video && video.tagName === 'VIDEO') {
+          video.play();
+          this.style.display = 'none';
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Expert Profile",
+  "tag": "section",
+  "class": "section-expert-profile",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section title",
+      "default": "Meet Our Expert"
+    },
+    {
+      "type": "textarea",
+      "id": "section_subtitle",
+      "label": "Section subtitle",
+      "info": "Optional subtitle below the section title"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 40,
+      "label": "Title size (desktop)"
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 28,
+      "label": "Title size (mobile)"
+    },
+    {
+      "type": "range",
+      "id": "header_spacing",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 48,
+      "label": "Space below header",
+      "info": "Space between section title and content"
+    },
+    {
+      "type": "header",
+      "content": "Media"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Expert image",
+      "info": "Also used as video poster/thumbnail"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Shopify-hosted video",
+      "info": "Upload a video to Shopify"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "YouTube or Vimeo URL",
+      "accept": ["youtube", "vimeo"],
+      "info": "Use if video is hosted externally"
+    },
+    {
+      "type": "checkbox",
+      "id": "video_autoplay",
+      "label": "Autoplay video (muted)",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "video_controls",
+      "label": "Show video controls",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Expert Information"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Name",
+      "default": "Expert Name"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title / Role",
+      "default": "Master Pizzaiola"
+    },
+    {
+      "type": "richtext",
+      "id": "bio",
+      "label": "Biography",
+      "default": "<p>Share the expert's background, experience, and passion. What makes them uniquely qualified to help your customers?</p>"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Personal quote",
+      "info": "A memorable quote from the expert"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Book a Consultation"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Layout",
+      "options": [
+        { "value": "media_left", "label": "Media left, content right" },
+        { "value": "media_right", "label": "Media right, content left" }
+      ],
+      "default": "media_left"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#c8102e",
+      "info": "Used for quote marks, credentials, button"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "unit": "px",
+      "default": 64,
+      "label": "Top padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 8,
+      "unit": "px",
+      "default": 64,
+      "label": "Bottom padding"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "credential",
+      "name": "Credential",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "", "label": "None" },
+            { "value": "verified", "label": "✅ Verified" },
+            { "value": "workspace_premium", "label": "⭐ Premium" },
+            { "value": "school", "label": "🎓 Education" },
+            { "value": "emoji_events", "label": "🏆 Award" },
+            { "value": "schedule", "label": "⏰ Experience" },
+            { "value": "restaurant", "label": "🍽️ Restaurant" },
+            { "value": "local_pizza", "label": "🍕 Pizza" },
+            { "value": "thumb_up", "label": "👍 Recommended" },
+            { "value": "star", "label": "⭐ Star" },
+            { "value": "handshake", "label": "🤝 Partnership" }
+          ],
+          "default": "verified"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Credential text",
+          "default": "20+ Years Experience"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Expert Profile",
+      "blocks": [
+        {
+          "type": "credential",
+          "settings": {
+            "icon": "schedule",
+            "text": "20+ Years Experience"
+          }
+        },
+        {
+          "type": "credential",
+          "settings": {
+            "icon": "workspace_premium",
+            "text": "Certified Pizzaiola"
+          }
+        },
+        {
+          "type": "credential",
+          "settings": {
+            "icon": "restaurant",
+            "text": "Former Restaurant Owner"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

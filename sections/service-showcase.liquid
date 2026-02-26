@@ -8,6 +8,9 @@
     --service-showcase-gap: {{ section.settings.item_spacing }}px;
     --service-showcase-padding-top: {{ section.settings.padding_top }}px;
     --service-showcase-padding-bottom: {{ section.settings.padding_bottom }}px;
+    --service-showcase-title-size: {{ section.settings.title_size }}px;
+    --service-showcase-title-size-mobile: {{ section.settings.title_size_mobile }}px;
+    --service-showcase-header-spacing: {{ section.settings.header_spacing }}px;
   }
 {%- endstyle -%}
 
@@ -102,6 +105,37 @@
       "type": "textarea",
       "label": "Section description",
       "info": "Optional description below the section title"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 40,
+      "label": "Title size (desktop)"
+    },
+    {
+      "type": "range",
+      "id": "title_size_mobile",
+      "min": 20,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 28,
+      "label": "Title size (mobile)"
+    },
+    {
+      "type": "range",
+      "id": "header_spacing",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 48,
+      "label": "Space below header",
+      "info": "Space between section title and content"
     },
     {
       "type": "header",
