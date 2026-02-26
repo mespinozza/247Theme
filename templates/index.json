@@ -152,8 +152,8 @@
         "animation_speed": "100",
         "color-body-text": "transparent",
         "background_color": "transparent",
-        "margin-top": 20,
-        "margin-bottom": 20
+        "margin-top": 0,
+        "margin-bottom": 0
       }
     },
     "three_layer_banner_6Wzmx9": {
