@@ -91,70 +91,69 @@
         "margin-bottom": 0
       }
     },
-    "collection_list_JKC7NM": {
-      "type": "collection-list",
+    "brands_8ANAqG": {
+      "type": "brands",
       "blocks": {
-        "featured_collection_jrM6rU": {
-          "type": "featured_collection",
+        "image_98bFVM": {
+          "type": "image",
           "settings": {
-            "collection": "royal-range",
-            "text_collection": ""
+            "desktop_image": "shopify://shop_images/Jade-Logo-Black.png",
+            "link": "shopify://collections/jade-range"
           }
         },
-        "featured_collection_8RAHM4": {
-          "type": "featured_collection",
+        "image_cBcNzJ": {
+          "type": "image",
           "settings": {
-            "collection": "migali",
-            "text_collection": ""
+            "desktop_image": "shopify://shop_images/frymaster-1-logo-png-transparent.png",
+            "link": "shopify://collections/frymaster"
           }
         },
-        "featured_collection_qAaFC7": {
-          "type": "featured_collection",
+        "image_UNWMam": {
+          "type": "image",
           "settings": {
-            "collection": "browne-foodservice",
-            "text_collection": ""
+            "desktop_image": "shopify://shop_images/1280px-Rational_AG_Logo_svg.png",
+            "link": "shopify://collections/rational"
           }
         },
-        "featured_collection_66CGXN": {
-          "type": "featured_collection",
+        "image_hDwGdc": {
+          "type": "image",
           "settings": {
-            "collection": "giorik",
-            "text_collection": ""
+            "desktop_image": "shopify://shop_images/AccuTemp-logo.png",
+            "link": "shopify://collections/accutemp"
           }
         },
-        "featured_collection_Fphgcm": {
-          "type": "featured_collection",
+        "image_tUD7ry": {
+          "type": "image",
           "settings": {
-            "collection": "hoshizaki",
-            "text_collection": ""
+            "desktop_image": "shopify://shop_images/logo-mf.png",
+            "link": "shopify://collections/moretti-forni"
           }
         },
-        "featured_collection_kB3gDF": {
-          "type": "featured_collection",
+        "image_8FjYMX": {
+          "type": "image",
           "settings": {
-            "collection": "accutemp",
-            "text_collection": ""
+            "desktop_image": "shopify://shop_images/MaxxIce_394x_6b9d9262-2e6a-4dd9-removebg-preview.png",
+            "link": "shopify://collections/maxx-ice"
           }
         }
       },
       "block_order": [
-        "featured_collection_jrM6rU",
-        "featured_collection_8RAHM4",
-        "featured_collection_qAaFC7",
-        "featured_collection_66CGXN",
-        "featured_collection_Fphgcm",
-        "featured_collection_kB3gDF"
+        "image_98bFVM",
+        "image_cBcNzJ",
+        "image_UNWMam",
+        "image_hDwGdc",
+        "image_tUD7ry",
+        "image_8FjYMX"
       ],
+      "name": "t:sections.brands.settings.presets.name",
       "settings": {
-        "heading": "Some of Our Brands",
-        "enable_swipe": true,
-        "disable_images": false,
-        "number_of_column_desktop": 4,
-        "number_of_column_mobile": 3.5,
-        "color-body-text": "rgba(0,0,0,0)",
-        "background_color": "rgba(0,0,0,0)",
-        "margin-top": 0,
-        "margin-bottom": 40
+        "heading": "Partners",
+        "animation": "marquee",
+        "animation_speed": "100",
+        "color-body-text": "transparent",
+        "background_color": "transparent",
+        "margin-top": 20,
+        "margin-bottom": 20
       }
     },
     "three_layer_banner_6Wzmx9": {
@@ -535,7 +534,7 @@
         "image_k7ReCw"
       ],
       "settings": {
-        "heading": "⭐ Trusted Partners ⭐",
+        "heading": "Trusted Partners",
         "animation": "marquee",
         "animation_speed": "100",
         "color-body-text": "rgba(0,0,0,0)",
@@ -602,7 +601,7 @@
   },
   "order": [
     "slideshow_pro_piyLU3",
-    "collection_list_JKC7NM",
+    "brands_8ANAqG",
     "three_layer_banner_6Wzmx9",
     "category_grid_8eMfdC",
     "featured_collection_akyMiD",
