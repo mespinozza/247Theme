@@ -150,8 +150,8 @@
         "heading": "Partners",
         "animation": "marquee",
         "animation_speed": "100",
-        "color-body-text": "transparent",
-        "background_color": "transparent",
+        "color-body-text": "rgba(0,0,0,0)",
+        "background_color": "rgba(0,0,0,0)",
         "margin-top": 0,
         "margin-bottom": 0
       }
@@ -321,10 +321,12 @@
             "block_image": "shopify://shop_images/ChatGPT_Image_Aug_21_2025_11_20_49_AM.png",
             "block_link": "shopify://pages/the-combi-advantage",
             "button_text": "Combi Advantage",
-            "button_bg_color": "#0000ff",
+            "enable_gradient_text": false,
+            "gradient_hover_color": "#0031ff",
+            "button_bg_color": "#222321",
             "button_text_color": "#ffffff",
             "button_border_color": "#ff0000",
-            "button_border_width": 2
+            "button_border_width": 0
           }
         },
         "linked_block_4HUEg3": {
@@ -333,10 +335,12 @@
             "block_image": "shopify://shop_images/ChatGPT_Image_Aug_21_2025_11_16_55_AM.png",
             "block_link": "shopify://pages/the-ice-machine-advantage",
             "button_text": "Ice Machine Advantage",
-            "button_bg_color": "#0000ff",
+            "enable_gradient_text": false,
+            "gradient_hover_color": "#0031ff",
+            "button_bg_color": "#222321",
             "button_text_color": "#ffffff",
             "button_border_color": "#ff0000",
-            "button_border_width": 2
+            "button_border_width": 0
           }
         }
       },
