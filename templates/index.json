@@ -515,6 +515,13 @@
             "desktop_image": "shopify://shop_images/square_logo_13.png",
             "link": "shopify://collections/glastender"
           }
+        },
+        "image_k7ReCw": {
+          "type": "image",
+          "settings": {
+            "desktop_image": "shopify://shop_images/1280px-Rational_AG_Logo_svg.png",
+            "link": "shopify://collections/rational"
+          }
         }
       },
       "block_order": [
@@ -524,7 +531,8 @@
         "image_Dg4baM",
         "image_aiBdUf",
         "image_rXica8",
-        "image_cYFD8M"
+        "image_cYFD8M",
+        "image_k7ReCw"
       ],
       "settings": {
         "heading": "⭐ Trusted Partners ⭐",
