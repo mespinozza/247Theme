@@ -61,11 +61,15 @@
                 
                 {%- if block.settings.button_text != blank -%}
                   <div class="page-showcase__block-button-container">
-                    <span class="page-showcase__block-button" 
+                    <span class="page-showcase__block-button {% if block.settings.enable_gradient_text %}page-showcase__block-button--gradient-text{% endif %}" 
+                          {% if block.settings.enable_gradient_text %}
+                          style="--gradient-hover-bg: {{ block.settings.gradient_hover_color | default: '#333333' }};"
+                          {% else %}
                           style="background-color: {{ block.settings.button_bg_color | default: '#0000FF' }}; 
                                  color: {{ block.settings.button_text_color | default: '#FFFFFF' }}; 
-                                 border: {{ block.settings.button_border_width | default: '2' }}px solid {{ block.settings.button_border_color | default: '#FF0000' }};">
-                      {{ block.settings.button_text }}
+                                 border: {{ block.settings.button_border_width | default: '2' }}px solid {{ block.settings.button_border_color | default: '#FF0000' }};"
+                          {% endif %}>
+                      <span>{{ block.settings.button_text }}</span>
                     </span>
                   </div>
                 {%- endif -%}
@@ -181,38 +185,56 @@
           "label": "Button text",
           "default": "Learn More"
         },
-        {
-          "type": "header",
-          "content": "Button Styling"
-        },
-        {
-          "id": "button_bg_color",
-          "type": "color",
-          "label": "Button background color",
-          "default": "#0000FF"
-        },
-        {
-          "id": "button_text_color",
-          "type": "color",
-          "label": "Button text color",
-          "default": "#FFFFFF"
-        },
-        {
-          "id": "button_border_color",
-          "type": "color",
-          "label": "Button border color",
-          "default": "#FF0000"
-        },
-        {
-          "id": "button_border_width",
-          "type": "range",
-          "label": "Button border width",
-          "min": 0,
-          "max": 5,
-          "step": 1,
-          "unit": "px",
-          "default": 2
-        }
+{
+        "type": "header",
+        "content": "Button Styling"
+      },
+      {
+        "id": "enable_gradient_text",
+        "type": "checkbox",
+        "label": "Enable rainbow gradient text",
+        "default": true,
+        "info": "Applies a dark pill button with animated rainbow text effect"
+      },
+      {
+        "id": "gradient_hover_color",
+        "type": "color",
+        "label": "Gradient button hover color",
+        "default": "#333333",
+        "info": "Background color on hover when gradient text is enabled"
+      },
+      {
+        "id": "button_bg_color",
+        "type": "color",
+        "label": "Button background color",
+        "default": "#0000FF",
+        "info": "Only applies when gradient text is disabled"
+      },
+{
+        "id": "button_text_color",
+        "type": "color",
+        "label": "Button text color",
+        "default": "#FFFFFF",
+        "info": "Only applies when gradient text is disabled"
+      },
+      {
+        "id": "button_border_color",
+        "type": "color",
+        "label": "Button border color",
+        "default": "#FF0000",
+        "info": "Only applies when gradient text is disabled"
+      },
+      {
+        "id": "button_border_width",
+        "type": "range",
+        "label": "Button border width",
+        "min": 0,
+        "max": 5,
+        "step": 1,
+        "unit": "px",
+        "default": 2,
+        "info": "Only applies when gradient text is disabled"
+      }
       ]
     }
   ],

@@ -154,18 +154,55 @@
 
 .page-showcase__block-button {
   display: inline-block;
-  padding: 12px 24px;
-  font-size: 16px;
+  padding: 14px 32px;
+  font-size: 14px;
   font-weight: var(--font-weight-bold, 700);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
-  border-radius: calc(var(--border-radius, 4px) / 2);
+  letter-spacing: 1.5px;
+  border-radius: 50px;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(2px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   min-width: 140px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Rainbow/Holographic gradient text effect */
+.page-showcase__block-button--gradient-text {
+  background: #1a1a1a !important;
+  border: none !important;
+  background-image: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%) !important;
+}
+
+.page-showcase__block-button--gradient-text span {
+  background: linear-gradient(
+    90deg,
+    #ff6b6b 0%,
+    #ffd93d 20%,
+    #6bcb77 40%,
+    #4d96ff 60%,
+    #9b59b6 80%,
+    #ff6b6b 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+  100% {
+    background-position: 0% center;
+  }
 }
 
 /* Hover Effects */
@@ -180,8 +217,17 @@
   }
   
   .page-showcase__block:hover .page-showcase__block-button {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    transform: scale(1.05);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
+  }
+  
+  .page-showcase__block:hover .page-showcase__block-button--gradient-text {
+    background: var(--gradient-hover-bg, #333333) !important;
+    background-image: none !important;
+  }
+  
+  .page-showcase__block:hover .page-showcase__block-button--gradient-text span {
+    animation-duration: 1.5s;
   }
 }
 
@@ -222,9 +268,10 @@
   }
   
   .page-showcase__block-button {
-    padding: 10px 20px;
-    font-size: 14px;
+    padding: 12px 24px;
+    font-size: 13px;
     min-width: 120px;
+    letter-spacing: 1px;
   }
 }
 
@@ -243,9 +290,10 @@
   }
   
   .page-showcase__block-button {
-    padding: 8px 16px;
-    font-size: 13px;
+    padding: 10px 20px;
+    font-size: 12px;
     min-width: 100px;
+    letter-spacing: 0.8px;
   }
 }
 
