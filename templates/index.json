@@ -432,7 +432,7 @@
       ],
       "name": "t:sections.shoppable-image.settings.presets.name",
       "settings": {
-        "heading": "Shop For Equipment",
+        "heading": "Shop Our Showroom",
         "desktop_image": "shopify://shop_images/DSC02029.jpg",
         "full-width-enabled": true,
         "color-body-text": "rgba(0,0,0,0)",
@@ -461,86 +461,6 @@
         "button_select": "primary",
         "size_heading": 100,
         "size_heading_mobile": 100,
-        "color-body-text": "rgba(0,0,0,0)",
-        "background_color": "rgba(0,0,0,0)",
-        "margin-top": 20,
-        "margin-bottom": 20
-      }
-    },
-    "brands_cygNdd": {
-      "type": "brands",
-      "blocks": {
-        "image_wj4H9U": {
-          "type": "image",
-          "settings": {
-            "desktop_image": "shopify://shop_images/square_logo_10.png",
-            "link": "shopify://collections/groen"
-          }
-        },
-        "image_wdK9wz": {
-          "type": "image",
-          "settings": {
-            "desktop_image": "shopify://shop_images/square_logo_8.png",
-            "link": "shopify://collections/hatco"
-          }
-        },
-        "image_tQw7V3": {
-          "type": "image",
-          "settings": {
-            "desktop_image": "shopify://shop_images/square_logo_12.png",
-            "link": "shopify://collections/globe"
-          }
-        },
-        "image_Dg4baM": {
-          "type": "image",
-          "settings": {
-            "desktop_image": "shopify://shop_images/square_logo_9.png",
-            "link": "shopify://collections/hamilton-beach"
-          }
-        },
-        "image_aiBdUf": {
-          "type": "image",
-          "settings": {
-            "desktop_image": "shopify://shop_images/square_logo_11.png",
-            "link": "shopify://collections/turbo-air"
-          }
-        },
-        "image_rXica8": {
-          "type": "image",
-          "settings": {
-            "desktop_image": "shopify://shop_images/square_logo_7.png",
-            "link": "shopify://collections/henny-penny"
-          }
-        },
-        "image_cYFD8M": {
-          "type": "image",
-          "settings": {
-            "desktop_image": "shopify://shop_images/square_logo_13.png",
-            "link": "shopify://collections/glastender"
-          }
-        },
-        "image_k7ReCw": {
-          "type": "image",
-          "settings": {
-            "desktop_image": "shopify://shop_images/1280px-Rational_AG_Logo_svg.png",
-            "link": "shopify://collections/rational"
-          }
-        }
-      },
-      "block_order": [
-        "image_wj4H9U",
-        "image_wdK9wz",
-        "image_tQw7V3",
-        "image_Dg4baM",
-        "image_aiBdUf",
-        "image_rXica8",
-        "image_cYFD8M",
-        "image_k7ReCw"
-      ],
-      "settings": {
-        "heading": "Trusted Partners",
-        "animation": "marquee",
-        "animation_speed": "100",
         "color-body-text": "rgba(0,0,0,0)",
         "background_color": "rgba(0,0,0,0)",
         "margin-top": 20,
@@ -613,7 +533,6 @@
     "featured_collection_AygJbi",
     "shoppable_image_T44bqq",
     "blog_posts_pjgHYE",
-    "brands_cygNdd",
     "features_banner_rnAYGJ"
   ]
 }
