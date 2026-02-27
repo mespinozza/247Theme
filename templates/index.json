@@ -147,7 +147,7 @@
       ],
       "name": "t:sections.brands.settings.presets.name",
       "settings": {
-        "heading": "Partners",
+        "heading": "Our Brands",
         "animation": "marquee",
         "animation_speed": "100",
         "color-body-text": "rgba(0,0,0,0)",
@@ -180,7 +180,7 @@
           "settings": {
             "button_style": "primary",
             "button_label": "Shop All Pizzeria Equipment",
-            "button_link": "shopify://collections/pizza-equipment",
+            "button_link": "shopify://pages/pizza-experts",
             "button_link_in_new_window": false,
             "second_button_style": "primary",
             "second_button_label": "",
