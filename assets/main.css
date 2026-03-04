@@ -9330,3 +9330,18 @@ recipient-form .form__message svg path:nth-child(2n) {
 .none {
   display: none !important;
 }
+
+/* Slideshow Pro - text block overlay */
+.hero__overlay__content {
+  position: relative;
+}
+
+[data-block-id] .hero__overlay__content::before {
+  content: '';
+  position: absolute;
+  inset: -16px -24px;
+  background: rgba(0, 0, 0, var(--text-overlay-opacity, 0));
+  border-radius: 8px;
+  z-index: -1;
+  pointer-events: none;
+}
