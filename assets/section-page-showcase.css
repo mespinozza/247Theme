@@ -56,6 +56,7 @@
 }
 
 .page-showcase__heading {
+  font-family: var(--font-headline);
   font-size: clamp(28px, 4vw, 48px);
   font-weight: var(--font-weight-bold, 700);
   margin: 0 0 calc(var(--gap, 8px) * 2) 0;
@@ -155,6 +156,7 @@
 .page-showcase__block-button {
   display: inline-block;
   padding: 14px 32px;
+  font-family: var(--font-headline);
   font-size: 14px;
   font-weight: var(--font-weight-bold, 700);
   text-transform: uppercase;
@@ -169,7 +171,7 @@
   overflow: hidden;
 }
 
-/* Rainbow/Holographic gradient text effect */
+/* Brand red/blue gradient text effect */
 .page-showcase__block-button--gradient-text {
   background: #1a1a1a !important;
   border: none !important;
@@ -179,12 +181,11 @@
 .page-showcase__block-button--gradient-text span {
   background: linear-gradient(
     90deg,
-    #ff6b6b 0%,
-    #ffd93d 20%,
-    #6bcb77 40%,
-    #4d96ff 60%,
-    #9b59b6 80%,
-    #ff6b6b 100%
+    #cc0000 0%,
+    #e8001e 25%,
+    #0047ab 50%,
+    #1565c0 75%,
+    #cc0000 100%
   );
   background-size: 200% auto;
   -webkit-background-clip: text;
