@@ -67,7 +67,10 @@
                         <span>{{ block.settings.button_text }}</span>
                       </span>
                     {%- else -%}
-                      <span class="page-showcase__block-button btn btn--primary">
+                      <span class="page-showcase__block-button"
+                            style="background-color: {{ block.settings.button_bg_color }}; 
+                                   color: {{ block.settings.button_text_color }};
+                                   border: {{ block.settings.button_border_width }}px solid {{ block.settings.button_border_color }};">
                         <span>{{ block.settings.button_text }}</span>
                       </span>
                     {%- endif -%}
@@ -202,6 +205,38 @@
           "label": "Gradient button hover color",
           "default": "#333333",
           "info": "Background color on hover when gradient text is enabled"
+        },
+        {
+          "id": "button_bg_color",
+          "type": "color",
+          "label": "Button background color",
+          "default": "#222321",
+          "info": "Only applies when gradient text is disabled"
+        },
+        {
+          "id": "button_text_color",
+          "type": "color",
+          "label": "Button text color",
+          "default": "#ffffff",
+          "info": "Only applies when gradient text is disabled"
+        },
+        {
+          "id": "button_border_color",
+          "type": "color",
+          "label": "Button border color",
+          "default": "#222321",
+          "info": "Only applies when gradient text is disabled"
+        },
+        {
+          "id": "button_border_width",
+          "type": "range",
+          "label": "Button border width",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "unit": "px",
+          "default": 0,
+          "info": "Only applies when gradient text is disabled"
         }
       ]
     }
