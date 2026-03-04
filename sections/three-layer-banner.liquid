@@ -17,7 +17,6 @@
       {%- else -%}550px
     {%- endcase %};
 
-
     --desktop-content-position-x: {{ section.settings.desktop_content_horizontal_position }};
     --desktop-content-position-y: {{ section.settings.desktop_content_vertical_position }};
     --mobile-content-position-x: {{ section.settings.mobile_content_horizontal_position }};
@@ -96,9 +95,16 @@
                   <div class="three-layer-banner__buttons {% if block.settings.disable_on_mobile %}three-layer-banner__buttons--mobile-hidden{% endif %}" data-block-id="{{ block.id }}" {{ block.shopify_attributes }}>
                     
                     {%- if block.settings.button_label != blank -%}
+                      {%- if block.settings.button_style == 'secondary' -%}
+                        {%- assign btn_class = 'three-layer-banner__button three-layer-banner__button--secondary' -%}
+                      {%- elsif block.settings.button_style == 'link' -%}
+                        {%- assign btn_class = 'three-layer-banner__button three-layer-banner__button--link' -%}
+                      {%- else -%}
+                        {%- assign btn_class = 'three-layer-banner__button three-layer-banner__button--primary' -%}
+                      {%- endif -%}
                       <a 
                         href="{{ block.settings.button_link | default: '#' }}"
-                        class="three-layer-banner__button three-layer-banner__button--primary {% if block.settings.button_style != 'primary' %}three-layer-banner__button--secondary{% endif %}{% if block.settings.button_style == 'link' %} three-layer-banner__button--link{% endif %}"
+                        class="{{ btn_class }}"
                         {%- if block.settings.button_link_in_new_window -%}target="_blank" rel="noreferrer noopener"{%- endif -%}
                         {%- if block.settings.button_link == blank -%} role="link" aria-disabled="true"{%- endif -%}
                       >
@@ -107,9 +113,16 @@
                     {%- endif -%}
 
                     {%- if block.settings.second_button_label != blank -%}
+                      {%- if block.settings.second_button_style == 'secondary' -%}
+                        {%- assign second_btn_class = 'three-layer-banner__button three-layer-banner__button--secondary' -%}
+                      {%- elsif block.settings.second_button_style == 'link' -%}
+                        {%- assign second_btn_class = 'three-layer-banner__button three-layer-banner__button--link' -%}
+                      {%- else -%}
+                        {%- assign second_btn_class = 'three-layer-banner__button three-layer-banner__button--primary' -%}
+                      {%- endif -%}
                       <a 
                         href="{{ block.settings.second_button_link | default: '#' }}"
-                        class="three-layer-banner__button three-layer-banner__button--primary {% if block.settings.second_button_style != 'primary' %}three-layer-banner__button--secondary{% endif %}{% if block.settings.second_button_style == 'link' %} three-layer-banner__button--link{% endif %}"
+                        class="{{ second_btn_class }}"
                         {%- if block.settings.button_link_in_new_window -%}target="_blank" rel="noreferrer noopener"{%- endif -%}
                         {%- if block.settings.second_button_link == blank -%} role="link" aria-disabled="true"{%- endif -%}
                       >
@@ -147,7 +160,6 @@
                     </div>
 
                   {%- else -%}
-                    {%- comment -%} Placeholder when no image is set {%- endcomment -%}
                     <div class="three-layer-banner__image-placeholder">
                       <svg class="three-layer-banner__placeholder-icon" width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 19 20.1 19 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="currentColor"/>
@@ -196,7 +208,6 @@
       "default": 50,
       "unit": "%"
     },
-
     {
       "type": "header",
       "content": "Banner Dimensions"
@@ -206,22 +217,10 @@
       "type": "select",
       "label": "Banner height",
       "options": [
-        {
-          "value": "small",
-          "label": "Small (400px)"
-        },
-        {
-          "value": "medium",
-          "label": "Medium (550px)"
-        },
-        {
-          "value": "large",
-          "label": "Large (700px)"
-        },
-        {
-          "value": "custom",
-          "label": "Custom"
-        }
+        { "value": "small", "label": "Small (400px)" },
+        { "value": "medium", "label": "Medium (550px)" },
+        { "value": "large", "label": "Large (700px)" },
+        { "value": "custom", "label": "Custom" }
       ],
       "default": "medium"
     },
@@ -240,18 +239,9 @@
       "id": "desktop_content_vertical_position",
       "type": "select",
       "options": [
-        {
-          "value": "flex-start",
-          "label": "Top"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "flex-end",
-          "label": "Bottom"
-        }
+        { "value": "flex-start", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Bottom" }
       ],
       "default": "center",
       "label": "Content vertical position"
@@ -260,18 +250,9 @@
       "id": "desktop_content_horizontal_position",
       "type": "select",
       "options": [
-        {
-          "value": "flex-start",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "flex-end",
-          "label": "Right"
-        }
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
       ],
       "default": "flex-start",
       "label": "Content horizontal position"
@@ -284,18 +265,9 @@
       "id": "mobile_content_vertical_position",
       "type": "select",
       "options": [
-        {
-          "value": "flex-start",
-          "label": "Top"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "flex-end",
-          "label": "Bottom"
-        }
+        { "value": "flex-start", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Bottom" }
       ],
       "default": "center",
       "label": "Content vertical position"
@@ -304,18 +276,9 @@
       "id": "mobile_content_horizontal_position",
       "type": "select",
       "options": [
-        {
-          "value": "flex-start",
-          "label": "Left"
-        },
-        {
-          "value": "center",
-          "label": "Center"
-        },
-        {
-          "value": "flex-end",
-          "label": "Right"
-        }
+        { "value": "flex-start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "flex-end", "label": "Right" }
       ],
       "default": "center",
       "label": "Content horizontal position"
@@ -442,18 +405,9 @@
           "type": "select",
           "id": "button_style",
           "options": [
-            {
-              "value": "primary",
-              "label": "Primary"
-            },
-            {
-              "value": "secondary",
-              "label": "Secondary"
-            },
-            {
-              "value": "link",
-              "label": "Link"
-            }
+            { "value": "primary", "label": "Primary" },
+            { "value": "secondary", "label": "Secondary" },
+            { "value": "link", "label": "Link" }
           ],
           "default": "primary",
           "label": "Button style"
@@ -483,18 +437,9 @@
           "type": "select",
           "id": "second_button_style",
           "options": [
-            {
-              "value": "primary",
-              "label": "Primary"
-            },
-            {
-              "value": "secondary",
-              "label": "Secondary"
-            },
-            {
-              "value": "link",
-              "label": "Link"
-            }
+            { "value": "primary", "label": "Primary" },
+            { "value": "secondary", "label": "Secondary" },
+            { "value": "link", "label": "Link" }
           ],
           "default": "secondary",
           "label": "Button style"
@@ -550,21 +495,11 @@
     {
       "name": "3-Layer Banner",
       "blocks": [
-        {
-          "type": "heading"
-        },
-        {
-          "type": "subheading"
-        },
-        {
-          "type": "text"
-        },
-        {
-          "type": "buttons"
-        },
-        {
-          "type": "image_content"
-        }
+        { "type": "heading" },
+        { "type": "subheading" },
+        { "type": "text" },
+        { "type": "buttons" },
+        { "type": "image_content" }
       ]
     }
   ]
