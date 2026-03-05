@@ -147,6 +147,10 @@
         {% if block.settings.text_block_overlay %}
           [data-block-id="{{ block.id }}"] .hero__overlay__content {
             position: relative;
+            padding-left: var(--text-block-overlay-padding-h, 24px) !important;
+            padding-right: var(--text-block-overlay-padding-h, 24px) !important;
+            padding-top: var(--text-block-overlay-padding-v, 16px) !important;
+            padding-bottom: var(--text-block-overlay-padding-v, 16px) !important;
           }
           [data-block-id="{{ block.id }}"] .hero__overlay__content::before {
             content: '';
