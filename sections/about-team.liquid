@@ -1,0 +1,604 @@
+<style>
+  [data-section-id="{{ section.id }}"] {
+    background-color: {{ section.settings.background_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  [data-section-id="{{ section.id }}"] .team__inner {
+    max-width: var(--page-width, 1200px);
+    margin: 0 auto;
+    padding: 0 var(--spacing-section-horizontal, 2rem);
+  }
+
+  /* Section Header */
+  [data-section-id="{{ section.id }}"] .team__header {
+    text-align: center;
+    margin-bottom: {{ section.settings.header_gap }}px;
+  }
+
+  [data-section-id="{{ section.id }}"] .team__eyebrow {
+    font-family: var(--font-base);
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: {{ section.settings.accent_color }};
+    margin: 0 0 12px;
+  }
+
+  [data-section-id="{{ section.id }}"] .team__heading {
+    font-family: var(--font-headline);
+    font-size: {{ section.settings.heading_size }}px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: {{ section.settings.heading_color }};
+    margin: 0;
+  }
+
+  @media (max-width: 749px) {
+    [data-section-id="{{ section.id }}"] .team__heading {
+      font-size: {{ section.settings.heading_size_mobile }}px;
+    }
+  }
+
+  /* Cards Stack */
+  [data-section-id="{{ section.id }}"] .team__cards {
+    display: flex;
+    flex-direction: column;
+    gap: {{ section.settings.card_gap }}px;
+  }
+
+  /* Individual Card */
+  [data-section-id="{{ section.id }}"] .team__card {
+    display: grid;
+    grid-template-columns: {{ section.settings.image_width }}px 1fr;
+    border-radius: {{ section.settings.card_radius }}px;
+    overflow: hidden;
+    background-color: {{ section.settings.card_bg }};
+    {% if section.settings.card_shadow %}
+    box-shadow: 0 4px 32px rgba(0,0,0,0.08);
+    {% endif %}
+    {% if section.settings.card_border %}
+    border: 1px solid {{ section.settings.card_border_color }};
+    {% endif %}
+  }
+
+  [data-section-id="{{ section.id }}"] .team__card:nth-child(even) {
+    grid-template-columns: 1fr {{ section.settings.image_width }}px;
+  }
+
+  [data-section-id="{{ section.id }}"] .team__card:nth-child(even) .team__card-image-wrap {
+    order: 2;
+  }
+
+  [data-section-id="{{ section.id }}"] .team__card:nth-child(even) .team__card-content {
+    order: 1;
+  }
+
+  @media (max-width: 899px) {
+    [data-section-id="{{ section.id }}"] .team__card,
+    [data-section-id="{{ section.id }}"] .team__card:nth-child(even) {
+      grid-template-columns: 1fr;
+    }
+
+    [data-section-id="{{ section.id }}"] .team__card:nth-child(even) .team__card-image-wrap {
+      order: 1;
+    }
+
+    [data-section-id="{{ section.id }}"] .team__card:nth-child(even) .team__card-content {
+      order: 2;
+    }
+  }
+
+  /* Image */
+  [data-section-id="{{ section.id }}"] .team__card-image-wrap {
+    position: relative;
+    overflow: hidden;
+    min-height: {{ section.settings.image_height }}px;
+  }
+
+  [data-section-id="{{ section.id }}"] .team__card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  [data-section-id="{{ section.id }}"] .team__card:hover .team__card-image {
+    transform: scale(1.03);
+  }
+
+  /* Accent bar on image */
+  [data-section-id="{{ section.id }}"] .team__card-image-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: {{ section.settings.accent_color }};
+  }
+
+  @media (max-width: 899px) {
+    [data-section-id="{{ section.id }}"] .team__card-image-wrap {
+      min-height: 320px;
+    }
+  }
+
+  /* Content */
+  [data-section-id="{{ section.id }}"] .team__card-content {
+    padding: {{ section.settings.content_padding }}px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  [data-section-id="{{ section.id }}"] .team__card-tag {
+    display: inline-block;
+    background-color: {{ section.settings.accent_color }};
+    color: #ffffff;
+    font-family: var(--font-base);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 4px 12px;
+    border-radius: 30px;
+    margin-bottom: 16px;
+    align-self: flex-start;
+  }
+
+  [data-section-id="{{ section.id }}"] .team__card-name {
+    font-family: var(--font-headline);
+    font-size: {{ section.settings.name_size }}px;
+    line-height: 1.05;
+    text-transform: uppercase;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 8px;
+  }
+
+  @media (max-width: 749px) {
+    [data-section-id="{{ section.id }}"] .team__card-name {
+      font-size: {{ section.settings.name_size_mobile }}px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .team__card-title {
+    font-family: var(--font-base);
+    font-size: {{ section.settings.title_size }}px;
+    font-weight: 600;
+    color: {{ section.settings.accent_color }};
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 24px;
+  }
+
+  [data-section-id="{{ section.id }}"] .team__card-bio {
+    font-family: var(--font-base);
+    font-size: {{ section.settings.bio_size }}px;
+    line-height: 1.7;
+    color: {{ section.settings.body_color }};
+    margin: 0 0 28px;
+  }
+
+  [data-section-id="{{ section.id }}"] .team__card-bio p {
+    margin: 0 0 12px;
+  }
+
+  [data-section-id="{{ section.id }}"] .team__card-bio p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Fun fact / quote */
+  [data-section-id="{{ section.id }}"] .team__card-quote {
+    border-left: 3px solid {{ section.settings.accent_color }};
+    padding: 12px 0 12px 20px;
+    margin-top: auto;
+  }
+
+  [data-section-id="{{ section.id }}"] .team__card-quote-label {
+    font-family: var(--font-base);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: {{ section.settings.accent_color }};
+    margin: 0 0 6px;
+    display: block;
+  }
+
+  [data-section-id="{{ section.id }}"] .team__card-quote-text {
+    font-family: var(--font-base);
+    font-size: {{ section.settings.quote_size }}px;
+    font-style: italic;
+    color: {{ section.settings.heading_color }};
+    margin: 0;
+    line-height: 1.5;
+  }
+</style>
+
+<div data-section-id="{{ section.id }}" class="team">
+  <div class="team__inner">
+
+    {%- if section.settings.eyebrow != blank or section.settings.heading != blank -%}
+      <div class="team__header">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="team__eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="team__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="team__cards">
+
+      {%- for block in section.blocks -%}
+        <div class="team__card" {{ block.shopify_attributes }}>
+
+          {%- if block.settings.image != blank -%}
+            <div class="team__card-image-wrap">
+              <img
+                src="{{ block.settings.image | image_url: width: 800 }}"
+                alt="{{ block.settings.name | escape }}"
+                class="team__card-image"
+                loading="lazy"
+                width="800"
+              >
+            </div>
+          {%- endif -%}
+
+          <div class="team__card-content">
+            {%- if block.settings.tag != blank -%}
+              <span class="team__card-tag">{{ block.settings.tag }}</span>
+            {%- endif -%}
+
+            {%- if block.settings.name != blank -%}
+              <h3 class="team__card-name">{{ block.settings.name }}</h3>
+            {%- endif -%}
+
+            {%- if block.settings.title != blank -%}
+              <p class="team__card-title">{{ block.settings.title }}</p>
+            {%- endif -%}
+
+            {%- if block.settings.bio != blank -%}
+              <div class="team__card-bio">{{ block.settings.bio }}</div>
+            {%- endif -%}
+
+            {%- if block.settings.quote != blank -%}
+              <div class="team__card-quote">
+                {%- if block.settings.quote_label != blank -%}
+                  <span class="team__card-quote-label">{{ block.settings.quote_label }}</span>
+                {%- endif -%}
+                <p class="team__card-quote-text">"{{ block.settings.quote }}"</p>
+              </div>
+            {%- endif -%}
+          </div>
+
+        </div>
+      {%- endfor -%}
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About — Meet the Team",
+  "tag": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The People Behind the Business"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Meet the Team"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 44,
+      "label": "Heading size (desktop)"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32,
+      "label": "Heading size (mobile)"
+    },
+    {
+      "type": "range",
+      "id": "header_gap",
+      "min": 20,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 48,
+      "label": "Gap below header"
+    },
+    {
+      "type": "header",
+      "content": "Card Layout"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "min": 280,
+      "max": 600,
+      "step": 20,
+      "unit": "px",
+      "default": 420,
+      "label": "Image column width"
+    },
+    {
+      "type": "range",
+      "id": "image_height",
+      "min": 300,
+      "max": 700,
+      "step": 20,
+      "unit": "px",
+      "default": 500,
+      "label": "Image min height"
+    },
+    {
+      "type": "range",
+      "id": "content_padding",
+      "min": 24,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 52,
+      "label": "Content padding"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 10,
+      "label": "Card corner radius"
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "min": 16,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 40,
+      "label": "Gap between cards"
+    },
+    {
+      "type": "checkbox",
+      "id": "card_shadow",
+      "label": "Card drop shadow",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "card_border",
+      "label": "Card border",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "card_border_color",
+      "label": "Card border color",
+      "default": "#e8e8e8"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "name_size",
+      "min": 28,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 48,
+      "label": "Name size (desktop)"
+    },
+    {
+      "type": "range",
+      "id": "name_size_mobile",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 34,
+      "label": "Name size (mobile)"
+    },
+    {
+      "type": "range",
+      "id": "title_size",
+      "min": 11,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 13,
+      "label": "Job title size"
+    },
+    {
+      "type": "range",
+      "id": "bio_size",
+      "min": 14,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16,
+      "label": "Bio font size"
+    },
+    {
+      "type": "range",
+      "id": "quote_size",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 16,
+      "label": "Quote font size"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#cc0000"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading / name color",
+      "default": "#222321"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body text color",
+      "default": "#555555"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80,
+      "label": "Padding top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80,
+      "label": "Padding bottom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "person",
+      "name": "Team Member",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo"
+        },
+        {
+          "type": "text",
+          "id": "tag",
+          "label": "Tag (pill label)",
+          "default": "Leadership"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Christian Hernandez"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Job title",
+          "default": "Director of Operations"
+        },
+        {
+          "type": "richtext",
+          "id": "bio",
+          "label": "Bio",
+          "default": "<p>Christian has spent his career in the trenches of the foodservice industry — not behind a desk, but on the floor with operators, in the kitchen during installs, and on the phone when something goes wrong at 11pm. As Director of Operations, he makes sure every project runs the way it should: on time, on spec, and with zero surprises.</p><p>His hands-on approach is why customers keep coming back, and why our reputation in NJ speaks for itself.</p>"
+        },
+        {
+          "type": "text",
+          "id": "quote_label",
+          "label": "Quote / fun fact label",
+          "default": "Fun Fact"
+        },
+        {
+          "type": "text",
+          "id": "quote",
+          "label": "Quote or fun fact",
+          "default": "Has personally installed equipment in over 500 NJ restaurants."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About — Meet the Team",
+      "blocks": [
+        {
+          "type": "person",
+          "settings": {
+            "name": "Christian Hernandez",
+            "title": "Director of Operations",
+            "tag": "Operations",
+            "quote_label": "Fun Fact",
+            "quote": "Has personally installed equipment in over 500 NJ restaurants."
+          }
+        },
+        {
+          "type": "person",
+          "settings": {
+            "name": "Jeanette Catena",
+            "title": "Business Development Manager",
+            "tag": "Leadership",
+            "quote_label": "Did You Know?",
+            "quote": "Jeanette is a certified Master Pizzaiola — one of the few in the country."
+          }
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}
