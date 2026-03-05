@@ -120,6 +120,11 @@
             --second-button-text-color: {{ block.settings.second_button_text_color | default: '#000000' }};
             --second-button-bg-hover-color: {{ block.settings.second_button_bg_hover_color | default: '#f0f0f0' }};
             --second-button-text-hover-color: {{ block.settings.second_button_text_hover_color | default: '#000000' }};
+
+            {% comment %} Text Block Overlay {% endcomment %}
+            --text-block-overlay-opacity: {{ block.settings.text_block_overlay_opacity | divided_by: 100.0 }};
+            --text-block-overlay-radius: {{ block.settings.text_block_overlay_radius }}px;
+            --text-block-overlay-padding: {{ block.settings.text_block_overlay_padding }}px;
         }
 
         {% comment %} Content Position CSS {% endcomment %}
@@ -136,6 +141,22 @@
             max-width: {{ block.settings.content_max_width }}px !important;
           }
         }
+
+        {% comment %} Text Block Overlay CSS {% endcomment %}
+        {% if block.settings.text_block_overlay %}
+          [data-block-id="{{ block.id }}"] .hero__overlay__content {
+            position: relative;
+          }
+          [data-block-id="{{ block.id }}"] .hero__overlay__content::before {
+            content: '';
+            position: absolute;
+            inset: calc(var(--text-block-overlay-padding, 16px) * -1) calc(var(--text-block-overlay-padding, 16px) * -1.5);
+            background: rgba(0, 0, 0, var(--text-block-overlay-opacity, 0.4));
+            border-radius: var(--text-block-overlay-radius, 8px);
+            z-index: -1;
+            pointer-events: none;
+          }
+        {% endif %}
 
         {% comment %} Typography Controls {% endcomment %}
         [data-block-id="{{ block.id }}"] .hero__title,
@@ -414,18 +435,9 @@
       "id": "slideshow_size",
       "label": "Slideshow size",
       "options": [
-        {
-          "value": "small",
-          "label": "Small"
-        },
-        {
-          "value": "medium",
-          "label": "Medium"
-        },
-        {
-          "value": "large",
-          "label": "Large"
-        }
+        { "value": "small", "label": "Small" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "large", "label": "Large" }
       ],
       "default": "medium",
       "info": "Choose the overall height of the slideshow"
@@ -439,14 +451,8 @@
       "id": "slide_height",
       "label": "t:sections.slideshow.settings.slide.slide_height.default.label",
       "options": [
-        {
-          "value": "adapt_to_first_image",
-          "label": "t:sections.slideshow.settings.slide.slide_height.adapt_to_first_image.label"
-        },
-        {
-          "value": "fixed_height",
-          "label": "t:sections.slideshow.settings.slide.slide_height.fixed_height.label"
-        }
+        { "value": "adapt_to_first_image", "label": "t:sections.slideshow.settings.slide.slide_height.adapt_to_first_image.label" },
+        { "value": "fixed_height", "label": "t:sections.slideshow.settings.slide.slide_height.fixed_height.label" }
       ],
       "default": "fixed_height"
     },
@@ -597,6 +603,47 @@
           "id": "text_disable_on_mobile",
           "label": "t:sections.global.disable_on_mobile",
           "default": false
+        },
+        {
+          "type": "header",
+          "content": "Text Block Overlay"
+        },
+        {
+          "type": "checkbox",
+          "id": "text_block_overlay",
+          "label": "Enable text block overlay",
+          "default": false,
+          "info": "Adds a dark background behind the text content for better readability"
+        },
+        {
+          "type": "range",
+          "id": "text_block_overlay_opacity",
+          "min": 0,
+          "max": 90,
+          "step": 5,
+          "unit": "%",
+          "default": 40,
+          "label": "Overlay darkness"
+        },
+        {
+          "type": "range",
+          "id": "text_block_overlay_radius",
+          "min": 0,
+          "max": 24,
+          "step": 2,
+          "unit": "px",
+          "default": 8,
+          "label": "Overlay corner radius"
+        },
+        {
+          "type": "range",
+          "id": "text_block_overlay_padding",
+          "min": 8,
+          "max": 48,
+          "step": 4,
+          "unit": "px",
+          "default": 20,
+          "label": "Overlay padding"
         },
         {
           "type": "header",
@@ -784,18 +831,9 @@
           "type": "select",
           "id": "button_select",
           "options": [
-            {
-              "value": "primary",
-              "label": "t:sections.settings.settings.button_select.primary.label"
-            },
-            {
-              "value": "secondary",
-              "label": "t:sections.settings.settings.button_select.secondary.label"
-            },
-            {
-              "value": "link",
-              "label": "t:sections.settings.settings.button_select.link.label"
-            }
+            { "value": "primary", "label": "t:sections.settings.settings.button_select.primary.label" },
+            { "value": "secondary", "label": "t:sections.settings.settings.button_select.secondary.label" },
+            { "value": "link", "label": "t:sections.settings.settings.button_select.link.label" }
           ],
           "default": "primary",
           "label": "t:sections.settings.settings.button_select.default.label"
@@ -853,18 +891,9 @@
           "type": "select",
           "id": "second_button_select",
           "options": [
-            {
-              "value": "primary",
-              "label": "t:sections.settings.settings.button_select.primary.label"
-            },
-            {
-              "value": "secondary",
-              "label": "t:sections.settings.settings.button_select.secondary.label"
-            },
-            {
-              "value": "link",
-              "label": "t:sections.settings.settings.button_select.link.label"
-            }
+            { "value": "primary", "label": "t:sections.settings.settings.button_select.primary.label" },
+            { "value": "secondary", "label": "t:sections.settings.settings.button_select.secondary.label" },
+            { "value": "link", "label": "t:sections.settings.settings.button_select.link.label" }
           ],
           "default": "primary",
           "label": "t:sections.settings.settings.button_select.default.label"
@@ -952,18 +981,9 @@
           "type": "select",
           "id": "desktop_text_vertical_position",
           "options": [
-            {
-              "value": "top",
-              "label": "t:sections.slideshow.settings.slide.desktop_text_vertical_position.top.label"
-            },
-            {
-              "value": "center",
-              "label": "t:sections.slideshow.settings.slide.desktop_text_vertical_position.center.label"
-            },
-            {
-              "value": "bottom",
-              "label": "t:sections.slideshow.settings.slide.desktop_text_vertical_position.bottom.label"
-            }
+            { "value": "top", "label": "t:sections.slideshow.settings.slide.desktop_text_vertical_position.top.label" },
+            { "value": "center", "label": "t:sections.slideshow.settings.slide.desktop_text_vertical_position.center.label" },
+            { "value": "bottom", "label": "t:sections.slideshow.settings.slide.desktop_text_vertical_position.bottom.label" }
           ],
           "default": "center",
           "label": "t:sections.slideshow.settings.slide.desktop_text_vertical_position.default.label"
@@ -972,18 +992,9 @@
           "type": "select",
           "id": "desktop_text_horizontal_position",
           "options": [
-            {
-              "value": "left",
-              "label": "t:sections.slideshow.settings.slide.desktop_text_horizontal_position.left.label"
-            },
-            {
-              "value": "center",
-              "label": "t:sections.slideshow.settings.slide.desktop_text_horizontal_position.center.label"
-            },
-            {
-              "value": "right",
-              "label": "t:sections.slideshow.settings.slide.desktop_text_horizontal_position.right.label"
-            }
+            { "value": "left", "label": "t:sections.slideshow.settings.slide.desktop_text_horizontal_position.left.label" },
+            { "value": "center", "label": "t:sections.slideshow.settings.slide.desktop_text_horizontal_position.center.label" },
+            { "value": "right", "label": "t:sections.slideshow.settings.slide.desktop_text_horizontal_position.right.label" }
           ],
           "default": "center",
           "label": "t:sections.slideshow.settings.slide.desktop_text_horizontal_position.default.label"
@@ -1004,18 +1015,9 @@
           "id": "content_text_align",
           "label": "Text alignment",
           "options": [
-            {
-              "value": "left",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
+            { "value": "left", "label": "Left" },
+            { "value": "center", "label": "Center" },
+            { "value": "right", "label": "Right" }
           ],
           "default": "left"
         },
@@ -1032,18 +1034,9 @@
           "type": "select",
           "id": "mobile_text_vertical_position",
           "options": [
-            {
-              "value": "top",
-              "label": "t:sections.slideshow.settings.slide.mobile_text_vertical_position.top.label"
-            },
-            {
-              "value": "center",
-              "label": "t:sections.slideshow.settings.slide.mobile_text_vertical_position.center.label"
-            },
-            {
-              "value": "bottom",
-              "label": "t:sections.slideshow.settings.slide.mobile_text_vertical_position.bottom.label"
-            }
+            { "value": "top", "label": "t:sections.slideshow.settings.slide.mobile_text_vertical_position.top.label" },
+            { "value": "center", "label": "t:sections.slideshow.settings.slide.mobile_text_vertical_position.center.label" },
+            { "value": "bottom", "label": "t:sections.slideshow.settings.slide.mobile_text_vertical_position.bottom.label" }
           ],
           "default": "center",
           "label": "t:sections.slideshow.settings.slide.mobile_text_vertical_position.default.label"
@@ -1052,18 +1045,9 @@
           "type": "select",
           "id": "mobile_text_horizontal_position",
           "options": [
-            {
-              "value": "left",
-              "label": "t:sections.slideshow.settings.slide.mobile_text_horizontal_position.left.label"
-            },
-            {
-              "value": "center",
-              "label": "t:sections.slideshow.settings.slide.mobile_text_horizontal_position.center.label"
-            },
-            {
-              "value": "right",
-              "label": "t:sections.slideshow.settings.slide.mobile_text_horizontal_position.right.label"
-            }
+            { "value": "left", "label": "t:sections.slideshow.settings.slide.mobile_text_horizontal_position.left.label" },
+            { "value": "center", "label": "t:sections.slideshow.settings.slide.mobile_text_horizontal_position.center.label" },
+            { "value": "right", "label": "t:sections.slideshow.settings.slide.mobile_text_horizontal_position.right.label" }
           ],
           "default": "center",
           "label": "t:sections.slideshow.settings.slide.mobile_text_horizontal_position.default.label"
@@ -1095,18 +1079,9 @@
     {
       "name": "Slideshow Pro",
       "blocks": [
-        {
-          "type": "slide",
-          "settings": {}
-        },
-        {
-          "type": "slide",
-          "settings": {}
-        },
-        {
-          "type": "slide",
-          "settings": {}
-        }
+        { "type": "slide", "settings": {} },
+        { "type": "slide", "settings": {} },
+        { "type": "slide", "settings": {} }
       ]
     }
   ],
