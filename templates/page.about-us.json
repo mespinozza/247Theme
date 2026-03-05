@@ -107,65 +107,63 @@
         "padding_bottom": 80
       }
     },
-    "service_showcase_pn9jJi": {
-      "type": "service-showcase",
+    "about_team_FinGJ8": {
+      "type": "about-team",
       "blocks": {
-        "service_item_tMVMKT": {
-          "type": "service_item",
+        "person_RN8xVy": {
+          "type": "person",
           "settings": {
-            "image": "shopify://shop_images/DSC04576-1-scaled.png",
-            "image_position": "center",
-            "heading": "Commercial Cooking Service",
-            "description": "<p>Led by Christian Hernandez, you are getting a company that cares about you and your business.</p>",
-            "button_text": "",
-            "button_url": "",
-            "link_url": ""
+            "tag": "Operations",
+            "name": "Christian Hernandez",
+            "title": "Director of Operations",
+            "bio": "<p>Christian has spent his career in the trenches of the foodservice industry — not behind a desk, but on the floor with operators, in the kitchen during installs, and on the phone when something goes wrong at 11pm. As Director of Operations, he makes sure every project runs the way it should: on time, on spec, and with zero surprises.</p><p>His hands-on approach is why customers keep coming back, and why our reputation in NJ speaks for itself.</p>",
+            "quote_label": "Fun Fact",
+            "quote": "Has personally installed equipment in over 500 NJ restaurants."
           }
         },
-        "service_item_XC88f4": {
-          "type": "service_item",
+        "person_rjWJ6a": {
+          "type": "person",
           "settings": {
-            "image": "shopify://shop_images/DSC04654-1024x819.png",
-            "image_position": "center",
-            "heading": "We take care of EVERYTHING for you!",
-            "description": "<p>First, we specify the right piece of equipment for your foodservice operation, then we get to work.  Our tech team will uninstall the existing equipment in your facility, remove and dispose of safely, deliver the new equipment, set in place, perform factory authorized installation and a certified equipment start-up that locks in your warranty that is also provided by US!  One call truly gets it all done.</p>",
-            "button_text": "",
-            "button_url": "",
-            "link_url": ""
-          }
-        },
-        "service_item_FqmNxR": {
-          "type": "service_item",
-          "settings": {
-            "image": "shopify://shop_images/DSC04617-scaled-qv55pks2k3ta4041so96zfpd5s2r9gnsp63p5074p4.jpg",
-            "image_position": "center",
-            "heading": "Turnkey:",
-            "description": "<p>‘of or involving the provision of a complete product or service that is for immediate use.’</p>",
-            "button_text": "",
-            "button_url": "",
-            "link_url": ""
+            "tag": "Leadership",
+            "name": "Jeanette Catena",
+            "title": "Business Development Manager",
+            "bio": "<p>Christian has spent his career in the trenches of the foodservice industry — not behind a desk, but on the floor with operators, in the kitchen during installs, and on the phone when something goes wrong at 11pm. As Director of Operations, he makes sure every project runs the way it should: on time, on spec, and with zero surprises.</p><p>His hands-on approach is why customers keep coming back, and why our reputation in NJ speaks for itself.</p>",
+            "quote_label": "Did You Know?",
+            "quote": "Jeanette is a certified Master Pizzaiola — one of the few females in the country."
           }
         }
       },
       "block_order": [
-        "service_item_tMVMKT",
-        "service_item_XC88f4",
-        "service_item_FqmNxR"
+        "person_RN8xVy",
+        "person_rjWJ6a"
       ],
-      "name": "Service Showcase",
+      "name": "About — Meet the Team",
       "settings": {
-        "section_title": "",
-        "section_description": "",
-        "title_size": 40,
-        "title_size_mobile": 28,
-        "header_spacing": 48,
+        "eyebrow": "The People Behind the Business",
+        "heading": "Meet the Team",
+        "heading_size": 44,
+        "heading_size_mobile": 32,
+        "header_gap": 48,
+        "image_width": 420,
+        "image_height": 500,
+        "content_padding": 52,
+        "card_radius": 10,
+        "card_gap": 40,
+        "card_shadow": true,
+        "card_border": false,
+        "card_border_color": "#e8e8e8",
+        "name_size": 48,
+        "name_size_mobile": 34,
+        "title_size": 13,
+        "bio_size": 16,
+        "quote_size": 16,
         "background_color": "#ffffff",
-        "heading_color": "#000000",
-        "text_color": "#666666",
-        "text_alignment": "center",
-        "item_spacing": 32,
-        "padding_top": 64,
-        "padding_bottom": 64
+        "card_bg": "#ffffff",
+        "accent_color": "#cc0000",
+        "heading_color": "#222321",
+        "body_color": "#555555",
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "event_location_info_8DP9TL": {
@@ -230,7 +228,7 @@
     "main",
     "about_story_AXREAY",
     "about_different_L6gw7G",
-    "service_showcase_pn9jJi",
+    "about_team_FinGJ8",
     "event_location_info_8DP9TL"
   ]
 }
