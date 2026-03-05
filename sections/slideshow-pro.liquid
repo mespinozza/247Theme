@@ -124,7 +124,8 @@
             {% comment %} Text Block Overlay {% endcomment %}
             --text-block-overlay-opacity: {{ block.settings.text_block_overlay_opacity | divided_by: 100.0 }};
             --text-block-overlay-radius: {{ block.settings.text_block_overlay_radius }}px;
-            --text-block-overlay-padding: {{ block.settings.text_block_overlay_padding }}px;
+            --text-block-overlay-padding-v: {{ block.settings.text_block_overlay_padding }}px;
+--text-block-overlay-padding-h: {{ block.settings.text_block_overlay_padding_h }}px;
         }
 
         {% comment %} Content Position CSS {% endcomment %}
@@ -150,11 +151,10 @@
           [data-block-id="{{ block.id }}"] .hero__overlay__content::before {
             content: '';
             position: absolute;
-            top: calc(var(--text-block-overlay-padding, 16px) * -1);
-bottom: calc(var(--text-block-overlay-padding, 16px) * -1);
-left: 0;
-right: 0;
-inset-inline: 0;
+            top: calc(var(--text-block-overlay-padding-v, 16px) * -1);
+bottom: calc(var(--text-block-overlay-padding-v, 16px) * -1);
+left: calc(var(--text-block-overlay-padding-h, 24px) * -1);
+right: calc(var(--text-block-overlay-padding-h, 24px) * -1);
             background: rgba(0, 0, 0, var(--text-block-overlay-opacity, 0.4));
             border-radius: var(--text-block-overlay-radius, 8px);
             z-index: -1;
@@ -649,6 +649,16 @@ inset-inline: 0;
           "default": 20,
           "label": "Overlay padding"
         },
+        {
+  "type": "range",
+  "id": "text_block_overlay_padding_h",
+  "min": 8,
+  "max": 120,
+  "step": 4,
+  "unit": "px",
+  "default": 32,
+  "label": "Overlay padding (horizontal)"
+},
         {
           "type": "header",
           "content": "Heading Typography"
