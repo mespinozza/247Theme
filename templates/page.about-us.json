@@ -168,6 +168,36 @@
         "padding_bottom": 80
       }
     },
+    "about_pizza_mcTgA3": {
+      "type": "about-pizza",
+      "name": "About — Pizza Teaser",
+      "settings": {
+        "eyebrow": "Meet Our Master Pizzaiola",
+        "heading": "Pizza Expertise, Built In.",
+        "body": "Our Business Development Manager Jeanette Catena is a certified Master Pizzaiola — bringing a level of pizza kitchen expertise that most equipment dealers simply can't offer.",
+        "btn_label": "Explore Pizza Expertise",
+        "btn_link": "",
+        "image": "shopify://shop_images/Screenshot_2024-11-26_at_11.13.54_AM.png",
+        "image_width": 280,
+        "card_height": 200,
+        "background_color": "#ffffff",
+        "card_bg": "#f5f5f5",
+        "accent_color": "#0000c1",
+        "heading_color": "#222321",
+        "body_color": "#555555",
+        "card_border": true,
+        "border_color": "#e8e8e8",
+        "card_shadow": false,
+        "heading_size": 32,
+        "heading_size_mobile": 26,
+        "body_size": 15,
+        "content_padding": 28,
+        "gap": 28,
+        "card_radius": 10,
+        "padding_top": 20,
+        "padding_bottom": 80
+      }
+    },
     "event_location_info_8DP9TL": {
       "type": "event-location-info",
       "name": "Event Location Info",
@@ -231,6 +261,7 @@
     "about_story_AXREAY",
     "about_different_L6gw7G",
     "about_team_FinGJ8",
+    "about_pizza_mcTgA3",
     "event_location_info_8DP9TL"
   ]
 }
