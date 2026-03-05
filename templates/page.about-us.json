@@ -113,6 +113,7 @@
         "person_RN8xVy": {
           "type": "person",
           "settings": {
+            "image": "shopify://shop_images/DSC02039.jpg",
             "tag": "Operations",
             "name": "Christian Hernandez",
             "title": "Director of Operations",
@@ -124,6 +125,7 @@
         "person_rjWJ6a": {
           "type": "person",
           "settings": {
+            "image": "shopify://shop_images/DSC02067.jpg",
             "tag": "Leadership",
             "name": "Jeanette Catena",
             "title": "Business Development Manager",
