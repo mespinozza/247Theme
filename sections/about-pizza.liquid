@@ -1,0 +1,409 @@
+<style>
+  [data-section-id="{{ section.id }}"] {
+    background-color: {{ section.settings.background_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  [data-section-id="{{ section.id }}"] .pizza-teaser__inner {
+    max-width: var(--page-width, 1200px);
+    margin: 0 auto;
+    padding: 0 var(--spacing-section-horizontal, 2rem);
+  }
+
+  [data-section-id="{{ section.id }}"] .pizza-teaser__card {
+    display: grid;
+    grid-template-columns: {{ section.settings.image_width }}px 1fr auto;
+    align-items: center;
+    gap: {{ section.settings.gap }}px;
+    background-color: {{ section.settings.card_bg }};
+    border-radius: {{ section.settings.card_radius }}px;
+    overflow: hidden;
+    {% if section.settings.card_border %}
+    border: 1px solid {{ section.settings.border_color }};
+    {% endif %}
+    {% if section.settings.card_shadow %}
+    box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+    {% endif %}
+  }
+
+  @media (max-width: 749px) {
+    [data-section-id="{{ section.id }}"] .pizza-teaser__card {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Image */
+  [data-section-id="{{ section.id }}"] .pizza-teaser__image-wrap {
+    overflow: hidden;
+    height: {{ section.settings.card_height }}px;
+  }
+
+  @media (max-width: 749px) {
+    [data-section-id="{{ section.id }}"] .pizza-teaser__image-wrap {
+      height: 220px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .pizza-teaser__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  [data-section-id="{{ section.id }}"] .pizza-teaser__card:hover .pizza-teaser__image {
+    transform: scale(1.04);
+  }
+
+  /* Content */
+  [data-section-id="{{ section.id }}"] .pizza-teaser__content {
+    padding: {{ section.settings.content_padding }}px 0;
+  }
+
+  @media (max-width: 749px) {
+    [data-section-id="{{ section.id }}"] .pizza-teaser__content {
+      padding: 24px {{ section.settings.content_padding }}px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .pizza-teaser__eyebrow {
+    font-family: var(--font-base);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: {{ section.settings.accent_color }};
+    margin: 0 0 10px;
+    display: block;
+  }
+
+  [data-section-id="{{ section.id }}"] .pizza-teaser__heading {
+    font-family: var(--font-headline);
+    font-size: {{ section.settings.heading_size }}px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: {{ section.settings.heading_color }};
+    margin: 0 0 12px;
+  }
+
+  @media (max-width: 749px) {
+    [data-section-id="{{ section.id }}"] .pizza-teaser__heading {
+      font-size: {{ section.settings.heading_size_mobile }}px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .pizza-teaser__text {
+    font-family: var(--font-base);
+    font-size: {{ section.settings.body_size }}px;
+    line-height: 1.6;
+    color: {{ section.settings.body_color }};
+    margin: 0;
+    max-width: 520px;
+  }
+
+  /* CTA */
+  [data-section-id="{{ section.id }}"] .pizza-teaser__cta {
+    padding-right: {{ section.settings.content_padding }}px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 749px) {
+    [data-section-id="{{ section.id }}"] .pizza-teaser__cta {
+      padding: 0 {{ section.settings.content_padding }}px 28px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .pizza-teaser__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: {{ section.settings.accent_color }};
+    color: #ffffff;
+    font-family: var(--font-headline);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: var(--border-radius-button, 30px);
+    white-space: nowrap;
+    transition: opacity 0.2s ease;
+  }
+
+  [data-section-id="{{ section.id }}"] .pizza-teaser__btn:hover {
+    opacity: 0.85;
+  }
+
+  [data-section-id="{{ section.id }}"] .pizza-teaser__btn svg {
+    width: 14px;
+    height: 14px;
+    fill: #ffffff;
+    flex-shrink: 0;
+  }
+</style>
+
+<div data-section-id="{{ section.id }}" class="pizza-teaser">
+  <div class="pizza-teaser__inner">
+    <div class="pizza-teaser__card">
+
+      {%- if section.settings.image != blank -%}
+        <div class="pizza-teaser__image-wrap">
+          <img
+            src="{{ section.settings.image | image_url: width: 600 }}"
+            alt="{{ section.settings.image.alt | default: 'Pizza expertise' | escape }}"
+            class="pizza-teaser__image"
+            loading="lazy"
+            width="600"
+          >
+        </div>
+      {%- endif -%}
+
+      <div class="pizza-teaser__content">
+        {%- if section.settings.eyebrow != blank -%}
+          <span class="pizza-teaser__eyebrow">{{ section.settings.eyebrow }}</span>
+        {%- endif -%}
+        {%- if section.settings.heading != blank -%}
+          <h2 class="pizza-teaser__heading">{{ section.settings.heading }}</h2>
+        {%- endif -%}
+        {%- if section.settings.body != blank -%}
+          <p class="pizza-teaser__text">{{ section.settings.body }}</p>
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.btn_label != blank -%}
+        <div class="pizza-teaser__cta">
+          <a href="{{ section.settings.btn_link }}" class="pizza-teaser__btn">
+            {{ section.settings.btn_label }}
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+          </a>
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About — Pizza Teaser",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Meet Our Master Pizzaiola"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Pizza Expertise, Built In."
+    },
+    {
+      "type": "textarea",
+      "id": "body",
+      "label": "Body text",
+      "default": "Our Business Development Manager Jeanette Catena is a certified Master Pizzaiola — bringing a level of pizza kitchen expertise that most equipment dealers simply can't offer."
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button label",
+      "default": "Explore Pizza Expertise"
+    },
+    {
+      "type": "url",
+      "id": "btn_link",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "min": 160,
+      "max": 420,
+      "step": 20,
+      "unit": "px",
+      "default": 280,
+      "label": "Image column width (desktop)"
+    },
+    {
+      "type": "range",
+      "id": "card_height",
+      "min": 120,
+      "max": 320,
+      "step": 10,
+      "unit": "px",
+      "default": 200,
+      "label": "Card height"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Section background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#0000c1"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#222321"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body color",
+      "default": "#555555"
+    },
+    {
+      "type": "checkbox",
+      "id": "card_border",
+      "label": "Card border",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#e8e8e8"
+    },
+    {
+      "type": "checkbox",
+      "id": "card_shadow",
+      "label": "Card shadow",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 20,
+      "max": 52,
+      "step": 2,
+      "unit": "px",
+      "default": 32,
+      "label": "Heading size (desktop)"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 20,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 26,
+      "label": "Heading size (mobile)"
+    },
+    {
+      "type": "range",
+      "id": "body_size",
+      "min": 13,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 15,
+      "label": "Body font size"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "content_padding",
+      "min": 16,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 36,
+      "label": "Content padding"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "min": 0,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 0,
+      "label": "Gap between image and content"
+    },
+    {
+      "type": "range",
+      "id": "card_radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 10,
+      "label": "Card corner radius"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20,
+      "label": "Padding top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 20,
+      "label": "Padding bottom"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About — Pizza Teaser"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}
