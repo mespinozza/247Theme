@@ -140,7 +140,7 @@
         "heading_a9LR3K": {
           "type": "heading",
           "settings": {
-            "heading": "Subscribe to our emails",
+            "heading": "Subscribe to the 24/7 scoop!",
             "heading_disable_on_mobile": false,
             "size_heading": 100,
             "size_heading_mobile": 100
@@ -149,7 +149,7 @@
         "paragraph_D6ggC7": {
           "type": "paragraph",
           "settings": {
-            "paragraph": "<p>Be the first to know about new collections and exclusive offers.</p>",
+            "paragraph": "<p>Be the first to know about new collections and exclusive offers!</p>",
             "text_disable_on_mobile": false
           }
         },
