@@ -1,0 +1,630 @@
+<style>
+  [data-section-id="{{ section.id }}"] {
+    background-color: {{ section.settings.background_color }};
+    padding: {{ section.settings.padding_top }}px 0 {{ section.settings.padding_bottom }}px;
+  }
+
+  [data-section-id="{{ section.id }}"] .why-us__inner {
+    max-width: var(--page-width, 1200px);
+    margin: 0 auto;
+    padding: 0 var(--spacing-section-horizontal, 2rem);
+  }
+
+  /* Header */
+  [data-section-id="{{ section.id }}"] .why-us__header {
+    text-align: center;
+    margin-bottom: {{ section.settings.header_gap }}px;
+  }
+
+  [data-section-id="{{ section.id }}"] .why-us__eyebrow {
+    font-family: var(--font-base);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.6);
+    margin: 0 0 12px;
+  }
+
+  [data-section-id="{{ section.id }}"] .why-us__heading {
+    font-family: var(--font-headline);
+    font-size: {{ section.settings.heading_size }}px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin: 0 0 16px;
+  }
+
+  @media (max-width: 749px) {
+    [data-section-id="{{ section.id }}"] .why-us__heading {
+      font-size: {{ section.settings.heading_size_mobile }}px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .why-us__subheading {
+    font-family: var(--font-base);
+    font-size: {{ section.settings.subheading_size }}px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.6;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  /* Reasons Grid */
+  [data-section-id="{{ section.id }}"] .why-us__grid {
+    display: grid;
+    grid-template-columns: repeat({{ section.settings.columns }}, 1fr);
+    gap: {{ section.settings.item_gap }}px;
+    margin-bottom: {{ section.settings.grid_bottom_gap }}px;
+  }
+
+  @media (max-width: 899px) {
+    [data-section-id="{{ section.id }}"] .why-us__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 549px) {
+    [data-section-id="{{ section.id }}"] .why-us__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Reason item */
+  [data-section-id="{{ section.id }}"] .why-us__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: {{ section.settings.item_padding }}px;
+    background-color: rgba(255,255,255,{{ section.settings.item_bg_opacity | divided_by: 100.0 }});
+    border-radius: {{ section.settings.item_radius }}px;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  [data-section-id="{{ section.id }}"] .why-us__item-icon {
+    width: 36px;
+    height: 36px;
+    background-color: {{ section.settings.icon_color }};
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  [data-section-id="{{ section.id }}"] .why-us__item-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: #ffffff;
+  }
+
+  [data-section-id="{{ section.id }}"] .why-us__item-text {
+    flex: 1;
+  }
+
+  [data-section-id="{{ section.id }}"] .why-us__item-title {
+    font-family: var(--font-headline);
+    font-size: {{ section.settings.item_title_size }}px;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin: 0 0 6px;
+    line-height: 1.2;
+  }
+
+  [data-section-id="{{ section.id }}"] .why-us__item-body {
+    font-family: var(--font-base);
+    font-size: {{ section.settings.item_body_size }}px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Divider */
+  [data-section-id="{{ section.id }}"] .why-us__divider {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    margin: 0 0 {{ section.settings.cta_gap }}px;
+  }
+
+  /* CTA */
+  [data-section-id="{{ section.id }}"] .why-us__cta {
+    text-align: center;
+  }
+
+  [data-section-id="{{ section.id }}"] .why-us__cta-heading {
+    font-family: var(--font-headline);
+    font-size: {{ section.settings.cta_heading_size }}px;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin: 0 0 8px;
+    line-height: 1.15;
+  }
+
+  @media (max-width: 749px) {
+    [data-section-id="{{ section.id }}"] .why-us__cta-heading {
+      font-size: {{ section.settings.cta_heading_size_mobile }}px;
+    }
+  }
+
+  [data-section-id="{{ section.id }}"] .why-us__cta-sub {
+    font-family: var(--font-base);
+    font-size: {{ section.settings.cta_sub_size }}px;
+    color: rgba(255,255,255,0.7);
+    margin: 0 0 28px;
+    line-height: 1.5;
+  }
+
+  [data-section-id="{{ section.id }}"] .why-us__cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  [data-section-id="{{ section.id }}"] .why-us__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-headline);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    padding: 14px 36px;
+    border-radius: var(--border-radius-button, 30px);
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+
+  [data-section-id="{{ section.id }}"] .why-us__btn--primary {
+    background-color: {{ section.settings.btn_primary_bg }};
+    color: {{ section.settings.btn_primary_text }};
+    border-color: {{ section.settings.btn_primary_bg }};
+  }
+
+  [data-section-id="{{ section.id }}"] .why-us__btn--primary:hover {
+    opacity: 0.88;
+    transform: translateY(-2px);
+  }
+
+  [data-section-id="{{ section.id }}"] .why-us__btn--secondary {
+    background-color: transparent;
+    color: #ffffff;
+    border-color: rgba(255,255,255,0.6);
+  }
+
+  [data-section-id="{{ section.id }}"] .why-us__btn--secondary:hover {
+    background-color: rgba(255,255,255,0.1);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+  }
+</style>
+
+<div data-section-id="{{ section.id }}" class="why-us">
+  <div class="why-us__inner">
+
+    <!-- Header -->
+    <div class="why-us__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="why-us__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="why-us__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.subheading != blank -%}
+        <p class="why-us__subheading">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+    </div>
+
+    <!-- Reasons Grid -->
+    <div class="why-us__grid">
+      {%- for block in section.blocks -%}
+        <div class="why-us__item" {{ block.shopify_attributes }}>
+          <div class="why-us__item-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          </div>
+          <div class="why-us__item-text">
+            {%- if block.settings.title != blank -%}
+              <p class="why-us__item-title">{{ block.settings.title }}</p>
+            {%- endif -%}
+            {%- if block.settings.body != blank -%}
+              <p class="why-us__item-body">{{ block.settings.body }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <!-- Divider -->
+    <hr class="why-us__divider">
+
+    <!-- CTA -->
+    <div class="why-us__cta">
+      {%- if section.settings.cta_heading != blank -%}
+        <h3 class="why-us__cta-heading">{{ section.settings.cta_heading }}</h3>
+      {%- endif -%}
+      {%- if section.settings.cta_sub != blank -%}
+        <p class="why-us__cta-sub">{{ section.settings.cta_sub }}</p>
+      {%- endif -%}
+      <div class="why-us__cta-buttons">
+        {%- if section.settings.btn1_label != blank -%}
+          <a href="{{ section.settings.btn1_link }}" class="why-us__btn why-us__btn--primary">
+            {{ section.settings.btn1_label }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.btn2_label != blank -%}
+          <a href="{{ section.settings.btn2_link }}" class="why-us__btn why-us__btn--secondary">
+            {{ section.settings.btn2_label }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About — Why Choose Us",
+  "tag": "section",
+  "max_blocks": 9,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Why NJ Restaurants Choose Us"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "The Difference Is in the Details."
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Thirty years of showing up, following through, and standing behind our work."
+    },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "min": 24,
+      "max": 72,
+      "step": 2,
+      "unit": "px",
+      "default": 44,
+      "label": "Heading size (desktop)"
+    },
+    {
+      "type": "range",
+      "id": "heading_size_mobile",
+      "min": 24,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32,
+      "label": "Heading size (mobile)"
+    },
+    {
+      "type": "range",
+      "id": "subheading_size",
+      "min": 14,
+      "max": 22,
+      "step": 1,
+      "unit": "px",
+      "default": 17,
+      "label": "Subheading size"
+    },
+    {
+      "type": "range",
+      "id": "header_gap",
+      "min": 24,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 52,
+      "label": "Gap below header"
+    },
+    {
+      "type": "header",
+      "content": "CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_heading",
+      "label": "CTA heading",
+      "default": "Let's Build Your Kitchen."
+    },
+    {
+      "type": "text",
+      "id": "cta_sub",
+      "label": "CTA subtext",
+      "default": "Call us, visit our showroom, or start online. We're ready when you are."
+    },
+    {
+      "type": "text",
+      "id": "btn1_label",
+      "label": "Primary button label",
+      "default": "Contact Us"
+    },
+    {
+      "type": "url",
+      "id": "btn1_link",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "btn2_label",
+      "label": "Secondary button label",
+      "default": "Visit Our Showroom"
+    },
+    {
+      "type": "url",
+      "id": "btn2_link",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "range",
+      "id": "cta_heading_size",
+      "min": 24,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 38,
+      "label": "CTA heading size (desktop)"
+    },
+    {
+      "type": "range",
+      "id": "cta_heading_size_mobile",
+      "min": 22,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 28,
+      "label": "CTA heading size (mobile)"
+    },
+    {
+      "type": "range",
+      "id": "cta_sub_size",
+      "min": 13,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 16,
+      "label": "CTA subtext size"
+    },
+    {
+      "type": "range",
+      "id": "cta_gap",
+      "min": 20,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 48,
+      "label": "Gap above CTA"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#0000c1"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent color",
+      "default": "#cc0000"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Check icon color",
+      "default": "#cc0000"
+    },
+    {
+      "type": "color",
+      "id": "btn_primary_bg",
+      "label": "Primary button background",
+      "default": "#cc0000"
+    },
+    {
+      "type": "color",
+      "id": "btn_primary_text",
+      "label": "Primary button text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Columns (desktop)",
+      "options": [
+        { "value": "2", "label": "2 columns" },
+        { "value": "3", "label": "3 columns" }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "range",
+      "id": "item_gap",
+      "min": 8,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 16,
+      "label": "Gap between items"
+    },
+    {
+      "type": "range",
+      "id": "item_padding",
+      "min": 12,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "default": 24,
+      "label": "Item padding"
+    },
+    {
+      "type": "range",
+      "id": "item_radius",
+      "min": 0,
+      "max": 16,
+      "step": 2,
+      "unit": "px",
+      "default": 8,
+      "label": "Item corner radius"
+    },
+    {
+      "type": "range",
+      "id": "item_bg_opacity",
+      "min": 0,
+      "max": 20,
+      "step": 2,
+      "unit": "%",
+      "default": 10,
+      "label": "Item background opacity"
+    },
+    {
+      "type": "range",
+      "id": "item_title_size",
+      "min": 14,
+      "max": 28,
+      "step": 2,
+      "unit": "px",
+      "default": 18,
+      "label": "Item title size"
+    },
+    {
+      "type": "range",
+      "id": "item_body_size",
+      "min": 12,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14,
+      "label": "Item body size"
+    },
+    {
+      "type": "range",
+      "id": "grid_bottom_gap",
+      "min": 24,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 60,
+      "label": "Gap below grid"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80,
+      "label": "Padding top"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 80,
+      "label": "Padding bottom"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "reason",
+      "name": "Reason",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "30+ Years of Experience"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Supporting text",
+          "default": "We've been doing this since before most of our competitors existed."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "About — Why Choose Us",
+      "blocks": [
+        {
+          "type": "reason",
+          "settings": {
+            "title": "30+ Years of Experience",
+            "body": "We've been doing this since before most of our competitors existed."
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "title": "Factory-Authorized Installation",
+            "body": "Certified start-ups that lock in your manufacturer warranty — every time."
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "title": "One Call Gets It All Done",
+            "body": "Consultation, delivery, installation, and service — all under one roof."
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "title": "We Remove the Old Equipment",
+            "body": "We uninstall, remove, and dispose of your existing equipment safely."
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "title": "NJ-Based, NJ-Focused",
+            "body": "Locally owned and operated, with deep roots in the NJ restaurant community."
+          }
+        },
+        {
+          "type": "reason",
+          "settings": {
+            "title": "Pizza Kitchen Specialists",
+            "body": "Our team includes a certified Master Pizzaiola — expertise most dealers don't have."
+          }
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  }
+}
+{% endschema %}
