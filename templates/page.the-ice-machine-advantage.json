@@ -139,7 +139,7 @@
         "benefit_nVKmrw": {
           "type": "benefit",
           "settings": {
-            "google_icon": "eco",
+            "google_icon": "shield",
             "custom-icon-color": "",
             "custom-icon-hover-color": "#0031ff",
             "title": "Back-up",
