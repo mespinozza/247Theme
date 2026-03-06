@@ -6,6 +6,10 @@
     --banner-padding-top: {{ section.settings.banner_padding_top }}px;
     --banner-padding-bottom: {{ section.settings.banner_padding_bottom }}px;
     --blocks-gap: {{ section.settings.blocks_gap }}px;
+    --banner-min-height: {{ section.settings.banner_min_height }}px;
+    --banner-min-height-mobile: {{ section.settings.banner_min_height_mobile }}px;
+    --block-height: {{ section.settings.block_height }}px;
+    --block-height-mobile: {{ section.settings.block_height_mobile }}px;
   }
 {%- endstyle -%}
 
@@ -128,14 +132,39 @@
     },
     {
       "type": "header",
+      "content": "Banner Size"
+    },
+    {
+      "id": "banner_min_height",
+      "type": "range",
+      "label": "Banner min height (desktop)",
+      "min": 0,
+      "max": 600,
+      "step": 20,
+      "unit": "px",
+      "default": 300,
+      "info": "Minimum height of the banner. Grows taller if text needs more space."
+    },
+    {
+      "id": "banner_min_height_mobile",
+      "type": "range",
+      "label": "Banner min height (mobile)",
+      "min": 0,
+      "max": 400,
+      "step": 20,
+      "unit": "px",
+      "default": 200
+    },
+    {
+      "type": "header",
       "content": "Banner Spacing"
     },
     {
       "id": "banner_padding_top",
       "type": "range",
       "label": "Top padding",
-      "min": 20,
-      "max": 100,
+      "min": 0,
+      "max": 200,
       "step": 5,
       "unit": "px",
       "default": 60
@@ -144,11 +173,36 @@
       "id": "banner_padding_bottom",
       "type": "range",
       "label": "Bottom padding",
-      "min": 20,
-      "max": 100,
+      "min": 0,
+      "max": 200,
       "step": 5,
       "unit": "px",
       "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Block Image Size"
+    },
+    {
+      "id": "block_height",
+      "type": "range",
+      "label": "Block height (desktop)",
+      "min": 100,
+      "max": 800,
+      "step": 20,
+      "unit": "px",
+      "default": 400,
+      "info": "Height of the Combi/Ice Machine image blocks"
+    },
+    {
+      "id": "block_height_mobile",
+      "type": "range",
+      "label": "Block height (mobile)",
+      "min": 100,
+      "max": 500,
+      "step": 20,
+      "unit": "px",
+      "default": 260
     },
     {
       "type": "header",
