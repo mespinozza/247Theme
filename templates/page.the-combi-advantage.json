@@ -56,7 +56,7 @@
         "desktop_fixed_height": 460,
         "mobile_fixed_height": 500,
         "fade-intensity": 70,
-        "desktop_image": "shopify://shop_images/ChatGPT_Image_Aug_14_2025_10_17_54_AM.png",
+        "desktop_image": "shopify://shop_images/Screenshot_2023-05-08_at_2.55.21_PM.png",
         "desktop_content_vertical_position": "center",
         "desktop_content_horizontal_position": "flex-start",
         "mobile_content_vertical_position": "center",
@@ -159,6 +159,75 @@
         "margin-bottom": 20
       }
     },
+    "background_video_xKBq9x": {
+      "type": "background-video",
+      "blocks": {
+        "subheading_DkTw4G": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "subheading": "Tell your story",
+            "subheading_disable_on_mobile": false
+          }
+        },
+        "heading_UwGG8y": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Video scene",
+            "disable_on_mobile": false,
+            "size_heading": 100,
+            "size_heading_mobile": 100
+          }
+        },
+        "text_hpntpT": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Explore in motion</p>",
+            "disable_on_mobile": false
+          }
+        },
+        "button_AGNAeB": {
+          "type": "button",
+          "settings": {
+            "button_select": "primary",
+            "button_label": "Button label",
+            "disable_on_mobile": false,
+            "button_link": "",
+            "second_button_select": "primary",
+            "second_button_label": "Button label",
+            "second_disable_on_mobile": false,
+            "second_button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_DkTw4G",
+        "heading_UwGG8y",
+        "text_hpntpT",
+        "button_AGNAeB"
+      ],
+      "name": "t:sections.background-video.presets.name",
+      "settings": {
+        "heading": "",
+        "full-width-enabled": false,
+        "autoplay": false,
+        "video_controls": false,
+        "video_url": "https://www.youtube.com/watch?v=jDJzTZfAaxE",
+        "original_ratio": "original_ratio",
+        "desktop_fixed_height": 320,
+        "mobile_fixed_height": 460,
+        "color-body-heading": "transparent",
+        "color-overlay": "transparent",
+        "color-overlay-opacity": 100,
+        "color-body-text": "transparent",
+        "desktop_text_horizontal_position": "center",
+        "mobile_text_horizontal_position": "center",
+        "margin-top": 20,
+        "margin-bottom": 20
+      }
+    },
     "featured_collection_U8DAWp": {
       "type": "featured-collection",
       "name": "t:sections.featured-collection.presets.name",
@@ -214,6 +283,7 @@
         "comparison_a_zKcQzm",
         "comparison_b_wWfVgy"
       ],
+      "disabled": true,
       "name": "Comparison Showcase",
       "settings": {
         "heading": "Why Us?",
@@ -247,6 +317,7 @@
   "order": [
     "banner_fade_CkDtx8",
     "icon_benefit_showcase_HJMRpb",
+    "background_video_xKBq9x",
     "featured_collection_U8DAWp",
     "comparison_showcase_CtcM7j",
     "main"
