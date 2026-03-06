@@ -126,6 +126,8 @@
             --text-block-overlay-radius: {{ block.settings.text_block_overlay_radius }}px;
             --text-block-overlay-padding-v: {{ block.settings.text_block_overlay_padding }}px;
 --text-block-overlay-padding-h: {{ block.settings.text_block_overlay_padding_h }}px;
+--text-block-overlay-padding-v-mobile: {{ block.settings.text_block_overlay_padding_v_mobile }}px;
+--text-block-overlay-padding-h-mobile: {{ block.settings.text_block_overlay_padding_h_mobile }}px;
         }
 
         {% comment %} Content Position CSS {% endcomment %}
@@ -185,6 +187,18 @@ right: calc(var(--text-block-overlay-padding-h, 24px) * -1);
           [data-block-id="{{ block.id }}"] .hero__overlay__content h2 {
             font-size: {{ block.settings.heading_font_size_mobile }}px !important;
             white-space: normal !important;
+          }
+          [data-block-id="{{ block.id }}"] .hero__overlay__content {
+            padding-left: var(--text-block-overlay-padding-h-mobile, 16px) !important;
+            padding-right: var(--text-block-overlay-padding-h-mobile, 16px) !important;
+            padding-top: var(--text-block-overlay-padding-v-mobile, 12px) !important;
+            padding-bottom: var(--text-block-overlay-padding-v-mobile, 12px) !important;
+          }
+          [data-block-id="{{ block.id }}"] .hero__overlay__content::before {
+            top: calc(var(--text-block-overlay-padding-v-mobile, 12px) * -1);
+            bottom: calc(var(--text-block-overlay-padding-v-mobile, 12px) * -1);
+            left: calc(var(--text-block-overlay-padding-h-mobile, 16px) * -1);
+            right: calc(var(--text-block-overlay-padding-h-mobile, 16px) * -1);
           }
         }
 
@@ -662,6 +676,26 @@ right: calc(var(--text-block-overlay-padding-h, 24px) * -1);
   "unit": "px",
   "default": 32,
   "label": "Overlay padding (horizontal)"
+},
+{
+  "type": "range",
+  "id": "text_block_overlay_padding_v_mobile",
+  "min": 4,
+  "max": 60,
+  "step": 4,
+  "unit": "px",
+  "default": 12,
+  "label": "Overlay padding mobile (vertical)"
+},
+{
+  "type": "range",
+  "id": "text_block_overlay_padding_h_mobile",
+  "min": 4,
+  "max": 60,
+  "step": 4,
+  "unit": "px",
+  "default": 16,
+  "label": "Overlay padding mobile (horizontal)"
 },
         {
           "type": "header",
