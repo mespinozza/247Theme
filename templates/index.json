@@ -362,8 +362,12 @@
         "overlay_opacity": 40,
         "heading": "What's the 24/7 Advantage?",
         "subheading": "As your turnkey solution, we want to make sure we take care of everything for you. That's why we offer the 24/7 Advantage package with each combi oven and ice machine purchase.",
+        "banner_min_height": 80,
+        "banner_min_height_mobile": 200,
         "banner_padding_top": 60,
         "banner_padding_bottom": 60,
+        "block_height": 200,
+        "block_height_mobile": 120,
         "blocks_gap": 0
       }
     },
