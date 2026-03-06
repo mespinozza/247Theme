@@ -187,12 +187,12 @@
           "type": "buttons",
           "settings": {
             "button_style": "primary",
-            "button_label": "Shop All Pizzeria Equipment",
+            "button_label": "Learn more",
             "button_link": "shopify://pages/pizza-experts",
             "button_link_in_new_window": false,
             "second_button_style": "primary",
             "second_button_label": "",
-            "second_button_link": "",
+            "second_button_link": "shopify://pages/pizza-experts",
             "disable_on_mobile": false
           }
         },
