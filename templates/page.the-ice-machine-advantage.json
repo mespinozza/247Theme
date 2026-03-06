@@ -83,86 +83,86 @@
         "text_color": "rgba(0,0,0,0)"
       }
     },
-    "icon_benefit_showcase_PVqnMg": {
+    "icon_benefit_showcase_PibwAC": {
       "type": "icon-benefit-showcase",
       "blocks": {
-        "benefit_CiM6Th": {
+        "benefit_xkbtLx": {
           "type": "benefit",
           "settings": {
-            "google_icon": "local_shipping",
+            "google_icon": "star",
             "custom-icon-color": "",
-            "custom-icon-hover-color": "",
-            "title": "Insured Shipping",
-            "description": "<p>Fast and reliable delivery to your door.</p>"
+            "custom-icon-hover-color": "#0031ff",
+            "title": "Ice machine",
+            "description": "<p>(Any Model, Any Manufacturer)</p>"
           }
         },
-        "benefit_r4TnBJ": {
+        "benefit_6kWkjq": {
           "type": "benefit",
           "settings": {
-            "google_icon": "support_agent",
+            "google_icon": "rocket_launch",
             "custom-icon-color": "",
-            "custom-icon-hover-color": "",
-            "title": "24/7 Support",
-            "description": "<p>Our dedicated support team is here to help you anytime, anywhere.</p>"
+            "custom-icon-hover-color": "#0031ff",
+            "title": "Certified Installation",
+            "description": "<p>by Factory Authorized Technicians</p>"
           }
         },
-        "benefit_hCKzjT": {
+        "benefit_7nhcrQ": {
           "type": "benefit",
           "settings": {
             "google_icon": "verified",
             "custom-icon-color": "",
-            "custom-icon-hover-color": "",
-            "title": "Quality Guaranteed",
-            "description": "<p>All products are thoroughly tested and come with our quality guarantee.</p>"
+            "custom-icon-hover-color": "#0031ff",
+            "title": "FREE Quarterly PM",
+            "description": "<p>During the 1st Year<br/>(with signed PM contract for year 2)</p>"
           }
         },
-        "benefit_tYMLDK": {
+        "benefit_WxhqHH": {
           "type": "benefit",
           "settings": {
-            "google_icon": "security",
+            "google_icon": "local_shipping",
             "custom-icon-color": "",
-            "custom-icon-hover-color": "",
-            "title": "Secure Checkout",
-            "description": "<p>Your payment information is protected with industry-standard encryption.</p>"
+            "custom-icon-hover-color": "#0031ff",
+            "title": "FREE Haul Away",
+            "description": "<p>of existing equipment</p>"
           }
         },
-        "benefit_qHkBeQ": {
+        "benefit_9kUtbc": {
           "type": "benefit",
           "settings": {
-            "google_icon": "schedule",
+            "google_icon": "support_agent",
             "custom-icon-color": "",
-            "custom-icon-hover-color": "",
-            "title": "Fast Processing",
-            "description": "<p>Orders are processed quickly and shipped within 24 hours on business days.</p>"
+            "custom-icon-hover-color": "#0031ff",
+            "title": "Training & Demo",
+            "description": "<p>for your staff</p>"
           }
         },
-        "benefit_jTpHbz": {
+        "benefit_nVKmrw": {
           "type": "benefit",
           "settings": {
-            "google_icon": "handshake",
+            "google_icon": "eco",
             "custom-icon-color": "",
-            "custom-icon-hover-color": "",
-            "title": "Trusted Partners",
-            "description": "<p>Work with trusted partners committed to outstanding service and high quality products.</p>"
+            "custom-icon-hover-color": "#0031ff",
+            "title": "Back-up",
+            "description": "<p> ice if machine is down for repairs</p>"
           }
         }
       },
       "block_order": [
-        "benefit_CiM6Th",
-        "benefit_r4TnBJ",
-        "benefit_hCKzjT",
-        "benefit_tYMLDK",
-        "benefit_qHkBeQ",
-        "benefit_jTpHbz"
+        "benefit_xkbtLx",
+        "benefit_6kWkjq",
+        "benefit_7nhcrQ",
+        "benefit_WxhqHH",
+        "benefit_9kUtbc",
+        "benefit_nVKmrw"
       ],
       "name": "Icon Benefit Showcase",
       "settings": {
-        "heading": "Why Choose Us",
+        "heading": "What you'll recieve",
         "subheading": "",
         "full-width-enabled": false,
         "text_alignment": "center",
         "grid-gap": 32,
-        "icon-size": 56,
+        "icon-size": 48,
         "section-background-color": "",
         "color-heading": "",
         "color-body-text": "",
@@ -246,7 +246,7 @@
   "order": [
     "main",
     "three_layer_banner_f4ejXA",
-    "icon_benefit_showcase_PVqnMg",
+    "icon_benefit_showcase_PibwAC",
     "featured_collection_cmbgKR",
     "comparison_showcase_yFnqGM"
   ]
