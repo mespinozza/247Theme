@@ -401,23 +401,11 @@
           "settings": {
             "coordinate_width": 27,
             "coordinate_height": 45,
-            "coordinate_width_mobile": 48,
+            "coordinate_width_mobile": 21,
             "coordinate_height_mobile": 66,
             "link_type": "collection",
             "featured_product": "",
-            "featured_collection": "hobart-planetary-mixers"
-          }
-        },
-        "dots_QqcfKD": {
-          "type": "dots",
-          "settings": {
-            "coordinate_width": 50,
-            "coordinate_height": 72,
-            "coordinate_width_mobile": 13,
-            "coordinate_height_mobile": 44,
-            "link_type": "collection",
-            "featured_product": "",
-            "featured_collection": "vulcan-commercial-gas-ranges"
+            "featured_collection": "royal-range"
           }
         },
         "dots_qxqkBf": {
@@ -425,18 +413,30 @@
           "settings": {
             "coordinate_width": 72,
             "coordinate_height": 31,
-            "coordinate_width_mobile": 69,
+            "coordinate_width_mobile": 57,
             "coordinate_height_mobile": 43,
             "link_type": "collection",
-            "featured_product": "",
+            "featured_product": "moretti-forni-amalfi-b-c18-electric-single-deck-oven-with-stand-and-tray-holder-slides-240v-37-7-16-x-28-11-16",
             "featured_collection": "true-2-door-reach-in-refrigerators"
+          }
+        },
+        "dots_QqcfKD": {
+          "type": "dots",
+          "settings": {
+            "coordinate_width": 77,
+            "coordinate_height": 57,
+            "coordinate_width_mobile": 87,
+            "coordinate_height_mobile": 44,
+            "link_type": "collection",
+            "featured_product": "",
+            "featured_collection": "refrigeration"
           }
         }
       },
       "block_order": [
         "dots_DDQD9a",
-        "dots_QqcfKD",
-        "dots_qxqkBf"
+        "dots_qxqkBf",
+        "dots_QqcfKD"
       ],
       "name": "t:sections.shoppable-image.settings.presets.name",
       "settings": {
