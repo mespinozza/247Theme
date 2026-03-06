@@ -28,6 +28,8 @@
             "text_block_overlay_radius": 8,
             "text_block_overlay_padding": 24,
             "text_block_overlay_padding_h": 40,
+            "text_block_overlay_padding_v_mobile": 8,
+            "text_block_overlay_padding_h_mobile": 12,
             "heading_font_size": 50,
             "heading_font_size_mobile": 32,
             "heading_line_height": 100,
@@ -69,7 +71,7 @@
             "content_offset_left": 0,
             "content_text_align": "left",
             "mobile_image": "shopify://shop_images/c6076d7a-ced7-4acd-a597-cf69dee0e539.jpg",
-            "mobile_text_vertical_position": "bottom",
+            "mobile_text_vertical_position": "center",
             "mobile_text_horizontal_position": "center",
             "out-background-color": "rgba(0,0,0,0)",
             "out-text-color": "rgba(0,0,0,0)"
