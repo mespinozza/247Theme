@@ -7,7 +7,7 @@
 /* Banner Section */
 .page-showcase__banner {
   position: relative;
-  min-height: 300px;
+  min-height: var(--banner-min-height, 300px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,7 +68,6 @@
   font-size: clamp(16px, 2vw, 20px);
   font-weight: var(--font-weight-medium, 500);
   line-height: 1.5;
-  margin: 0;
   opacity: 0.95;
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   max-width: 800px;
@@ -87,7 +86,7 @@
   position: relative;
   display: block;
   overflow: hidden;
-  aspect-ratio: 16 / 9;
+  height: var(--block-height, 400px);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -195,15 +194,9 @@
 }
 
 @keyframes gradientShift {
-  0% {
-    background-position: 0% center;
-  }
-  50% {
-    background-position: 100% center;
-  }
-  100% {
-    background-position: 0% center;
-  }
+  0% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+  100% { background-position: 0% center; }
 }
 
 /* Hover Effects */
@@ -245,7 +238,7 @@
 /* Mobile Styles */
 @media (max-width: 899px) {
   .page-showcase__banner {
-    min-height: 250px;
+    min-height: var(--banner-min-height-mobile, 200px);
     padding: var(--banner-padding-top, 40px) calc(var(--gap, 8px) * 1.5) var(--banner-padding-bottom, 40px);
   }
   
@@ -258,14 +251,13 @@
     font-size: clamp(14px, 4vw, 18px);
   }
   
-  /* Stacked layout on mobile */
   .page-showcase__blocks {
     grid-template-columns: 1fr;
     gap: 0;
   }
-  
+
   .page-showcase__block {
-    aspect-ratio: 16 / 10;
+    height: var(--block-height-mobile, 260px);
   }
   
   .page-showcase__block-button {
@@ -278,7 +270,7 @@
 
 @media (max-width: 599px) {
   .page-showcase__banner {
-    min-height: 200px;
+    min-height: var(--banner-min-height-mobile, 160px);
     padding: var(--banner-padding-top, 30px) calc(var(--gap, 8px)) var(--banner-padding-bottom, 30px);
   }
   
@@ -298,7 +290,7 @@
   }
 }
 
-/* Accessibility Improvements */
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .page-showcase__block,
   .page-showcase__block-img,
