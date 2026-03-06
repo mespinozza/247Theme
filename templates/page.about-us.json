@@ -264,7 +264,7 @@
         "cta_heading": "Let's Build Your Kitchen.",
         "cta_sub": "Call us, visit our showroom, or start online. We're ready when you are.",
         "btn1_label": "Contact Us",
-        "btn1_link": "",
+        "btn1_link": "shopify://pages/contact",
         "btn2_label": "Visit Our Showroom",
         "btn2_link": "",
         "cta_heading_size": 38,
