@@ -198,6 +198,108 @@
         "padding_bottom": 80
       }
     },
+    "about_why_choose_us_AAbTw8": {
+      "type": "about-why-choose-us",
+      "blocks": {
+        "reason_QUPefd": {
+          "type": "reason",
+          "settings": {
+            "title": "30+ Years of Experience",
+            "body": "We've been doing this since before most of our competitors existed."
+          }
+        },
+        "reason_QUyaqW": {
+          "type": "reason",
+          "settings": {
+            "title": "Factory-Authorized Installation",
+            "body": "Certified start-ups that lock in your manufacturer warranty — every time."
+          }
+        },
+        "reason_m7c9pm": {
+          "type": "reason",
+          "settings": {
+            "title": "One Call Gets It All Done",
+            "body": "Consultation, delivery, installation, and service — all under one roof."
+          }
+        },
+        "reason_UiMEHj": {
+          "type": "reason",
+          "settings": {
+            "title": "We Remove the Old Equipment",
+            "body": "We uninstall, remove, and dispose of your existing equipment safely."
+          }
+        },
+        "reason_tY3ygR": {
+          "type": "reason",
+          "settings": {
+            "title": "NJ-Based, NJ-Focused",
+            "body": "Locally owned and operated, with deep roots in the NJ restaurant community."
+          }
+        },
+        "reason_GLG4Wc": {
+          "type": "reason",
+          "settings": {
+            "title": "Pizza Kitchen Specialists",
+            "body": "Our team includes a certified Master Pizzaiola — expertise most dealers don't have."
+          }
+        }
+      },
+      "block_order": [
+        "reason_QUPefd",
+        "reason_QUyaqW",
+        "reason_m7c9pm",
+        "reason_UiMEHj",
+        "reason_tY3ygR",
+        "reason_GLG4Wc"
+      ],
+      "name": "About — Why Choose Us",
+      "settings": {
+        "eyebrow": "Why NJ Restaurants Choose Us",
+        "heading": "The Difference Is in the Details.",
+        "subheading": "Thirty years of showing up, following through, and standing behind our work.",
+        "heading_size": 44,
+        "heading_size_mobile": 32,
+        "subheading_size": 17,
+        "header_gap": 52,
+        "cta_heading": "Let's Build Your Kitchen.",
+        "cta_sub": "Call us, visit our showroom, or start online. We're ready when you are.",
+        "btn1_label": "Contact Us",
+        "btn1_link": "",
+        "btn2_label": "Visit Our Showroom",
+        "btn2_link": "",
+        "cta_heading_size": 38,
+        "cta_heading_size_mobile": 28,
+        "cta_sub_size": 16,
+        "cta_gap": 48,
+        "background_color": "#0000c1",
+        "accent_color": "#cc0000",
+        "icon_color": "#cc0000",
+        "btn_primary_bg": "#cc0000",
+        "btn_primary_text": "#ffffff",
+        "columns": "3",
+        "item_gap": 16,
+        "item_padding": 24,
+        "item_radius": 8,
+        "item_bg_opacity": 10,
+        "item_title_size": 18,
+        "item_body_size": 14,
+        "grid_bottom_gap": 60,
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "separator_c4ENfN": {
+      "type": "separator",
+      "name": "t:sections.separator.presets.name",
+      "settings": {
+        "heading": "",
+        "show-separator-line": false,
+        "full-width-line": false,
+        "color-background": "#000000",
+        "margin-top": 20,
+        "margin-bottom": 20
+      }
+    },
     "event_location_info_8DP9TL": {
       "type": "event-location-info",
       "name": "Event Location Info",
@@ -262,6 +364,8 @@
     "about_different_L6gw7G",
     "about_team_FinGJ8",
     "about_pizza_mcTgA3",
+    "about_why_choose_us_AAbTw8",
+    "separator_c4ENfN",
     "event_location_info_8DP9TL"
   ]
 }
