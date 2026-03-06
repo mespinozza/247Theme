@@ -68,6 +68,7 @@
             "desktop_text_horizontal_position": "left",
             "content_offset_left": 0,
             "content_text_align": "left",
+            "mobile_image": "shopify://shop_images/c6076d7a-ced7-4acd-a597-cf69dee0e539.jpg",
             "mobile_text_vertical_position": "bottom",
             "mobile_text_horizontal_position": "center",
             "out-background-color": "rgba(0,0,0,0)",
