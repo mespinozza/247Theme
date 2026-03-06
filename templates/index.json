@@ -401,8 +401,8 @@
           "settings": {
             "coordinate_width": 8,
             "coordinate_height": 75,
-            "coordinate_width_mobile": 13,
-            "coordinate_height_mobile": 50,
+            "coordinate_width_mobile": 5,
+            "coordinate_height_mobile": 73,
             "link_type": "product",
             "featured_product": "pitco-frialator-65c-s-gas-fryers",
             "featured_collection": ""
