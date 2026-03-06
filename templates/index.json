@@ -172,7 +172,7 @@
           "settings": {
             "heading": "BUILT FOR PIZZERIAS. \nBACKED BY EXPERTS.",
             "disable_on_mobile": false,
-            "size_heading": 180,
+            "size_heading": 130,
             "size_heading_mobile": 100
           }
         },
@@ -396,6 +396,18 @@
     "shoppable_image_T44bqq": {
       "type": "shoppable-image",
       "blocks": {
+        "dots_YVDifY": {
+          "type": "dots",
+          "settings": {
+            "coordinate_width": 8,
+            "coordinate_height": 75,
+            "coordinate_width_mobile": 13,
+            "coordinate_height_mobile": 50,
+            "link_type": "product",
+            "featured_product": "pitco-frialator-65c-s-gas-fryers",
+            "featured_collection": ""
+          }
+        },
         "dots_DDQD9a": {
           "type": "dots",
           "settings": {
@@ -434,6 +446,7 @@
         }
       },
       "block_order": [
+        "dots_YVDifY",
         "dots_DDQD9a",
         "dots_qxqkBf",
         "dots_QqcfKD"
