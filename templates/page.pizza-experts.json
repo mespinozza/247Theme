@@ -40,15 +40,16 @@
         "credential_restaurant"
       ],
       "settings": {
-        "section_title": "Meet Our Pizza Expert",
+        "section_title": "NJ's Pizza Experts",
         "section_subtitle": "Your partner in building the perfect pizza kitchen",
         "title_size": 40,
         "title_size_mobile": 28,
         "header_spacing": 48,
+        "image": "shopify://shop_images/Screenshot_2024-11-26_at_11.13.54_AM.png",
         "video_url": "",
         "video_autoplay": false,
         "video_controls": true,
-        "name": "Expert Name",
+        "name": "Jeanette Catena",
         "title": "Master Pizzaiola",
         "bio": "<p>With over two decades of experience in the pizza industry, our in-house expert brings unmatched knowledge to help you select the right equipment for your operation.</p><p>From traditional wood-fired ovens to high-volume conveyor systems, she understands what it takes to build a successful pizza kitchen.</p>",
         "quote": "The right equipment doesn't just make great pizza—it transforms your entire operation.",
@@ -69,10 +70,11 @@
         "service_consultation": {
           "type": "service_item",
           "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-03-06_at_12.04.01_PM.png",
             "image_position": "center",
             "heading": "Kitchen Consultation",
             "description": "<p>From layout planning to equipment selection, we guide you through building the perfect pizza station for your space and volume needs.</p>",
-            "button_text": "Learn More",
+            "button_text": "",
             "button_url": "/pages/contact",
             "link_url": ""
           }
@@ -80,10 +82,11 @@
         "service_training": {
           "type": "service_item",
           "settings": {
+            "image": "shopify://shop_images/Screenshot_2024-04-18_at_11.46.05_AM.png",
             "image_position": "center",
             "heading": "Equipment Training",
             "description": "<p>Learn proper operation, maintenance, and get tips to maximize your pizza output. We'll have your team making perfect pies in no time.</p>",
-            "button_text": "Learn More",
+            "button_text": "",
             "button_url": "/pages/contact",
             "link_url": ""
           }
@@ -91,10 +94,11 @@
         "service_support": {
           "type": "service_item",
           "settings": {
+            "image": "shopify://shop_images/Screenshot_2023-05-08_at_2.55.21_PM.png",
             "image_position": "center",
             "heading": "Ongoing Support",
             "description": "<p>Technical support, maintenance advice, and troubleshooting whenever you need it. We're here for the long haul.</p>",
-            "button_text": "Learn More",
+            "button_text": "",
             "button_url": "/pages/contact",
             "link_url": ""
           }
