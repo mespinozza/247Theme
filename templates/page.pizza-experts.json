@@ -45,7 +45,7 @@
         "title_size": 40,
         "title_size_mobile": 28,
         "header_spacing": 48,
-        "image": "shopify://shop_images/Screenshot_2024-11-26_at_11.13.54_AM.png",
+        "image": "shopify://shop_images/IMG_6450.jpg",
         "video_url": "",
         "video_autoplay": false,
         "video_controls": true,
@@ -82,7 +82,7 @@
         "service_training": {
           "type": "service_item",
           "settings": {
-            "image": "shopify://shop_images/Screenshot_2024-04-18_at_11.46.05_AM.png",
+            "image": "shopify://shop_images/IMG_2404.jpg",
             "image_position": "center",
             "heading": "Equipment Training",
             "description": "<p>Learn proper operation, maintenance, and get tips to maximize your pizza output. We'll have your team making perfect pies in no time.</p>",
