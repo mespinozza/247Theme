@@ -87,20 +87,63 @@
 <div data-section-id="{{ section.id }}" class="{{ customwrapperclass }}">
   {% render 'headline', title: section.settings.heading %}
   <div class="{% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}">
-    {% render 'hero',
-      type: 'blocks',
-      classname: customclass,
-      desktop_text_horizontal_position: section.settings.desktop_text_horizontal_position,
-      desktop_text_vertical_position: section.settings.desktop_text_vertical_position,
-      mobile_text_horizontal_position: section.settings.mobile_text_horizontal_position,
-      desktop_image: banner_image_desktop,
-      mobile_image: banner_image_mobile,
-      placeholder: 'collection-apparel-1',
-      heading: collection.title,
-      text: collection.description,
-      loader: true,
-      show_collection_description: section.settings.show_collection_description
-    %}
+    {%- if banner_image_desktop != blank -%}
+      {% render 'hero',
+        type: 'blocks',
+        classname: customclass,
+        desktop_text_horizontal_position: section.settings.desktop_text_horizontal_position,
+        desktop_text_vertical_position: section.settings.desktop_text_vertical_position,
+        mobile_text_horizontal_position: section.settings.mobile_text_horizontal_position,
+        desktop_image: banner_image_desktop,
+        mobile_image: banner_image_mobile,
+        heading: collection.title,
+        text: collection.description,
+        loader: true,
+        show_collection_description: section.settings.show_collection_description
+      %}
+    {%- else -%}
+      <div class="collection-banner__text-only collection-banner__text-only--{{ section.settings.desktop_text_horizontal_position }} collection-banner__text-only--mobile--{{ section.settings.mobile_text_horizontal_position }}">
+        <div class="collection-banner__text-only-inner{% if section.settings.show_collection_description and collection.description != blank %} collection-banner__text-only-inner--has-desc{% endif %}">
+          {%- if collection.title != blank -%}
+            <h1 class="collection-banner__text-only-title">{{ collection.title }}</h1>
+          {%- endif -%}
+          {%- if section.settings.show_collection_description and collection.description != blank -%}
+            <div class="collection-banner__text-only-description rte" id="cb-desc-{{ section.id }}">
+              <div class="cbt-desc__preview">
+                {{- collection.description | strip_html | truncate: 180 -}}<button
+                  type="button"
+                  class="cbt-desc__toggle"
+                  onclick="cbToggleDesc(this)"
+                >Read more</button>
+              </div>
+              <div class="cbt-desc__full" hidden>
+                {{ collection.description }}
+                <button
+                  type="button"
+                  class="cbt-desc__toggle cbt-desc__toggle--less"
+                  onclick="cbToggleDesc(this)"
+                >Read less</button>
+              </div>
+            </div>
+            <script>
+              function cbToggleDesc(btn) {
+                var desc = btn.closest('.collection-banner__text-only-description');
+                var preview = desc.querySelector('.cbt-desc__preview');
+                var full = desc.querySelector('.cbt-desc__full');
+                var opening = full.hidden;
+                if (opening) {
+                  preview.hidden = true;
+                  full.hidden = false;
+                } else {
+                  full.hidden = true;
+                  preview.hidden = false;
+                }
+              }
+            </script>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
   </div>
 </div>
 

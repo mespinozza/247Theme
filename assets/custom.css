@@ -221,3 +221,16 @@
 .wt-slider [data-swiper-slide] {
   padding-bottom: 16px;
 }
+
+/* ==============================================
+   Product Card Images - Fit to longest side
+   ============================================== */
+.card__img {
+  object-fit: contain !important;
+  background-color: #fff;
+}
+
+.card__img--hover {
+  object-fit: contain !important;
+  background-color: #fff;
+}
