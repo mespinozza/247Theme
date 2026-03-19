@@ -154,6 +154,7 @@
         "kitchen_2",
         "kitchen_3"
       ],
+      "disabled": true,
       "settings": {
         "section_title": "Kitchen Transformations",
         "section_subtitle": "See the results of our pizza kitchen designs",
