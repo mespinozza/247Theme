@@ -1,3 +1,13 @@
+{%- liquid
+  assign card_has_weight = false
+  for variant in card_product.variants
+    if variant.weight > 0
+      assign card_has_weight = true
+      break
+    endif
+  endfor
+-%}
+{% if card_has_weight %}
 {% if card_product.variants.size > 1 %}
   <quick-add data-product-handle="{{ card_product.handle }}">
     <button
@@ -86,4 +96,5 @@
       </div>
     {%- endform -%}
   </product-form>
+{% endif %}
 {% endif %}
