@@ -1173,6 +1173,7 @@
                   endif
                 endfor
               -%}
+              {%- if product_has_weight -%}
               <div
                 class="wt-product__add-to-cart_form main-product__buy-buttons--container {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %} {% if section.settings.desktop-media-size == 'large' %}large{% endif %}"
                 style="display:flex;justify-content:center;align-items:center"
@@ -1209,61 +1210,60 @@
                     {% if block.settings.show_gift_card_recipient and product.gift_card? %}
                       {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
                     {% endif %}
-                    {%- if product_has_weight -%}
-                      <div class="wt-product__add-to-cart_form--wrapper">
-                        {% if block.settings.show_qty_selector %}
-                          {% render 'component-counter' %}
-                        {% endif %}
-                        <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                        <button
-                          aria-label="
-                            {%- if product.selected_or_first_available_variant.available -%}
-                              {{ 'products.product.add_to_cart' | t }}
-                            {%- else -%}
-                              {{ 'products.product.sold_out' | t }}
-                            {%- endif -%}
-                          "
-                          id="ProductSubmitButton-{{ section.id }}"
-                          type="submit"
-                          name="add"
-                          class="js-add-to-cart product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
-                          {% if product.selected_or_first_available_variant.available == false %}
-                            disabled
-                          {% endif %}
-                        >
-                          {% if settings['enable-bag-icon'] %}
-                            {% render 'icons', id: 'bag' %}
-                          {% endif %}
-                          <span>
-                            {%- if product.selected_or_first_available_variant.available -%}
-                              {{ 'products.product.add_to_cart' | t }}
-                            {%- else -%}
-                              {{ 'products.product.sold_out' | t }}
-                            {%- endif -%}
-                          </span>
-                          <div class="loading-overlay__spinner hidden">
-                            <svg
-                              aria-hidden="true"
-                              focusable="false"
-                              class="spinner"
-                              viewBox="0 0 66 66"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
-                            </svg>
-                          </div>
-                        </button>
-                      </div>
-                      {% if block.settings.show_dynamic_checkout and product.gift_card? != true %}
-                        {{ form | payment_button }}
+                    <div class="wt-product__add-to-cart_form--wrapper">
+                      {% if block.settings.show_qty_selector %}
+                        {% render 'component-counter' %}
                       {% endif %}
-                    {%- endif -%}
+                      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                      <button
+                        aria-label="
+                          {%- if product.selected_or_first_available_variant.available -%}
+                            {{ 'products.product.add_to_cart' | t }}
+                          {%- else -%}
+                            {{ 'products.product.sold_out' | t }}
+                          {%- endif -%}
+                        "
+                        id="ProductSubmitButton-{{ section.id }}"
+                        type="submit"
+                        name="add"
+                        class="js-add-to-cart product-form__submit button button--full-width {% if block.settings.show_dynamic_checkout and product.selling_plan_groups == empty %}button--secondary{% else %}button--primary{% endif %}"
+                        {% if product.selected_or_first_available_variant.available == false %}
+                          disabled
+                        {% endif %}
+                      >
+                        {% if settings['enable-bag-icon'] %}
+                          {% render 'icons', id: 'bag' %}
+                        {% endif %}
+                        <span>
+                          {%- if product.selected_or_first_available_variant.available -%}
+                            {{ 'products.product.add_to_cart' | t }}
+                          {%- else -%}
+                            {{ 'products.product.sold_out' | t }}
+                          {%- endif -%}
+                        </span>
+                        <div class="loading-overlay__spinner hidden">
+                          <svg
+                            aria-hidden="true"
+                            focusable="false"
+                            class="spinner"
+                            viewBox="0 0 66 66"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                          </svg>
+                        </div>
+                      </button>
+                    </div>
+                    {% if block.settings.show_dynamic_checkout and product.gift_card? != true %}
+                      {{ form | payment_button }}
+                    {% endif %}
                   {%- endform -%}
                   <div class="product-form__error-message-wrapper">
                     <p class="product-form__error-message"></p>
                   </div>
                 </product-form>
               </div>
+              {%- endif -%}
 
             {%- when 'pickup-availability' -%}
               {{ 'component-pickup-availability.css' | asset_url | stylesheet_tag }}
