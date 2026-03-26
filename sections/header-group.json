@@ -79,7 +79,7 @@
         "transparent_header_color": "rgba(0,0,0,0)",
         "store_drawer": true,
         "store_drawer_text": "Visit our Showroom",
-        "store_drawer_text2": "Select store",
+        "store_drawer_text2": "Store Info",
         "store_drawer_title": "See the Equipment in action!",
         "drawer_map": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d391305.6186068305!2d-74.209615!3d39.984426!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c19d845bb31351%3A0x5f8ecabbc646e623!2s1231%20NJ-166%20%233%2C%20Toms%20River%2C%20NJ%2008753!5e0!3m2!1sen!2sus!4v1744189332692!5m2!1sen!2sus\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>",
         "drawer_button1_label": "Book a Tour",
