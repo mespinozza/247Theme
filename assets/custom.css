@@ -477,3 +477,78 @@
   object-fit: contain !important;
   background-color: #fff;
 }
+
+/* ==============================================
+   PDP Metafield Tabs — Documents & Certifications
+   ============================================== */
+
+/* Documents */
+.pdp-metadocs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 4px 0;
+}
+
+.pdp-metadoc__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid rgb(var(--color-border, 230, 230, 230));
+  border-radius: 8px;
+  text-decoration: none;
+  color: rgb(var(--color-foreground));
+  font-size: 1.4rem;
+  font-family: var(--font-body-family);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.pdp-metadoc__item:hover {
+  background-color: rgb(var(--color-button-primary-background));
+  border-color: rgb(var(--color-button-primary-background));
+  color: rgb(var(--color-button-primary-text, 255, 255, 255));
+}
+
+.pdp-metadoc__icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.pdp-metadoc__item:hover .pdp-metadoc__icon {
+  opacity: 1;
+}
+
+/* Certifications */
+.pdp-metacerts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 4px 0;
+}
+
+.pdp-metacert__item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: rgb(var(--color-button-primary-background));
+  color: rgb(var(--color-button-primary-text, 255, 255, 255));
+  border-radius: 50px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-family: var(--font-body-family);
+}
+
+.pdp-metacert__badge {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.pdp-metacert__label {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}

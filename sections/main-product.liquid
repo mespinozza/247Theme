@@ -687,6 +687,107 @@
                   </div>
                 </div>
               </collapsible-section>
+
+              {%- comment -%} Documents Tab {%- endcomment -%}
+              {%- assign aq_documents = product.metafields.autoquotes.documents -%}
+              {%- if aq_documents != blank and aq_documents.value != blank -%}
+                <collapsible-section
+                  class="wt-collapse wt-collapse--always {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
+                  data-accordion-set="pdp"
+                  data-toggle-tabindex="button, [href], input, select"
+                  not-quick-add
+                >
+                  <div
+                    role="button"
+                    tabindex="0"
+                    class="wt-collapse__trigger"
+                    aria-expanded="false"
+                    aria-controls="Documents-{{ block.id }}"
+                  >
+                    <div class="wt-collapse__trigger__text">
+                      <div class="wt-collapse__trigger__icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </div>
+                      <div class="wt-collapse__trigger__title">Documents</div>
+                    </div>
+                    <div class="wt-icon" aria-hidden="true">
+                      {% render 'icons', id: 'plus' %}
+                    </div>
+                  </div>
+                  <div class="wt-collapse__target" id="Documents-{{ block.id }}">
+                    <div class="wt-collapse__target--text pdp-metadocs">
+                      {%- assign doc_value = aq_documents.value -%}
+                      {%- assign doc_count = aq_documents.value.size -%}
+                      {%- if doc_value.cutsheet != blank -%}
+                        <a href="{{ doc_value.cutsheet }}" class="pdp-metadoc__item" target="_blank" rel="noopener">
+                          <span class="pdp-metadoc__icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                          </span>
+                          <span>Cut Sheet</span>
+                        </a>
+                      {%- endif -%}
+                      {%- if doc_value.document != blank -%}
+                        <a href="{{ doc_value.document }}" class="pdp-metadoc__item" target="_blank" rel="noopener">
+                          <span class="pdp-metadoc__icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                          </span>
+                          <span>Product Document</span>
+                        </a>
+                      {%- endif -%}
+                      {%- if doc_value.warrantysheet != blank -%}
+                        <a href="{{ doc_value.warrantysheet }}" class="pdp-metadoc__item" target="_blank" rel="noopener">
+                          <span class="pdp-metadoc__icon">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                          </span>
+                          <span>Warranty Sheet</span>
+                        </a>
+                      {%- endif -%}
+                    </div>
+                  </div>
+                </collapsible-section>
+              {%- endif -%}
+
+              {%- comment -%} Certifications Tab {%- endcomment -%}
+              {%- assign aq_certs = product.metafields.autoquotes.certifications -%}
+              {%- if aq_certs != blank and aq_certs.value != blank -%}
+                <collapsible-section
+                  class="wt-collapse wt-collapse--always {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
+                  data-accordion-set="pdp"
+                  data-toggle-tabindex="button, [href], input, select"
+                  not-quick-add
+                >
+                  <div
+                    role="button"
+                    tabindex="0"
+                    class="wt-collapse__trigger"
+                    aria-expanded="false"
+                    aria-controls="Certifications-{{ block.id }}"
+                  >
+                    <div class="wt-collapse__trigger__text">
+                      <div class="wt-collapse__trigger__icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="8" r="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </div>
+                      <div class="wt-collapse__trigger__title">Certifications</div>
+                    </div>
+                    <div class="wt-icon" aria-hidden="true">
+                      {% render 'icons', id: 'plus' %}
+                    </div>
+                  </div>
+                  <div class="wt-collapse__target" id="Certifications-{{ block.id }}">
+                    <div class="wt-collapse__target--text pdp-metacerts">
+                      {%- for cert in aq_certs.value -%}
+                        <div class="pdp-metacert__item">
+                          <span class="pdp-metacert__badge">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 4L12 14.01l-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                          </span>
+                          <span class="pdp-metacert__label">{{ cert }}</span>
+                        </div>
+                      {%- endfor -%}
+                    </div>
+                  </div>
+                </collapsible-section>
+              {%- endif -%}
+
             {%- when 'sku' -%}
               <p
                 class="wt-product__sku"
