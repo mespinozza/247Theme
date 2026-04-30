@@ -504,9 +504,9 @@
 }
 
 .pdp-metadoc__item:hover {
-  background-color: rgb(var(--color-button-primary-background));
-  border-color: rgb(var(--color-button-primary-background));
-  color: rgb(var(--color-button-primary-text, 255, 255, 255));
+  background-color: var(--color-links-active);
+  border-color: var(--color-links-active);
+  color: #fff;
 }
 
 .pdp-metadoc__icon {
