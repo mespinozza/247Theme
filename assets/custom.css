@@ -560,11 +560,32 @@
 .pdp-metacerts {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 16px;
   padding: 4px 0;
+  align-items: center;
 }
 
 .pdp-metacert__item {
+  display: flex;
+  align-items: center;
+}
+
+/* Logo image style */
+.pdp-metacert__logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.12));
+  transition: transform 0.2s ease;
+}
+
+.pdp-metacert__logo:hover {
+  transform: scale(1.05);
+}
+
+/* Fallback text badge (when no logo URL) */
+.pdp-metacert__badge-text {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -577,7 +598,7 @@
   font-family: var(--font-body-family);
 }
 
-.pdp-metacert__badge {
+.pdp-metacert__badge-icon {
   display: flex;
   align-items: center;
   flex-shrink: 0;

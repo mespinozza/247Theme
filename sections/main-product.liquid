@@ -795,12 +795,26 @@
                     <div class="wt-collapse__target--text pdp-metacerts">
                       {%- for cert in aq_certs.value -%}
                         {%- assign cert_name = cert.NAME | default: cert.name | default: cert -%}
+                        {%- assign cert_logo = cert.LOGO | default: cert.logo -%}
                         {%- if cert_name != blank -%}
                           <div class="pdp-metacert__item">
-                            <span class="pdp-metacert__badge">
-                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 4L12 14.01l-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                            </span>
-                            <span class="pdp-metacert__label">{{ cert_name }}</span>
+                            {%- if cert_logo != blank -%}
+                              <img
+                                src="{{ cert_logo }}"
+                                alt="{{ cert_name }} certification"
+                                class="pdp-metacert__logo"
+                                loading="lazy"
+                                width="80"
+                                height="80"
+                              >
+                            {%- else -%}
+                              <div class="pdp-metacert__badge-text">
+                                <span class="pdp-metacert__badge-icon">
+                                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 4L12 14.01l-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                </span>
+                                <span class="pdp-metacert__label">{{ cert_name }}</span>
+                              </div>
+                            {%- endif -%}
                           </div>
                         {%- endif -%}
                       {%- endfor -%}
