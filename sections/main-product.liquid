@@ -716,50 +716,33 @@
                   </div>
                   <div class="wt-collapse__target" id="Documents-{{ block.id }}">
                     <div class="wt-collapse__target--text pdp-metadocs">
-                      {%- assign doc_value = aq_documents.value -%}
-                      <pre style="font-size:11px;background:#f4f4f4;padding:8px;border-radius:4px;overflow:auto;word-break:break-all;white-space:pre-wrap;">{{ doc_value | json }}</pre>
-                      {%- if doc_value.cutsheet != blank -%}
-                        <a href="{{ doc_value.cutsheet }}" class="pdp-metadoc__item" target="_blank" rel="noopener">
-                          <span class="pdp-metadoc__icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                          </span>
-                          <span class="pdp-metadoc__info">
-                            <span class="pdp-metadoc__label">Cut Sheet</span>
-                            <span class="pdp-metadoc__hint">Product specifications &amp; dimensions</span>
-                          </span>
-                          <span class="pdp-metadoc__arrow">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                          </span>
-                        </a>
-                      {%- endif -%}
-                      {%- if doc_value.document != blank -%}
-                        <a href="{{ doc_value.document }}" class="pdp-metadoc__item" target="_blank" rel="noopener">
-                          <span class="pdp-metadoc__icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                          </span>
-                          <span class="pdp-metadoc__info">
-                            <span class="pdp-metadoc__label">Product Document</span>
-                            <span class="pdp-metadoc__hint">Full product manual &amp; guide</span>
-                          </span>
-                          <span class="pdp-metadoc__arrow">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                          </span>
-                        </a>
-                      {%- endif -%}
-                      {%- if doc_value.warrantysheet != blank -%}
-                        <a href="{{ doc_value.warrantysheet }}" class="pdp-metadoc__item" target="_blank" rel="noopener">
-                          <span class="pdp-metadoc__icon">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                          </span>
-                          <span class="pdp-metadoc__info">
-                            <span class="pdp-metadoc__label">Warranty Sheet</span>
-                            <span class="pdp-metadoc__hint">Warranty terms &amp; coverage</span>
-                          </span>
-                          <span class="pdp-metadoc__arrow">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                          </span>
-                        </a>
-                      {%- endif -%}
+                      {%- for doc in aq_documents.value -%}
+                        {%- if doc.url != blank -%}
+                          {%- liquid
+                            case doc.type
+                              when 'cutsheet'
+                                assign doc_icon = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+                                assign doc_hint = 'Product specifications & dimensions'
+                              when 'warrantysheet'
+                                assign doc_icon = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+                                assign doc_hint = 'Warranty terms & coverage'
+                              else
+                                assign doc_icon = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+                                assign doc_hint = 'Click to open document'
+                            endcase
+                          -%}
+                          <a href="{{ doc.url }}" class="pdp-metadoc__item" target="_blank" rel="noopener">
+                            <span class="pdp-metadoc__icon">{{ doc_icon }}</span>
+                            <span class="pdp-metadoc__info">
+                              <span class="pdp-metadoc__label">{{ doc.name | capitalize }}</span>
+                              <span class="pdp-metadoc__hint">{{ doc_hint }}</span>
+                            </span>
+                            <span class="pdp-metadoc__arrow">
+                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                          </a>
+                        {%- endif -%}
+                      {%- endfor -%}
                     </div>
                   </div>
                 </collapsible-section>
