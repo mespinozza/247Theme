@@ -717,29 +717,46 @@
                   <div class="wt-collapse__target" id="Documents-{{ block.id }}">
                     <div class="wt-collapse__target--text pdp-metadocs">
                       {%- assign doc_value = aq_documents.value -%}
-                      {%- assign doc_count = aq_documents.value.size -%}
                       {%- if doc_value.cutsheet != blank -%}
                         <a href="{{ doc_value.cutsheet }}" class="pdp-metadoc__item" target="_blank" rel="noopener">
                           <span class="pdp-metadoc__icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                           </span>
-                          <span>Cut Sheet</span>
+                          <span class="pdp-metadoc__info">
+                            <span class="pdp-metadoc__label">Cut Sheet</span>
+                            <span class="pdp-metadoc__hint">Product specifications &amp; dimensions</span>
+                          </span>
+                          <span class="pdp-metadoc__arrow">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                          </span>
                         </a>
                       {%- endif -%}
                       {%- if doc_value.document != blank -%}
                         <a href="{{ doc_value.document }}" class="pdp-metadoc__item" target="_blank" rel="noopener">
                           <span class="pdp-metadoc__icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                           </span>
-                          <span>Product Document</span>
+                          <span class="pdp-metadoc__info">
+                            <span class="pdp-metadoc__label">Product Document</span>
+                            <span class="pdp-metadoc__hint">Full product manual &amp; guide</span>
+                          </span>
+                          <span class="pdp-metadoc__arrow">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                          </span>
                         </a>
                       {%- endif -%}
                       {%- if doc_value.warrantysheet != blank -%}
                         <a href="{{ doc_value.warrantysheet }}" class="pdp-metadoc__item" target="_blank" rel="noopener">
                           <span class="pdp-metadoc__icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                           </span>
-                          <span>Warranty Sheet</span>
+                          <span class="pdp-metadoc__info">
+                            <span class="pdp-metadoc__label">Warranty Sheet</span>
+                            <span class="pdp-metadoc__hint">Warranty terms &amp; coverage</span>
+                          </span>
+                          <span class="pdp-metadoc__arrow">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                          </span>
                         </a>
                       {%- endif -%}
                     </div>
@@ -776,12 +793,15 @@
                   <div class="wt-collapse__target" id="Certifications-{{ block.id }}">
                     <div class="wt-collapse__target--text pdp-metacerts">
                       {%- for cert in aq_certs.value -%}
-                        <div class="pdp-metacert__item">
-                          <span class="pdp-metacert__badge">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 4L12 14.01l-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                          </span>
-                          <span class="pdp-metacert__label">{{ cert }}</span>
-                        </div>
+                        {%- assign cert_name = cert.NAME | default: cert.name | default: cert -%}
+                        {%- if cert_name != blank -%}
+                          <div class="pdp-metacert__item">
+                            <span class="pdp-metacert__badge">
+                              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 4L12 14.01l-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                            <span class="pdp-metacert__label">{{ cert_name }}</span>
+                          </div>
+                        {%- endif -%}
                       {%- endfor -%}
                     </div>
                   </div>
