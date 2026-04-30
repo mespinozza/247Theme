@@ -717,6 +717,7 @@
                   <div class="wt-collapse__target" id="Documents-{{ block.id }}">
                     <div class="wt-collapse__target--text pdp-metadocs">
                       {%- assign doc_value = aq_documents.value -%}
+                      <!-- DEBUG: {{ doc_value | json }} -->
                       {%- if doc_value.cutsheet != blank -%}
                         <a href="{{ doc_value.cutsheet }}" class="pdp-metadoc__item" target="_blank" rel="noopener">
                           <span class="pdp-metadoc__icon">
