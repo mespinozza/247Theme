@@ -802,23 +802,19 @@
                           {%- assign cert_tooltip = cert_name | append: ' Certified' -%}
                         {%- endif -%}
                         {%- if cert_name != blank -%}
-                          <div class="pdp-metacert__item" aria-label="{{ cert_tooltip }}">
+                          <div class="pdp-metacert__item" data-cert-tip="{{ cert_tooltip }}">
                             {%- if cert_logo != blank -%}
-                              <div class="pdp-metacert__logo-wrap">
-                                <img
-                                  src="{{ cert_logo }}"
-                                  alt="{{ cert_name }} certification"
-                                  class="pdp-metacert__logo"
-                                  loading="lazy"
-                                  width="80"
-                                  height="80"
-                                >
-                                <div class="pdp-metacert__tooltip">{{ cert_tooltip }}</div>
-                              </div>
+                              <img
+                                src="{{ cert_logo }}"
+                                alt="{{ cert_name }} certification"
+                                class="pdp-metacert__logo"
+                                loading="lazy"
+                                width="80"
+                                height="80"
+                              >
                             {%- else -%}
                               <div class="pdp-metacert__mark pdp-metacert__mark--{{ cert_name_lower | replace: ' ', '-' | replace: '/', '-' }}">
                                 <span class="pdp-metacert__mark-label">{{ cert_name }}</span>
-                                <div class="pdp-metacert__tooltip">{{ cert_tooltip }}</div>
                               </div>
                             {%- endif -%}
                           </div>
@@ -827,6 +823,57 @@
                     </div>
                   </div>
                 </collapsible-section>
+
+                {%- comment -%} Global cert tooltip (positioned via JS to escape overflow:hidden) {%- endcomment -%}
+                <div id="pdp-cert-tip" role="tooltip" style="
+                  position:fixed;
+                  background:#1a1a1a;
+                  color:#fff;
+                  font-size:13px;
+                  line-height:1.45;
+                  padding:7px 12px;
+                  border-radius:6px;
+                  max-width:220px;
+                  text-align:center;
+                  pointer-events:none;
+                  opacity:0;
+                  visibility:hidden;
+                  transition:opacity 0.15s ease,visibility 0.15s ease;
+                  z-index:9999;
+                  white-space:normal;
+                "></div>
+                <script>
+                  (function(){
+                    var tip = document.getElementById('pdp-cert-tip');
+                    if (!tip) return;
+                    document.querySelectorAll('.pdp-metacert__item[data-cert-tip]').forEach(function(el){
+                      el.addEventListener('mouseenter', function(e){
+                        tip.textContent = el.dataset.certTip;
+                        tip.style.opacity = '1';
+                        tip.style.visibility = 'visible';
+                        positionTip(e);
+                      });
+                      el.addEventListener('mousemove', positionTip);
+                      el.addEventListener('mouseleave', function(){
+                        tip.style.opacity = '0';
+                        tip.style.visibility = 'hidden';
+                      });
+                    });
+                    function positionTip(e){
+                      var x = e.clientX;
+                      var y = e.clientY;
+                      var tw = tip.offsetWidth;
+                      var th = tip.offsetHeight;
+                      var left = x - tw / 2;
+                      var top = y + 16;
+                      if (left < 8) left = 8;
+                      if (left + tw > window.innerWidth - 8) left = window.innerWidth - tw - 8;
+                      if (top + th > window.innerHeight - 8) top = y - th - 16;
+                      tip.style.left = left + 'px';
+                      tip.style.top = top + 'px';
+                    }
+                  })();
+                </script>
               {%- endif -%}
 
             {%- when 'sku' -%}

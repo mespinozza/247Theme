@@ -561,22 +561,15 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 8px 0 48px;
+  padding: 8px 0;
   align-items: center;
-  overflow: visible;
 }
 
 .pdp-metacert__item {
   position: relative;
   display: flex;
   align-items: center;
-  overflow: visible;
-}
-
-/* Logo image (if LOGO URL is present) */
-.pdp-metacert__logo-wrap {
-  position: relative;
-  display: inline-block;
+  cursor: default;
 }
 
 .pdp-metacert__logo {
@@ -587,7 +580,7 @@
   transition: transform 0.2s ease;
 }
 
-.pdp-metacert__logo-wrap:hover .pdp-metacert__logo {
+.pdp-metacert__item:hover .pdp-metacert__logo {
   transform: scale(1.05);
 }
 
@@ -673,41 +666,4 @@
   border-color: #b5121b;
 }
 
-/* Tooltip – appears BELOW the badge to avoid overflow clipping above */
-.pdp-metacert__tooltip {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 50%;
-  transform: translateX(-50%);
-  background: #1a1a1a;
-  color: #fff;
-  font-size: 1.15rem;
-  line-height: 1.45;
-  padding: 7px 11px;
-  border-radius: 6px;
-  max-width: 220px;
-  white-space: normal;
-  text-align: center;
-  pointer-events: none;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.18s ease, visibility 0.18s ease;
-  z-index: 20;
-}
-
-/* Arrow points UP toward the badge */
-.pdp-metacert__tooltip::after {
-  content: '';
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 6px solid transparent;
-  border-bottom-color: #1a1a1a;
-}
-
-.pdp-metacert__mark:hover .pdp-metacert__tooltip,
-.pdp-metacert__logo-wrap:hover .pdp-metacert__tooltip {
-  opacity: 1;
-  visibility: visible;
-}
+/* Tooltip is handled via JS (#pdp-cert-tip) to avoid overflow:hidden clipping */
