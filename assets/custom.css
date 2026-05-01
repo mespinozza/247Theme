@@ -632,7 +632,15 @@
 .pdp-metacert__card-desc {
   font-size: 1.2rem;
   color: rgb(var(--color-foreground));
-  opacity: 0.6;
   line-height: 1.35;
   font-family: var(--font-body-family);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.2s ease, opacity 0.2s ease;
+}
+
+.pdp-metacert__card:hover .pdp-metacert__card-desc {
+  max-height: 60px;
+  opacity: 0.65;
 }
