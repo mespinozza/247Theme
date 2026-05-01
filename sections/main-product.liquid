@@ -870,15 +870,19 @@
                     function moveTip(e) {
                       var x = e.clientX;
                       var y = e.clientY;
-                      // Force a reflow to get accurate dimensions
-                      var tw = tip.offsetWidth || 200;
-                      var th = tip.offsetHeight || 40;
-                      var left = x - tw / 2;
-                      var top  = y + 18;
-                      // Keep within viewport
+                      // Start: place to the RIGHT of cursor so no left-clip issue
+                      tip.style.left = (x + 16) + 'px';
+                      tip.style.top  = (y + 16) + 'px';
+                      // Now measure the rendered tooltip and adjust if it overflows
+                      var rect = tip.getBoundingClientRect();
+                      var vw = window.innerWidth;
+                      var vh = window.innerHeight;
+                      var left = x + 16;
+                      var top  = y + 16;
+                      if (rect.right  > vw - 8) left = x - rect.width - 16;
+                      if (rect.bottom > vh - 8) top  = y - rect.height - 16;
                       if (left < 8) left = 8;
-                      if (left + tw > window.innerWidth - 8) left = window.innerWidth - tw - 8;
-                      if (top + th > window.innerHeight - 8) top = y - th - 18;
+                      if (top  < 8) top  = 8;
                       tip.style.left = left + 'px';
                       tip.style.top  = top  + 'px';
                     }
