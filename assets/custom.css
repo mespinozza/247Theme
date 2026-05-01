@@ -674,7 +674,7 @@
 /* Tooltip */
 .pdp-metacert__tooltip {
   position: absolute;
-  bottom: calc(100% + 8px);
+  bottom: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%);
   background: #1a1a1a;
@@ -683,14 +683,14 @@
   line-height: 1.45;
   padding: 7px 11px;
   border-radius: 6px;
-  white-space: nowrap;
-  max-width: 240px;
+  max-width: 220px;
   white-space: normal;
   text-align: center;
   pointer-events: none;
   opacity: 0;
-  transition: opacity 0.18s ease;
-  z-index: 10;
+  visibility: hidden;
+  transition: opacity 0.18s ease, visibility 0.18s ease;
+  z-index: 20;
 }
 
 .pdp-metacert__tooltip::after {
@@ -699,11 +699,12 @@
   top: 100%;
   left: 50%;
   transform: translateX(-50%);
-  border: 5px solid transparent;
+  border: 6px solid transparent;
   border-top-color: #1a1a1a;
 }
 
 .pdp-metacert__mark:hover .pdp-metacert__tooltip,
 .pdp-metacert__logo-wrap:hover .pdp-metacert__tooltip {
   opacity: 1;
+  visibility: visible;
 }
