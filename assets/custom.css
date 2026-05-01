@@ -570,7 +570,7 @@
   padding: 10px 14px;
   border: 1px solid rgba(var(--color-foreground), 0.12);
   border-radius: 8px;
-  flex: 1 1 100%;
+  flex: 0 0 auto;
 }
 
 .pdp-metacert__logo {
@@ -641,6 +641,6 @@
 }
 
 .pdp-metacert__card:hover .pdp-metacert__card-desc {
-  max-height: 60px;
+  max-height: 120px;
   opacity: 0.65;
 }
