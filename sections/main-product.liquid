@@ -786,25 +786,44 @@
                           {%- assign cert_logo = cert.LOGO | default: cert.logo -%}
                           {%- assign cert_type = cert.TYPE | default: cert.type | default: '' -%}
                           {%- assign cert_name_lower = cert_name | downcase -%}
-                          {%- if cert_name_lower == 'nsf' -%}
-                            {%- assign cert_desc = 'NSF Certified – This product meets NSF International food safety and sanitation standards for commercial foodservice equipment.' -%}
-                          {%- elsif cert_name_lower == 'ul' -%}
-                            {%- assign cert_desc = 'UL Listed – This product has been independently safety tested and certified by Underwriters Laboratories.' -%}
-                          {%- elsif cert_name_lower == 'etl' -%}
-                            {%- assign cert_desc = 'ETL Listed – This product has been tested and certified for safety and performance by Intertek.' -%}
-                          {%- elsif cert_name_lower contains 'energy star' or cert_name_lower == 'energystar' -%}
-                            {%- assign cert_desc = 'ENERGY STAR® Certified – This product meets strict energy efficiency guidelines set by the U.S. Environmental Protection Agency.' -%}
-                          {%- elsif cert_name_lower == 'ce' -%}
-                            {%- assign cert_desc = 'CE Mark – This product conforms to European Union health, safety, and environmental protection requirements.' -%}
-                          {%- elsif cert_name_lower == 'cul' -%}
-                            {%- assign cert_desc = 'cUL Listed – This product is UL certified and meets Canadian safety standards for use in Canada.' -%}
-                          {%- elsif cert_name_lower == 'csa' -%}
-                            {%- assign cert_desc = 'CSA Certified – This product meets Canadian Standards Association requirements for safety and performance.' -%}
-                          {%- elsif cert_type != blank -%}
-                            {%- assign cert_desc = cert_name | append: ' – ' | append: cert_type -%}
-                          {%- else -%}
-                            {%- assign cert_desc = '' -%}
-                          {%- endif -%}
+                          {%- case cert_name_lower -%}
+                            {%- when 'nsf' -%}
+                              {%- assign cert_desc = 'NSF Certified – This product meets NSF International food safety and sanitation standards for commercial foodservice equipment.' -%}
+                            {%- when 'ul' -%}
+                              {%- assign cert_desc = 'UL Listed – This product has been independently safety tested and certified by Underwriters Laboratories.' -%}
+                            {%- when 'cul' -%}
+                              {%- assign cert_desc = 'cUL Listed – This product is UL certified and meets Canadian safety standards for use in Canada.' -%}
+                            {%- when 'etl' -%}
+                              {%- assign cert_desc = 'ETL Listed – This product has been tested and certified for safety and performance by Intertek.' -%}
+                            {%- when 'cetl' -%}
+                              {%- assign cert_desc = 'cETL Listed – This product is ETL certified and meets Canadian safety standards for use in Canada.' -%}
+                            {%- when 'energy star', 'energystar' -%}
+                              {%- assign cert_desc = 'ENERGY STAR® Certified – This product meets strict energy efficiency guidelines set by the U.S. Environmental Protection Agency.' -%}
+                            {%- when 'ce' -%}
+                              {%- assign cert_desc = 'CE Mark – This product conforms to European Union health, safety, and environmental protection requirements.' -%}
+                            {%- when 'csa' -%}
+                              {%- assign cert_desc = 'CSA Certified – This product meets Canadian Standards Association requirements for safety and performance.' -%}
+                            {%- when 'aga' -%}
+                              {%- assign cert_desc = 'AGA Certified – This product has been tested and certified to meet American Gas Association standards for gas-fired equipment.' -%}
+                            {%- when 'cga' -%}
+                              {%- assign cert_desc = 'CGA Certified – This product meets Canadian Gas Association standards for gas appliances used in Canada.' -%}
+                            {%- when 'ahri' -%}
+                              {%- assign cert_desc = 'AHRI Certified – Performance certified by the Air-Conditioning, Heating, and Refrigeration Institute.' -%}
+                            {%- when 'doe' -%}
+                              {%- assign cert_desc = 'DOE Compliant – This product meets U.S. Department of Energy efficiency standards.' -%}
+                            {%- when 'iso' -%}
+                              {%- assign cert_desc = 'ISO Certified – This product is manufactured under an ISO quality management system.' -%}
+                            {%- when 'ul egh', 'ul eph' -%}
+                              {%- assign cert_desc = 'UL EPH Listed – This product meets UL Environmental and Public Health sanitation standards for foodservice equipment.' -%}
+                            {%- when 'made in usa', 'made in u.s.a.' -%}
+                              {%- assign cert_desc = 'Made in USA – This product is manufactured in the United States of America.' -%}
+                            {%- else -%}
+                              {%- if cert_type != blank -%}
+                                {%- assign cert_desc = cert_name | append: ' – ' | append: cert_type -%}
+                              {%- else -%}
+                                {%- assign cert_desc = cert_name | append: ' Certified – This product has been tested and meets the requirements for this certification.' -%}
+                              {%- endif -%}
+                          {%- endcase -%}
                           {%- if cert_name != blank -%}
                             <div class="pdp-metacert__card">
                               {%- if cert_logo != blank -%}
