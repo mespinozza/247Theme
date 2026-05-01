@@ -560,51 +560,150 @@
 .pdp-metacerts {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
-  padding: 4px 0;
+  gap: 20px;
+  padding: 8px 0;
   align-items: center;
 }
 
 .pdp-metacert__item {
+  position: relative;
   display: flex;
   align-items: center;
 }
 
-/* Logo image style */
+/* Logo image (if LOGO URL is present) */
+.pdp-metacert__logo-wrap {
+  position: relative;
+  display: inline-block;
+}
+
 .pdp-metacert__logo {
-  width: 80px;
-  height: 80px;
+  width: 72px;
+  height: 72px;
   object-fit: contain;
   display: block;
-  filter: drop-shadow(0 1px 3px rgba(0,0,0,0.12));
   transition: transform 0.2s ease;
 }
 
-.pdp-metacert__logo:hover {
+.pdp-metacert__logo-wrap:hover .pdp-metacert__logo {
   transform: scale(1.05);
 }
 
-/* Fallback text badge (when no logo URL) */
-.pdp-metacert__badge-text {
+/* Circular mark badge (fallback when no image URL) */
+.pdp-metacert__mark {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  background-color: rgb(var(--color-button-primary-background));
-  color: rgb(var(--color-button-primary-text, 255, 255, 255));
-  border-radius: 50px;
-  font-size: 1.3rem;
-  font-weight: 600;
-  font-family: var(--font-body-family);
+  justify-content: center;
+  cursor: default;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* default: dark neutral */
+  background: #1a1a1a;
+  border: 3px solid #1a1a1a;
 }
 
-.pdp-metacert__badge-icon {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
+.pdp-metacert__mark:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
 }
 
-.pdp-metacert__label {
+.pdp-metacert__mark-label {
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  line-height: 1;
+  font-family: var(--font-heading-family, sans-serif);
+}
+
+/* NSF – royal blue circle, white text */
+.pdp-metacert__mark--nsf {
+  background: #003087;
+  border-color: #003087;
+}
+
+/* UL – white circle with dark border */
+.pdp-metacert__mark--ul {
+  background: #fff;
+  border: 3px solid #1a1a1a;
+}
+
+.pdp-metacert__mark--ul .pdp-metacert__mark-label {
+  color: #1a1a1a;
+}
+
+/* cUL – same as UL but slightly grey tint */
+.pdp-metacert__mark--cul {
+  background: #f2f2f2;
+  border: 3px solid #1a1a1a;
+}
+
+.pdp-metacert__mark--cul .pdp-metacert__mark-label {
+  color: #1a1a1a;
+}
+
+/* ETL – red circle */
+.pdp-metacert__mark--etl {
+  background: #c8102e;
+  border-color: #c8102e;
+}
+
+/* Energy Star – green */
+.pdp-metacert__mark--energy-star,
+.pdp-metacert__mark--energystar {
+  background: #006934;
+  border-color: #006934;
+}
+
+/* CE – EU blue */
+.pdp-metacert__mark--ce {
+  background: #003399;
+  border-color: #003399;
+}
+
+/* CSA – dark red */
+.pdp-metacert__mark--csa {
+  background: #b5121b;
+  border-color: #b5121b;
+}
+
+/* Tooltip */
+.pdp-metacert__tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1a1a1a;
+  color: #fff;
+  font-size: 1.15rem;
+  line-height: 1.45;
+  padding: 7px 11px;
+  border-radius: 6px;
+  white-space: nowrap;
+  max-width: 240px;
+  white-space: normal;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+  z-index: 10;
+}
+
+.pdp-metacert__tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: #1a1a1a;
+}
+
+.pdp-metacert__mark:hover .pdp-metacert__tooltip,
+.pdp-metacert__logo-wrap:hover .pdp-metacert__tooltip {
+  opacity: 1;
 }

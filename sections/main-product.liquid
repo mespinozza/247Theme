@@ -779,23 +779,46 @@
                       {%- for cert in aq_certs.value -%}
                         {%- assign cert_name = cert.NAME | default: cert.name | default: cert -%}
                         {%- assign cert_logo = cert.LOGO | default: cert.logo -%}
+                        {%- assign cert_type = cert.TYPE | default: cert.type | default: '' -%}
+                        {%- assign cert_name_lower = cert_name | downcase -%}
+                        {%- comment -%} Build tooltip description {%- endcomment -%}
+                        {%- if cert_name_lower == 'nsf' -%}
+                          {%- assign cert_tooltip = 'NSF Certified – Product meets food safety and sanitation standards.' -%}
+                        {%- elsif cert_name_lower == 'ul' -%}
+                          {%- assign cert_tooltip = 'UL Listed – Product has been safety tested and certified by Underwriters Laboratories.' -%}
+                        {%- elsif cert_name_lower == 'etl' -%}
+                          {%- assign cert_tooltip = 'ETL Listed – Product has been tested for safety and performance.' -%}
+                        {%- elsif cert_name_lower contains 'energy star' or cert_name_lower == 'energystar' -%}
+                          {%- assign cert_tooltip = 'ENERGY STAR® – Product meets energy efficiency guidelines.' -%}
+                        {%- elsif cert_name_lower == 'ce' -%}
+                          {%- assign cert_tooltip = 'CE Mark – Product meets European health, safety and environmental requirements.' -%}
+                        {%- elsif cert_name_lower == 'cul' -%}
+                          {%- assign cert_tooltip = 'cUL Listed – UL safety certification for the Canadian market.' -%}
+                        {%- elsif cert_name_lower == 'csa' -%}
+                          {%- assign cert_tooltip = 'CSA Certified – Product meets Canadian Standards Association requirements.' -%}
+                        {%- elsif cert_type != blank -%}
+                          {%- assign cert_tooltip = cert_name | append: ' – ' | append: cert_type -%}
+                        {%- else -%}
+                          {%- assign cert_tooltip = cert_name | append: ' Certified' -%}
+                        {%- endif -%}
                         {%- if cert_name != blank -%}
-                          <div class="pdp-metacert__item">
+                          <div class="pdp-metacert__item" aria-label="{{ cert_tooltip }}">
                             {%- if cert_logo != blank -%}
-                              <img
-                                src="{{ cert_logo }}"
-                                alt="{{ cert_name }} certification"
-                                class="pdp-metacert__logo"
-                                loading="lazy"
-                                width="80"
-                                height="80"
-                              >
+                              <div class="pdp-metacert__logo-wrap">
+                                <img
+                                  src="{{ cert_logo }}"
+                                  alt="{{ cert_name }} certification"
+                                  class="pdp-metacert__logo"
+                                  loading="lazy"
+                                  width="80"
+                                  height="80"
+                                >
+                                <div class="pdp-metacert__tooltip">{{ cert_tooltip }}</div>
+                              </div>
                             {%- else -%}
-                              <div class="pdp-metacert__badge-text">
-                                <span class="pdp-metacert__badge-icon">
-                                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M22 4L12 14.01l-3-3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                                </span>
-                                <span class="pdp-metacert__label">{{ cert_name }}</span>
+                              <div class="pdp-metacert__mark pdp-metacert__mark--{{ cert_name_lower | replace: ' ', '-' | replace: '/', '-' }}">
+                                <span class="pdp-metacert__mark-label">{{ cert_name }}</span>
+                                <div class="pdp-metacert__tooltip">{{ cert_tooltip }}</div>
                               </div>
                             {%- endif -%}
                           </div>
