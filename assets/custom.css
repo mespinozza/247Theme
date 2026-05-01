@@ -561,14 +561,16 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 8px 0;
+  padding: 8px 0 48px;
   align-items: center;
+  overflow: visible;
 }
 
 .pdp-metacert__item {
   position: relative;
   display: flex;
   align-items: center;
+  overflow: visible;
 }
 
 /* Logo image (if LOGO URL is present) */
@@ -671,10 +673,10 @@
   border-color: #b5121b;
 }
 
-/* Tooltip */
+/* Tooltip – appears BELOW the badge to avoid overflow clipping above */
 .pdp-metacert__tooltip {
   position: absolute;
-  bottom: calc(100% + 10px);
+  top: calc(100% + 10px);
   left: 50%;
   transform: translateX(-50%);
   background: #1a1a1a;
@@ -693,14 +695,15 @@
   z-index: 20;
 }
 
+/* Arrow points UP toward the badge */
 .pdp-metacert__tooltip::after {
   content: '';
   position: absolute;
-  top: 100%;
+  bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
   border: 6px solid transparent;
-  border-top-color: #1a1a1a;
+  border-bottom-color: #1a1a1a;
 }
 
 .pdp-metacert__mark:hover .pdp-metacert__tooltip,
