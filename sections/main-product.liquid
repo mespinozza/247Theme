@@ -715,7 +715,8 @@
                     </div>
                   </div>
                   <div class="wt-collapse__target" id="Documents-{{ block.id }}">
-                    <div class="wt-collapse__target--text pdp-metadocs">
+                    <div class="wt-collapse__target--text">
+                      <div class="pdp-metadocs">
                       {%- for doc in aq_documents.value -%}
                         {%- if doc.url != blank -%}
                           {%- liquid
@@ -743,6 +744,7 @@
                           </a>
                         {%- endif -%}
                       {%- endfor -%}
+                      </div>
                     </div>
                   </div>
                 </collapsible-section>
@@ -775,71 +777,54 @@
                     </div>
                   </div>
                   <div class="wt-collapse__target" id="Certifications-{{ block.id }}">
-                    <div class="wt-collapse__target--text pdp-metacerts">
-                      {%- for cert in aq_certs.value -%}
-                        {%- assign cert_name = cert.NAME | default: cert.name | default: cert -%}
-                        {%- assign cert_logo = cert.LOGO | default: cert.logo -%}
-                        {%- assign cert_type = cert.TYPE | default: cert.type | default: '' -%}
-                        {%- assign cert_name_lower = cert_name | downcase -%}
-                        {%- comment -%} Build tooltip description {%- endcomment -%}
-                        {%- if cert_name_lower == 'nsf' -%}
-                          {%- assign cert_tooltip = 'NSF Certified – Product meets food safety and sanitation standards.' -%}
-                        {%- elsif cert_name_lower == 'ul' -%}
-                          {%- assign cert_tooltip = 'UL Listed – Product has been safety tested and certified by Underwriters Laboratories.' -%}
-                        {%- elsif cert_name_lower == 'etl' -%}
-                          {%- assign cert_tooltip = 'ETL Listed – Product has been tested for safety and performance.' -%}
-                        {%- elsif cert_name_lower contains 'energy star' or cert_name_lower == 'energystar' -%}
-                          {%- assign cert_tooltip = 'ENERGY STAR® – Product meets energy efficiency guidelines.' -%}
-                        {%- elsif cert_name_lower == 'ce' -%}
-                          {%- assign cert_tooltip = 'CE Mark – Product meets European health, safety and environmental requirements.' -%}
-                        {%- elsif cert_name_lower == 'cul' -%}
-                          {%- assign cert_tooltip = 'cUL Listed – UL safety certification for the Canadian market.' -%}
-                        {%- elsif cert_name_lower == 'csa' -%}
-                          {%- assign cert_tooltip = 'CSA Certified – Product meets Canadian Standards Association requirements.' -%}
-                        {%- elsif cert_type != blank -%}
-                          {%- assign cert_tooltip = cert_name | append: ' – ' | append: cert_type -%}
-                        {%- else -%}
-                          {%- assign cert_tooltip = cert_name | append: ' Certified' -%}
-                        {%- endif -%}
-                        {%- if cert_name != blank -%}
-                          <div class="pdp-metacert__item" data-cert-tip="{{ cert_tooltip }}">
-                            {%- if cert_logo != blank -%}
-                              <img
-                                src="{{ cert_logo }}"
-                                alt="{{ cert_name }} certification"
-                                class="pdp-metacert__logo"
-                                loading="lazy"
-                                width="80"
-                                height="80"
-                              >
-                            {%- else -%}
-                              <div class="pdp-metacert__mark pdp-metacert__mark--{{ cert_name_lower | replace: ' ', '-' | replace: '/', '-' }}">
-                                <span class="pdp-metacert__mark-label">{{ cert_name }}</span>
+                    <div class="wt-collapse__target--text">
+                      <div class="pdp-metacerts">
+                        {%- for cert in aq_certs.value -%}
+                          {%- assign cert_name = cert.NAME | default: cert.name | default: cert -%}
+                          {%- assign cert_logo = cert.LOGO | default: cert.logo -%}
+                          {%- assign cert_type = cert.TYPE | default: cert.type | default: '' -%}
+                          {%- assign cert_name_lower = cert_name | downcase -%}
+                          {%- if cert_name_lower == 'nsf' -%}
+                            {%- assign cert_desc = 'Meets food safety & sanitation standards.' -%}
+                          {%- elsif cert_name_lower == 'ul' -%}
+                            {%- assign cert_desc = 'Safety tested & certified by Underwriters Laboratories.' -%}
+                          {%- elsif cert_name_lower == 'etl' -%}
+                            {%- assign cert_desc = 'Safety & performance tested.' -%}
+                          {%- elsif cert_name_lower contains 'energy star' or cert_name_lower == 'energystar' -%}
+                            {%- assign cert_desc = 'Meets energy efficiency guidelines.' -%}
+                          {%- elsif cert_name_lower == 'ce' -%}
+                            {%- assign cert_desc = 'Meets European health, safety & environmental requirements.' -%}
+                          {%- elsif cert_name_lower == 'cul' -%}
+                            {%- assign cert_desc = 'UL safety certification for the Canadian market.' -%}
+                          {%- elsif cert_name_lower == 'csa' -%}
+                            {%- assign cert_desc = 'Meets Canadian Standards Association requirements.' -%}
+                          {%- elsif cert_type != blank -%}
+                            {%- assign cert_desc = cert_type -%}
+                          {%- else -%}
+                            {%- assign cert_desc = '' -%}
+                          {%- endif -%}
+                          {%- if cert_name != blank -%}
+                            <div class="pdp-metacert__card">
+                              {%- if cert_logo != blank -%}
+                                <img src="{{ cert_logo }}" alt="{{ cert_name }}" class="pdp-metacert__logo" loading="lazy" width="56" height="56">
+                              {%- else -%}
+                                <div class="pdp-metacert__mark pdp-metacert__mark--{{ cert_name_lower | replace: ' ', '-' | replace: '/', '-' }}">
+                                  <span class="pdp-metacert__mark-label">{{ cert_name }}</span>
+                                </div>
+                              {%- endif -%}
+                              <div class="pdp-metacert__card-info">
+                                <span class="pdp-metacert__card-name">{{ cert_name }}</span>
+                                {%- if cert_desc != blank -%}
+                                  <span class="pdp-metacert__card-desc">{{ cert_desc }}</span>
+                                {%- endif -%}
                               </div>
-                            {%- endif -%}
-                          </div>
-                        {%- endif -%}
-                      {%- endfor -%}
+                            </div>
+                          {%- endif -%}
+                        {%- endfor -%}
+                      </div>
                     </div>
-                    <p class="pdp-metacert__desc" id="pdp-metacert-desc-{{ section.id }}" aria-live="polite"></p>
                   </div>
                 </collapsible-section>
-
-                <script>
-                  (function(){
-                    var desc = document.getElementById('pdp-metacert-desc-{{ section.id }}');
-                    if (!desc) return;
-                    document.querySelectorAll('.pdp-metacert__item[data-cert-tip]').forEach(function(el){
-                      el.addEventListener('mouseenter', function(){
-                        desc.textContent = el.dataset.certTip;
-                        desc.classList.add('pdp-metacert__desc--visible');
-                      });
-                      el.addEventListener('mouseleave', function(){
-                        desc.classList.remove('pdp-metacert__desc--visible');
-                      });
-                    });
-                  })();
-                </script>
               {%- endif -%}
 
             {%- when 'sku' -%}

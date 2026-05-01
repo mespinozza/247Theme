@@ -556,132 +556,83 @@
   opacity: 1;
 }
 
-/* Certifications */
+/* Certifications – card row inside wt-collapse__target--text */
 .pdp-metacerts {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  padding: 8px 0;
-  align-items: center;
+  gap: 12px;
 }
 
-.pdp-metacert__item {
-  position: relative;
+.pdp-metacert__card {
   display: flex;
   align-items: center;
-  cursor: default;
+  gap: 12px;
+  padding: 10px 14px;
+  border: 1px solid rgba(var(--color-foreground), 0.12);
+  border-radius: 8px;
+  flex: 0 0 auto;
 }
 
 .pdp-metacert__logo {
-  width: 72px;
-  height: 72px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
-  display: block;
-  transition: transform 0.2s ease;
+  flex-shrink: 0;
 }
 
-.pdp-metacert__item:hover .pdp-metacert__logo {
-  transform: scale(1.05);
-}
-
-/* Circular mark badge (fallback when no image URL) */
 .pdp-metacert__mark {
-  position: relative;
-  width: 72px;
-  height: 72px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: default;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  /* default: dark neutral */
+  flex-shrink: 0;
   background: #1a1a1a;
-  border: 3px solid #1a1a1a;
-}
-
-.pdp-metacert__mark:hover {
-  transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+  border: 2px solid #1a1a1a;
 }
 
 .pdp-metacert__mark-label {
   color: #fff;
   font-weight: 800;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   letter-spacing: 0.02em;
   text-transform: uppercase;
   line-height: 1;
   font-family: var(--font-heading-family, sans-serif);
 }
 
-/* NSF – royal blue circle, white text */
-.pdp-metacert__mark--nsf {
-  background: #003087;
-  border-color: #003087;
-}
-
-/* UL – white circle with dark border */
-.pdp-metacert__mark--ul {
-  background: #fff;
-  border: 3px solid #1a1a1a;
-}
-
-.pdp-metacert__mark--ul .pdp-metacert__mark-label {
-  color: #1a1a1a;
-}
-
-/* cUL – same as UL but slightly grey tint */
-.pdp-metacert__mark--cul {
-  background: #f2f2f2;
-  border: 3px solid #1a1a1a;
-}
-
-.pdp-metacert__mark--cul .pdp-metacert__mark-label {
-  color: #1a1a1a;
-}
-
-/* ETL – red circle */
-.pdp-metacert__mark--etl {
-  background: #c8102e;
-  border-color: #c8102e;
-}
-
-/* Energy Star – green */
+.pdp-metacert__mark--nsf { background: #003087; border-color: #003087; }
+.pdp-metacert__mark--ul  { background: #fff; border-color: #1a1a1a; }
+.pdp-metacert__mark--ul .pdp-metacert__mark-label { color: #1a1a1a; }
+.pdp-metacert__mark--cul { background: #f2f2f2; border-color: #1a1a1a; }
+.pdp-metacert__mark--cul .pdp-metacert__mark-label { color: #1a1a1a; }
+.pdp-metacert__mark--etl { background: #c8102e; border-color: #c8102e; }
 .pdp-metacert__mark--energy-star,
-.pdp-metacert__mark--energystar {
-  background: #006934;
-  border-color: #006934;
+.pdp-metacert__mark--energystar { background: #006934; border-color: #006934; }
+.pdp-metacert__mark--ce  { background: #003399; border-color: #003399; }
+.pdp-metacert__mark--csa { background: #b5121b; border-color: #b5121b; }
+
+.pdp-metacert__card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-/* CE – EU blue */
-.pdp-metacert__mark--ce {
-  background: #003399;
-  border-color: #003399;
-}
-
-/* CSA – dark red */
-.pdp-metacert__mark--csa {
-  background: #b5121b;
-  border-color: #b5121b;
-}
-
-/* Cert description – appears inline below badges on hover, no positioning needed */
-.pdp-metacert__desc {
-  font-size: 1.25rem;
+.pdp-metacert__card-name {
+  font-weight: 700;
+  font-size: 1.3rem;
+  font-family: var(--font-heading-family);
   color: rgb(var(--color-foreground));
-  opacity: 0;
-  max-height: 0;
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-  transition: opacity 0.2s ease, max-height 0.2s ease, margin 0.2s ease;
-  font-family: var(--font-body-family);
-  line-height: 1.5;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 1.2;
 }
 
-.pdp-metacert__desc--visible {
-  opacity: 0.75;
-  max-height: 80px;
-  margin-top: 10px;
+.pdp-metacert__card-desc {
+  font-size: 1.2rem;
+  color: rgb(var(--color-foreground));
+  opacity: 0.6;
+  line-height: 1.35;
+  font-family: var(--font-body-family);
 }
