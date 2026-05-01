@@ -824,53 +824,63 @@
                   </div>
                 </collapsible-section>
 
-                {%- comment -%} Global cert tooltip (positioned via JS to escape overflow:hidden) {%- endcomment -%}
-                <div id="pdp-cert-tip" role="tooltip" style="
-                  position:fixed;
-                  background:#1a1a1a;
-                  color:#fff;
-                  font-size:13px;
-                  line-height:1.45;
-                  padding:7px 12px;
-                  border-radius:6px;
-                  max-width:220px;
-                  text-align:center;
-                  pointer-events:none;
-                  opacity:0;
-                  visibility:hidden;
-                  transition:opacity 0.15s ease,visibility 0.15s ease;
-                  z-index:9999;
-                  white-space:normal;
-                "></div>
                 <script>
                   (function(){
-                    var tip = document.getElementById('pdp-cert-tip');
-                    if (!tip) return;
+                    // Create tooltip at body level so position:fixed isn't scoped by parent transforms
+                    var tip = document.getElementById('pdp-cert-tip-global');
+                    if (!tip) {
+                      tip = document.createElement('div');
+                      tip.id = 'pdp-cert-tip-global';
+                      tip.setAttribute('role', 'tooltip');
+                      tip.style.cssText = [
+                        'position:fixed',
+                        'background:#1a1a1a',
+                        'color:#fff',
+                        'font-size:13px',
+                        'line-height:1.45',
+                        'padding:7px 12px',
+                        'border-radius:6px',
+                        'max-width:220px',
+                        'text-align:center',
+                        'pointer-events:none',
+                        'opacity:0',
+                        'visibility:hidden',
+                        'transition:opacity 0.15s ease,visibility 0.15s ease',
+                        'z-index:99999',
+                        'white-space:normal',
+                        'box-shadow:0 4px 12px rgba(0,0,0,0.25)'
+                      ].join(';');
+                      document.body.appendChild(tip);
+                    }
+
                     document.querySelectorAll('.pdp-metacert__item[data-cert-tip]').forEach(function(el){
                       el.addEventListener('mouseenter', function(e){
                         tip.textContent = el.dataset.certTip;
                         tip.style.opacity = '1';
                         tip.style.visibility = 'visible';
-                        positionTip(e);
+                        moveTip(e);
                       });
-                      el.addEventListener('mousemove', positionTip);
+                      el.addEventListener('mousemove', moveTip);
                       el.addEventListener('mouseleave', function(){
                         tip.style.opacity = '0';
                         tip.style.visibility = 'hidden';
                       });
                     });
-                    function positionTip(e){
+
+                    function moveTip(e) {
                       var x = e.clientX;
                       var y = e.clientY;
-                      var tw = tip.offsetWidth;
-                      var th = tip.offsetHeight;
+                      // Force a reflow to get accurate dimensions
+                      var tw = tip.offsetWidth || 200;
+                      var th = tip.offsetHeight || 40;
                       var left = x - tw / 2;
-                      var top = y + 16;
+                      var top  = y + 18;
+                      // Keep within viewport
                       if (left < 8) left = 8;
                       if (left + tw > window.innerWidth - 8) left = window.innerWidth - tw - 8;
-                      if (top + th > window.innerHeight - 8) top = y - th - 16;
+                      if (top + th > window.innerHeight - 8) top = y - th - 18;
                       tip.style.left = left + 'px';
-                      tip.style.top = top + 'px';
+                      tip.style.top  = top  + 'px';
                     }
                   })();
                 </script>
