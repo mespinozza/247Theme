@@ -666,4 +666,22 @@
   border-color: #b5121b;
 }
 
-/* Tooltip is handled via JS (#pdp-cert-tip) to avoid overflow:hidden clipping */
+/* Cert description – appears inline below badges on hover, no positioning needed */
+.pdp-metacert__desc {
+  font-size: 1.25rem;
+  color: rgb(var(--color-foreground));
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  transition: opacity 0.2s ease, max-height 0.2s ease, margin 0.2s ease;
+  font-family: var(--font-body-family);
+  line-height: 1.5;
+}
+
+.pdp-metacert__desc--visible {
+  opacity: 0.75;
+  max-height: 80px;
+  margin-top: 10px;
+}

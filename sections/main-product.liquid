@@ -821,71 +821,23 @@
                         {%- endif -%}
                       {%- endfor -%}
                     </div>
+                    <p class="pdp-metacert__desc" id="pdp-metacert-desc-{{ section.id }}" aria-live="polite"></p>
                   </div>
                 </collapsible-section>
 
                 <script>
                   (function(){
-                    // Create tooltip at body level so position:fixed isn't scoped by parent transforms
-                    var tip = document.getElementById('pdp-cert-tip-global');
-                    if (!tip) {
-                      tip = document.createElement('div');
-                      tip.id = 'pdp-cert-tip-global';
-                      tip.setAttribute('role', 'tooltip');
-                      tip.style.cssText = [
-                        'position:fixed',
-                        'background:#1a1a1a',
-                        'color:#fff',
-                        'font-size:13px',
-                        'line-height:1.45',
-                        'padding:7px 12px',
-                        'border-radius:6px',
-                        'max-width:220px',
-                        'text-align:center',
-                        'pointer-events:none',
-                        'opacity:0',
-                        'visibility:hidden',
-                        'transition:opacity 0.15s ease,visibility 0.15s ease',
-                        'z-index:99999',
-                        'white-space:normal',
-                        'box-shadow:0 4px 12px rgba(0,0,0,0.25)'
-                      ].join(';');
-                      document.body.appendChild(tip);
-                    }
-
+                    var desc = document.getElementById('pdp-metacert-desc-{{ section.id }}');
+                    if (!desc) return;
                     document.querySelectorAll('.pdp-metacert__item[data-cert-tip]').forEach(function(el){
-                      el.addEventListener('mouseenter', function(e){
-                        tip.textContent = el.dataset.certTip;
-                        tip.style.opacity = '1';
-                        tip.style.visibility = 'visible';
-                        moveTip(e);
+                      el.addEventListener('mouseenter', function(){
+                        desc.textContent = el.dataset.certTip;
+                        desc.classList.add('pdp-metacert__desc--visible');
                       });
-                      el.addEventListener('mousemove', moveTip);
                       el.addEventListener('mouseleave', function(){
-                        tip.style.opacity = '0';
-                        tip.style.visibility = 'hidden';
+                        desc.classList.remove('pdp-metacert__desc--visible');
                       });
                     });
-
-                    function moveTip(e) {
-                      var x = e.clientX;
-                      var y = e.clientY;
-                      // Start: place to the RIGHT of cursor so no left-clip issue
-                      tip.style.left = (x + 16) + 'px';
-                      tip.style.top  = (y + 16) + 'px';
-                      // Now measure the rendered tooltip and adjust if it overflows
-                      var rect = tip.getBoundingClientRect();
-                      var vw = window.innerWidth;
-                      var vh = window.innerHeight;
-                      var left = x + 16;
-                      var top  = y + 16;
-                      if (rect.right  > vw - 8) left = x - rect.width - 16;
-                      if (rect.bottom > vh - 8) top  = y - rect.height - 16;
-                      if (left < 8) left = 8;
-                      if (top  < 8) top  = 8;
-                      tip.style.left = left + 'px';
-                      tip.style.top  = top  + 'px';
-                    }
                   })();
                 </script>
               {%- endif -%}
