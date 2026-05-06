@@ -19,6 +19,17 @@
     ]
   },
   {
+    "name": "Product Image Placeholder",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "product_placeholder_image",
+        "label": "Product placeholder image",
+        "info": "Shown on product cards and product pages when a product has no images. Use your store logo or a branded image."
+      }
+    ]
+  },
+  {
     "name": "t:settings_schema.layout.name",
     "settings": [
       {

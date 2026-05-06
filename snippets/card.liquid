@@ -126,7 +126,18 @@
               >
             {% endif %}
           {% else %}
-            {% unless url %}
+            {% if settings.product_placeholder_image != blank %}
+              <img
+                src="{{ settings.product_placeholder_image | image_url: width: 800 }}"
+                alt="{{ card_product.title | default: 'Product' | escape }}"
+                class="card__img card__img--placeholder-custom"
+                width="800"
+                height="800"
+                loading="lazy"
+              >
+            {% elsif url %}
+              <div class="card__img card__img--empty"></div>
+            {% else %}
               {% if placeholder_image_index %}
                 {{
                   'product-apparel-'
@@ -136,13 +147,10 @@
               {% else %}
                 {{
                   'collection-apparel-1'
-                  | append: placeholder_image_index
                   | placeholder_svg_tag: 'card__img card__img--placeholder'
                 }}
               {% endif %}
-            {% else %}
-              <div class="card__img card__img--empty"></div>
-            {% endunless %}
+            {% endif %}
           {% endif %}
           {% if promo %}
             <div class="card__promo">{{ promo }}</div>

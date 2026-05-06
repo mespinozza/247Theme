@@ -556,6 +556,13 @@
   opacity: 1;
 }
 
+/* Product image placeholder – card (collections, feeds) */
+.card__img--placeholder-custom {
+  object-fit: contain !important;
+  background-color: #fff;
+  padding: 12px;
+}
+
 /* Product image placeholder (no media) */
 .wt-product__gallery--placeholder {
   display: flex;
