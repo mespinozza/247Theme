@@ -752,6 +752,70 @@
                 </collapsible-section>
               {%- endif -%}
 
+              {%- comment -%} CAD Files Tab {%- endcomment -%}
+              {%- assign aq_cad = product.metafields.autoquotes.cad_files -%}
+              {%- if aq_cad != blank and aq_cad.value != blank -%}
+                <collapsible-section
+                  class="wt-collapse wt-collapse--always {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
+                  data-accordion-set="pdp"
+                  data-toggle-tabindex="button, [href], input, select"
+                  not-quick-add
+                >
+                  <div
+                    role="button"
+                    tabindex="0"
+                    class="wt-collapse__trigger"
+                    aria-expanded="false"
+                    aria-controls="CadFiles-{{ block.id }}"
+                  >
+                    <div class="wt-collapse__trigger__text">
+                      <div class="wt-collapse__trigger__icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 9h18M9 21V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                      </div>
+                      <div class="wt-collapse__trigger__title">CAD Files</div>
+                    </div>
+                    <div class="wt-icon" aria-hidden="true">
+                      {% render 'icons', id: 'plus' %}
+                    </div>
+                  </div>
+                  <div class="wt-collapse__target" id="CadFiles-{{ block.id }}">
+                    <div class="wt-collapse__target--text">
+                      <div class="pdp-metadocs">
+                        {%- for cad in aq_cad.value -%}
+                          {%- assign cad_url  = cad.url  | default: cad.URL -%}
+                          {%- assign cad_view = cad.view | default: cad.VIEW | default: cad.name | default: cad.label -%}
+                          {%- if cad_url != blank -%}
+                            {%- assign cad_ext = cad_view | split: '.' | last | upcase -%}
+                            {%- case cad_ext -%}
+                              {%- when 'DWG' -%}{%- assign cad_hint = 'AutoCAD drawing file' -%}
+                              {%- when 'DXF' -%}{%- assign cad_hint = 'Drawing exchange format' -%}
+                              {%- when 'RVT' -%}{%- assign cad_hint = 'Revit project file' -%}
+                              {%- when 'SKP' -%}{%- assign cad_hint = 'SketchUp model file' -%}
+                              {%- when 'STEP', 'STP' -%}{%- assign cad_hint = '3D model – STEP format' -%}
+                              {%- when 'IFC' -%}{%- assign cad_hint = 'BIM / IFC file' -%}
+                              {%- when 'PDF' -%}{%- assign cad_hint = 'PDF drawing file' -%}
+                              {%- else -%}{%- assign cad_hint = 'CAD file – click to download' -%}
+                            {%- endcase -%}
+                            <a href="{{ cad_url }}" class="pdp-metadoc__item" target="_blank" rel="noopener" download>
+                              <span class="pdp-metadoc__icon">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 9h18M9 21V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                              </span>
+                              <span class="pdp-metadoc__info">
+                                <span class="pdp-metadoc__label">{{ cad_view }}</span>
+                                <span class="pdp-metadoc__hint">{{ cad_hint }}</span>
+                              </span>
+                              <span class="pdp-metadoc__arrow">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                              </span>
+                            </a>
+                          {%- endif -%}
+                        {%- endfor -%}
+                      </div>
+                    </div>
+                  </div>
+                </collapsible-section>
+              {%- endif -%}
+
               {%- comment -%} Certifications Tab {%- endcomment -%}
               {%- assign aq_certs = product.metafields.autoquotes.certifications -%}
               {%- if aq_certs != blank and aq_certs.value != blank -%}
