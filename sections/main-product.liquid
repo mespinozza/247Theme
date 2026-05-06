@@ -141,6 +141,19 @@
 
     {% if section.settings['desktop-layout'] == 'horizontal-scroll' %}
       {% render 'horizontal-scroll' %}
+    {% elsif product.media.size == 0 %}
+      {%- if section.settings.placeholder_image != blank -%}
+        <div class="wt-product__gallery wt-product__gallery--placeholder">
+          <img
+            src="{{ section.settings.placeholder_image | image_url: width: 800 }}"
+            alt="{{ product.title | escape }}"
+            class="wt-product__placeholder-img"
+            width="800"
+            height="800"
+            loading="eager"
+          >
+        </div>
+      {%- endif -%}
     {% else %}
     <gallery-section
       id="MediaGallery-{{ section.id }}"
@@ -1981,6 +1994,16 @@
       ],
       "default": "carousel-vertical",
       "label": "t:sections.main-product.settings.desktop-layout.default.label"
+    },
+    {
+      "type": "header",
+      "content": "Product Image Placeholder"
+    },
+    {
+      "type": "image_picker",
+      "id": "placeholder_image",
+      "label": "Placeholder image",
+      "info": "Shown when a product has no images. Use your store logo or a branded image."
     },
     {
       "type": "select",
