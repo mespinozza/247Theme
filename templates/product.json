@@ -210,9 +210,10 @@
         "full-width-enabled": false,
         "desktop-media-size": "normal",
         "desktop-layout": "horizontal-scroll",
-        "desktop-image-ratio": "original",
-        "enable_video_looping": true,
-        "enable-image-zoom": true,
+        "placeholder_image": "shopify://shop_images/Untitled_design_4.png",
+        "desktop-image-ratio": "square",
+        "enable_video_looping": false,
+        "enable-image-zoom": false,
         "mobile-image": "normal",
         "margin-top": 12,
         "margin-bottom": 0
