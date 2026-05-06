@@ -565,12 +565,13 @@
 
 .pdp-metacert__card {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   padding: 10px 14px;
   border: 1px solid rgba(var(--color-foreground), 0.12);
   border-radius: 8px;
-  flex: 0 0 auto;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .pdp-metacert__logo {
@@ -578,6 +579,7 @@
   height: 48px;
   object-fit: contain;
   flex-shrink: 0;
+  align-self: flex-start;
 }
 
 .pdp-metacert__mark {
@@ -588,6 +590,7 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  align-self: flex-start;
   background: #1a1a1a;
   border: 2px solid #1a1a1a;
 }
@@ -617,6 +620,8 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
+  flex: 1;
+  min-width: 0;
 }
 
 .pdp-metacert__card-name {
@@ -632,15 +637,17 @@
 .pdp-metacert__card-desc {
   font-size: 1.2rem;
   color: rgb(var(--color-foreground));
-  line-height: 1.35;
+  line-height: 1.5;
   font-family: var(--font-body-family);
+  white-space: normal;
+  word-wrap: break-word;
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: max-height 0.2s ease, opacity 0.2s ease;
+  transition: max-height 0.3s ease, opacity 0.25s ease;
 }
 
 .pdp-metacert__card:hover .pdp-metacert__card-desc {
-  max-height: 120px;
+  max-height: 200px;
   opacity: 0.65;
 }
