@@ -556,8 +556,9 @@
   opacity: 1;
 }
 
-/* Product image placeholder – card (collections, feeds) */
-.card__img--placeholder-custom {
+/* Product image placeholder – card (collections, feeds, recommendations) */
+.card__img--placeholder-custom,
+.wt-product__upsell__image--placeholder {
   object-fit: contain !important;
   background-color: #fff;
   padding: 12px;
