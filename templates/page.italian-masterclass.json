@@ -9,22 +9,10 @@
  */
 {
   "sections": {
-    "main": {
-      "type": "main-page",
-      "disabled": true,
-      "settings": {
-        "compact-size-enabled": true,
-        "size_heading": 140,
-        "size_heading_mobile": 100,
-        "color-body-text": "rgba(0,0,0,0)",
-        "color-bg-overlay": "rgba(0,0,0,0)",
-        "color-overlay-opacity": 100,
-        "margin-top": 40,
-        "margin-bottom": 32
-      }
+    "italian-masterclass": {
+      "type": "italian-masterclass",
+      "settings": {}
     }
   },
-  "order": [
-    "main"
-  ]
+  "order": ["italian-masterclass"]
 }
