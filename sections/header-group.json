@@ -102,16 +102,10 @@
         "suggestions_title": "",
         "suggestions_menu": ""
       }
-    },
-    "italian_masterclass_47dXKx": {
-      "type": "italian-masterclass",
-      "name": "Italian Master Class",
-      "settings": {}
     }
   },
   "order": [
     "announcement-bar",
-    "header",
-    "italian_masterclass_47dXKx"
+    "header"
   ]
 }
