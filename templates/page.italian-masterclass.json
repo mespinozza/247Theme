@@ -22,9 +22,15 @@
         "margin-top": 40,
         "margin-bottom": 32
       }
+    },
+    "italian_masterclass_PUdicL": {
+      "type": "italian-masterclass",
+      "name": "Italian Master Class",
+      "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "italian_masterclass_PUdicL"
   ]
 }
