@@ -1,38 +1,4 @@
-{% comment %}
-  Section: italian-masterclass.liquid
-  Location: sections/italian-masterclass.liquid
-
-  SETUP CHECKLIST:
-  ─────────────────────────────────────────────────────────────
-  1. PRODUCT: Create a product in Shopify admin titled exactly:
-        "Italian Culinary Master Class"
-     Handle will auto-generate as: italian-culinary-master-class
-
-  2. VARIANTS: Add these 4 variants to the product:
-        Pasta Master Class | June 9          → Price: $195.00
-        Pizza & Focaccia Master Class | June 10 → Price: $195.00
-        Aperitivo Master Class | June 11     → Price: $195.00
-        Full 3-Day Series | June 9–11        → Price: $500.00
-     Set inventory tracking OFF (or set qty high) so it doesn't
-     show as sold out.
-
-  3. PAGE TEMPLATE: Save this file to sections/italian-masterclass.liquid
-     Save page.italian-masterclass.json to templates/
-
-  4. PAGE: In Shopify Admin → Online Store → Pages:
-     - Create a new page titled "Italian Culinary Master Class"
-     - In the Theme Template dropdown, select "italian-masterclass"
-     - Save
-
-  5. CHEF PHOTO: Replace the placeholder <div class="bio-photo"> with:
-        <img src="{{ 'chef-dante-daga.jpg' | asset_url }}" alt="Chef Dante Daga" class="bio-photo-img">
-     Upload the photo to Settings → Files in Shopify admin.
-
-  6. PRODUCT HANDLE: The form below uses the handle
-     'italian-culinary-master-class'. If Shopify generates a
-     different handle, update the assign tag on line ~250.
-  ─────────────────────────────────────────────────────────────
-{% endcomment %}
+{% comment %}italian-masterclass section{% endcomment %}
 
 {% assign masterclass_product = all_products['italian-culinary-master-class'] %}
 
@@ -41,390 +7,197 @@
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&family=Playfair+Display:ital,wght@0,700;1,400;1,600;1,700&display=swap" rel="stylesheet">
 
 <style>
-  /* ─── TOKENS ─────────────────────────────────────────── */
   .imc-wrap {
-    --red:        #a20d17;
-    --red-dark:   #810a12;
-    --red-light:  #c41020;
-    --navy:       #0f1923;
-    --navy-mid:   #1a2535;
-    --navy-light: #243040;
-    --blue:       #0508a3;
-    --blue-hover: #0400c2;
-    --white:      #ffffff;
-    --off-white:  #f7f8fa;
-    --border:     #dfdfdf;
-    --text:       #222321;
-    --text-mid:   #4a5568;
-    --text-light: #6b6b6b;
-    --sans:       'Barlow', sans-serif;
-    --cond:       'Barlow Condensed', sans-serif;
-    --serif:      'Playfair Display', Georgia, serif;
+    --red:#a20d17;--red-dark:#810a12;--red-light:#c41020;--navy:#0f1923;--navy-mid:#1a2535;--navy-light:#243040;--blue:#0508a3;--blue-hover:#0400c2;--white:#ffffff;--off-white:#f7f8fa;--border:#dfdfdf;--text:#222321;--text-mid:#4a5568;--text-light:#6b6b6b;--sans:'Barlow',sans-serif;--cond:'Barlow Condensed',sans-serif;--serif:'Playfair Display',Georgia,serif;
   }
-
-  /* Scope all styles to .imc-wrap to avoid theme conflicts */
-  .imc-wrap *, .imc-wrap *::before, .imc-wrap *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  .imc-wrap { font-family: var(--sans); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-  .imc-wrap img { max-width: 100%; display: block; }
-  .imc-wrap a { color: inherit; text-decoration: none; }
-
-  /* ─── LAYOUT ─────────────────────────────────────────── */
-  .imc-container  { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-  .imc-section    { padding: 72px 0; }
-  .imc-section--alt  { background: var(--off-white); }
-  .imc-section--dark { background: var(--navy); color: var(--white); }
-
-  /* ─── SHARED TYPE ────────────────────────────────────── */
-  .imc-eyebrow {
-    display: block; font-family: var(--cond);
-    font-size: 12px; font-weight: 700;
-    letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--red); margin-bottom: 10px;
+  .imc-wrap *,.imc-wrap *::before,.imc-wrap *::after{box-sizing:border-box;margin:0;padding:0;}
+  .imc-wrap{font-family:var(--sans);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .imc-wrap img{max-width:100%;display:block;}
+  .imc-wrap a{color:inherit;text-decoration:none;}
+  .imc-container{max-width:1200px;margin:0 auto;padding:0 24px;}
+  .imc-section{padding:72px 0;}
+  .imc-section--alt{background:var(--off-white);}
+  .imc-section--dark{background:var(--navy);color:var(--white);}
+  .imc-eyebrow{display:block;font-family:var(--cond);font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:10px;}
+  .imc-h-sans{font-family:var(--cond);font-size:clamp(26px,3vw,38px);font-weight:800;text-transform:uppercase;letter-spacing:0.02em;line-height:1.1;}
+  .imc-body-text{font-size:15px;color:var(--text-mid);line-height:1.8;}
+  .imc-section--dark .imc-body-text{color:rgba(255,255,255,.65);}
+  .imc-section-header{margin-bottom:48px;}
+  .imc-btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--cond);font-size:14px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:14px 28px;border:none;cursor:pointer;transition:background .15s,transform .1s;text-decoration:none;}
+  .imc-btn--red{background:var(--red);color:var(--white);}
+  .imc-btn--red:hover{background:var(--red-dark);transform:translateY(-1px);}
+  .imc-btn--ghost{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.3);}
+  .imc-btn--ghost:hover{border-color:var(--white);}
+  .imc-topbar{background:var(--red);color:var(--white);text-align:center;padding:10px 20px;font-family:var(--cond);font-size:13px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;}
+  .imc-hero{background:var(--navy);color:var(--white);padding:80px 0 72px;border-bottom:3px solid var(--red);position:relative;overflow:hidden;}
+  .imc-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 90% 50%,rgba(162,13,23,.08) 0%,transparent 65%);pointer-events:none;}
+  .imc-hero-inner{display:grid;grid-template-columns:1fr 340px;gap:60px;align-items:center;position:relative;z-index:1;}
+  .imc-hero-badge{display:inline-block;background:var(--red);color:var(--white);font-family:var(--cond);font-size:11px;font-weight:800;letter-spacing:0.15em;text-transform:uppercase;padding:5px 14px;margin-bottom:22px;}
+  .imc-hero-title{font-family:var(--cond);font-size:clamp(40px,5.5vw,68px);font-weight:800;text-transform:uppercase;letter-spacing:0.01em;line-height:1.0;margin-bottom:4px;}
+  .imc-hero-serif{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(22px,3vw,34px);color:rgba(255,255,255,.8);display:block;margin-bottom:16px;line-height:1.3;}
+  .imc-hero-chef{font-family:var(--cond);font-size:14px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:20px;}
+  .imc-hero-desc{font-size:15px;color:rgba(255,255,255,.7);max-width:480px;line-height:1.75;margin-bottom:32px;}
+  .imc-hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+  .imc-hero-stats{display:flex;flex-wrap:wrap;margin-top:40px;padding-top:28px;border-top:1px solid rgba(255,255,255,.1);}
+  .imc-hero-stat{padding-right:28px;margin-right:28px;border-right:1px solid rgba(255,255,255,.12);}
+  .imc-hero-stat:last-child{border-right:none;}
+  .imc-hs-label{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:4px;}
+  .imc-hs-value{font-family:var(--cond);font-size:17px;font-weight:800;}
+  .imc-hs-value.highlight{color:var(--red-light);}
+  .imc-hero-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:28px 24px;}
+  .imc-hc-label{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:18px;}
+  .imc-hc-day{padding:13px 0;border-bottom:1px solid rgba(255,255,255,.08);}
+  .imc-hc-day:last-of-type{border-bottom:none;}
+  .imc-hc-day-num{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--red-light);margin-bottom:3px;}
+  .imc-hc-day-name{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--white);margin-bottom:2px;}
+  .imc-hc-day-date{font-family:var(--cond);font-size:12px;letter-spacing:0.05em;color:rgba(255,255,255,.4);}
+  .imc-hc-price{margin-top:18px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);}
+  .imc-hc-price-label{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:6px;}
+  .imc-hc-price-val{font-family:var(--cond);font-size:26px;font-weight:800;color:var(--white);}
+  .imc-hc-price-sub{font-size:12px;color:rgba(255,255,255,.4);margin-top:2px;}
+  .imc-details{background:var(--off-white);padding:0;}
+  .imc-details-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:3px solid var(--red);}
+  .imc-detail-cell{padding:28px 24px;border-right:1px solid var(--border);}
+  .imc-detail-cell:last-child{border-right:none;}
+  .imc-dl-label{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-light);margin-bottom:6px;}
+  .imc-dl-value{font-family:var(--cond);font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:0.02em;color:var(--navy);margin-bottom:3px;}
+  .imc-dl-sub{font-size:13px;color:var(--text-light);}
+  .imc-bio-grid{display:grid;grid-template-columns:300px 1fr;gap:64px;align-items:start;}
+  .imc-bio-photo{aspect-ratio:3/4;background:var(--navy-mid);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;color:rgba(255,255,255,.2);font-family:var(--cond);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;text-align:center;gap:12px;}
+  .imc-bio-photo svg{opacity:.2;}
+  .imc-bio-photo-img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top;border:1px solid var(--border);}
+  .imc-bio-name{font-family:var(--serif);font-style:italic;font-size:34px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+  .imc-bio-role{font-family:var(--cond);font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-light);margin-bottom:20px;}
+  .imc-bio-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
+  .imc-bio-tag{font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;border:1px solid var(--border);padding:5px 12px;color:var(--text-mid);}
+  .imc-bio-text p{font-size:15px;color:var(--text-mid);line-height:1.8;margin-bottom:14px;}
+  .imc-bio-markets{border-left:3px solid var(--red);padding:14px 18px;background:var(--off-white);margin-top:20px;}
+  .imc-bio-markets-label{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-light);margin-bottom:6px;}
+  .imc-bio-markets-val{font-size:14px;font-weight:600;color:var(--navy);}
+  .imc-days-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--border);}
+  .imc-day-card{background:var(--white);padding:36px 28px;transition:background .15s;}
+  .imc-day-card:hover{background:#fdfdfe;}
+  .imc-day-num{font-family:var(--cond);font-size:64px;font-weight:800;color:var(--border);line-height:1;margin-bottom:18px;letter-spacing:-0.02em;}
+  .imc-day-date-tag{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:8px;}
+  .imc-day-title{font-family:var(--serif);font-style:italic;font-size:22px;font-weight:700;color:var(--navy);margin-bottom:6px;line-height:1.2;}
+  .imc-day-sub{font-size:13px;color:var(--text-light);margin-bottom:20px;line-height:1.5;}
+  .imc-day-rule{width:28px;height:2px;background:var(--red);margin-bottom:20px;}
+  .imc-focus-list{list-style:none;}
+  .imc-focus-list li{font-size:13.5px;color:var(--text-mid);padding:7px 0;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:10px;line-height:1.4;}
+  .imc-focus-list li:last-child{border-bottom:none;}
+  .imc-focus-list li::before{content:'—';color:var(--red);font-size:11px;flex-shrink:0;margin-top:2px;}
+  .imc-day-footer{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-family:var(--cond);font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-light);}
+  .imc-included-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(255,255,255,.06);}
+  .imc-incl-item{padding:32px 22px;text-align:center;border:1px solid rgba(255,255,255,.08);transition:background .15s;}
+  .imc-incl-item:hover{background:rgba(255,255,255,.04);}
+  .imc-incl-icon{font-size:26px;margin-bottom:12px;}
+  .imc-incl-item h4{font-family:var(--cond);font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:0.06em;color:var(--white);margin-bottom:6px;}
+  .imc-incl-item p{font-size:13px;color:rgba(255,255,255,.5);line-height:1.55;}
+  .imc-pricing-layout{display:grid;grid-template-columns:1fr 400px;gap:64px;align-items:start;}
+  .imc-pricing-intro > p{font-size:15px;color:var(--text-mid);line-height:1.8;margin-bottom:28px;max-width:460px;}
+  .imc-price-table{border:1px solid var(--border);}
+  .imc-price-table-head{display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--navy);}
+  .imc-price-table-head div{font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;padding:12px 16px;color:rgba(255,255,255,.5);}
+  .imc-price-table-row{display:grid;grid-template-columns:1fr 1fr 1fr;border-top:1px solid var(--border);}
+  .imc-price-table-row div{padding:14px 16px;font-size:14px;border-right:1px solid var(--border);}
+  .imc-price-table-row div:last-child{border-right:none;}
+  .imc-pr-name{font-weight:600;color:var(--text);}
+  .imc-pr-early{font-family:var(--cond);font-size:17px;font-weight:800;color:var(--red);}
+  .imc-pr-reg{font-weight:500;color:var(--text-light);text-decoration:line-through;font-size:13px;}
+  .imc-savings-bar{background:var(--navy);color:var(--white);padding:13px 16px;font-size:13px;display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-top:none;}
+  .imc-savings-bar strong{color:#f0c06a;}
+  .imc-reg-card{background:var(--navy);color:var(--white);padding:36px 30px;position:sticky;top:20px;}
+  .imc-reg-title{font-family:var(--cond);font-size:22px;font-weight:800;text-transform:uppercase;letter-spacing:0.04em;margin-bottom:4px;}
+  .imc-reg-subtitle{font-family:var(--serif);font-style:italic;font-size:15px;color:rgba(255,255,255,.55);margin-bottom:20px;}
+  .imc-reg-card select{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);color:var(--white);padding:13px 15px;font-family:var(--serif);font-style:italic;font-size:15px;appearance:none;cursor:pointer;transition:border-color .15s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.4)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;}
+  .imc-reg-card select:focus{outline:none;border-color:var(--red);}
+  .imc-reg-card select option{background:var(--navy-mid);color:var(--white);font-style:normal;}
+  .imc-variant-list{display:flex;flex-direction:column;gap:8px;margin-bottom:16px;}
+  .imc-v-opt{border:1px solid rgba(255,255,255,.12);padding:13px 15px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:border-color .15s,background .15s;}
+  .imc-v-opt:hover,.imc-v-opt.imc-active{border-color:var(--red);background:rgba(162,13,23,.12);}
+  .imc-v-opt.imc-featured{border-color:rgba(162,13,23,.3);}
+  .imc-v-opt.imc-featured.imc-active{border-color:var(--red);background:rgba(162,13,23,.16);}
+  .imc-v-badge{font-family:var(--cond);font-size:9px;font-weight:800;letter-spacing:0.12em;text-transform:uppercase;background:var(--red);color:var(--white);padding:2px 8px;display:inline-block;margin-bottom:4px;}
+  .imc-v-name{font-family:var(--serif);font-style:italic;font-size:15px;color:var(--white);}
+  .imc-v-date{font-family:var(--cond);font-size:11px;letter-spacing:0.05em;color:rgba(255,255,255,.4);margin-top:2px;}
+  .imc-v-price{font-family:var(--cond);font-size:20px;font-weight:800;color:var(--white);white-space:nowrap;}
+  .imc-atc-btn{width:100%;background:var(--red);color:var(--white);border:none;padding:17px;font-family:var(--cond);font-size:15px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:background .15s;}
+  .imc-atc-btn:hover{background:var(--red-dark);}
+  .imc-atc-btn:disabled{background:#888;cursor:not-allowed;}
+  .imc-reg-incl{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);}
+  .imc-reg-incl-label{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:10px;}
+  .imc-reg-incl ul{list-style:none;}
+  .imc-reg-incl li{font-size:13px;color:rgba(255,255,255,.65);padding:5px 0;display:flex;align-items:center;gap:10px;}
+  .imc-reg-incl li::before{content:'✓';color:#6dbf6d;font-size:12px;}
+  .imc-reg-limited{margin-top:14px;text-align:center;font-family:var(--cond);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,.28);}
+  .imc-equip-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+  .imc-equip-list{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--border);margin-top:24px;}
+  .imc-equip-item{background:var(--white);padding:14px 18px;font-size:14px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:10px;}
+  .imc-equip-item::before{content:'';width:5px;height:5px;background:var(--red);flex-shrink:0;}
+  .imc-equip-copy p{font-size:15px;color:var(--text-mid);line-height:1.8;margin-bottom:16px;}
+  .imc-sponsor-box{border:1px solid var(--border);padding:18px 22px;display:flex;align-items:center;gap:20px;margin-top:28px;}
+  .imc-sp-tag{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--text-light);white-space:nowrap;}
+  .imc-sp-div{width:1px;height:32px;background:var(--border);}
+  .imc-sp-name{font-family:var(--cond);font-size:22px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;color:var(--navy);}
+  .imc-sp-sub{font-size:12px;color:var(--text-light);}
+  .imc-faq-wrap{max-width:760px;}
+  .imc-faq-item{border-bottom:1px solid var(--border);}
+  .imc-faq-q{padding:18px 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:600;font-size:15px;gap:16px;user-select:none;transition:color .15s;}
+  .imc-faq-q:hover{color:var(--red);}
+  .imc-faq-icon{width:26px;height:26px;flex-shrink:0;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--text-light);transition:background .15s,color .15s,border-color .15s;}
+  .imc-faq-item.imc-open .imc-faq-icon{background:var(--red);color:var(--white);border-color:var(--red);}
+  .imc-faq-a{display:none;padding-bottom:18px;font-size:14.5px;color:var(--text-mid);line-height:1.75;}
+  .imc-faq-item.imc-open .imc-faq-a{display:block;}
+  .imc-final-cta{background:var(--navy);border-top:3px solid var(--red);color:var(--white);text-align:center;padding:80px 24px;}
+  .imc-final-cta-h{font-family:var(--cond);font-size:clamp(28px,4vw,50px);font-weight:800;text-transform:uppercase;letter-spacing:0.02em;margin-bottom:6px;}
+  .imc-final-cta-serif{font-family:var(--serif);font-style:italic;font-size:clamp(18px,2.5vw,26px);color:rgba(255,255,255,.65);margin-bottom:14px;}
+  .imc-final-cta-body{font-size:15px;color:rgba(255,255,255,.55);margin:0 auto 36px;max-width:420px;line-height:1.7;}
+  .imc-final-cta-note{margin-top:18px;font-family:var(--cond);font-size:12px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,.28);}
+  .imc-page-footer{background:#080e15;color:rgba(255,255,255,.28);text-align:center;padding:24px;font-family:var(--cond);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;}
+  @media(max-width:960px){
+    .imc-hero-inner,.imc-bio-grid,.imc-equip-grid{grid-template-columns:1fr;}
+    .imc-hero-card{display:none;}
+    .imc-details-grid{grid-template-columns:repeat(2,1fr);}
+    .imc-bio-photo{max-width:260px;}
+    .imc-days-grid{grid-template-columns:1fr;}
+    .imc-included-grid{grid-template-columns:repeat(2,1fr);}
+    .imc-pricing-layout{grid-template-columns:1fr;}
+    .imc-reg-card{position:static;}
   }
-  .imc-h-sans {
-    font-family: var(--cond); font-size: clamp(26px, 3vw, 38px);
-    font-weight: 800; text-transform: uppercase;
-    letter-spacing: 0.02em; line-height: 1.1;
+  @media(max-width:600px){
+    .imc-details-grid{grid-template-columns:1fr;}
+    .imc-detail-cell{border-right:none;border-bottom:1px solid var(--border);}
+    .imc-included-grid,.imc-equip-list{grid-template-columns:1fr;}
+    .imc-price-table-head,.imc-price-table-row{grid-template-columns:1fr 1fr;}
+    .imc-price-table-head div:last-child,.imc-price-table-row div:last-child{display:none;}
   }
-  .imc-body-text { font-size: 15px; color: var(--text-mid); line-height: 1.8; }
-  .imc-section--dark .imc-body-text { color: rgba(255,255,255,.65); }
-  .imc-section-header { margin-bottom: 48px; }
-
-  /* ─── BUTTONS ────────────────────────────────────────── */
-  .imc-btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-family: var(--cond); font-size: 14px; font-weight: 700;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 14px 28px; border: none; cursor: pointer;
-    transition: background .15s, transform .1s; text-decoration: none;
-  }
-  .imc-btn--red   { background: var(--red); color: var(--white); }
-  .imc-btn--red:hover { background: var(--red-dark); transform: translateY(-1px); }
-  .imc-btn--ghost { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,.3); }
-  .imc-btn--ghost:hover { border-color: var(--white); }
-
-  /* ─── TOPBAR ─────────────────────────────────────────── */
-  .imc-topbar {
-    background: var(--red); color: var(--white);
-    text-align: center; padding: 10px 20px;
-    font-family: var(--cond); font-size: 13px; font-weight: 800;
-    letter-spacing: 0.12em; text-transform: uppercase;
-  }
-
-  /* ─── HERO ───────────────────────────────────────────── */
-  .imc-hero {
-    background: var(--navy); color: var(--white);
-    padding: 80px 0 72px; border-bottom: 3px solid var(--red);
-    position: relative; overflow: hidden;
-  }
-  .imc-hero::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse 60% 80% at 90% 50%, rgba(162,13,23,.08) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .imc-hero-inner {
-    display: grid; grid-template-columns: 1fr 340px;
-    gap: 60px; align-items: center;
-    position: relative; z-index: 1;
-  }
-  .imc-hero-badge {
-    display: inline-block; background: var(--red); color: var(--white);
-    font-family: var(--cond); font-size: 11px; font-weight: 800;
-    letter-spacing: 0.15em; text-transform: uppercase;
-    padding: 5px 14px; margin-bottom: 22px;
-  }
-  .imc-hero-title {
-    font-family: var(--cond); font-size: clamp(40px, 5.5vw, 68px);
-    font-weight: 800; text-transform: uppercase;
-    letter-spacing: 0.01em; line-height: 1.0; margin-bottom: 4px;
-  }
-  .imc-hero-serif {
-    font-family: var(--serif); font-style: italic; font-weight: 400;
-    font-size: clamp(22px, 3vw, 34px); color: rgba(255,255,255,.8);
-    display: block; margin-bottom: 16px; line-height: 1.3;
-  }
-  .imc-hero-chef {
-    font-family: var(--cond); font-size: 14px; font-weight: 700;
-    letter-spacing: 0.12em; text-transform: uppercase;
-    color: rgba(255,255,255,.55); margin-bottom: 20px;
-  }
-  .imc-hero-desc {
-    font-size: 15px; color: rgba(255,255,255,.7);
-    max-width: 480px; line-height: 1.75; margin-bottom: 32px;
-  }
-  .imc-hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-  .imc-hero-stats {
-    display: flex; flex-wrap: wrap;
-    margin-top: 40px; padding-top: 28px;
-    border-top: 1px solid rgba(255,255,255,.1);
-  }
-  .imc-hero-stat {
-    padding-right: 28px; margin-right: 28px;
-    border-right: 1px solid rgba(255,255,255,.12);
-  }
-  .imc-hero-stat:last-child { border-right: none; }
-  .imc-hs-label {
-    font-family: var(--cond); font-size: 10px; font-weight: 700;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(255,255,255,.4); margin-bottom: 4px;
-  }
-  .imc-hs-value { font-family: var(--cond); font-size: 17px; font-weight: 800; }
-  .imc-hs-value.highlight { color: var(--red-light); }
-
-  /* Hero sidebar card */
-  .imc-hero-card {
-    background: rgba(255,255,255,.05);
-    border: 1px solid rgba(255,255,255,.1); padding: 28px 24px;
-  }
-  .imc-hc-label {
-    font-family: var(--cond); font-size: 10px; font-weight: 700;
-    letter-spacing: 0.2em; text-transform: uppercase;
-    color: rgba(255,255,255,.35); margin-bottom: 18px;
-  }
-  .imc-hc-day { padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,.08); }
-  .imc-hc-day:last-of-type { border-bottom: none; }
-  .imc-hc-day-num {
-    font-family: var(--cond); font-size: 10px; font-weight: 700;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--red-light); margin-bottom: 3px;
-  }
-  .imc-hc-day-name { font-family: var(--serif); font-style: italic; font-size: 16px; color: var(--white); margin-bottom: 2px; }
-  .imc-hc-day-date { font-family: var(--cond); font-size: 12px; letter-spacing: 0.05em; color: rgba(255,255,255,.4); }
-  .imc-hc-price { margin-top: 18px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.1); }
-  .imc-hc-price-label {
-    font-family: var(--cond); font-size: 10px; font-weight: 700;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(255,255,255,.35); margin-bottom: 6px;
-  }
-  .imc-hc-price-val { font-family: var(--cond); font-size: 26px; font-weight: 800; color: var(--white); }
-  .imc-hc-price-sub { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 2px; }
-
-  /* ─── DETAILS STRIP ──────────────────────────────────── */
-  .imc-details { background: var(--off-white); padding: 0; }
-  .imc-details-grid {
-    display: grid; grid-template-columns: repeat(4,1fr);
-    border-top: 3px solid var(--red);
-  }
-  .imc-detail-cell { padding: 28px 24px; border-right: 1px solid var(--border); }
-  .imc-detail-cell:last-child { border-right: none; }
-  .imc-dl-label {
-    font-family: var(--cond); font-size: 10px; font-weight: 700;
-    letter-spacing: 0.2em; text-transform: uppercase;
-    color: var(--text-light); margin-bottom: 6px;
-  }
-  .imc-dl-value {
-    font-family: var(--cond); font-size: 16px; font-weight: 800;
-    text-transform: uppercase; letter-spacing: 0.02em; color: var(--navy); margin-bottom: 3px;
-  }
-  .imc-dl-sub { font-size: 13px; color: var(--text-light); }
-
-  /* ─── CHEF BIO ───────────────────────────────────────── */
-  .imc-bio-grid { display: grid; grid-template-columns: 300px 1fr; gap: 64px; align-items: start; }
-  .imc-bio-photo {
-    aspect-ratio: 3/4; background: var(--navy-mid); border: 1px solid var(--border);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    color: rgba(255,255,255,.2); font-family: var(--cond); font-size: 11px;
-    letter-spacing: 0.1em; text-transform: uppercase; text-align: center; gap: 12px;
-  }
-  .imc-bio-photo svg { opacity: .2; }
-  .imc-bio-photo-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; border: 1px solid var(--border); }
-  .imc-bio-name { font-family: var(--serif); font-style: italic; font-size: 34px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
-  .imc-bio-role {
-    font-family: var(--cond); font-size: 13px; font-weight: 600;
-    letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-light); margin-bottom: 20px;
-  }
-  .imc-bio-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
-  .imc-bio-tag {
-    font-family: var(--cond); font-size: 11px; font-weight: 700;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    border: 1px solid var(--border); padding: 5px 12px; color: var(--text-mid);
-  }
-  .imc-bio-text p { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 14px; }
-  .imc-bio-markets { border-left: 3px solid var(--red); padding: 14px 18px; background: var(--off-white); margin-top: 20px; }
-  .imc-bio-markets-label {
-    font-family: var(--cond); font-size: 10px; font-weight: 700;
-    letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-light); margin-bottom: 6px;
-  }
-  .imc-bio-markets-val { font-size: 14px; font-weight: 600; color: var(--navy); }
-
-  /* ─── THREE DAYS ─────────────────────────────────────── */
-  .imc-days-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: var(--border); }
-  .imc-day-card { background: var(--white); padding: 36px 28px; transition: background .15s; }
-  .imc-day-card:hover { background: #fdfdfe; }
-  .imc-day-num { font-family: var(--cond); font-size: 64px; font-weight: 800; color: var(--border); line-height: 1; margin-bottom: 18px; letter-spacing: -0.02em; }
-  .imc-day-date-tag { font-family: var(--cond); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
-  .imc-day-title { font-family: var(--serif); font-style: italic; font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 6px; line-height: 1.2; }
-  .imc-day-sub { font-size: 13px; color: var(--text-light); margin-bottom: 20px; line-height: 1.5; }
-  .imc-day-rule { width: 28px; height: 2px; background: var(--red); margin-bottom: 20px; }
-  .imc-focus-list { list-style: none; }
-  .imc-focus-list li { font-size: 13.5px; color: var(--text-mid); padding: 7px 0; border-bottom: 1px solid var(--border); display: flex; align-items: flex-start; gap: 10px; line-height: 1.4; }
-  .imc-focus-list li:last-child { border-bottom: none; }
-  .imc-focus-list li::before { content: '—'; color: var(--red); font-size: 11px; flex-shrink: 0; margin-top: 2px; }
-  .imc-day-footer { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border); font-family: var(--cond); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-light); }
-
-  /* ─── INCLUDED ───────────────────────────────────────── */
-  .imc-included-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2px; background: rgba(255,255,255,.06); }
-  .imc-incl-item { padding: 32px 22px; text-align: center; border: 1px solid rgba(255,255,255,.08); transition: background .15s; }
-  .imc-incl-item:hover { background: rgba(255,255,255,.04); }
-  .imc-incl-icon { font-size: 26px; margin-bottom: 12px; }
-  .imc-incl-item h4 { font-family: var(--cond); font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; color: var(--white); margin-bottom: 6px; }
-  .imc-incl-item p { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.55; }
-
-  /* ─── PRICING / REGISTRATION ─────────────────────────── */
-  .imc-pricing-layout { display: grid; grid-template-columns: 1fr 400px; gap: 64px; align-items: start; }
-  .imc-pricing-intro > p { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 28px; max-width: 460px; }
-  .imc-price-table { border: 1px solid var(--border); }
-  .imc-price-table-head { display: grid; grid-template-columns: 1fr 1fr 1fr; background: var(--navy); }
-  .imc-price-table-head div { font-family: var(--cond); font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 12px 16px; color: rgba(255,255,255,.5); }
-  .imc-price-table-row { display: grid; grid-template-columns: 1fr 1fr 1fr; border-top: 1px solid var(--border); }
-  .imc-price-table-row div { padding: 14px 16px; font-size: 14px; border-right: 1px solid var(--border); }
-  .imc-price-table-row div:last-child { border-right: none; }
-  .imc-pr-name { font-weight: 600; color: var(--text); }
-  .imc-pr-early { font-family: var(--cond); font-size: 17px; font-weight: 800; color: var(--red); }
-  .imc-pr-reg { font-weight: 500; color: var(--text-light); text-decoration: line-through; font-size: 13px; }
-  .imc-savings-bar { background: var(--navy); color: var(--white); padding: 13px 16px; font-size: 13px; display: flex; align-items: center; gap: 10px; border: 1px solid var(--border); border-top: none; }
-  .imc-savings-bar strong { color: #f0c06a; }
-
-  /* ─── PRODUCT FORM / REG CARD ────────────────────────── */
-  .imc-reg-card { background: var(--navy); color: var(--white); padding: 36px 30px; position: sticky; top: 20px; }
-  .imc-reg-title { font-family: var(--cond); font-size: 22px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
-  .imc-reg-subtitle { font-family: var(--serif); font-style: italic; font-size: 15px; color: rgba(255,255,255,.55); margin-bottom: 20px; }
-
-  /* Native Shopify variant select — styled to match */
-  .imc-reg-card .imc-variant-select-wrap { margin-bottom: 16px; }
-  .imc-reg-card .imc-variant-select-wrap label {
-    font-family: var(--cond); font-size: 10px; font-weight: 700;
-    letter-spacing: 0.18em; text-transform: uppercase;
-    color: rgba(255,255,255,.35); display: block; margin-bottom: 8px;
-  }
-  .imc-reg-card select {
-    width: 100%; background: rgba(255,255,255,.06);
-    border: 1px solid rgba(255,255,255,.15); color: var(--white);
-    padding: 13px 15px; font-family: var(--serif); font-style: italic;
-    font-size: 15px; appearance: none; cursor: pointer;
-    transition: border-color .15s;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,0.4)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat; background-position: right 14px center;
-    padding-right: 36px;
-  }
-  .imc-reg-card select:focus { outline: none; border-color: var(--red); }
-  .imc-reg-card select option { background: var(--navy-mid); color: var(--white); font-style: normal; font-family: sans-serif; }
-
-  /* Custom visual variant list (shown by default, hidden if JS unavailable) */
-  .imc-variant-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 16px; }
-  .imc-v-opt {
-    border: 1px solid rgba(255,255,255,.12); padding: 13px 15px; cursor: pointer;
-    display: flex; justify-content: space-between; align-items: center;
-    transition: border-color .15s, background .15s;
-  }
-  .imc-v-opt:hover, .imc-v-opt.imc-active { border-color: var(--red); background: rgba(162,13,23,.12); }
-  .imc-v-opt.imc-featured { border-color: rgba(162,13,23,.3); }
-  .imc-v-opt.imc-featured.imc-active { border-color: var(--red); background: rgba(162,13,23,.16); }
-  .imc-v-badge { font-family: var(--cond); font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; background: var(--red); color: var(--white); padding: 2px 8px; display: inline-block; margin-bottom: 4px; }
-  .imc-v-name { font-family: var(--serif); font-style: italic; font-size: 15px; color: var(--white); }
-  .imc-v-date { font-family: var(--cond); font-size: 11px; letter-spacing: 0.05em; color: rgba(255,255,255,.4); margin-top: 2px; }
-  .imc-v-price { font-family: var(--cond); font-size: 20px; font-weight: 800; color: var(--white); white-space: nowrap; }
-
-  /* Add to cart button */
-  .imc-atc-btn {
-    width: 100%; background: var(--red); color: var(--white);
-    border: none; padding: 17px;
-    font-family: var(--cond); font-size: 15px; font-weight: 800;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    cursor: pointer; transition: background .15s;
-  }
-  .imc-atc-btn:hover { background: var(--red-dark); }
-  .imc-atc-btn:disabled { background: #888; cursor: not-allowed; }
-  .imc-reg-incl { margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.1); }
-  .imc-reg-incl-label { font-family: var(--cond); font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 10px; }
-  .imc-reg-incl ul { list-style: none; }
-  .imc-reg-incl li { font-size: 13px; color: rgba(255,255,255,.65); padding: 5px 0; display: flex; align-items: center; gap: 10px; }
-  .imc-reg-incl li::before { content: '✓'; color: #6dbf6d; font-size: 12px; }
-  .imc-reg-limited { margin-top: 14px; text-align: center; font-family: var(--cond); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,.28); }
-
-  /* ─── EQUIPMENT ──────────────────────────────────────── */
-  .imc-equip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-  .imc-equip-list { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; background: var(--border); margin-top: 24px; }
-  .imc-equip-item { background: var(--white); padding: 14px 18px; font-size: 14px; font-weight: 600; color: var(--text); display: flex; align-items: center; gap: 10px; }
-  .imc-equip-item::before { content: ''; width: 5px; height: 5px; background: var(--red); flex-shrink: 0; }
-  .imc-equip-copy p { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 16px; }
-  .imc-sponsor-box { border: 1px solid var(--border); padding: 18px 22px; display: flex; align-items: center; gap: 20px; margin-top: 28px; }
-  .imc-sp-tag { font-family: var(--cond); font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-light); white-space: nowrap; }
-  .imc-sp-div { width: 1px; height: 32px; background: var(--border); }
-  .imc-sp-name { font-family: var(--cond); font-size: 22px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); }
-  .imc-sp-sub { font-size: 12px; color: var(--text-light); }
-
-  /* ─── FAQ ────────────────────────────────────────────── */
-  .imc-faq-wrap { max-width: 760px; }
-  .imc-faq-item { border-bottom: 1px solid var(--border); }
-  .imc-faq-q { padding: 18px 0; display: flex; justify-content: space-between; align-items: center; cursor: pointer; font-weight: 600; font-size: 15px; gap: 16px; user-select: none; transition: color .15s; }
-  .imc-faq-q:hover { color: var(--red); }
-  .imc-faq-icon { width: 26px; height: 26px; flex-shrink: 0; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 18px; color: var(--text-light); transition: background .15s, color .15s, border-color .15s; }
-  .imc-faq-item.imc-open .imc-faq-icon { background: var(--red); color: var(--white); border-color: var(--red); }
-  .imc-faq-a { display: none; padding-bottom: 18px; font-size: 14.5px; color: var(--text-mid); line-height: 1.75; }
-  .imc-faq-item.imc-open .imc-faq-a { display: block; }
-
-  /* ─── FINAL CTA ──────────────────────────────────────── */
-  .imc-final-cta { background: var(--navy); border-top: 3px solid var(--red); color: var(--white); text-align: center; padding: 80px 24px; }
-  .imc-final-cta-h { font-family: var(--cond); font-size: clamp(28px, 4vw, 50px); font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 6px; }
-  .imc-final-cta-serif { font-family: var(--serif); font-style: italic; font-size: clamp(18px, 2.5vw, 26px); color: rgba(255,255,255,.65); margin-bottom: 14px; }
-  .imc-final-cta-body { font-size: 15px; color: rgba(255,255,255,.55); margin: 0 auto 36px; max-width: 420px; line-height: 1.7; }
-  .imc-final-cta-note { margin-top: 18px; font-family: var(--cond); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,.28); }
-
-  /* ─── PAGE FOOTER ────────────────────────────────────── */
-  .imc-page-footer { background: #080e15; color: rgba(255,255,255,.28); text-align: center; padding: 24px; font-family: var(--cond); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
-
-  /* ─── RESPONSIVE ─────────────────────────────────────── */
-  @media (max-width: 960px) {
-    .imc-hero-inner, .imc-bio-grid, .imc-equip-grid { grid-template-columns: 1fr; }
-    .imc-hero-card { display: none; }
-    .imc-details-grid { grid-template-columns: repeat(2,1fr); }
-    .imc-bio-photo { max-width: 260px; }
-    .imc-days-grid { grid-template-columns: 1fr; }
-    .imc-included-grid { grid-template-columns: repeat(2,1fr); }
-    .imc-pricing-layout { grid-template-columns: 1fr; }
-    .imc-reg-card { position: static; }
-  }
-  @media (max-width: 600px) {
-    .imc-details-grid { grid-template-columns: 1fr; }
-    .imc-detail-cell { border-right: none; border-bottom: 1px solid var(--border); }
-    .imc-included-grid, .imc-equip-list { grid-template-columns: 1fr; }
-    .imc-price-table-head, .imc-price-table-row { grid-template-columns: 1fr 1fr; }
-    .imc-price-table-head div:last-child, .imc-price-table-row div:last-child { display: none; }
-  }
-
-  /* ─── ANIMATIONS ─────────────────────────────────────── */
-  @keyframes imcFadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-  .imc-hero-badge  { animation: imcFadeUp .4s ease both; }
-  .imc-hero-title  { animation: imcFadeUp .5s .08s ease both; }
-  .imc-hero-serif  { animation: imcFadeUp .5s .14s ease both; }
-  .imc-hero-chef   { animation: imcFadeUp .5s .20s ease both; }
-  .imc-hero-desc   { animation: imcFadeUp .5s .26s ease both; }
-  .imc-hero-btns   { animation: imcFadeUp .5s .32s ease both; }
-  .imc-hero-stats  { animation: imcFadeUp .5s .40s ease both; }
+  @keyframes imcFadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+  .imc-hero-badge{animation:imcFadeUp .4s ease both;}
+  .imc-hero-title{animation:imcFadeUp .5s .08s ease both;}
+  .imc-hero-serif{animation:imcFadeUp .5s .14s ease both;}
+  .imc-hero-chef{animation:imcFadeUp .5s .20s ease both;}
+  .imc-hero-desc{animation:imcFadeUp .5s .26s ease both;}
+  .imc-hero-btns{animation:imcFadeUp .5s .32s ease both;}
+  .imc-hero-stats{animation:imcFadeUp .5s .40s ease both;}
 </style>
 
 <div class="imc-wrap">
-
-  <!-- TOPBAR -->
-  <div class="imc-topbar">⚑ Early Bird Pricing Active — Single Day from $195 · Full Series from $500 · Limited Seats</div>
-
-  <!-- HERO -->
+  <div class="imc-topbar">Early Bird Pricing Active - Single Day from $195 - Full Series from $500 - Limited Seats</div>
   <section class="imc-hero">
     <div class="imc-container">
       <div class="imc-hero-inner">
         <div>
-          <span class="imc-hero-badge">Professional Culinary Series · June 9–11, 2026</span>
+          <span class="imc-hero-badge">Professional Culinary Series - June 9-11, 2026</span>
           <div class="imc-hero-title">Italian Culinary<br>Master Class</div>
           <span class="imc-hero-serif">with Chef Dante Daga</span>
           <div class="imc-hero-chef">International Italian Culinary Consultant &amp; Technical Trainer</div>
-          <p class="imc-hero-desc">A three-day professional Italian culinary training series for chefs, restaurant owners, caterers, culinary students, and foodservice professionals — held inside the 24/7 Restaurant Equipment showroom in Toms River, NJ.</p>
+          <p class="imc-hero-desc">A three-day professional Italian culinary training series for chefs, restaurant owners, caterers, culinary students, and foodservice professionals - held inside the 24/7 Restaurant Equipment showroom in Toms River, NJ.</p>
           <div class="imc-hero-btns">
-            <a href="#imc-registration" class="imc-btn imc-btn--red">Reserve Your Seat →</a>
+            <a href="#imc-registration" class="imc-btn imc-btn--red">Reserve Your Seat</a>
             <a href="#imc-program" class="imc-btn imc-btn--ghost">View the Program</a>
           </div>
           <div class="imc-hero-stats">
-            <div class="imc-hero-stat"><div class="imc-hs-label">Dates</div><div class="imc-hs-value">June 9–11</div></div>
+            <div class="imc-hero-stat"><div class="imc-hs-label">Dates</div><div class="imc-hs-value">June 9-11</div></div>
             <div class="imc-hero-stat"><div class="imc-hs-label">Per Day</div><div class="imc-hs-value">~6 Hours</div></div>
             <div class="imc-hero-stat"><div class="imc-hs-label">Early Bird / Day</div><div class="imc-hs-value highlight">$195</div></div>
             <div class="imc-hero-stat"><div class="imc-hs-label">Full Series</div><div class="imc-hs-value highlight">$500</div></div>
@@ -436,7 +209,7 @@
           <div class="imc-hc-day"><div class="imc-hc-day-num">Day 02</div><div class="imc-hc-day-name">Pizza &amp; Focaccia Master Class</div><div class="imc-hc-day-date">Wednesday, June 10, 2026</div></div>
           <div class="imc-hc-day"><div class="imc-hc-day-num">Day 03</div><div class="imc-hc-day-name">Aperitivo Master Class</div><div class="imc-hc-day-date">Thursday, June 11, 2026</div></div>
           <div class="imc-hc-price">
-            <div class="imc-hc-price-label">Early Bird · Full Series</div>
+            <div class="imc-hc-price-label">Early Bird - Full Series</div>
             <div class="imc-hc-price-val">$500</div>
             <div class="imc-hc-price-sub">Save up to $175 vs. regular pricing</div>
           </div>
@@ -444,31 +217,22 @@
       </div>
     </div>
   </section>
-
-  <!-- DETAILS STRIP -->
   <div class="imc-details">
     <div class="imc-container">
       <div class="imc-details-grid">
-        <div class="imc-detail-cell"><div class="imc-dl-label">Dates</div><div class="imc-dl-value">June 9–11, 2026</div><div class="imc-dl-sub">Tuesday · Wednesday · Thursday</div></div>
+        <div class="imc-detail-cell"><div class="imc-dl-label">Dates</div><div class="imc-dl-value">June 9-11, 2026</div><div class="imc-dl-sub">Tuesday - Wednesday - Thursday</div></div>
         <div class="imc-detail-cell"><div class="imc-dl-label">Location</div><div class="imc-dl-value">24/7 Restaurant Equipment</div><div class="imc-dl-sub">1231 NJ-166 #3, Toms River, NJ 08753</div></div>
-        <div class="imc-detail-cell"><div class="imc-dl-label">Audience</div><div class="imc-dl-value">Foodservice Professionals</div><div class="imc-dl-sub">Chefs · Owners · Caterers · Culinary Students</div></div>
-        <div class="imc-detail-cell"><div class="imc-dl-label">Format</div><div class="imc-dl-value">~6 Hours Per Day</div><div class="imc-dl-sub">Hands-on · Demos · Certificate of Participation</div></div>
+        <div class="imc-detail-cell"><div class="imc-dl-label">Audience</div><div class="imc-dl-value">Foodservice Professionals</div><div class="imc-dl-sub">Chefs - Owners - Caterers - Culinary Students</div></div>
+        <div class="imc-detail-cell"><div class="imc-dl-label">Format</div><div class="imc-dl-value">~6 Hours Per Day</div><div class="imc-dl-sub">Hands-on - Demos - Certificate of Participation</div></div>
       </div>
     </div>
   </div>
-
-  <!-- CHEF BIO -->
   <section class="imc-section">
     <div class="imc-container">
       <div class="imc-bio-grid">
         <div>
-          {% comment %} Replace placeholder below with actual photo once uploaded:
-            <img src="{{ 'chef-dante-daga.jpg' | asset_url }}" alt="Chef Dante Daga" class="imc-bio-photo-img">
-          {% endcomment %}
           <div class="imc-bio-photo">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="24" cy="18" r="10"/><path d="M6 42c0-9.94 8.06-18 18-18s18 8.06 18 18"/>
-            </svg>
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="18" r="10"/><path d="M6 42c0-9.94 8.06-18 18-18s18 8.06 18 18"/></svg>
             <span>Chef Dante Daga<br>Photo Placeholder</span>
           </div>
         </div>
@@ -491,27 +255,25 @@
           </div>
           <div class="imc-bio-markets">
             <div class="imc-bio-markets-label">International Markets</div>
-            <div class="imc-bio-markets-val">United States · Canada · Dubai · Spain · Netherlands · Brazil</div>
+            <div class="imc-bio-markets-val">United States - Canada - Dubai - Spain - Netherlands - Brazil</div>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- THREE DAYS -->
   <section class="imc-section imc-section--alt" id="imc-program">
     <div class="imc-container">
       <div class="imc-section-header">
         <span class="imc-eyebrow">The Program</span>
         <div class="imc-h-sans">Three Days. Three Disciplines.</div>
-        <p class="imc-body-text" style="margin-top:12px;max-width:580px;">Each master class day is a standalone professional training experience. Attend the day that fits your kitchen, menu, or team goals — or register for all three.</p>
+        <p class="imc-body-text" style="margin-top:12px;max-width:580px;">Each master class day is a standalone professional training experience. Attend the day that fits your kitchen, menu, or team goals - or register for all three.</p>
       </div>
       <div class="imc-days-grid">
         <div class="imc-day-card">
           <div class="imc-day-num">01</div>
-          <div class="imc-day-date-tag">Tuesday · June 9, 2026</div>
+          <div class="imc-day-date-tag">Tuesday - June 9, 2026</div>
           <div class="imc-day-title">Pasta Master Class</div>
-          <div class="imc-day-sub">From dough to dish — production-ready Italian pasta technique</div>
+          <div class="imc-day-sub">From dough to dish - production-ready Italian pasta technique</div>
           <div class="imc-day-rule"></div>
           <ul class="imc-focus-list">
             <li>Fresh pasta preparation &amp; dough techniques</li>
@@ -521,11 +283,11 @@
             <li>Food cost and menu application</li>
             <li>Professional equipment use</li>
           </ul>
-          <div class="imc-day-footer">~6 Hours · Certificate Included</div>
+          <div class="imc-day-footer">~6 Hours - Certificate Included</div>
         </div>
         <div class="imc-day-card">
           <div class="imc-day-num">02</div>
-          <div class="imc-day-date-tag">Wednesday · June 10, 2026</div>
+          <div class="imc-day-date-tag">Wednesday - June 10, 2026</div>
           <div class="imc-day-title">Pizza &amp; Focaccia Master Class</div>
           <div class="imc-day-sub">Dough science, stone deck technique &amp; scalable production</div>
           <div class="imc-day-rule"></div>
@@ -537,11 +299,11 @@
             <li>Menu versatility &amp; prep strategies</li>
             <li>Equipment demonstrations</li>
           </ul>
-          <div class="imc-day-footer">~6 Hours · Certificate Included</div>
+          <div class="imc-day-footer">~6 Hours - Certificate Included</div>
         </div>
         <div class="imc-day-card">
           <div class="imc-day-num">03</div>
-          <div class="imc-day-date-tag">Thursday · June 11, 2026</div>
+          <div class="imc-day-date-tag">Thursday - June 11, 2026</div>
           <div class="imc-day-title">Aperitivo Master Class</div>
           <div class="imc-day-sub">High-margin small plates, prep-ahead systems &amp; menu versatility</div>
           <div class="imc-day-rule"></div>
@@ -553,13 +315,11 @@
             <li>Storage &amp; waste reduction</li>
             <li>Creating higher-margin menu items</li>
           </ul>
-          <div class="imc-day-footer">~6 Hours · Certificate Included</div>
+          <div class="imc-day-footer">~6 Hours - Certificate Included</div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- WHAT'S INCLUDED -->
   <section class="imc-section imc-section--dark">
     <div class="imc-container">
       <div class="imc-section-header">
@@ -567,83 +327,55 @@
         <div class="imc-h-sans" style="color:#fff;">Everything You Need to Walk Away Ready.</div>
       </div>
       <div class="imc-included-grid">
-        <div class="imc-incl-item"><div class="imc-incl-icon">👨‍🏫</div><h4>Chef-Led Instruction</h4><p>Hands-on training from an international culinary consultant</p></div>
-        <div class="imc-incl-item"><div class="imc-incl-icon">🍽️</div><h4>Food &amp; Tastings</h4><p>Taste what you make — real food, real technique, real feedback</p></div>
-        <div class="imc-incl-item"><div class="imc-incl-icon">🔧</div><h4>Equipment Demos</h4><p>Live demos on professional-grade equipment in the 24/7 showroom</p></div>
-        <div class="imc-incl-item"><div class="imc-incl-icon">📜</div><h4>Certificate of Participation</h4><p>Awarded upon completing each master class day</p></div>
-        <div class="imc-incl-item"><div class="imc-incl-icon">📋</div><h4>Menu &amp; Production Insights</h4><p>Practical strategies for food cost, storage &amp; prep efficiency</p></div>
-        <div class="imc-incl-item"><div class="imc-incl-icon">🇮🇹</div><h4>Authentic Italian Technique</h4><p>Methods developed across global restaurant &amp; hospitality markets</p></div>
-        <div class="imc-incl-item"><div class="imc-incl-icon">📊</div><h4>Business Application</h4><p>Production planning &amp; food cost skills for Monday morning</p></div>
-        <div class="imc-incl-item"><div class="imc-incl-icon">🤝</div><h4>Professional Network</h4><p>Train alongside chefs, operators &amp; culinary professionals</p></div>
+        <div class="imc-incl-item"><div class="imc-incl-icon">&#128104;&#8205;&#127979;</div><h4>Chef-Led Instruction</h4><p>Hands-on training from an international culinary consultant</p></div>
+        <div class="imc-incl-item"><div class="imc-incl-icon">&#127869;&#65039;</div><h4>Food &amp; Tastings</h4><p>Taste what you make - real food, real technique, real feedback</p></div>
+        <div class="imc-incl-item"><div class="imc-incl-icon">&#128295;</div><h4>Equipment Demos</h4><p>Live demos on professional-grade equipment in the 24/7 showroom</p></div>
+        <div class="imc-incl-item"><div class="imc-incl-icon">&#128220;</div><h4>Certificate of Participation</h4><p>Awarded upon completing each master class day</p></div>
+        <div class="imc-incl-item"><div class="imc-incl-icon">&#128203;</div><h4>Menu &amp; Production Insights</h4><p>Practical strategies for food cost, storage &amp; prep efficiency</p></div>
+        <div class="imc-incl-item"><div class="imc-incl-icon">&#127988;&#127468;&#127463;</div><h4>Authentic Italian Technique</h4><p>Methods developed across global restaurant &amp; hospitality markets</p></div>
+        <div class="imc-incl-item"><div class="imc-incl-icon">&#128202;</div><h4>Business Application</h4><p>Production planning &amp; food cost skills for Monday morning</p></div>
+        <div class="imc-incl-item"><div class="imc-incl-icon">&#129309;</div><h4>Professional Network</h4><p>Train alongside chefs, operators &amp; culinary professionals</p></div>
       </div>
     </div>
   </section>
-
-  <!-- PRICING / REGISTRATION -->
   <section class="imc-section" id="imc-registration">
     <div class="imc-container">
       <div class="imc-pricing-layout">
         <div class="imc-pricing-intro">
           <span class="imc-eyebrow">Registration</span>
           <div class="imc-h-sans" style="margin-bottom:14px;">Choose one day or<br>attend the full series.</div>
-          <p>Each Master Class day is a standalone professional training experience. Attend the class that best fits your kitchen, menu, or team goals — or register for the full three-day series for the most complete experience.</p>
+          <p>Each Master Class day is a standalone professional training experience. Attend the class that best fits your kitchen, menu, or team goals - or register for the full three-day series for the most complete experience.</p>
           <div class="imc-price-table">
             <div class="imc-price-table-head"><div>Class</div><div>Early Bird</div><div>Regular</div></div>
             <div class="imc-price-table-row"><div class="imc-pr-name">Single Day</div><div class="imc-pr-early">$195</div><div class="imc-pr-reg">$225</div></div>
             <div class="imc-price-table-row"><div class="imc-pr-name">Full 3-Day Series</div><div class="imc-pr-early">$500</div><div class="imc-pr-reg">$600</div></div>
           </div>
-          <div class="imc-savings-bar"><span>💰</span><span>Save up to <strong>$175</strong> when you register early for all three days.</span></div>
+          <div class="imc-savings-bar"><span>Save up to <strong>$175</strong> when you register early for all three days.</span></div>
         </div>
-
-        <!-- ── PRODUCT FORM ─────────────────────────────── -->
         <div class="imc-reg-card">
           <div class="imc-reg-title">Reserve Your Seat</div>
           <div class="imc-reg-subtitle">Select a class to register</div>
-
           {% if masterclass_product != blank %}
             {% form 'product', masterclass_product, id: 'imc-product-form' %}
               <input type="hidden" name="id" id="imc-variant-id" value="{{ masterclass_product.selected_or_first_available_variant.id }}">
-
-              {{- masterclass_product.selected_or_first_available_variant.id -}}
-
-              <!-- Visual variant selector (JS-driven) -->
               <div class="imc-variant-list" id="imc-variant-list">
                 {% for variant in masterclass_product.variants %}
-                  <div class="imc-v-opt{% if forloop.last %} imc-featured{% endif %}{% if forloop.first %} imc-active{% endif %}"
-                       data-variant-id="{{ variant.id }}"
-                       data-variant-price="{{ variant.price | money }}"
-                       onclick="imcSelectVariant(this)">
+                  <div class="imc-v-opt{% if forloop.last %} imc-featured{% endif %}{% if forloop.first %} imc-active{% endif %}" data-variant-id="{{ variant.id }}" data-variant-price="{{ variant.price | money }}" onclick="imcSelectVariant(this)">
                     <div>
                       {% if forloop.last %}<span class="imc-v-badge">Best Value</span>{% endif %}
                       <div class="imc-v-name">{{ variant.title }}</div>
-                      <div class="imc-v-date">
-                        {% case forloop.index %}
-                          {% when 1 %}Tuesday · June 9, 2026
-                          {% when 2 %}Wednesday · June 10, 2026
-                          {% when 3 %}Thursday · June 11, 2026
-                          {% when 4 %}June 9–11 · Save up to $175
-                        {% endcase %}
-                      </div>
+                      <div class="imc-v-date">{% case forloop.index %}{% when 1 %}Tuesday - June 9, 2026{% when 2 %}Wednesday - June 10, 2026{% when 3 %}Thursday - June 11, 2026{% when 4 %}June 9-11 - Save up to $175{% endcase %}</div>
                     </div>
                     <div class="imc-v-price">{{ variant.price | money_without_trailing_zeros }}</div>
                   </div>
                 {% endfor %}
               </div>
-
-              <button type="submit"
-                      class="imc-atc-btn"
-                      {% unless masterclass_product.available %}disabled{% endunless %}>
-                {% if masterclass_product.available %}Reserve Your Seat →{% else %}Sold Out{% endif %}
-              </button>
+              <button type="submit" class="imc-atc-btn" {% unless masterclass_product.available %}disabled{% endunless %}>{% if masterclass_product.available %}Reserve Your Seat{% else %}Sold Out{% endif %}</button>
             {% endform %}
           {% else %}
-            <!-- Fallback if product hasn't been created yet -->
-            <p style="color:rgba(255,255,255,.5);font-size:13px;margin-bottom:16px;">
-              Product not found. Please create the "Italian Culinary Master Class" product in Shopify admin and verify the handle matches <code style="background:rgba(255,255,255,.1);padding:2px 6px;">italian-culinary-master-class</code>.
-            </p>
+            <p style="color:rgba(255,255,255,.5);font-size:13px;margin-bottom:16px;">Product not found. Verify the handle is italian-culinary-master-class.</p>
             <button class="imc-atc-btn" disabled>Product Setup Required</button>
           {% endif %}
-
           <div class="imc-reg-incl">
             <div class="imc-reg-incl-label">Every registration includes</div>
             <ul>
@@ -654,15 +386,11 @@
               <li>Menu &amp; production insights</li>
             </ul>
           </div>
-          <div class="imc-reg-limited">⚑ Limited seats per class day</div>
+          <div class="imc-reg-limited">Limited seats per class day</div>
         </div>
-        <!-- ── END PRODUCT FORM ────────────────────────── -->
-
       </div>
     </div>
   </section>
-
-  <!-- EQUIPMENT / SHOWROOM -->
   <section class="imc-section imc-section--alt">
     <div class="imc-container">
       <div class="imc-equip-grid">
@@ -679,7 +407,7 @@
           </div>
         </div>
         <div class="imc-equip-copy">
-          <p>The Italian Culinary Master Class takes place inside the 24/7 Restaurant Equipment showroom — a professional-grade training environment stocked with commercial kitchen equipment used in real foodservice operations.</p>
+          <p>The Italian Culinary Master Class takes place inside the 24/7 Restaurant Equipment showroom - a professional-grade training environment stocked with commercial kitchen equipment used in real foodservice operations.</p>
           <p>Every class day includes live equipment demonstrations, giving attendees a hands-on understanding of how the right tools support Italian production techniques, storage efficiency, and kitchen consistency.</p>
           <div class="imc-sponsor-box">
             <div class="imc-sp-tag">Presented with<br>support from</div>
@@ -690,8 +418,6 @@
       </div>
     </div>
   </section>
-
-  <!-- FAQ -->
   <section class="imc-section">
     <div class="imc-container">
       <div class="imc-section-header">
@@ -699,75 +425,44 @@
         <div class="imc-h-sans">Common Questions</div>
       </div>
       <div class="imc-faq-wrap">
-        <div class="imc-faq-item">
-          <div class="imc-faq-q" onclick="imcToggleFaq(this)">Who is this class for?<div class="imc-faq-icon">+</div></div>
-          <div class="imc-faq-a">This master class is designed for chefs, restaurant owners, caterers, culinary students, and foodservice professionals. It is a professional training series, not a recreational cooking class.</div>
-        </div>
-        <div class="imc-faq-item">
-          <div class="imc-faq-q" onclick="imcToggleFaq(this)">Can I register for just one day?<div class="imc-faq-icon">+</div></div>
-          <div class="imc-faq-a">Yes. Each day is designed as a standalone professional training experience. You may register for a single master class day or attend the full three-day series at a discounted rate.</div>
-        </div>
-        <div class="imc-faq-item">
-          <div class="imc-faq-q" onclick="imcToggleFaq(this)">What is included with registration?<div class="imc-faq-icon">+</div></div>
-          <div class="imc-faq-a">Registration includes chef-led instruction, hands-on training, food, tastings, professional equipment demonstrations, a certificate of participation, and practical foodservice techniques you can apply immediately.</div>
-        </div>
-        <div class="imc-faq-item">
-          <div class="imc-faq-q" onclick="imcToggleFaq(this)">Is this class for home cooks?<div class="imc-faq-icon">+</div></div>
-          <div class="imc-faq-a">This event is primarily designed for foodservice professionals and culinary students. The content, pacing, and applications are geared toward professional kitchen operations.</div>
-        </div>
-        <div class="imc-faq-item">
-          <div class="imc-faq-q" onclick="imcToggleFaq(this)">Will attendees receive a certificate?<div class="imc-faq-icon">+</div></div>
-          <div class="imc-faq-a">Yes. Participants will receive a certificate of participation upon completing each master class day.</div>
-        </div>
-        <div class="imc-faq-item">
-          <div class="imc-faq-q" onclick="imcToggleFaq(this)">Is space limited?<div class="imc-faq-icon">+</div></div>
-          <div class="imc-faq-a">Yes. Class size is intentionally limited to keep the experience hands-on, focused, and valuable for each attendee. Early registration is encouraged.</div>
-        </div>
-        <div class="imc-faq-item">
-          <div class="imc-faq-q" onclick="imcToggleFaq(this)">What is the daily schedule?<div class="imc-faq-icon">+</div></div>
-          <div class="imc-faq-a">Each master class day runs approximately 6 hours and includes instruction, hands-on training, breaks, and a certificate ceremony. Exact start and end times will be confirmed and updated prior to the event.</div>
-        </div>
+        <div class="imc-faq-item"><div class="imc-faq-q" onclick="imcToggleFaq(this)">Who is this class for?<div class="imc-faq-icon">+</div></div><div class="imc-faq-a">This master class is designed for chefs, restaurant owners, caterers, culinary students, and foodservice professionals. It is a professional training series, not a recreational cooking class.</div></div>
+        <div class="imc-faq-item"><div class="imc-faq-q" onclick="imcToggleFaq(this)">Can I register for just one day?<div class="imc-faq-icon">+</div></div><div class="imc-faq-a">Yes. Each day is designed as a standalone professional training experience. You may register for a single master class day or attend the full three-day series at a discounted rate.</div></div>
+        <div class="imc-faq-item"><div class="imc-faq-q" onclick="imcToggleFaq(this)">What is included with registration?<div class="imc-faq-icon">+</div></div><div class="imc-faq-a">Registration includes chef-led instruction, hands-on training, food, tastings, professional equipment demonstrations, a certificate of participation, and practical foodservice techniques you can apply immediately.</div></div>
+        <div class="imc-faq-item"><div class="imc-faq-q" onclick="imcToggleFaq(this)">Is this class for home cooks?<div class="imc-faq-icon">+</div></div><div class="imc-faq-a">This event is primarily designed for foodservice professionals and culinary students. The content, pacing, and applications are geared toward professional kitchen operations.</div></div>
+        <div class="imc-faq-item"><div class="imc-faq-q" onclick="imcToggleFaq(this)">Will attendees receive a certificate?<div class="imc-faq-icon">+</div></div><div class="imc-faq-a">Yes. Participants will receive a certificate of participation upon completing each master class day.</div></div>
+        <div class="imc-faq-item"><div class="imc-faq-q" onclick="imcToggleFaq(this)">Is space limited?<div class="imc-faq-icon">+</div></div><div class="imc-faq-a">Yes. Class size is intentionally limited to keep the experience hands-on, focused, and valuable for each attendee. Early registration is encouraged.</div></div>
+        <div class="imc-faq-item"><div class="imc-faq-q" onclick="imcToggleFaq(this)">What is the daily schedule?<div class="imc-faq-icon">+</div></div><div class="imc-faq-a">Each master class day runs approximately 6 hours and includes instruction, hands-on training, breaks, and a certificate ceremony. Exact start and end times will be confirmed prior to the event.</div></div>
       </div>
     </div>
   </section>
-
-  <!-- FINAL CTA -->
   <section class="imc-final-cta">
     <div class="imc-final-cta-h">Ready to Elevate Your Kitchen?</div>
     <div class="imc-final-cta-serif">Seats are limited. Reserve yours today.</div>
-    <p class="imc-final-cta-body">Hands-on professional Italian culinary training with Chef Dante Daga — inside the 24/7 Restaurant Equipment showroom in Toms River, NJ.</p>
-    <a href="#imc-registration" class="imc-btn imc-btn--red">Reserve Your Seat →</a>
-    <div class="imc-final-cta-note">24/7 Restaurant Equipment · Italian Culinary Master Class · June 9–11, 2026</div>
+    <p class="imc-final-cta-body">Hands-on professional Italian culinary training with Chef Dante Daga - inside the 24/7 Restaurant Equipment showroom in Toms River, NJ.</p>
+    <a href="#imc-registration" class="imc-btn imc-btn--red">Reserve Your Seat</a>
+    <div class="imc-final-cta-note">24/7 Restaurant Equipment - Italian Culinary Master Class - June 9-11, 2026</div>
   </section>
-
-  <!-- PAGE FOOTER -->
-  <footer class="imc-page-footer">
-    Presented by 24/7 Restaurant Equipment · 1231 NJ-166 #3, Toms River, NJ 08753 · With support from Giorik
-  </footer>
-
-</div><!-- end .imc-wrap -->
+  <footer class="imc-page-footer">Presented by 24/7 Restaurant Equipment - 1231 NJ-166 #3, Toms River, NJ 08753 - With support from Giorik</footer>
+</div>
 
 <script>
-  // Variant selector — updates the hidden Shopify form input
   function imcSelectVariant(el) {
     document.querySelectorAll('.imc-v-opt').forEach(o => o.classList.remove('imc-active'));
     el.classList.add('imc-active');
-    const variantId = el.getAttribute('data-variant-id');
-    const hiddenInput = document.getElementById('imc-variant-id');
+    var variantId = el.getAttribute('data-variant-id');
+    var hiddenInput = document.getElementById('imc-variant-id');
     if (hiddenInput && variantId) hiddenInput.value = variantId;
   }
-
-  // FAQ accordion
   function imcToggleFaq(btn) {
-    const item = btn.parentElement;
-    const open = item.classList.contains('imc-open');
-    document.querySelectorAll('.imc-faq-item').forEach(f => {
+    var item = btn.parentElement;
+    var open = item.classList.contains('imc-open');
+    document.querySelectorAll('.imc-faq-item').forEach(function(f) {
       f.classList.remove('imc-open');
       f.querySelector('.imc-faq-icon').textContent = '+';
     });
     if (!open) {
       item.classList.add('imc-open');
-      btn.querySelector('.imc-faq-icon').textContent = '×';
+      btn.querySelector('.imc-faq-icon').textContent = 'x';
     }
   }
 </script>
@@ -778,10 +473,6 @@
   "tag": "section",
   "class": "italian-masterclass-section",
   "settings": [],
-  "presets": [
-    {
-      "name": "Italian Master Class"
-    }
-  ]
+  "presets": [{"name": "Italian Master Class"}]
 }
 {% endschema %}
