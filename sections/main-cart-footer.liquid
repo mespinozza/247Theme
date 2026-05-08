@@ -117,18 +117,19 @@
                     </button>
                   </noscript>
 
-                  <button
-                    aria-label="{{ 'sections.cart.checkout' | t }}"
-                    type="submit"
-                    class="wt-cart__cta"
-                    name="checkout"
-                    {% if cart == empty %}
-                      disabled
-                    {% endif %}
-                    form="cart"
-                  >
-                    {{ 'sections.cart.checkout' | t }}
-                  </button>
+                  <form action="{{ routes.cart_url }}" method="post">
+                    <button
+                      aria-label="{{ 'sections.cart.checkout' | t }}"
+                      type="submit"
+                      class="wt-cart__cta"
+                      name="checkout"
+                      {% if cart.item_count == 0 %}
+                        disabled
+                      {% endif %}
+                    >
+                      {{ 'sections.cart.checkout' | t }}
+                    </button>
+                  </form>
 
                   <a href="{{ routes.all_products_collection_url }}" class="wt-more wt-cart__back-link">
                     <span class="wt-more__text">{{ 'general.continue_shopping' | t }}</span>
