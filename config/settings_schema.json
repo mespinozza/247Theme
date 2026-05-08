@@ -721,7 +721,7 @@
         "default": true,
         "label": "t:settings_schema.cart.settings.show_view_cart.label",
         "info": "t:settings_schema.cart.settings.show_view_cart.info"
-      },
+      }
     ]
   },
   {
