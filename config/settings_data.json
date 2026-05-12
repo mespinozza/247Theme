@@ -204,6 +204,11 @@
         "type": "shopify://apps/hulk-form-builder/blocks/app-embed/b6b8dd14-356b-4725-a4ed-77232212b3c3",
         "disabled": false,
         "settings": {}
+      },
+      "9094328589753815681": {
+        "type": "shopify://apps/hextom-shipping-bar/blocks/fsb-embeded-block/7ef5d9af-75a2-45c7-9b1b-f9240ee488e9",
+        "disabled": false,
+        "settings": {}
       }
     }
   },
