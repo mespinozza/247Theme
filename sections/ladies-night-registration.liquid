@@ -402,7 +402,31 @@
     });
 
     checkoutBtn.addEventListener('click', function() {
-      window.location.href = STORE + '/cart/' + VARIANT_ID + ':' + currentQty + '?checkout';
+      var fname = document.getElementById('ln-fname').value.trim();
+      var lname = document.getElementById('ln-lname').value.trim();
+      var email = document.getElementById('ln-email').value.trim();
+      var phone = document.getElementById('ln-phone').value.trim();
+      var referral = document.getElementById('ln-referral').value;
+      var notes = document.getElementById('ln-notes').value.trim();
+
+      var dietary = [];
+      document.querySelectorAll('.ln-checkbox-item input[type="checkbox"]').forEach(function(cb) {
+        if (cb.checked) dietary.push(cb.parentElement.textContent.trim());
+      });
+
+      var noteParts = [];
+      if (fname || lname) noteParts.push('Name: ' + (fname + ' ' + lname).trim());
+      if (email)          noteParts.push('Email: ' + email);
+      if (phone)          noteParts.push('Phone: ' + phone);
+      if (referral)       noteParts.push('Heard via: ' + referral);
+      if (dietary.length) noteParts.push('Dietary: ' + dietary.join(', '));
+      if (notes)          noteParts.push('Notes: ' + notes);
+
+      var noteString = noteParts.join(' | ');
+      var url = STORE + '/cart/' + VARIANT_ID + ':' + currentQty
+              + '?checkout&note=' + encodeURIComponent(noteString);
+
+      window.location.href = url;
     });
   })();
 </script>
