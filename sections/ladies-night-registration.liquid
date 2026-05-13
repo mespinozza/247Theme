@@ -342,15 +342,6 @@
             </select>
           </div>
           <div class="ln-form-group">
-            <label>Any dietary restrictions?</label>
-            <div class="ln-checkbox-group">
-              <label class="ln-checkbox-item"><input type="checkbox"> Vegetarian</label>
-              <label class="ln-checkbox-item"><input type="checkbox"> Gluten-free</label>
-              <label class="ln-checkbox-item"><input type="checkbox"> Nut allergy</label>
-              <label class="ln-checkbox-item"><input type="checkbox"> Other (note below)</label>
-            </div>
-          </div>
-          <div class="ln-form-group">
             <label for="ln-notes">Anything else we should know?</label>
             <textarea id="ln-notes" placeholder="Allergies, questions, or just how excited you are!"></textarea>
           </div>
@@ -413,17 +404,12 @@
       var referral = document.getElementById('ln-referral').value;
       var notes = document.getElementById('ln-notes').value.trim();
 
-      var dietary = [];
-      document.querySelectorAll('.ln-checkbox-item input[type="checkbox"]').forEach(function(cb) {
-        if (cb.checked) dietary.push(cb.nextSibling.textContent.trim());
-      });
 
       var noteParts = [];
       if (fname || lname) noteParts.push('Name: ' + (fname + ' ' + lname).trim());
       if (email)          noteParts.push('Email: ' + email);
       if (phone)          noteParts.push('Phone: ' + phone);
       if (referral)       noteParts.push('Heard via: ' + referral);
-      if (dietary.length) noteParts.push('Dietary: ' + dietary.join(', '));
       if (notes)          noteParts.push('Notes: ' + notes);
 
       var noteString = noteParts.join(' | ');
