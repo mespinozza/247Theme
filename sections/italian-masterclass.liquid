@@ -71,9 +71,9 @@
 
   /* ─── TOPBAR ─────────────────────────────────────────── */
   .imc-topbar {
-    background: #0400c2; color: var(--white);
+    background: var(--red); color: var(--white);
     text-align: center; padding: 10px 20px;
-    font-family: var(--cond); font-size: 16px; font-weight: 800;
+    font-family: var(--cond); font-size: 13px; font-weight: 800;
     letter-spacing: 0.12em; text-transform: uppercase;
   }
   .imc-deadline-box { background: rgba(162,13,23,.18); border: 1px solid rgba(162,13,23,.4); padding: 18px 20px; margin-bottom: 22px; }
@@ -326,11 +326,7 @@
   .imc-equip-item { background: var(--white); padding: 14px 18px; font-size: 14px; font-weight: 600; color: var(--text); display: flex; align-items: center; gap: 10px; }
   .imc-equip-item::before { content: ''; width: 5px; height: 5px; background: var(--red); flex-shrink: 0; }
   .imc-equip-copy p { font-size: 15px; color: var(--text-mid); line-height: 1.8; margin-bottom: 16px; }
-  .imc-sponsor-box { border: 1px solid var(--border); padding: 18px 22px; display: flex; align-items: center; gap: 20px; margin-top: 28px; }
-  .imc-sp-tag { font-family: var(--cond); font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-light); white-space: nowrap; }
-  .imc-sp-div { width: 1px; height: 32px; background: var(--border); }
-  .imc-sp-name { font-family: var(--cond); font-size: 22px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: var(--navy); }
-  .imc-sp-sub { font-size: 12px; color: var(--text-light); }
+
 
   /* ─── FAQ ────────────────────────────────────────────── */
   .imc-faq-wrap { max-width: 760px; }
@@ -446,15 +442,7 @@
     <div class="imc-container">
       <div class="imc-bio-grid">
         <div>
-          {% comment %}To use a real photo, replace the div below with:
-            img src asset_url chef-dante-daga.jpg, class imc-bio-photo-img
-          {% endcomment %}
-          <div class="imc-bio-photo">
-            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="24" cy="18" r="10"/><path d="M6 42c0-9.94 8.06-18 18-18s18 8.06 18 18"/>
-            </svg>
-            <span>Chef Dante Daga<br>Photo Placeholder</span>
-          </div>
+          <img src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/IMG_3686.jpg?v=1778678526" alt="Chef Dante Daga" class="imc-bio-photo-img">
         </div>
         <div>
           <span class="imc-eyebrow">Your Instructor</span>
@@ -674,16 +662,25 @@
             <div class="imc-equip-item">Steam Oven</div>
             <div class="imc-equip-item">Boiler</div>
             <div class="imc-equip-item">Stone Deck Pizza Oven</div>
-            <div class="imc-equip-item">Giorik Equipment</div>
+            <div class="imc-equip-item">Combination Oven</div>
           </div>
         </div>
         <div class="imc-equip-copy">
           <p>The Italian Culinary Master Class takes place inside the 24/7 Restaurant Equipment showroom — a professional-grade training environment stocked with commercial kitchen equipment used in real foodservice operations.</p>
           <p>Every class day includes live equipment demonstrations, giving attendees a hands-on understanding of how the right tools support Italian production techniques, storage efficiency, and kitchen consistency.</p>
-          <div class="imc-sponsor-box">
-            <div class="imc-sp-tag">Presented with<br>support from</div>
-            <div class="imc-sp-div"></div>
-            <div><div class="imc-sp-name">Giorik</div><div class="imc-sp-sub">Professional Foodservice Equipment</div></div>
+          <div class="imc-sponsor-wrap">
+            <span class="imc-sponsor-label">Presented with support from</span>
+            <div class="imc-sponsor-logos">
+              <div class="imc-sponsor-logo">
+                <img src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/Giorik_Logo-01_5a02e246-2941-4042-b929-6e86d40ed5a7.png?v=1778678737" alt="Giorik">
+              </div>
+              <div class="imc-sponsor-logo">
+                <img src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/Electrolux_logo.png?v=1778678526" alt="Electrolux Professional">
+              </div>
+              <div class="imc-sponsor-logo">
+                <img src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/2025_nordon_logo.jpg?v=1778678526" alt="Nordon">
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -741,7 +738,7 @@
 
   <!-- PAGE FOOTER -->
   <footer class="imc-page-footer">
-    Presented by 24/7 Restaurant Equipment · 1231 NJ-166 #3, Toms River, NJ 08753 · With support from Giorik
+    Presented by 24/7 Restaurant Equipment · 1231 NJ-166 #3, Toms River, NJ 08753 · With support from Giorik, Electrolux Professional &amp; Nordon
   </footer>
 
 </div><!-- end .imc-wrap -->
