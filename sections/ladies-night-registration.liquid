@@ -415,7 +415,7 @@
 
       var dietary = [];
       document.querySelectorAll('.ln-checkbox-item input[type="checkbox"]').forEach(function(cb) {
-        if (cb.checked) dietary.push(cb.parentElement.textContent.trim());
+        if (cb.checked) dietary.push(cb.nextSibling.textContent.trim());
       });
 
       var noteParts = [];
