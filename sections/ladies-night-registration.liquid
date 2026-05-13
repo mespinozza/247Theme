@@ -1,0 +1,1044 @@
+<style>
+  .ln-wrap * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  .ln-wrap {
+    font-family: 'DM Sans', sans-serif;
+    background: #FDF8F5;
+    color: #2C1A14;
+  }
+
+  .ln-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 0 60px;
+  }
+
+  /* FONTS */
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+  /* HERO */
+  .ln-hero {
+    position: relative;
+    background: linear-gradient(155deg, #C9A0A0 0%, #B07A8A 38%, #7A4A5A 100%);
+    padding: 60px 40px 52px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .ln-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.06)' stroke-width='1'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3Ccircle cx='30' cy='30' r='10'/%3E%3C/g%3E%3C/svg%3E") repeat;
+  }
+
+  .ln-collab-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.35);
+    border-radius: 50px;
+    padding: 6px 16px 6px 8px;
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ln-badge-logos {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .ln-badge-logo {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #fff;
+    object-fit: contain;
+    padding: 3px;
+  }
+
+  .ln-badge-logo.mauve {
+    object-fit: cover;
+    padding: 0;
+  }
+
+  .ln-badge-x {
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    font-weight: 300;
+  }
+
+  .ln-collab-badge span {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.92);
+    letter-spacing: 0.3px;
+  }
+
+  .ln-eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ln-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(38px, 5.5vw, 64px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.05;
+    margin-bottom: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ln-hero h1 em {
+    font-style: italic;
+    color: #F9D8CC;
+  }
+
+  .ln-hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 28px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ln-hero-details {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .ln-pill {
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50px;
+    padding: 8px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .ln-pill.highlight {
+    background: rgba(249,216,204,0.25);
+    border-color: rgba(249,216,204,0.6);
+  }
+
+  .ln-pill .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #F9D8CC;
+    flex-shrink: 0;
+  }
+
+  /* PERKS */
+  .ln-perks {
+    background: #fff;
+    padding: 24px 40px;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #EDD8D0;
+    flex-wrap: wrap;
+  }
+
+  .ln-perk {
+    flex: 1;
+    min-width: 140px;
+    max-width: 220px;
+    text-align: center;
+    padding: 8px 16px;
+    border-right: 1px solid #EDD8D0;
+  }
+
+  .ln-perk:last-child { border-right: none; }
+
+  .ln-perk-icon {
+    font-size: 22px;
+    margin-bottom: 5px;
+    display: block;
+  }
+
+  .ln-perk-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #7A4A5A;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .ln-perk-desc {
+    font-size: 12px;
+    color: #9A7070;
+    margin-top: 2px;
+    line-height: 1.4;
+  }
+
+  /* SECTION LABEL */
+  .ln-section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #B07A8A;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .ln-section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #EDD8D0;
+  }
+
+  /* EXPERIENCE */
+  .ln-experience {
+    padding: 44px 40px 0;
+  }
+
+  .ln-exp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+
+  .ln-exp-card {
+    background: #fff;
+    border: 1px solid #EDD8D0;
+    border-radius: 16px;
+    padding: 22px 20px;
+    text-align: center;
+    transition: border-color 0.2s;
+  }
+
+  .ln-exp-card:hover { border-color: #B07A8A; }
+
+  .ln-exp-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    font-style: italic;
+    color: #EDD8D0;
+    margin-bottom: 10px;
+    line-height: 1;
+  }
+
+  .ln-exp-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2C1A14;
+    margin-bottom: 4px;
+  }
+
+  .ln-exp-desc {
+    font-size: 12px;
+    color: #9A7070;
+    line-height: 1.5;
+  }
+
+  /* HOSTS */
+  .ln-hosts {
+    padding: 0 40px 32px;
+  }
+
+  .ln-hosts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .ln-host-card {
+    background: #fff;
+    border: 1px solid #EDD8D0;
+    border-radius: 16px;
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: border-color 0.2s;
+  }
+
+  .ln-host-card:hover { border-color: #B07A8A; }
+
+  .ln-host-logo-wrap {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #EDD8D0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .ln-host-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+  }
+
+  .ln-host-logo.mauve {
+    object-fit: cover;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+  }
+
+  .ln-host-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #2C1A14;
+    margin-bottom: 2px;
+  }
+
+  .ln-host-tagline {
+    font-size: 12px;
+    color: #9A7070;
+    line-height: 1.4;
+  }
+
+  .ln-host-tag {
+    display: inline-block;
+    margin-top: 6px;
+    background: #F9EDE8;
+    color: #7A4A5A;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 50px;
+  }
+
+  /* CHEF */
+  .ln-chef {
+    background: linear-gradient(135deg, #F9EDE8 0%, #FDF3EE 100%);
+    margin: 0 40px 40px;
+    border-radius: 20px;
+    padding: 32px 36px;
+    display: flex;
+    gap: 28px;
+    align-items: center;
+    border: 1px solid #EDD8D0;
+  }
+
+  .ln-chef-photo-wrap {
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 20px rgba(122,74,90,0.2);
+  }
+
+  .ln-chef-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+
+  .ln-chef-eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #B07A8A;
+    margin-bottom: 5px;
+  }
+
+  .ln-chef-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #2C1A14;
+    margin-bottom: 6px;
+  }
+
+  .ln-chef-bio {
+    font-size: 13px;
+    color: #7A5A5A;
+    line-height: 1.6;
+  }
+
+  /* FORM */
+  .ln-form-wrap {
+    padding: 0 40px;
+  }
+
+  .ln-form-card {
+    background: #fff;
+    border: 1px solid #EDD8D0;
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .ln-form-header {
+    background: linear-gradient(135deg, #7A4A5A, #9B6070);
+    padding: 28px 32px;
+    text-align: center;
+  }
+
+  .ln-form-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .ln-form-header p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+  }
+
+  .ln-price-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50px;
+    padding: 6px 18px;
+    margin-top: 12px;
+  }
+
+  .ln-price-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+  }
+
+  .ln-price-per {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .ln-spots-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(249,216,204,0.25);
+    border: 1px solid rgba(249,216,204,0.5);
+    border-radius: 50px;
+    padding: 5px 14px;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #F9D8CC;
+    font-weight: 500;
+  }
+
+  .ln-spots-dot {
+    width: 6px;
+    height: 6px;
+    background: #F9D8CC;
+    border-radius: 50%;
+    animation: ln-pulse 1.5s infinite;
+  }
+
+  @keyframes ln-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .ln-form-body {
+    padding: 32px;
+  }
+
+  .ln-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .ln-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+
+  .ln-form-group.half { margin-bottom: 0; }
+
+  .ln-form-group label {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #7A4A5A;
+  }
+
+  .ln-form-group input,
+  .ln-form-group select,
+  .ln-form-group textarea {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: #2C1A14;
+    background: #FDF8F5;
+    border: 1.5px solid #EDD8D0;
+    border-radius: 10px;
+    padding: 12px 16px;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    width: 100%;
+    -webkit-appearance: none;
+  }
+
+  .ln-form-group input:focus,
+  .ln-form-group select:focus,
+  .ln-form-group textarea:focus {
+    border-color: #B07A8A;
+    background: #fff;
+  }
+
+  .ln-form-group input::placeholder,
+  .ln-form-group textarea::placeholder {
+    color: #C4A0A0;
+  }
+
+  .ln-form-group select { cursor: pointer; }
+  .ln-form-group textarea { resize: vertical; min-height: 80px; }
+
+  /* TICKET SELECTOR */
+  .ln-ticket-selector {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+  }
+
+  .ln-ticket-opt {
+    border: 1.5px solid #EDD8D0;
+    border-radius: 10px;
+    padding: 12px 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.15s;
+    background: #FDF8F5;
+  }
+
+  .ln-ticket-opt:hover {
+    border-color: #B07A8A;
+    background: #F9EDE8;
+  }
+
+  .ln-ticket-opt.selected {
+    border-color: #7A4A5A;
+    background: #F9EDE8;
+  }
+
+  .ln-ticket-opt input[type="radio"] { display: none; }
+
+  .ln-ticket-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #2C1A14;
+    display: block;
+    line-height: 1;
+  }
+
+  .ln-ticket-price {
+    font-size: 11px;
+    color: #9A7070;
+    margin-top: 3px;
+    display: block;
+  }
+
+  .ln-ticket-opt.selected .ln-ticket-num { color: #7A4A5A; }
+  .ln-ticket-opt.selected .ln-ticket-price { color: #B07A8A; }
+
+  /* ORDER SUMMARY */
+  .ln-order-summary {
+    background: #F9EDE8;
+    border: 1px solid #EDD8D0;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .ln-summary-label {
+    font-size: 13px;
+    color: #7A5A5A;
+  }
+
+  .ln-summary-label strong {
+    color: #2C1A14;
+    font-weight: 600;
+  }
+
+  .ln-summary-total {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #7A4A5A;
+  }
+
+  .ln-summary-total span {
+    font-size: 13px;
+    font-weight: 400;
+    color: #9A7070;
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  /* CHECKBOXES */
+  .ln-checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .ln-checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 16px;
+    background: #FDF8F5;
+    border: 1.5px solid #EDD8D0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    font-size: 13px;
+    color: #2C1A14;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    width: 100%;
+  }
+
+  .ln-checkbox-item:hover {
+    border-color: #B07A8A;
+    background: #F9EDE8;
+  }
+
+  .ln-checkbox-item input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #7A4A5A;
+    flex-shrink: 0;
+    padding: 0;
+    margin: 0;
+  }
+
+  .ln-divider {
+    height: 1px;
+    background: #EDD8D0;
+    margin: 22px 0;
+  }
+
+  .ln-section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #2C1A14;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ln-section-title::before {
+    content: '';
+    width: 4px;
+    height: 18px;
+    background: #B07A8A;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* BUTTON */
+  .ln-checkout-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #7A4A5A, #B07A8A);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 17px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .ln-checkout-btn:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+  }
+
+  .ln-checkout-btn:active { transform: translateY(0); }
+
+  .ln-btn-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    font-size: 14px;
+  }
+
+  .ln-form-note {
+    text-align: center;
+    font-size: 12px;
+    color: #9A7070;
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  /* FOOTER LOGOS */
+  .ln-footer-logos {
+    padding: 36px 40px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .ln-footer-logo { height: 36px; object-fit: contain; }
+  .ln-footer-logo.mauve { height: 30px; }
+  .ln-footer-x { font-size: 18px; color: #B07A8A; font-weight: 300; }
+
+  /* RESPONSIVE */
+  @media (max-width: 720px) {
+    .ln-exp-grid,
+    .ln-hosts-grid { grid-template-columns: 1fr; }
+    .ln-form-row { grid-template-columns: 1fr; }
+    .ln-ticket-selector { grid-template-columns: repeat(3, 1fr); }
+    .ln-chef { flex-direction: column; text-align: center; margin: 0 20px 32px; }
+    .ln-chef-photo-wrap { margin: 0 auto; }
+    .ln-form-wrap,
+    .ln-experience,
+    .ln-hosts { padding-left: 20px; padding-right: 20px; }
+    .ln-hero { padding: 44px 24px 38px; }
+    .ln-perks { padding: 16px 24px; }
+    .ln-perk { border-right: none; border-bottom: 1px solid #EDD8D0; padding: 12px 0; }
+    .ln-perk:last-child { border-bottom: none; }
+    .ln-footer-logos { padding: 28px 20px 0; }
+  }
+</style>
+
+<div class="ln-wrap">
+  <div class="ln-inner">
+
+    <!-- HERO -->
+    <div class="ln-hero">
+      <div class="ln-collab-badge">
+        <div class="ln-badge-logos">
+          <img class="ln-badge-logo" src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/247logo-square.png?v=1709738059" alt="24/7 Restaurant Equipment">
+          <span class="ln-badge-x">×</span>
+          <img class="ln-badge-logo mauve" src="https://mauveshoppe.com/cdn/shop/files/mauve_logo_2025_color.png?v=1770830422&width=500" alt="Mauve Shoppe">
+        </div>
+        <span>Mauve Shoppe × 24/7 Restaurant Equipment</span>
+      </div>
+      <p class="ln-eyebrow">Ladies Night at the Showroom</p>
+      <h1>Pasta Making<br><em>with the Girls</em></h1>
+      <p class="ln-hero-sub">Roll, knead, laugh, eat — repeat.</p>
+      <div class="ln-hero-details">
+        <div class="ln-pill highlight"><span class="dot"></span> Wednesday, June 11 · 7 PM</div>
+        <div class="ln-pill"><span class="dot"></span> 24/7 Showroom · Toms River, NJ</div>
+        <div class="ln-pill"><span class="dot"></span> Led by Chef Dante Daga</div>
+      </div>
+    </div>
+
+    <!-- PERKS -->
+    <div class="ln-perks">
+      <div class="ln-perk">
+        <span class="ln-perk-icon">🍝</span>
+        <div class="ln-perk-label">Hands-On Class</div>
+        <div class="ln-perk-desc">Make fresh pasta from scratch</div>
+      </div>
+      <div class="ln-perk">
+        <span class="ln-perk-icon">🍷</span>
+        <div class="ln-perk-label">Wine Tasting</div>
+        <div class="ln-perk-desc">Curated pours all evening</div>
+      </div>
+      <div class="ln-perk">
+        <span class="ln-perk-icon">🥂</span>
+        <div class="ln-perk-label">Eat What You Make</div>
+        <div class="ln-perk-desc">Sit down and enjoy together</div>
+      </div>
+      <div class="ln-perk">
+        <span class="ln-perk-icon">✨</span>
+        <div class="ln-perk-label">A Real Night Out</div>
+        <div class="ln-perk-desc">Good vibes, great company</div>
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="ln-experience">
+      <p class="ln-section-label">What the Evening Looks Like</p>
+      <div class="ln-exp-grid">
+        <div class="ln-exp-card">
+          <div class="ln-exp-num">01</div>
+          <div class="ln-exp-title">Mix & Knead</div>
+          <div class="ln-exp-desc">Chef Dante walks you through fresh dough from scratch — flour, eggs, and a little patience.</div>
+        </div>
+        <div class="ln-exp-card">
+          <div class="ln-exp-num">02</div>
+          <div class="ln-exp-title">Roll & Shape</div>
+          <div class="ln-exp-desc">Get hands-on with the pasta machine and turn your dough into something beautiful.</div>
+        </div>
+        <div class="ln-exp-card">
+          <div class="ln-exp-num">03</div>
+          <div class="ln-exp-title">Cook & Eat</div>
+          <div class="ln-exp-desc">Finish with wine, a proper sauce, and dinner at the table — made entirely by you.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HOSTS -->
+    <div class="ln-hosts">
+      <p class="ln-section-label">Your Hosts for the Evening</p>
+      <div class="ln-hosts-grid">
+        <div class="ln-host-card">
+          <div class="ln-host-logo-wrap">
+            <img class="ln-host-logo" src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/247logo-square.png?v=1709738059" alt="24/7 Restaurant Equipment">
+          </div>
+          <div>
+            <div class="ln-host-name">24/7 Restaurant Equipment</div>
+            <div class="ln-host-tagline">Your local showroom for commercial kitchen equipment — see it all in action.</div>
+            <span class="ln-host-tag">Toms River, NJ</span>
+          </div>
+        </div>
+        <div class="ln-host-card">
+          <div class="ln-host-logo-wrap" style="border: none;">
+            <img class="ln-host-logo mauve" src="https://mauveshoppe.com/cdn/shop/files/mauve_logo_2025_color.png?v=1770830422&width=500" alt="Mauve Shoppe">
+          </div>
+          <div>
+            <div class="ln-host-name">Mauve Shoppe</div>
+            <div class="ln-host-tagline">Point Pleasant's women's boutique — where you come to feel like you.</div>
+            <span class="ln-host-tag">Point Pleasant, NJ</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHEF -->
+    <div class="ln-chef">
+      <div class="ln-chef-photo-wrap">
+        <img class="ln-chef-photo" src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/IMG_3686.jpg?v=1778678526" alt="Chef Dante Daga">
+      </div>
+      <div>
+        <p class="ln-chef-eyebrow">Your Instructor</p>
+        <p class="ln-chef-name">Chef Dante Daga</p>
+        <p class="ln-chef-bio">Chef Dante brings the kind of energy that makes even first-timers feel at home in the kitchen. Known for his approachable style and deep love of Italian technique, he'll guide you through every step — from the first fold of dough to the final plate. No experience needed. Just show up ready to have fun.</p>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="ln-form-wrap">
+      <div class="ln-form-card">
+        <div class="ln-form-header">
+          <h2>Reserve Your Spot</h2>
+          <p>Wednesday, June 11 at 7 PM · Seats are going fast.</p>
+          <div class="ln-price-badge">
+            <span class="ln-price-amount">$50</span>
+            <span class="ln-price-per">per person</span>
+          </div><br>
+          <div class="ln-spots-badge">
+            <span class="ln-spots-dot"></span> Limited seats available
+          </div>
+        </div>
+
+        <div class="ln-form-body">
+
+          <p class="ln-section-title">Your Info</p>
+
+          <div class="ln-form-row">
+            <div class="ln-form-group half">
+              <label for="ln-fname">First Name</label>
+              <input type="text" id="ln-fname" placeholder="First name">
+            </div>
+            <div class="ln-form-group half">
+              <label for="ln-lname">Last Name</label>
+              <input type="text" id="ln-lname" placeholder="Last name">
+            </div>
+          </div>
+
+          <div class="ln-form-group">
+            <label for="ln-email">Email Address</label>
+            <input type="email" id="ln-email" placeholder="you@email.com">
+          </div>
+
+          <div class="ln-form-group">
+            <label for="ln-phone">Phone Number</label>
+            <input type="tel" id="ln-phone" placeholder="(732) 555-0100">
+          </div>
+
+          <div class="ln-divider"></div>
+          <p class="ln-section-title">How Many Tickets?</p>
+
+          <div class="ln-ticket-selector" id="ln-ticket-selector">
+            <label class="ln-ticket-opt selected">
+              <input type="radio" name="ln-tickets" value="1" checked>
+              <span class="ln-ticket-num">1</span>
+              <span class="ln-ticket-price">$50</span>
+            </label>
+            <label class="ln-ticket-opt">
+              <input type="radio" name="ln-tickets" value="2">
+              <span class="ln-ticket-num">2</span>
+              <span class="ln-ticket-price">$100</span>
+            </label>
+            <label class="ln-ticket-opt">
+              <input type="radio" name="ln-tickets" value="3">
+              <span class="ln-ticket-num">3</span>
+              <span class="ln-ticket-price">$150</span>
+            </label>
+            <label class="ln-ticket-opt">
+              <input type="radio" name="ln-tickets" value="4">
+              <span class="ln-ticket-num">4</span>
+              <span class="ln-ticket-price">$200</span>
+            </label>
+            <label class="ln-ticket-opt">
+              <input type="radio" name="ln-tickets" value="5">
+              <span class="ln-ticket-num">5</span>
+              <span class="ln-ticket-price">$250</span>
+            </label>
+          </div>
+
+          <div class="ln-order-summary">
+            <div class="ln-summary-label">Total for <strong id="ln-summary-count">1 ticket</strong></div>
+            <div class="ln-summary-total" id="ln-summary-total">$50 <span>due at checkout</span></div>
+          </div>
+
+          <div class="ln-divider"></div>
+          <p class="ln-section-title">A Little More</p>
+
+          <div class="ln-form-group">
+            <label for="ln-referral">How did you hear about this?</label>
+            <select id="ln-referral">
+              <option value="">Choose one</option>
+              <option>Instagram / Social Media</option>
+              <option>Mauve Shoppe</option>
+              <option>24/7 Restaurant Equipment</option>
+              <option>A friend told me</option>
+              <option>Email newsletter</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="ln-form-group">
+            <label>Any dietary restrictions?</label>
+            <div class="ln-checkbox-group">
+              <label class="ln-checkbox-item"><input type="checkbox"> Vegetarian</label>
+              <label class="ln-checkbox-item"><input type="checkbox"> Gluten-free</label>
+              <label class="ln-checkbox-item"><input type="checkbox"> Nut allergy</label>
+              <label class="ln-checkbox-item"><input type="checkbox"> Other (note below)</label>
+            </div>
+          </div>
+
+          <div class="ln-form-group">
+            <label for="ln-notes">Anything else we should know?</label>
+            <textarea id="ln-notes" placeholder="Allergies, questions, or just how excited you are!"></textarea>
+          </div>
+
+          <button class="ln-checkout-btn" id="ln-checkout-btn">
+            <span id="ln-btn-text">Reserve 1 Ticket — $50</span>
+            <span class="ln-btn-arrow">→</span>
+          </button>
+
+          <p class="ln-form-note">
+            You'll complete payment securely on the next page.<br>
+            A confirmation email will be sent once your order is placed.
+          </p>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER LOGOS -->
+    <div class="ln-footer-logos">
+      <img class="ln-footer-logo" src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/247logo-square.png?v=1709738059" alt="24/7 Restaurant Equipment">
+      <span class="ln-footer-x">×</span>
+      <img class="ln-footer-logo mauve" src="https://mauveshoppe.com/cdn/shop/files/mauve_logo_2025_color.png?v=1770830422&width=500" alt="Mauve Shoppe">
+    </div>
+
+  </div>
+</div>
+
+<script>
+  (function() {
+    var VARIANT_ID = 42234240958519;
+    var STORE = 'https://247restaurantequipment.com';
+    var PRICE = 50;
+    var currentQty = 1;
+
+    var opts = document.querySelectorAll('.ln-ticket-opt');
+    var summaryCount = document.getElementById('ln-summary-count');
+    var summaryTotal = document.getElementById('ln-summary-total');
+    var btnText = document.getElementById('ln-btn-text');
+    var checkoutBtn = document.getElementById('ln-checkout-btn');
+
+    function updateUI(qty) {
+      currentQty = qty;
+      var total = qty * PRICE;
+      summaryCount.textContent = qty === 1 ? '1 ticket' : qty + ' tickets';
+      summaryTotal.innerHTML = '$' + total + ' <span>due at checkout</span>';
+      btnText.textContent = 'Reserve ' + qty + (qty === 1 ? ' Ticket' : ' Tickets') + ' \u2014 $' + total;
+    }
+
+    opts.forEach(function(opt) {
+      opt.addEventListener('click', function() {
+        opts.forEach(function(o) { o.classList.remove('selected'); });
+        this.classList.add('selected');
+        updateUI(parseInt(this.querySelector('input').value));
+      });
+    });
+
+    checkoutBtn.addEventListener('click', function() {
+      window.location.href = STORE + '/cart/' + VARIANT_ID + ':' + currentQty + '?checkout';
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Ladies Night Registration",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Ladies Night Registration"
+    }
+  ]
+}
+{% endschema %}
