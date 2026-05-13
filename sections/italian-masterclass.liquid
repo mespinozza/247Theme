@@ -382,6 +382,20 @@
   .imc-cal-links { display: flex; gap: 8px; flex-wrap: wrap; }
   .imc-cal-btn { font-family: var(--cond); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; background: rgba(255,255,255,.08); color: rgba(255,255,255,.7); border: 1px solid rgba(255,255,255,.15); padding: 8px 14px; transition: background .15s, color .15s; text-decoration: none; }
   .imc-cal-btn:hover { background: rgba(255,255,255,.15); color: var(--white); }
+  /* Sponsor logo grid */
+  .imc-sponsor-wrap { margin-top: 32px; }
+  .imc-sponsor-label { font-family: var(--cond); font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-light); margin-bottom: 14px; display: block; }
+  .imc-sponsor-logos { display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; border: 1px solid var(--border); background: var(--white); }
+  .imc-sponsor-logo { flex: 1; padding: 16px 20px; border-right: 1px solid var(--border); display: flex; align-items: center; justify-content: center; min-width: 0; transition: background .15s; }
+  .imc-sponsor-logo:last-child { border-right: none; }
+  .imc-sponsor-logo:hover { background: var(--off-white); }
+  .imc-sponsor-logo img { width: 100%; max-width: 110px; height: 40px; object-fit: contain; display: block; filter: grayscale(100%) opacity(0.65); transition: filter .2s; }
+  .imc-sponsor-logo:hover img { filter: grayscale(0%) opacity(1); }
+  @media (max-width: 600px) {
+    .imc-sponsor-logos { flex-wrap: wrap; }
+    .imc-sponsor-logo { flex: 0 0 50%; border-right: none; border-bottom: 1px solid var(--border); }
+    .imc-sponsor-logo:nth-child(odd) { border-right: 1px solid var(--border); }
+  }
 </style>
 
 <div class="imc-wrap">
@@ -662,7 +676,7 @@
             <div class="imc-equip-item">Steam Oven</div>
             <div class="imc-equip-item">Boiler</div>
             <div class="imc-equip-item">Stone Deck Pizza Oven</div>
-            <div class="imc-equip-item">Combination Oven</div>
+            <div class="imc-equip-item">Combi Oven</div>
           </div>
         </div>
         <div class="imc-equip-copy">
