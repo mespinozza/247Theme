@@ -79,7 +79,7 @@
   .ln-pasta-img:first-child { border-radius: 16px 0 0 16px; }
   .ln-pasta-img:last-child { border-radius: 0 16px 16px 0; }
   .ln-dante-second-wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: 0; align-items: center; background: #fff; border: 1px solid #EDD8D0; border-radius: 20px; overflow: hidden; }
-  .ln-dante-second-img { width: 100%; height: 320px; object-fit: cover; object-position: center center; display: block; }
+  .ln-dante-second-img { width: 100%; height: 320px; object-fit: cover; object-position: center 30%; display: block; }
   .ln-dante-second-text { padding: 32px; }
   .ln-dante-quote { font-family: 'Playfair Display', serif; font-size: 22px; font-style: italic; color: #7A4A5A; line-height: 1.5; margin-bottom: 16px; }
   .ln-dante-quote-sub { font-size: 13px; color: #9A7070; line-height: 1.6; }
@@ -295,8 +295,8 @@
 
     <!-- DANTE STORY -->
     <div class="ln-dante-story">
-      <p class="ln-dante-intro ln-reveal">"He's the kind of chef who makes you feel like you should immediately book a flight to Sardinia and order an Aperol spritz on the coast. Luckily, you don't have to — he's bringing Sardinia to you."</p>
-      <div class="ln-dante-points ln-reveal">
+      <p class="ln-dante-intro">"He's the kind of chef who makes you feel like you should immediately book a flight to Sardinia and order an Aperol spritz on the coast. Luckily, you don't have to — he's bringing Sardinia to you."</p>
+      <div class="ln-dante-points">
         <div class="ln-dante-point">
           <span class="ln-dante-point-icon">🇮🇹</span>
           <div class="ln-dante-point-title">The real Italian deal</div>
@@ -318,13 +318,13 @@
           <div class="ln-dante-point-desc">Expect to feel transported. Dante brings the warmth, the technique, and the unhurried joy of a Sardinian table — where food is never just food, it's an experience worth slowing down for.</div>
         </div>
       </div>
-      <div class="ln-pasta-strip ln-reveal">
+      <div class="ln-pasta-strip">
         <img class="ln-pasta-img" src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/WhatsApp_Image_2026-05-07_at_8.02.57_AM_4.jpg?v=1778696574" alt="Fresh pasta">
         <img class="ln-pasta-img" src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/WhatsApp_Image_2026-05-07_at_8.02.57_AM_3.jpg?v=1778696574" alt="Pasta making">
       </div>
-      <div class="ln-dante-second-wrap ln-reveal">
-        <img class="ln-dante-second-img ln-reveal-left" src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/IMG_3686.jpg?v=1778678526" alt="Chef Dante Daga">
-        <div class="ln-dante-second-text ln-reveal-right">
+      <div class="ln-dante-second-wrap">
+        <img class="ln-dante-second-img" src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/IMG_3686.jpg?v=1778678526" alt="Chef Dante Daga">
+        <div class="ln-dante-second-text">
           <p class="ln-dante-quote" id="ln-typewriter-quote"></p>
           <p class="ln-dante-quote-sub">Chef Dante will make you feel like you're in a Sardinian kitchen for the night — guiding every step with warmth, ancient technique, and just the right amount of flour on your hands.</p>
           <div class="ln-dante-tags">
@@ -334,21 +334,6 @@
             <span class="ln-dante-tag">Ancient Technique</span>
           </div>
         </div>
-      </div>
-    </div>
-
-    <!-- MAP -->
-    <div class="ln-map-section ln-reveal">
-      <p class="ln-section-label">Find Us</p>
-      <div class="ln-map-card">
-        <div class="ln-map-header">
-          <div>
-            <div class="ln-map-title">24/7 Restaurant Equipment</div>
-            <div class="ln-map-address">1231 NJ-166, Toms River, NJ 08753</div>
-          </div>
-          <a class="ln-map-directions" href="https://maps.google.com/?q=1231+NJ-166+Toms+River+NJ+08753" target="_blank">Get Directions →</a>
-        </div>
-        <iframe class="ln-map-embed" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3042.5!2d-74.1799!3d39.9537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c18a1c2e3a4f5b%3A0x1234567890abcdef!2s1231+NJ-166%2C+Toms+River%2C+NJ+08753!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
 
@@ -438,6 +423,21 @@
       </div>
     </div>
 
+    <!-- MAP -->
+    <div class="ln-map-section">
+      <p class="ln-section-label">Find Us</p>
+      <div class="ln-map-card">
+        <div class="ln-map-header">
+          <div>
+            <div class="ln-map-title">24/7 Restaurant Equipment</div>
+            <div class="ln-map-address">1231 NJ-166, Toms River, NJ 08753</div>
+          </div>
+          <a class="ln-map-directions" href="https://maps.google.com/?q=1231+NJ-166+Toms+River+NJ+08753" target="_blank">Get Directions →</a>
+        </div>
+        <iframe class="ln-map-embed" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3042.5!2d-74.1799!3d39.9537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c18a1c2e3a4f5b%3A0x1234567890abcdef!2s1231+NJ-166%2C+Toms+River%2C+NJ+08753!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+
     <!-- FOOTER LOGOS -->
     <div class="ln-footer-logos">
       <img class="ln-footer-logo" src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/247logo-square.png?v=1709738059" alt="24/7 Restaurant Equipment">
@@ -453,7 +453,7 @@
 
     /* ── PASTA PARTICLES ── */
     var hero = document.getElementById('ln-hero');
-    var shapes = ['🍝','🍷','✨','🫶','🌿','🧄'];
+    var shapes = ['🍝','🍷','✨','🧄'];
     for (var i = 0; i < 18; i++) {
       (function(i) {
         var el = document.createElement('span');
@@ -469,18 +469,20 @@
     }
 
     /* ── SCROLL REVEAL ── */
-    var revealEls = document.querySelectorAll('.ln-reveal, .ln-reveal-left, .ln-reveal-right');
+    var revealEls = document.querySelectorAll('.ln-reveal');
     function checkReveal() {
       revealEls.forEach(function(el) {
         var rect = el.getBoundingClientRect();
         if (rect.top < window.innerHeight - 80) {
           el.classList.add('ln-visible');
-          /* trigger typewriter when quote container becomes visible */
-          if (el.id === 'ln-typewriter-quote' || el.classList.contains('ln-dante-second-wrap')) {
-            startTypewriter();
-          }
         }
       });
+      /* typewriter triggers when quote card scrolls into view */
+      var quoteWrap = document.querySelector('.ln-dante-second-wrap');
+      if (quoteWrap) {
+        var r = quoteWrap.getBoundingClientRect();
+        if (r.top < window.innerHeight - 80) startTypewriter();
+      }
     }
     window.addEventListener('scroll', checkReveal);
     checkReveal();
