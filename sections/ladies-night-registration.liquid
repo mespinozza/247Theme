@@ -512,7 +512,7 @@
 
     /* ── LIVE SEATS ── */
     var seatsEl = document.getElementById('ln-seats-count');
-    fetch('https://247restaurantequipment.com/products/pasta-making-with-the-girls.json')
+    fetch('/products/pasta-making-with-the-girls.json')
       .then(function(r) { return r.json(); })
       .then(function(data) {
         var variants = data.product && data.product.variants;
