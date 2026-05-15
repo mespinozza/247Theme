@@ -86,7 +86,44 @@
   .ln-dante-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
   .ln-dante-tag { background: #F9EDE8; color: #7A4A5A; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 50px; }
 
-  /* COUNTDOWN */
+  /* PASTA PARTICLES */
+  .ln-pasta-particle { position: absolute; font-size: 18px; opacity: 0; animation: ln-float linear infinite; pointer-events: none; z-index: 2; }
+  @keyframes ln-float {
+    0%   { transform: translateY(0) rotate(0deg);   opacity: 0; }
+    10%  { opacity: 0.7; }
+    90%  { opacity: 0.5; }
+    100% { transform: translateY(-120px) rotate(360deg); opacity: 0; }
+  }
+
+  /* SCROLL REVEAL */
+  .ln-reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .ln-reveal.ln-visible { opacity: 1; transform: translateY(0); }
+  .ln-reveal-left { opacity: 0; transform: translateX(-40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .ln-reveal-left.ln-visible { opacity: 1; transform: translateX(0); }
+  .ln-reveal-right { opacity: 0; transform: translateX(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .ln-reveal-right.ln-visible { opacity: 1; transform: translateX(0); }
+
+  /* TYPEWRITER QUOTE */
+  .ln-dante-quote { font-family: 'Playfair Display', serif; font-size: 22px; font-style: italic; color: #7A4A5A; line-height: 1.5; margin-bottom: 16px; min-height: 120px; }
+  .ln-type-cursor { display: inline-block; width: 2px; height: 1.1em; background: #B07A8A; margin-left: 2px; vertical-align: text-bottom; animation: ln-blink 0.8s infinite; }
+  @keyframes ln-blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+  /* LIVE SEATS */
+  .ln-seats-live { display: inline-flex; align-items: center; gap: 6px; background: rgba(249,216,204,0.25); border: 1px solid rgba(249,216,204,0.5); border-radius: 50px; padding: 5px 14px; margin-top: 8px; font-size: 12px; color: #F9D8CC; font-weight: 500; }
+  .ln-seats-num { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: #fff; }
+  .ln-seats-dot { width: 6px; height: 6px; background: #F9D8CC; border-radius: 50%; animation: ln-pulse 1.5s infinite; flex-shrink: 0; }
+
+  /* MAP */
+  .ln-map-section { padding: 0 40px 40px; }
+  .ln-map-card { border-radius: 20px; overflow: hidden; border: 1px solid #EDD8D0; position: relative; }
+  .ln-map-header { background: linear-gradient(135deg, #F9EDE8, #FDF3EE); padding: 20px 28px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #EDD8D0; }
+  .ln-map-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: #2C1A14; }
+  .ln-map-address { font-size: 13px; color: #9A7070; margin-top: 2px; }
+  .ln-map-directions { background: #7A4A5A; color: #fff; border: none; border-radius: 50px; padding: 8px 18px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: opacity 0.2s; white-space: nowrap; }
+  .ln-map-directions:hover { opacity: 0.85; }
+  .ln-map-embed { width: 100%; height: 280px; display: block; border: none; }
+
+
   .ln-countdown-wrap { background: linear-gradient(135deg, #7A4A5A, #9B6070); padding: 20px 32px; text-align: center; }
   .ln-countdown-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
   .ln-countdown-label.expired { color: rgba(255,255,255,0.5); }
@@ -181,7 +218,7 @@
   <div class="ln-inner">
 
     <!-- HERO -->
-    <div class="ln-hero">
+    <div class="ln-hero" id="ln-hero">
       <div class="ln-collab-badge">
         <div class="ln-badge-logos">
           <img class="ln-badge-logo" src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/247logo-square.png?v=1709738059" alt="24/7 Restaurant Equipment">
@@ -246,7 +283,7 @@
     </div>
 
     <!-- DANTE FEATURE -->
-    <div class="ln-dante-section">
+    <div class="ln-dante-section ln-reveal">
       <img class="ln-dante-hero-img" src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/WhatsApp_Image_2026-05-07_at_7.52.32_AM.jpg?v=1778696495" alt="Chef Dante Daga">
       <div class="ln-dante-overlay"></div>
       <div class="ln-dante-hero-text">
@@ -258,8 +295,8 @@
 
     <!-- DANTE STORY -->
     <div class="ln-dante-story">
-      <p class="ln-dante-intro">"He's the kind of chef who makes you feel like you should immediately book a flight to Sardinia and order an Aperol spritz on the coast. Luckily, you don't have to — he's bringing Sardinia to you."</p>
-      <div class="ln-dante-points">
+      <p class="ln-dante-intro ln-reveal">"He's the kind of chef who makes you feel like you should immediately book a flight to Sardinia and order an Aperol spritz on the coast. Luckily, you don't have to — he's bringing Sardinia to you."</p>
+      <div class="ln-dante-points ln-reveal">
         <div class="ln-dante-point">
           <span class="ln-dante-point-icon">🇮🇹</span>
           <div class="ln-dante-point-title">The real Italian deal</div>
@@ -281,14 +318,14 @@
           <div class="ln-dante-point-desc">Expect to feel transported. Dante brings the warmth, the technique, and the unhurried joy of a Sardinian table — where food is never just food, it's an experience worth slowing down for.</div>
         </div>
       </div>
-      <div class="ln-pasta-strip">
+      <div class="ln-pasta-strip ln-reveal">
         <img class="ln-pasta-img" src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/WhatsApp_Image_2026-05-07_at_8.02.57_AM_4.jpg?v=1778696574" alt="Fresh pasta">
         <img class="ln-pasta-img" src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/WhatsApp_Image_2026-05-07_at_8.02.57_AM_3.jpg?v=1778696574" alt="Pasta making">
       </div>
-      <div class="ln-dante-second-wrap">
-        <img class="ln-dante-second-img" src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/IMG_3686.jpg?v=1778678526" alt="Chef Dante Daga">
-        <div class="ln-dante-second-text">
-          <p class="ln-dante-quote">"Expect pasta, laughs, wine, good food, and the kind of evening that feels equal parts girls' night and Sardinian getaway."</p>
+      <div class="ln-dante-second-wrap ln-reveal">
+        <img class="ln-dante-second-img ln-reveal-left" src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/IMG_3686.jpg?v=1778678526" alt="Chef Dante Daga">
+        <div class="ln-dante-second-text ln-reveal-right">
+          <p class="ln-dante-quote" id="ln-typewriter-quote"></p>
           <p class="ln-dante-quote-sub">Chef Dante will make you feel like you're in a Sardinian kitchen for the night — guiding every step with warmth, ancient technique, and just the right amount of flour on your hands.</p>
           <div class="ln-dante-tags">
             <span class="ln-dante-tag">From Sardinia</span>
@@ -297,6 +334,21 @@
             <span class="ln-dante-tag">Ancient Technique</span>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- MAP -->
+    <div class="ln-map-section ln-reveal">
+      <p class="ln-section-label">Find Us</p>
+      <div class="ln-map-card">
+        <div class="ln-map-header">
+          <div>
+            <div class="ln-map-title">24/7 Restaurant Equipment</div>
+            <div class="ln-map-address">1231 NJ-166, Toms River, NJ 08753</div>
+          </div>
+          <a class="ln-map-directions" href="https://maps.google.com/?q=1231+NJ-166+Toms+River+NJ+08753" target="_blank">Get Directions →</a>
+        </div>
+        <iframe class="ln-map-embed" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3042.5!2d-74.1799!3d39.9537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c18a1c2e3a4f5b%3A0x1234567890abcdef!2s1231+NJ-166%2C+Toms+River%2C+NJ+08753!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
 
@@ -310,7 +362,7 @@
             <span class="ln-price-amount">$75</span>
             <span class="ln-price-per">VIP Early Bird</span>
           </div><br>
-          <div class="ln-spots-badge"><span class="ln-spots-dot"></span> Only 24 seats available</div>
+          <div class="ln-seats-live"><span class="ln-seats-dot"></span> <span id="ln-seats-count">24</span>&nbsp;seats remaining</div>
         </div>
         <div class="ln-countdown-wrap" id="ln-countdown-wrap">
           <div class="ln-countdown-label" id="ln-countdown-label">🎟️ VIP Early Bird Price Ends In</div>
@@ -398,14 +450,89 @@
 
 <script>
   (function() {
+
+    /* ── PASTA PARTICLES ── */
+    var hero = document.getElementById('ln-hero');
+    var shapes = ['🍝','🍷','✨','🫶','🌿','🧄'];
+    for (var i = 0; i < 18; i++) {
+      (function(i) {
+        var el = document.createElement('span');
+        el.className = 'ln-pasta-particle';
+        el.textContent = shapes[i % shapes.length];
+        el.style.left = (Math.random() * 100) + '%';
+        el.style.bottom = (Math.random() * 30) + '%';
+        el.style.fontSize = (12 + Math.random() * 14) + 'px';
+        el.style.animationDuration = (4 + Math.random() * 6) + 's';
+        el.style.animationDelay = (Math.random() * 5) + 's';
+        hero.appendChild(el);
+      })(i);
+    }
+
+    /* ── SCROLL REVEAL ── */
+    var revealEls = document.querySelectorAll('.ln-reveal, .ln-reveal-left, .ln-reveal-right');
+    function checkReveal() {
+      revealEls.forEach(function(el) {
+        var rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          el.classList.add('ln-visible');
+          /* trigger typewriter when quote container becomes visible */
+          if (el.id === 'ln-typewriter-quote' || el.classList.contains('ln-dante-second-wrap')) {
+            startTypewriter();
+          }
+        }
+      });
+    }
+    window.addEventListener('scroll', checkReveal);
+    checkReveal();
+
+    /* ── TYPEWRITER QUOTE ── */
+    var quoteText = '"Expect pasta, laughs, wine, good food, and the kind of evening that feels equal parts girls\u2019 night and Sardinian getaway."';
+    var quoteEl = document.getElementById('ln-typewriter-quote');
+    var typeStarted = false;
+
+    function startTypewriter() {
+      if (typeStarted || !quoteEl) return;
+      typeStarted = true;
+      var i = 0;
+      var cursor = document.createElement('span');
+      cursor.className = 'ln-type-cursor';
+      quoteEl.appendChild(cursor);
+      var interval = setInterval(function() {
+        if (i < quoteText.length) {
+          quoteEl.insertBefore(document.createTextNode(quoteText[i]), cursor);
+          i++;
+        } else {
+          clearInterval(interval);
+          setTimeout(function() { cursor.style.display = 'none'; }, 1200);
+        }
+      }, 28);
+    }
+
+    /* ── LIVE SEATS ── */
+    var seatsEl = document.getElementById('ln-seats-count');
+    fetch('https://247restaurantequipment.com/products/pasta-making-with-the-girls.json')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        var variants = data.product && data.product.variants;
+        if (variants && variants.length) {
+          var inventory = variants[0].inventory_quantity;
+          if (seatsEl && inventory !== null) {
+            seatsEl.textContent = inventory;
+            if (inventory <= 5) {
+              seatsEl.style.color = '#F9D8CC';
+            }
+          }
+        }
+      })
+      .catch(function() { /* silently fail, shows 24 as fallback */ });
+
+    /* ── COUNTDOWN + PRICE SWITCH ── */
     var VARIANT_ID = 42234240958519;
     var STORE = 'https://247restaurantequipment.com';
     var VIP_PRICE = 75;
     var REG_PRICE = 85;
     var PRICE = VIP_PRICE;
     var currentQty = 1;
-
-    // VIP window: May 16 8PM EST → May 17 8PM EST
     var SALE_END = new Date('2026-05-17T20:00:00-05:00').getTime();
 
     var opts = document.querySelectorAll('.ln-ticket-opt');
@@ -424,19 +551,15 @@
 
     function switchToRegularPrice() {
       PRICE = REG_PRICE;
-      // Update badge
       var badge = document.querySelector('.ln-price-amount');
       if (badge) badge.textContent = '$' + REG_PRICE;
       var per = document.querySelector('.ln-price-per');
       if (per) per.textContent = 'per person';
-      // Update ticket labels
       opts.forEach(function(opt) {
         var val = parseInt(opt.querySelector('input').value);
         opt.querySelector('.ln-ticket-price').textContent = '$' + (val * REG_PRICE);
       });
-      // Update summary
       updateUI(currentQty);
-      // Update countdown block
       var label = document.getElementById('ln-countdown-label');
       if (label) label.textContent = 'VIP pricing has ended';
       var timer = document.getElementById('ln-countdown-timer');
@@ -447,28 +570,16 @@
 
     function runCountdown() {
       var now = new Date().getTime();
-      if (now >= SALE_END) {
-        switchToRegularPrice();
-        return;
-      }
-
+      if (now >= SALE_END) { switchToRegularPrice(); return; }
       var interval = setInterval(function() {
-        var now = new Date().getTime();
-        var distance = SALE_END - now;
-
-        if (distance <= 0) {
-          clearInterval(interval);
-          switchToRegularPrice();
-          return;
-        }
-
+        var distance = SALE_END - new Date().getTime();
+        if (distance <= 0) { clearInterval(interval); switchToRegularPrice(); return; }
         var hours = Math.floor(distance / (1000 * 60 * 60));
         var mins  = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         var secs  = Math.floor((distance % (1000 * 60)) / 1000);
-
-        document.getElementById('ln-cd-hours').textContent = String(hours).padStart(2, '0');
-        document.getElementById('ln-cd-mins').textContent  = String(mins).padStart(2, '0');
-        document.getElementById('ln-cd-secs').textContent  = String(secs).padStart(2, '0');
+        document.getElementById('ln-cd-hours').textContent = String(hours).padStart(2,'0');
+        document.getElementById('ln-cd-mins').textContent  = String(mins).padStart(2,'0');
+        document.getElementById('ln-cd-secs').textContent  = String(secs).padStart(2,'0');
       }, 1000);
     }
 
@@ -487,22 +598,19 @@
       var phone    = document.getElementById('ln-phone').value.trim();
       var referral = document.getElementById('ln-referral').value;
       var notes    = document.getElementById('ln-notes').value.trim();
-
       var noteParts = [];
       if (fname || lname) noteParts.push('Name: ' + (fname + ' ' + lname).trim());
       if (email)          noteParts.push('Email: ' + email);
       if (phone)          noteParts.push('Phone: ' + phone);
       if (referral)       noteParts.push('Heard via: ' + referral);
       if (notes)          noteParts.push('Notes: ' + notes);
-
-      var noteString = noteParts.join(' | ');
       var url = STORE + '/cart/' + VARIANT_ID + ':' + currentQty
-              + '?checkout&note=' + encodeURIComponent(noteString);
-
+              + '?checkout&note=' + encodeURIComponent(noteParts.join(' | '));
       window.location.href = url;
     });
 
     runCountdown();
+
   })();
 </script>
 
