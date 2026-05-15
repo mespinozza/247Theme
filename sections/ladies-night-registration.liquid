@@ -57,7 +57,7 @@
 
   /* DANTE FEATURE */
   .ln-dante-section { background: #2C1A14; position: relative; overflow: hidden; }
-  .ln-dante-hero-img { width: 100%; height: 420px; object-fit: cover; object-position: center center; display: block; opacity: 0.75; }
+  .ln-dante-hero-img { width: 100%; height: 420px; object-fit: cover; object-position: center top; display: block; opacity: 0.75; }
   .ln-dante-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(44,26,20,0) 30%, rgba(44,26,20,0.97) 100%); }
   .ln-dante-hero-text { position: absolute; bottom: 0; left: 0; right: 0; padding: 32px 40px; }
   .ln-dante-flag { display: inline-flex; align-items: center; gap: 8px; background: rgba(249,216,204,0.15); border: 1px solid rgba(249,216,204,0.3); border-radius: 50px; padding: 5px 14px; margin-bottom: 12px; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #F9D8CC; }
@@ -74,7 +74,7 @@
   .ln-dante-point-icon { font-size: 24px; margin-bottom: 10px; display: block; }
   .ln-dante-point-title { font-family: 'Playfair Display', serif; font-size: 15px; font-weight: 700; color: #2C1A14; margin-bottom: 6px; line-height: 1.3; }
   .ln-dante-point-desc { font-size: 13px; color: #7A5A5A; line-height: 1.6; }
-  .ln-pasta-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-bottom: 40px; object-position: center center; }
+  .ln-pasta-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; margin-bottom: 40px; }
   .ln-pasta-img { width: 100%; height: 260px; object-fit: cover; display: block; }
   .ln-pasta-img:first-child { border-radius: 16px 0 0 16px; }
   .ln-pasta-img:last-child { border-radius: 0 16px 16px 0; }
@@ -179,10 +179,10 @@
         <span>Mauve Shoppe × 24/7 Restaurant Equipment</span>
       </div>
       <p class="ln-eyebrow">Ladies Night at the Showroom</p>
-      <h1>Pasta Making<br><em>with the Girls</em></h1>
-      <p class="ln-hero-sub">Roll, knead, laugh, eat — repeat.</p>
+      <h1>An Evening<br><em>in Sardinia</em></h1>
+      <p class="ln-hero-sub">A pasta making night with the girls — roll, knead, laugh, eat.</p>
       <div class="ln-hero-details">
-        <div class="ln-pill highlight"><span class="dot"></span> Thursday, June 11 · 7 PM</div>
+        <div class="ln-pill highlight"><span class="dot"></span> Wednesday, June 11 · 7 PM</div>
         <div class="ln-pill"><span class="dot"></span> 24/7 Showroom · Toms River, NJ</div>
         <div class="ln-pill"><span class="dot"></span> Led by Chef Dante Daga</div>
       </div>
@@ -206,34 +206,30 @@
       </div>
     </div>
 
-<!-- HOSTS -->
+    <!-- HOSTS -->
     <div class="ln-hosts">
       <p class="ln-section-label">Your Hosts for the Evening</p>
       <div class="ln-hosts-grid">
-        <a href="https://www.247restaurantequipment.com" target="_blank" style="text-decoration:none;">
-          <div class="ln-host-card">
-            <div class="ln-host-logo-wrap">
-              <img class="ln-host-logo" src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/247logo-square.png?v=1709738059" alt="24/7 Restaurant Equipment">
-            </div>
-            <div>
-              <div class="ln-host-name">24/7 Restaurant Equipment</div>
-              <div class="ln-host-tagline">Your local showroom for commercial kitchen equipment — see it all in action.</div>
-              <span class="ln-host-tag">Toms River, NJ</span>
-            </div>
+        <div class="ln-host-card">
+          <div class="ln-host-logo-wrap">
+            <img class="ln-host-logo" src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/247logo-square.png?v=1709738059" alt="24/7 Restaurant Equipment">
           </div>
-        </a>
-        <a href="https://www.mauveshoppe.com" target="_blank" style="text-decoration:none;">
-          <div class="ln-host-card">
-            <div class="ln-host-logo-wrap" style="border: none;">
-              <img class="ln-host-logo mauve" src="https://mauveshoppe.com/cdn/shop/files/mauve_logo_2025_color.png?v=1770830422&width=500" alt="Mauve Shoppe">
-            </div>
-            <div>
-              <div class="ln-host-name">Mauve Shoppe</div>
-              <div class="ln-host-tagline">Point Pleasant's women's boutique — where you come to feel like you.</div>
-              <span class="ln-host-tag">Point Pleasant, NJ</span>
-            </div>
+          <div>
+            <div class="ln-host-name">24/7 Restaurant Equipment</div>
+            <div class="ln-host-tagline">Your local showroom for commercial kitchen equipment — see it all in action.</div>
+            <span class="ln-host-tag">Toms River, NJ</span>
           </div>
-        </a>
+        </div>
+        <div class="ln-host-card">
+          <div class="ln-host-logo-wrap" style="border: none;">
+            <img class="ln-host-logo mauve" src="https://mauveshoppe.com/cdn/shop/files/mauve_logo_2025_color.png?v=1770830422&width=500" alt="Mauve Shoppe">
+          </div>
+          <div>
+            <div class="ln-host-name">Mauve Shoppe</div>
+            <div class="ln-host-tagline">Point Pleasant's women's boutique — where you come to feel like you.</div>
+            <span class="ln-host-tag">Point Pleasant, NJ</span>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -250,7 +246,7 @@
 
     <!-- DANTE STORY -->
     <div class="ln-dante-story">
-      <p class="ln-dante-intro">"He's the kind of chef who makes you feel like you should immediately book a trip to Italy and order an Aperol spritz. Luckily, you don't have to — he's bringing Italy to you."</p>
+      <p class="ln-dante-intro">"He's the kind of chef who makes you feel like you should immediately book a flight to Sardinia and order an Aperol spritz on the coast. Luckily, you don't have to — he's bringing Sardinia to you."</p>
       <div class="ln-dante-points">
         <div class="ln-dante-point">
           <span class="ln-dante-point-icon">🇮🇹</span>
@@ -299,10 +295,10 @@
           <h2>Reserve Your Spot</h2>
           <p>Wednesday, June 11 at 7 PM · Seats are going fast.</p>
           <div class="ln-price-badge">
-            <span class="ln-price-amount">$50</span>
-            <span class="ln-price-per">per person</span>
+            <span class="ln-price-amount">$75</span>
+            <span class="ln-price-per">VIP Early Bird</span>
           </div><br>
-          <div class="ln-spots-badge"><span class="ln-spots-dot"></span> Limited seats available</div>
+          <div class="ln-spots-badge"><span class="ln-spots-dot"></span> Only 24 seats available</div>
         </div>
         <div class="ln-form-body">
           <p class="ln-section-title">Your Info</p>
@@ -316,15 +312,15 @@
           <div class="ln-divider"></div>
           <p class="ln-section-title">How Many Tickets?</p>
           <div class="ln-ticket-selector" id="ln-ticket-selector">
-            <label class="ln-ticket-opt selected"><input type="radio" name="ln-tickets" value="1" checked><span class="ln-ticket-num">1</span><span class="ln-ticket-price">$50</span></label>
-            <label class="ln-ticket-opt"><input type="radio" name="ln-tickets" value="2"><span class="ln-ticket-num">2</span><span class="ln-ticket-price">$100</span></label>
-            <label class="ln-ticket-opt"><input type="radio" name="ln-tickets" value="3"><span class="ln-ticket-num">3</span><span class="ln-ticket-price">$150</span></label>
-            <label class="ln-ticket-opt"><input type="radio" name="ln-tickets" value="4"><span class="ln-ticket-num">4</span><span class="ln-ticket-price">$200</span></label>
-            <label class="ln-ticket-opt"><input type="radio" name="ln-tickets" value="5"><span class="ln-ticket-num">5</span><span class="ln-ticket-price">$250</span></label>
+            <label class="ln-ticket-opt selected"><input type="radio" name="ln-tickets" value="1" checked><span class="ln-ticket-num">1</span><span class="ln-ticket-price">$75</span></label>
+            <label class="ln-ticket-opt"><input type="radio" name="ln-tickets" value="2"><span class="ln-ticket-num">2</span><span class="ln-ticket-price">$150</span></label>
+            <label class="ln-ticket-opt"><input type="radio" name="ln-tickets" value="3"><span class="ln-ticket-num">3</span><span class="ln-ticket-price">$225</span></label>
+            <label class="ln-ticket-opt"><input type="radio" name="ln-tickets" value="4"><span class="ln-ticket-num">4</span><span class="ln-ticket-price">$300</span></label>
+            <label class="ln-ticket-opt"><input type="radio" name="ln-tickets" value="5"><span class="ln-ticket-num">5</span><span class="ln-ticket-price">$375</span></label>
           </div>
           <div class="ln-order-summary">
             <div class="ln-summary-label">Total for <strong id="ln-summary-count">1 ticket</strong></div>
-            <div class="ln-summary-total" id="ln-summary-total">$50 <span>due at checkout</span></div>
+            <div class="ln-summary-total" id="ln-summary-total">$75 <span>due at checkout</span></div>
           </div>
 
           <div class="ln-divider"></div>
@@ -342,11 +338,20 @@
             </select>
           </div>
           <div class="ln-form-group">
+            <label>Any dietary restrictions?</label>
+            <div class="ln-checkbox-group">
+              <label class="ln-checkbox-item"><input type="checkbox"> Vegetarian</label>
+              <label class="ln-checkbox-item"><input type="checkbox"> Gluten-free</label>
+              <label class="ln-checkbox-item"><input type="checkbox"> Nut allergy</label>
+              <label class="ln-checkbox-item"><input type="checkbox"> Other (note below)</label>
+            </div>
+          </div>
+          <div class="ln-form-group">
             <label for="ln-notes">Anything else we should know?</label>
             <textarea id="ln-notes" placeholder="Allergies, questions, or just how excited you are!"></textarea>
           </div>
           <button class="ln-checkout-btn" id="ln-checkout-btn">
-            <span id="ln-btn-text">Reserve 1 Ticket — $50</span>
+            <span id="ln-btn-text">Reserve 1 Ticket — $75</span>
             <span class="ln-btn-arrow">→</span>
           </button>
           <p class="ln-form-note">
@@ -371,7 +376,7 @@
   (function() {
     var VARIANT_ID = 42234240958519;
     var STORE = 'https://247restaurantequipment.com';
-    var PRICE = 50;
+    var PRICE = 75;
     var currentQty = 1;
 
     var opts = document.querySelectorAll('.ln-ticket-opt');
@@ -404,12 +409,17 @@
       var referral = document.getElementById('ln-referral').value;
       var notes = document.getElementById('ln-notes').value.trim();
 
+      var dietary = [];
+      document.querySelectorAll('.ln-checkbox-item input[type="checkbox"]').forEach(function(cb) {
+        if (cb.checked) dietary.push(cb.parentElement.textContent.trim());
+      });
 
       var noteParts = [];
       if (fname || lname) noteParts.push('Name: ' + (fname + ' ' + lname).trim());
       if (email)          noteParts.push('Email: ' + email);
       if (phone)          noteParts.push('Phone: ' + phone);
       if (referral)       noteParts.push('Heard via: ' + referral);
+      if (dietary.length) noteParts.push('Dietary: ' + dietary.join(', '));
       if (notes)          noteParts.push('Notes: ' + notes);
 
       var noteString = noteParts.join(' | ');
