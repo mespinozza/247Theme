@@ -57,7 +57,7 @@
 
   /* DANTE FEATURE */
   .ln-dante-section { background: #2C1A14; position: relative; overflow: hidden; }
-  .ln-dante-hero-img { width: 100%; height: 420px; object-fit: cover; object-position: center top; display: block; opacity: 0.75; }
+  .ln-dante-hero-img { width: 100%; height: 420px; object-fit: cover; object-position: center bottom; display: block; opacity: 0.75; }
   .ln-dante-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(44,26,20,0) 30%, rgba(44,26,20,0.97) 100%); }
   .ln-dante-hero-text { position: absolute; bottom: 0; left: 0; right: 0; padding: 32px 40px; }
   .ln-dante-flag { display: inline-flex; align-items: center; gap: 8px; background: rgba(249,216,204,0.15); border: 1px solid rgba(249,216,204,0.3); border-radius: 50px; padding: 5px 14px; margin-bottom: 12px; font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #F9D8CC; }
@@ -85,6 +85,18 @@
   .ln-dante-quote-sub { font-size: 13px; color: #9A7070; line-height: 1.6; }
   .ln-dante-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
   .ln-dante-tag { background: #F9EDE8; color: #7A4A5A; font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; padding: 5px 12px; border-radius: 50px; }
+
+  /* COUNTDOWN */
+  .ln-countdown-wrap { background: linear-gradient(135deg, #7A4A5A, #9B6070); padding: 20px 32px; text-align: center; }
+  .ln-countdown-label { font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 10px; }
+  .ln-countdown-label.expired { color: rgba(255,255,255,0.5); }
+  .ln-countdown-timer { display: flex; justify-content: center; gap: 16px; }
+  .ln-countdown-unit { text-align: center; }
+  .ln-countdown-num { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: #fff; display: block; line-height: 1; }
+  .ln-countdown-unit-label { font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-top: 4px; display: block; }
+  .ln-countdown-sep { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: rgba(255,255,255,0.4); align-self: flex-start; padding-top: 4px; }
+  .ln-price-switch { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 10px; }
+  .ln-price-switch strong { color: #F9D8CC; }
 
   /* FORM */
   .ln-form-wrap { padding: 40px 40px 0; }
@@ -179,8 +191,8 @@
         <span>Mauve Shoppe × 24/7 Restaurant Equipment</span>
       </div>
       <p class="ln-eyebrow">Ladies Night at the Showroom</p>
-      <h1>An Evening<br><em>in Sardinia</em></h1>
-      <p class="ln-hero-sub">A pasta making night with the girls — roll, knead, laugh, eat.</p>
+      <h1>Pasta Making<br><em>with the Girls</em></h1>
+      <p class="ln-hero-sub">An Evening in Sardinia — roll, knead, laugh, eat.</p>
       <div class="ln-hero-details">
         <div class="ln-pill highlight"><span class="dot"></span> Wednesday, June 11 · 7 PM</div>
         <div class="ln-pill"><span class="dot"></span> 24/7 Showroom · Toms River, NJ</div>
@@ -300,6 +312,18 @@
           </div><br>
           <div class="ln-spots-badge"><span class="ln-spots-dot"></span> Only 24 seats available</div>
         </div>
+        <div class="ln-countdown-wrap" id="ln-countdown-wrap">
+          <div class="ln-countdown-label" id="ln-countdown-label">🎟️ VIP Early Bird Price Ends In</div>
+          <div class="ln-countdown-timer" id="ln-countdown-timer">
+            <div class="ln-countdown-unit"><span class="ln-countdown-num" id="ln-cd-hours">24</span><span class="ln-countdown-unit-label">Hours</span></div>
+            <span class="ln-countdown-sep">:</span>
+            <div class="ln-countdown-unit"><span class="ln-countdown-num" id="ln-cd-mins">00</span><span class="ln-countdown-unit-label">Mins</span></div>
+            <span class="ln-countdown-sep">:</span>
+            <div class="ln-countdown-unit"><span class="ln-countdown-num" id="ln-cd-secs">00</span><span class="ln-countdown-unit-label">Secs</span></div>
+          </div>
+          <p class="ln-price-switch">Price increases to <strong>$85</strong> when timer ends</p>
+        </div>
+
         <div class="ln-form-body">
           <p class="ln-section-title">Your Info</p>
           <div class="ln-form-row">
@@ -376,8 +400,13 @@
   (function() {
     var VARIANT_ID = 42234240958519;
     var STORE = 'https://247restaurantequipment.com';
-    var PRICE = 75;
+    var VIP_PRICE = 75;
+    var REG_PRICE = 85;
+    var PRICE = VIP_PRICE;
     var currentQty = 1;
+
+    // VIP window: May 16 8PM EST → May 17 8PM EST
+    var SALE_END = new Date('2025-05-17T20:00:00-05:00').getTime();
 
     var opts = document.querySelectorAll('.ln-ticket-opt');
     var summaryCount = document.getElementById('ln-summary-count');
@@ -393,6 +422,56 @@
       btnText.textContent = 'Reserve ' + qty + (qty === 1 ? ' Ticket' : ' Tickets') + ' \u2014 $' + total;
     }
 
+    function switchToRegularPrice() {
+      PRICE = REG_PRICE;
+      // Update badge
+      var badge = document.querySelector('.ln-price-amount');
+      if (badge) badge.textContent = '$' + REG_PRICE;
+      var per = document.querySelector('.ln-price-per');
+      if (per) per.textContent = 'per person';
+      // Update ticket labels
+      opts.forEach(function(opt) {
+        var val = parseInt(opt.querySelector('input').value);
+        opt.querySelector('.ln-ticket-price').textContent = '$' + (val * REG_PRICE);
+      });
+      // Update summary
+      updateUI(currentQty);
+      // Update countdown block
+      var label = document.getElementById('ln-countdown-label');
+      if (label) label.textContent = 'VIP pricing has ended';
+      var timer = document.getElementById('ln-countdown-timer');
+      if (timer) timer.style.display = 'none';
+      var priceSwitch = document.querySelector('.ln-price-switch');
+      if (priceSwitch) priceSwitch.textContent = 'Regular price now in effect — $85 per person';
+    }
+
+    function runCountdown() {
+      var now = new Date().getTime();
+      if (now >= SALE_END) {
+        switchToRegularPrice();
+        return;
+      }
+
+      var interval = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = SALE_END - now;
+
+        if (distance <= 0) {
+          clearInterval(interval);
+          switchToRegularPrice();
+          return;
+        }
+
+        var hours = Math.floor(distance / (1000 * 60 * 60));
+        var mins  = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var secs  = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('ln-cd-hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('ln-cd-mins').textContent  = String(mins).padStart(2, '0');
+        document.getElementById('ln-cd-secs').textContent  = String(secs).padStart(2, '0');
+      }, 1000);
+    }
+
     opts.forEach(function(opt) {
       opt.addEventListener('click', function() {
         opts.forEach(function(o) { o.classList.remove('selected'); });
@@ -402,24 +481,18 @@
     });
 
     checkoutBtn.addEventListener('click', function() {
-      var fname = document.getElementById('ln-fname').value.trim();
-      var lname = document.getElementById('ln-lname').value.trim();
-      var email = document.getElementById('ln-email').value.trim();
-      var phone = document.getElementById('ln-phone').value.trim();
+      var fname    = document.getElementById('ln-fname').value.trim();
+      var lname    = document.getElementById('ln-lname').value.trim();
+      var email    = document.getElementById('ln-email').value.trim();
+      var phone    = document.getElementById('ln-phone').value.trim();
       var referral = document.getElementById('ln-referral').value;
-      var notes = document.getElementById('ln-notes').value.trim();
-
-      var dietary = [];
-      document.querySelectorAll('.ln-checkbox-item input[type="checkbox"]').forEach(function(cb) {
-        if (cb.checked) dietary.push(cb.parentElement.textContent.trim());
-      });
+      var notes    = document.getElementById('ln-notes').value.trim();
 
       var noteParts = [];
       if (fname || lname) noteParts.push('Name: ' + (fname + ' ' + lname).trim());
       if (email)          noteParts.push('Email: ' + email);
       if (phone)          noteParts.push('Phone: ' + phone);
       if (referral)       noteParts.push('Heard via: ' + referral);
-      if (dietary.length) noteParts.push('Dietary: ' + dietary.join(', '));
       if (notes)          noteParts.push('Notes: ' + notes);
 
       var noteString = noteParts.join(' | ');
@@ -428,6 +501,8 @@
 
       window.location.href = url;
     });
+
+    runCountdown();
   })();
 </script>
 
