@@ -490,6 +490,14 @@
   padding: 4px 0;
 }
 
+.pdp-purchase-notice {
+  font-size: 0.9em;
+  line-height: 1.6;
+  color: rgba(var(--color-foreground), 0.7);
+  margin: 0;
+  padding: 4px 0;
+}
+
 .pdp-metadoc__item {
   display: flex;
   align-items: center;

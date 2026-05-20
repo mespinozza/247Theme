@@ -924,6 +924,37 @@
                 </collapsible-section>
               {%- endif -%}
 
+              {%- comment -%} Purchase Notice Tab {%- endcomment -%}
+              <collapsible-section
+                class="wt-collapse wt-collapse--always {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
+                data-accordion-set="pdp"
+                data-toggle-tabindex="button, [href], input, select"
+                not-quick-add
+              >
+                <div
+                  role="button"
+                  tabindex="0"
+                  class="wt-collapse__trigger"
+                  aria-expanded="false"
+                  aria-controls="PurchaseNotice-{{ block.id }}"
+                >
+                  <div class="wt-collapse__trigger__text">
+                    <div class="wt-collapse__trigger__icon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 8v4m0 4h.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div class="wt-collapse__trigger__title">Purchase Notice</div>
+                  </div>
+                  <div class="wt-icon" aria-hidden="true">
+                    {% render 'icons', id: 'plus' %}
+                  </div>
+                </div>
+                <div class="wt-collapse__target" id="PurchaseNotice-{{ block.id }}">
+                  <div class="wt-collapse__target--text">
+                    <p class="pdp-purchase-notice">Pricing, availability, and product details are subject to change without notice. 24/7 Restaurant Equipment is not responsible for typographical errors or omissions. Freight charges may apply where applicable.</p>
+                  </div>
+                </div>
+              </collapsible-section>
+
             {%- when 'sku' -%}
               <p
                 class="wt-product__sku"
