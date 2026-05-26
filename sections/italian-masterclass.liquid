@@ -71,9 +71,9 @@
 
   /* ─── TOPBAR ─────────────────────────────────────────── */
   .imc-topbar {
-    background: #0400c2; color: var(--white);
+    background: var(--red); color: var(--white);
     text-align: center; padding: 10px 20px;
-    font-family: var(--cond); font-size: 16px; font-weight: 800;
+    font-family: var(--cond); font-size: 13px; font-weight: 800;
     letter-spacing: 0.12em; text-transform: uppercase;
   }
   .imc-deadline-box { background: rgba(162,13,23,.18); border: 1px solid rgba(162,13,23,.4); padding: 18px 20px; margin-bottom: 22px; }
@@ -401,7 +401,7 @@
 <div class="imc-wrap">
 
   <!-- TOPBAR -->
-  <div class="imc-topbar">Early Bird Ends May 26th — Single Day $195 (rises to $225) · Full Series $500 (rises to $600) · Limited Seats</div>
+  <div class="imc-topbar">Now Enrolling — Single Day $225 · Full 3-Day Series $600 · Limited Seats Remaining</div>
 
   <!-- HERO -->
   <section class="imc-hero">
@@ -420,8 +420,8 @@
           <div class="imc-hero-stats">
             <div class="imc-hero-stat"><div class="imc-hs-label">Dates</div><div class="imc-hs-value">June 9–11</div></div>
             <div class="imc-hero-stat"><div class="imc-hs-label">Per Day</div><div class="imc-hs-value">10AM - 4PM</div></div>
-            <div class="imc-hero-stat"><div class="imc-hs-label">Early Bird / Day</div><div class="imc-hs-value highlight">$195</div></div>
-            <div class="imc-hero-stat"><div class="imc-hs-label">Full Series</div><div class="imc-hs-value highlight">$500</div></div>
+            <div class="imc-hero-stat"><div class="imc-hs-label">Single Day</div><div class="imc-hs-value highlight">$225</div></div>
+            <div class="imc-hero-stat"><div class="imc-hs-label">Full Series</div><div class="imc-hs-value highlight">$600</div></div>
           </div>
         </div>
         <div class="imc-hero-card">
@@ -430,9 +430,9 @@
           <div class="imc-hc-day"><div class="imc-hc-day-num">Day 02</div><div class="imc-hc-day-name">Pizza &amp; Focaccia Master Class</div><div class="imc-hc-day-date">Wednesday, June 10, 2026</div></div>
           <div class="imc-hc-day"><div class="imc-hc-day-num">Day 03</div><div class="imc-hc-day-name">Aperitivo Master Class</div><div class="imc-hc-day-date">Thursday, June 11, 2026</div></div>
           <div class="imc-hc-price">
-            <div class="imc-hc-price-label">Early Bird · Full Series</div>
-            <div class="imc-hc-price-val">$500</div>
-            <div class="imc-hc-price-sub">Save up to $175 vs. regular pricing</div>
+            <div class="imc-hc-price-label">Full Series</div>
+            <div class="imc-hc-price-val">$600</div>
+            <div class="imc-hc-price-sub">Or $225 per single day</div>
           </div>
         </div>
       </div>
@@ -574,35 +574,17 @@
           <div class="imc-h-sans" style="margin-bottom:14px;">Choose one day or<br>attend the full series.</div>
           <p>Each Master Class day is a standalone professional training experience. Attend the class that best fits your kitchen, menu, or team goals — or register for the full three-day series for the most complete experience.</p>
           <div class="imc-price-table">
-            <div class="imc-price-table-head"><div>Class</div><div>Early Bird</div><div>Regular</div></div>
-            <div class="imc-price-table-row"><div class="imc-pr-name">Single Day</div><div class="imc-pr-early">$195</div><div class="imc-pr-reg">$225</div></div>
-            <div class="imc-price-table-row"><div class="imc-pr-name">Full 3-Day Series</div><div class="imc-pr-early">$500</div><div class="imc-pr-reg">$600</div></div>
+            <div class="imc-price-table-head"><div>Class</div><div>Price</div></div>
+            <div class="imc-price-table-row"><div class="imc-pr-name">Single Day</div><div class="imc-pr-early">$225</div></div>
+            <div class="imc-price-table-row"><div class="imc-pr-name">Full 3-Day Series</div><div class="imc-pr-early">$600</div></div>
           </div>
-          <div class="imc-savings-bar"><span>💰</span><span>Save up to <strong>$175</strong> when you register early for all three days.</span></div>
+          <div class="imc-savings-bar"><span>💰</span><span>Register for all three days and <strong>save $75</strong> vs. single day pricing.</span></div>
         </div>
 
         <!-- ── PRODUCT FORM ─────────────────────────────── -->
         <div class="imc-reg-card">
           <div class="imc-reg-title">Reserve Your Seat</div>
-          <div class="imc-reg-subtitle">Select a class to register</div>
-          <div class="imc-deadline-box">
-            <div class="imc-deadline-ends">Early Bird Pricing Ends</div>
-            <div class="imc-deadline-date">May 26, 2026</div>
-            <div class="imc-deadline-warning">After May 26th, prices increase. <strong>Don't miss your savings.</strong></div>
-            <div class="imc-deadline-prices">
-              <div class="imc-deadline-price-col">
-                <div class="imc-deadline-price-type">Single Day</div>
-                <div class="imc-deadline-price-now">$195</div>
-                <div class="imc-deadline-price-after">After: <span>$225</span> (+$30)</div>
-              </div>
-              <div class="imc-deadline-price-col">
-                <div class="imc-deadline-price-type">Full Series</div>
-                <div class="imc-deadline-price-now">$500</div>
-                <div class="imc-deadline-price-after">After: <span>$600</span> (+$100)</div>
-              </div>
-            </div>
-          </div>
-
+          <div class="imc-reg-subtitle">Select a class and reserve your seat</div>
           {% if masterclass_product != blank %}
             {% form 'product', masterclass_product, id: 'imc-product-form' %}
               <input type="hidden" name="id" id="imc-variant-id" value="{{ masterclass_product.selected_or_first_available_variant.id }}">
@@ -622,7 +604,7 @@
                           {% when 1 %}Tuesday · June 9, 2026
                           {% when 2 %}Wednesday · June 10, 2026
                           {% when 3 %}Thursday · June 11, 2026
-                          {% when 4 %}June 9–11 · Save up to $175
+                          {% when 4 %}June 9–11 · Best value
                         {% endcase %}
                       </div>
                     </div>
