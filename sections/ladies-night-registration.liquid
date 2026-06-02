@@ -123,6 +123,16 @@
   .ln-notify-btn:hover { opacity: 0.88; }
   .ln-notify-success { display: none; font-size: 13px; color: #7A4A5A; font-style: italic; margin-top: 10px; }
 
+  /* CONSTANT CONTACT OVERRIDES */
+  .ln-cc-wrap { max-width: 420px; margin: 0 auto; }
+  .ln-cc-wrap .ctct-form-wrapper { background: transparent !important; padding: 0 !important; }
+  .ln-cc-wrap .ctct-form-header { display: none !important; }
+  .ln-cc-wrap .ctct-form-element input[type="email"] { font-family: 'DM Sans', sans-serif !important; font-size: 14px !important; color: #2C1A14 !important; background: #FDF8F5 !important; border: 1.5px solid #EDD8D0 !important; border-radius: 10px !important; padding: 12px 16px !important; width: 100% !important; outline: none !important; box-shadow: none !important; }
+  .ln-cc-wrap .ctct-form-element input[type="email"]:focus { border-color: #B07A8A !important; background: #fff !important; }
+  .ln-cc-wrap .ctct-form-button { background: linear-gradient(135deg, #7A4A5A, #B07A8A) !important; color: #fff !important; border: none !important; border-radius: 10px !important; padding: 12px 20px !important; font-family: 'DM Sans', sans-serif !important; font-size: 13px !important; font-weight: 600 !important; cursor: pointer !important; width: 100% !important; margin-top: 10px !important; }
+  .ln-cc-wrap .ctct-form-footer { font-size: 10px !important; color: #C4A0A0 !important; margin-top: 10px !important; text-align: center !important; }
+  .ln-cc-wrap .ctct-form-footer a { color: #B07A8A !important; }
+
   /* MAP */
   .ln-map-section { padding: 40px 40px 0; }
   .ln-map-card { border-radius: 20px; overflow: hidden; border: 1px solid #EDD8D0; }
@@ -286,11 +296,9 @@
           <p class="ln-soldout-desc">This event sold out fast and we couldn't be more grateful. Leave your email below and you'll be the first to know when we announce the next evening in Sardinia.</p>
           <div class="ln-soldout-divider"></div>
           <span class="ln-notify-label">Notify me about future events</span>
-          <div class="ln-notify-row">
-            <input type="email" class="ln-notify-input" id="ln-notify-email" placeholder="you@email.com">
-            <button class="ln-notify-btn" id="ln-notify-btn">Notify Me</button>
+          <div class="ln-cc-wrap">
+            <div class="ctct-inline-form" data-form-id="598e6242-5390-4983-b95c-420f51225bbb"></div>
           </div>
-          <p class="ln-notify-success" id="ln-notify-success">✨ You're on the list — see you next time!</p>
         </div>
       </div>
     </div>
@@ -378,46 +386,8 @@
       }, 28);
     }
 
-    /* ── NOTIFY ME → SHOPIFY CONTACT ── */
-    var notifyBtn = document.getElementById('ln-notify-btn');
-    var notifyEmail = document.getElementById('ln-notify-email');
-    var notifySuccess = document.getElementById('ln-notify-success');
-    if (notifyBtn) {
-      notifyBtn.addEventListener('click', function() {
-        var email = notifyEmail ? notifyEmail.value.trim() : '';
-        if (!email.includes('@')) {
-          notifyEmail.style.borderColor = '#B07A8A';
-          notifyEmail.focus();
-          return;
-        }
-        notifyBtn.textContent = 'Saving...';
-        notifyBtn.disabled = true;
-
-        var formData = new FormData();
-        formData.append('form_type', 'customer');
-        formData.append('utf8', '✓');
-        formData.append('customer[email]', email);
-        formData.append('customer[tags]', 'pasta-night-waitlist');
-        formData.append('contact[body]', 'Signed up for Pasta Making with the Girls waitlist');
-
-        fetch('/contact', {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: formData
-        })
-        .then(function() {
-          notifyBtn.style.display = 'none';
-          notifyEmail.style.display = 'none';
-          notifySuccess.style.display = 'block';
-        })
-        .catch(function() {
-          /* still show success — entry likely saved */
-          notifyBtn.style.display = 'none';
-          notifyEmail.style.display = 'none';
-          notifySuccess.style.display = 'block';
-        });
-      });
-    }
+    /* ── NOTIFY ME → CONSTANT CONTACT ── */
+    /* handled by CC widget below */
 
   })();
 </script>
@@ -433,3 +403,8 @@
   ]
 }
 {% endschema %}
+
+<!-- Begin Constant Contact Active Forms -->
+<script> var _ctct_m = "74c148e419c4b999daabffbfa3480faa"; </script>
+<script id="signupScript" src="//static.ctctcdn.com/js/signup-form-widget/current/signup-form-widget.min.js" async defer></script>
+<!-- End Constant Contact Active Forms -->
