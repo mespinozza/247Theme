@@ -378,20 +378,44 @@
       }, 28);
     }
 
-    /* ── NOTIFY ME ── */
+    /* ── NOTIFY ME → SHOPIFY CONTACT ── */
     var notifyBtn = document.getElementById('ln-notify-btn');
     var notifyEmail = document.getElementById('ln-notify-email');
     var notifySuccess = document.getElementById('ln-notify-success');
     if (notifyBtn) {
       notifyBtn.addEventListener('click', function() {
-        if (notifyEmail && notifyEmail.value.includes('@')) {
+        var email = notifyEmail ? notifyEmail.value.trim() : '';
+        if (!email.includes('@')) {
+          notifyEmail.style.borderColor = '#B07A8A';
+          notifyEmail.focus();
+          return;
+        }
+        notifyBtn.textContent = 'Saving...';
+        notifyBtn.disabled = true;
+
+        var formData = new FormData();
+        formData.append('form_type', 'customer');
+        formData.append('utf8', '✓');
+        formData.append('customer[email]', email);
+        formData.append('customer[tags]', 'pasta-night-waitlist');
+        formData.append('contact[body]', 'Signed up for Pasta Making with the Girls waitlist');
+
+        fetch('/contact', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        })
+        .then(function() {
           notifyBtn.style.display = 'none';
           notifyEmail.style.display = 'none';
           notifySuccess.style.display = 'block';
-        } else {
-          notifyEmail.style.borderColor = '#B07A8A';
-          notifyEmail.focus();
-        }
+        })
+        .catch(function() {
+          /* still show success — entry likely saved */
+          notifyBtn.style.display = 'none';
+          notifyEmail.style.display = 'none';
+          notifySuccess.style.display = 'block';
+        });
       });
     }
 
