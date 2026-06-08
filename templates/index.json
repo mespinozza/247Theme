@@ -204,8 +204,8 @@
       "settings": {
         "banner_image": "shopify://shop_images/ChatGPT_Image_Aug_21_2025_10_41_09_AM.png",
         "overlay_opacity": 40,
-        "heading": "What's the 24/7 Advantage?",
-        "subheading": "As your turnkey solution, we want to make sure we take care of everything for you. That's why we offer the 24/7 Advantage package with each combi oven and ice machine purchase.",
+        "heading": "The 24/7 Advantage",
+        "subheading": "We are designed to support you beyond the sale. Whether you’re planning a large kitchen project, purchasing an ice machine, or investing in a combi oven, we help bring the pieces together — from design and equipment selection to trusted service support.",
         "banner_min_height": 80,
         "banner_min_height_mobile": 200,
         "banner_padding_top": 60,
@@ -370,33 +370,6 @@
         "margin-bottom": 20
       }
     },
-    "featured_collection_akyMiD": {
-      "type": "featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
-      "settings": {
-        "title": "Kitchen Solutions Done Right – Atosa 🔧",
-        "disable_on_mobile": false,
-        "collection": "atosa",
-        "products_to_show": 8,
-        "show_view_all": true,
-        "button_select": "link",
-        "number_of_column_desktop": 4,
-        "spacing_desktop": "16",
-        "make_products_full_width": true,
-        "number_of_column_mobile": 2.1,
-        "text_alignment": "left",
-        "image_ratio": "square",
-        "show_video": false,
-        "show_secondary_image": false,
-        "show_vendor": true,
-        "show_product_rating": false,
-        "enable_quick_add_button": false,
-        "color-body-text": "rgba(0,0,0,0)",
-        "background_color": "rgba(0,0,0,0)",
-        "margin-top": 20,
-        "margin-bottom": 20
-      }
-    },
     "shoppable_image_T44bqq": {
       "type": "shoppable-image",
       "blocks": {
@@ -463,6 +436,33 @@
         "color-body-text": "rgba(0,0,0,0)",
         "color-overlay": "rgba(0,0,0,0)",
         "color-overlay-opacity": 100,
+        "margin-top": 20,
+        "margin-bottom": 20
+      }
+    },
+    "featured_collection_akyMiD": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "title": "Kitchen Solutions Done Right – Atosa 🔧",
+        "disable_on_mobile": false,
+        "collection": "atosa",
+        "products_to_show": 8,
+        "show_view_all": true,
+        "button_select": "link",
+        "number_of_column_desktop": 4,
+        "spacing_desktop": "16",
+        "make_products_full_width": true,
+        "number_of_column_mobile": 2.1,
+        "text_alignment": "left",
+        "image_ratio": "square",
+        "show_video": false,
+        "show_secondary_image": false,
+        "show_vendor": true,
+        "show_product_rating": false,
+        "enable_quick_add_button": false,
+        "color-body-text": "rgba(0,0,0,0)",
+        "background_color": "rgba(0,0,0,0)",
         "margin-top": 20,
         "margin-bottom": 20
       }
