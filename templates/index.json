@@ -164,6 +164,57 @@
         "margin-bottom": 0
       }
     },
+    "page_showcase_7PBqXB": {
+      "type": "page-showcase",
+      "blocks": {
+        "linked_block_dXhW8Y": {
+          "type": "linked_block",
+          "settings": {
+            "block_image": "shopify://shop_images/ChatGPT_Image_Aug_21_2025_11_20_49_AM.png",
+            "block_link": "shopify://pages/the-combi-advantage",
+            "button_text": "Combi Advantage",
+            "enable_gradient_text": false,
+            "gradient_hover_color": "#000000",
+            "button_bg_color": "#0400c2",
+            "button_text_color": "#ffffff",
+            "button_border_color": "#ff0000",
+            "button_border_width": 0
+          }
+        },
+        "linked_block_4HUEg3": {
+          "type": "linked_block",
+          "settings": {
+            "block_image": "shopify://shop_images/ChatGPT_Image_Aug_21_2025_11_16_55_AM.png",
+            "block_link": "shopify://pages/the-ice-machine-advantage",
+            "button_text": "Ice Machine Advantage",
+            "enable_gradient_text": false,
+            "gradient_hover_color": "#000000",
+            "button_bg_color": "#a20d17",
+            "button_text_color": "#ffffff",
+            "button_border_color": "#ff0000",
+            "button_border_width": 0
+          }
+        }
+      },
+      "block_order": [
+        "linked_block_dXhW8Y",
+        "linked_block_4HUEg3"
+      ],
+      "name": "Page Showcase",
+      "settings": {
+        "banner_image": "shopify://shop_images/ChatGPT_Image_Aug_21_2025_10_41_09_AM.png",
+        "overlay_opacity": 40,
+        "heading": "What's the 24/7 Advantage?",
+        "subheading": "As your turnkey solution, we want to make sure we take care of everything for you. That's why we offer the 24/7 Advantage package with each combi oven and ice machine purchase.",
+        "banner_min_height": 80,
+        "banner_min_height_mobile": 200,
+        "banner_padding_top": 60,
+        "banner_padding_bottom": 60,
+        "block_height": 200,
+        "block_height_mobile": 120,
+        "blocks_gap": 0
+      }
+    },
     "three_layer_banner_6Wzmx9": {
       "type": "three-layer-banner",
       "blocks": {
@@ -293,13 +344,12 @@
         "margin_bottom": 20
       }
     },
-    "featured_collection_akyMiD": {
+    "featured_collection_AygJbi": {
       "type": "featured-collection",
-      "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "title": "Kitchen Solutions Done Right – Atosa 🔧",
+        "title": "Performance Pizza Ovens – Moretti Forni",
         "disable_on_mobile": false,
-        "collection": "atosa",
+        "collection": "moretti-forni",
         "products_to_show": 8,
         "show_view_all": true,
         "button_select": "link",
@@ -320,63 +370,13 @@
         "margin-bottom": 20
       }
     },
-    "page_showcase_7PBqXB": {
-      "type": "page-showcase",
-      "blocks": {
-        "linked_block_dXhW8Y": {
-          "type": "linked_block",
-          "settings": {
-            "block_image": "shopify://shop_images/ChatGPT_Image_Aug_21_2025_11_20_49_AM.png",
-            "block_link": "shopify://pages/the-combi-advantage",
-            "button_text": "Combi Advantage",
-            "enable_gradient_text": false,
-            "gradient_hover_color": "#000000",
-            "button_bg_color": "#0400c2",
-            "button_text_color": "#ffffff",
-            "button_border_color": "#ff0000",
-            "button_border_width": 0
-          }
-        },
-        "linked_block_4HUEg3": {
-          "type": "linked_block",
-          "settings": {
-            "block_image": "shopify://shop_images/ChatGPT_Image_Aug_21_2025_11_16_55_AM.png",
-            "block_link": "shopify://pages/the-ice-machine-advantage",
-            "button_text": "Ice Machine Advantage",
-            "enable_gradient_text": false,
-            "gradient_hover_color": "#000000",
-            "button_bg_color": "#a20d17",
-            "button_text_color": "#ffffff",
-            "button_border_color": "#ff0000",
-            "button_border_width": 0
-          }
-        }
-      },
-      "block_order": [
-        "linked_block_dXhW8Y",
-        "linked_block_4HUEg3"
-      ],
-      "name": "Page Showcase",
-      "settings": {
-        "banner_image": "shopify://shop_images/ChatGPT_Image_Aug_21_2025_10_41_09_AM.png",
-        "overlay_opacity": 40,
-        "heading": "What's the 24/7 Advantage?",
-        "subheading": "As your turnkey solution, we want to make sure we take care of everything for you. That's why we offer the 24/7 Advantage package with each combi oven and ice machine purchase.",
-        "banner_min_height": 80,
-        "banner_min_height_mobile": 200,
-        "banner_padding_top": 60,
-        "banner_padding_bottom": 60,
-        "block_height": 200,
-        "block_height_mobile": 120,
-        "blocks_gap": 0
-      }
-    },
-    "featured_collection_AygJbi": {
+    "featured_collection_akyMiD": {
       "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
       "settings": {
-        "title": "Performance Pizza Ovens – Moretti Forni",
+        "title": "Kitchen Solutions Done Right – Atosa 🔧",
         "disable_on_mobile": false,
-        "collection": "moretti-forni",
+        "collection": "atosa",
         "products_to_show": 8,
         "show_view_all": true,
         "button_select": "link",
@@ -551,12 +551,12 @@
   "order": [
     "slideshow_pro_piyLU3",
     "brands_8ANAqG",
+    "page_showcase_7PBqXB",
     "three_layer_banner_6Wzmx9",
     "category_grid_8eMfdC",
     "featured_collection_AygJbi",
-    "page_showcase_7PBqXB",
-    "featured_collection_akyMiD",
     "shoppable_image_T44bqq",
+    "featured_collection_akyMiD",
     "blog_posts_pjgHYE",
     "features_banner_rnAYGJ"
   ]
