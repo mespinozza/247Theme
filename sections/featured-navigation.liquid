@@ -29,7 +29,7 @@
 <script src="{{ 'secondary-nav.js' | asset_url }}" defer="defer"></script>
 
 <div data-section-id="{{ section.id }}">
-  {% render 'headline', title: section.settings.heading | newline_to_br %}
+  {% render 'headline', title: section.settings.heading %}
 
   <secondary-nav>
     <div class="secondary-navigation">
@@ -141,3 +141,13 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'headline', title: section.settings.heading | newline_to_br %}"
+  to: "{% render 'headline', title: section.settings.heading %}"
+  position: 920..976
+{% endcomment %}

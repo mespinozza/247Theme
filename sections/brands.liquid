@@ -30,7 +30,7 @@
   data-section-id="{{ section.id }}"
   class="wt-slider wt-brands__container{% if section.settings.animation == 'marquee' %} wt-brands__container--marquee{% endif %}"
 >
-  {% render 'headline', title: section.settings.heading | newline_to_br %}
+  {% render 'headline', title: section.settings.heading %}
 
   {% if section.settings.animation == 'swipe' %}
     <slideshow-section class="wt-slider slide-in" data-brands="true">
@@ -340,3 +340,13 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'headline', title: section.settings.heading | newline_to_br %}"
+  to: "{% render 'headline', title: section.settings.heading %}"
+  position: 1088..1144
+{% endcomment %}

@@ -139,7 +139,7 @@
     {%- assign product = section.settings.product -%}
 
     {% if section.settings.heading != blank %}
-      {% render 'headline', title: section.settings.heading | newline_to_br %}
+      {% render 'headline', title: section.settings.heading %}
     {% endif %}
 
     <div data-section-id="{{ section.id }}" class="wt-featured-product wt-product wt-product--{{ desktop_layout }}">
@@ -2745,3 +2745,13 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'headline', title: section.settings.heading | newline_to_br %}"
+  to: "{% render 'headline', title: section.settings.heading %}"
+  position: 5570..5626
+{% endcomment %}
