@@ -23,14 +23,14 @@
         "margin-bottom": 32
       }
     },
-    "italian_masterclass_PUdicL": {
-      "type": "italian-masterclass",
-      "name": "Italian Master Class",
+    "launch_party_main": {
+      "type": "247-launch-party-landing-page",
+      "name": "247 Launch Party",
       "settings": {}
     }
   },
   "order": [
     "main",
-    "italian_masterclass_PUdicL"
+    "launch_party_main"
   ]
 }
