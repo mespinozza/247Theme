@@ -1,0 +1,415 @@
+<!--
+  24/7 RESTAURANT EQUIPMENT — Q4 VIRTUAL LAUNCH PARTY LANDING PAGE
+  ==================================================================
+  HOW TO USE IN SHOPIFY:
+  1. Shopify Admin → Online Store → Pages → Add page
+  2. Title it "Fourth Quarter Launch Party" (or similar) — note the URL handle it generates
+  3. In the page editor, switch the content area to HTML mode (</> icon) and paste
+     everything below the "PASTE STARTS HERE" line
+     — OR, for more control, create a page.launch-party.liquid template in
+     Online Store → Themes → Edit code → Templates, paste this in, and assign
+     that template to the page from the page editor's "Theme template" dropdown.
+  4. Publish, then link to it from your main nav / homepage banner / emails.
+
+  PLACEHOLDERS TO REPLACE BEFORE GOING LIVE:
+  - [ECO BURNER TOPIC] — fill in once confirmed
+  - [VENDOR LOGO URLs] — swap in actual vendor logo image URLs (or delete the
+    <img> tags and just use the text card style if logos aren't ready)
+  - Confirm event time (currently set to 10:00 AM ET per the StreamYard preview)
+-->
+
+<!-- PASTE STARTS HERE -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Playfair+Display:ital,wght@1,500;1,600&display=swap" rel="stylesheet">
+
+<style>
+  .lp-wrap {
+    --navy: #0f1923;
+    --red: #a20d17;
+    --blue: #0400c2;
+    --blue-bright: #0508a3;
+    --text: #222321;
+    --off-white: #f4f5f7;
+    font-family: 'Barlow Condensed', Arial, sans-serif;
+    color: var(--text);
+    background: var(--off-white);
+  }
+  .lp-wrap * { box-sizing: border-box; }
+
+  /* HERO */
+  .lp-hero {
+    background: var(--navy);
+    color: #fff;
+    padding: 64px 20px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .lp-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(4,0,194,0.25) 0%, rgba(162,13,23,0.15) 100%);
+    pointer-events: none;
+  }
+  .lp-hero-inner { position: relative; max-width: 900px; margin: 0 auto; }
+  .lp-eyebrow {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 20px;
+    color: #cfd6e0;
+    margin: 0 0 8px;
+    letter-spacing: 0.5px;
+  }
+  .lp-h1 {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: clamp(36px, 7vw, 64px);
+    line-height: 1.05;
+    letter-spacing: 0.5px;
+    margin: 0 0 18px;
+  }
+  .lp-h1 span { color: #ff5a63; }
+  .lp-hero-sub {
+    font-size: clamp(16px, 2.2vw, 20px);
+    font-weight: 500;
+    color: #dfe3ea;
+    max-width: 620px;
+    margin: 0 auto 28px;
+  }
+  .lp-date-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 999px;
+    padding: 10px 22px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 36px;
+  }
+
+  /* EMBED / REGISTER BLOCK */
+  #register {
+    max-width: 720px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 14px;
+    padding: 10px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+  }
+  .lp-embed-frame {
+    width: 100%;
+    height: 0;
+    position: relative;
+    padding-bottom: 56.25%;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .lp-embed-frame iframe {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: 0;
+  }
+
+  /* SECTION SHARED */
+  .lp-section {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 64px 20px;
+  }
+  .lp-section-title {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: clamp(28px, 4vw, 40px);
+    text-align: center;
+    margin: 0 0 12px;
+    letter-spacing: 0.5px;
+  }
+  .lp-section-title .accent { color: var(--red); }
+  .lp-section-sub {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 19px;
+    color: #555;
+    max-width: 640px;
+    margin: 0 auto 40px;
+  }
+
+  /* WHAT TO EXPECT */
+  .lp-expect-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .lp-expect-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 24px;
+    border-top: 4px solid var(--blue);
+    text-align: center;
+  }
+  .lp-expect-card h3 {
+    font-size: 22px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0 0 8px;
+  }
+  .lp-expect-card p { font-size: 16px; line-height: 1.5; color: #444; margin: 0; }
+
+  /* VENDOR GRID */
+  .lp-vendor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 22px;
+  }
+  .lp-vendor-card {
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #e3e5ea;
+    display: flex;
+    flex-direction: column;
+  }
+  .lp-vendor-logo-wrap {
+    background: var(--navy);
+    padding: 28px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90px;
+  }
+  .lp-vendor-logo-wrap img { max-height: 48px; max-width: 80%; filter: brightness(0) invert(1); }
+  .lp-vendor-body { padding: 20px 22px 24px; flex: 1; }
+  .lp-vendor-name {
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin: 0 0 4px;
+  }
+  .lp-vendor-tag {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--red);
+    font-size: 16px;
+    margin: 0 0 10px;
+  }
+  .lp-vendor-desc { font-size: 15px; line-height: 1.5; color: #444; margin: 0; }
+
+  /* STUDIO NOTE */
+  .lp-studio-note {
+    background: var(--red);
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .lp-studio-note p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  /* SECOND CTA */
+  .lp-cta-band {
+    background: var(--blue);
+    color: #fff;
+    text-align: center;
+    padding: 56px 20px;
+  }
+  .lp-cta-band h2 {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: clamp(26px, 4vw, 36px);
+    margin: 0 0 20px;
+  }
+  .lp-btn {
+    display: inline-block;
+    background: #fff;
+    color: var(--blue);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    padding: 16px 40px;
+    border-radius: 6px;
+    text-decoration: none;
+  }
+  .lp-btn:hover { opacity: 0.9; }
+
+  /* FAQ */
+  .lp-faq { max-width: 760px; margin: 0 auto; }
+  .lp-faq details {
+    background: #fff;
+    border: 1px solid #e3e5ea;
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin-bottom: 12px;
+  }
+  .lp-faq summary {
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .lp-faq summary::-webkit-details-marker { display: none; }
+  .lp-faq summary::after {
+    content: "+";
+    float: right;
+    font-size: 22px;
+    color: var(--red);
+  }
+  .lp-faq details[open] summary::after { content: "–"; }
+  .lp-faq p { margin: 12px 0 0; font-size: 16px; line-height: 1.5; color: #444; }
+
+  @media (max-width: 640px) {
+    .lp-section { padding: 44px 16px; }
+  }
+</style>
+
+<div class="lp-wrap">
+
+  <!-- HERO + REGISTER EMBED -->
+  <section class="lp-hero">
+    <div class="lp-hero-inner">
+      <p class="lp-eyebrow">You're invited to the</p>
+      <h1 class="lp-h1">24/7 Fourth Quarter<br><span>Launch Party</span></h1>
+      <p class="lp-hero-sub">A live, studio-produced showcase of the newest equipment hitting commercial kitchens this quarter — straight from the vendors who make it.</p>
+      <div class="lp-date-chip">📅 October 21, 2026 &nbsp;•&nbsp; 10:00 AM ET</div>
+
+      <div id="register">
+        <div class="lp-embed-frame">
+          <iframe src="https://streamyard.com/watch/gXmX2JBGZdgp?embed=true" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT TO EXPECT -->
+  <section class="lp-section">
+    <h2 class="lp-section-title">What To <span class="accent">Expect</span></h2>
+    <p class="lp-section-sub">This isn't a webinar deck — it's a live, in-studio event with real equipment, real demos, and the people behind the products.</p>
+    <div class="lp-expect-grid">
+      <div class="lp-expect-card">
+        <h3>Live Demos</h3>
+        <p>Six vendors, live product demonstrations you won't find in a spec sheet.</p>
+      </div>
+      <div class="lp-expect-card">
+        <h3>Direct Access</h3>
+        <p>Ask questions in real time as vendors present — no sales rep filter.</p>
+      </div>
+      <div class="lp-expect-card">
+        <h3>New for Q4</h3>
+        <p>First look at new collections and equipment before they hit the floor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENDOR LINEUP -->
+  <section class="lp-section" style="background:#eceef2;">
+    <h2 class="lp-section-title">Meet The <span class="accent">Vendors</span></h2>
+    <p class="lp-section-sub">Six presentations, one afternoon — mixed live from our showroom studio and remote from vendor locations.</p>
+    <div class="lp-vendor-grid">
+
+      <div class="lp-vendor-card">
+        <div class="lp-vendor-logo-wrap"><img src="[VENDOR LOGO URL — New Star Foodservice]" alt="New Star Foodservice"></div>
+        <div class="lp-vendor-body">
+          <p class="lp-vendor-name">New Star Foodservice</p>
+          <p class="lp-vendor-tag">Knife Skills &amp; New Collection</p>
+          <p class="lp-vendor-desc">A hands-on look at their newest knife collection, plus live knife skills demonstrations.</p>
+        </div>
+      </div>
+
+      <div class="lp-vendor-card">
+        <div class="lp-vendor-logo-wrap"><img src="[VENDOR LOGO URL — Orved]" alt="Orved"></div>
+        <div class="lp-vendor-body">
+          <p class="lp-vendor-name">Orved</p>
+          <p class="lp-vendor-tag">Vacuum Sealer, with Chef Dante</p>
+          <p class="lp-vendor-desc">Chef Dante — back after our Italian Master Class — demos the vacuum sealer in real kitchen use.</p>
+        </div>
+      </div>
+
+      <div class="lp-vendor-card">
+        <div class="lp-vendor-logo-wrap"><img src="[VENDOR LOGO URL — Unox]" alt="Unox"></div>
+        <div class="lp-vendor-body">
+          <p class="lp-vendor-name">Unox</p>
+          <p class="lp-vendor-tag">Speed Oven</p>
+          <p class="lp-vendor-desc">A closer look at Unox's speed oven technology and what it means for kitchen throughput.</p>
+        </div>
+      </div>
+
+      <div class="lp-vendor-card">
+        <div class="lp-vendor-logo-wrap"><img src="[VENDOR LOGO URL — Swedlinghaus]" alt="Swedlinghaus"></div>
+        <div class="lp-vendor-body">
+          <p class="lp-vendor-name">Swedlinghaus</p>
+          <p class="lp-vendor-tag">Flywheel Slicer</p>
+          <p class="lp-vendor-desc">Precision and durability on display with a live flywheel slicer demonstration.</p>
+        </div>
+      </div>
+
+      <div class="lp-vendor-card">
+        <div class="lp-vendor-logo-wrap"><img src="[VENDOR LOGO URL — Eco Burner]" alt="Eco Burner"></div>
+        <div class="lp-vendor-body">
+          <p class="lp-vendor-name">Eco Burner</p>
+          <p class="lp-vendor-tag">[ECO BURNER TOPIC]</p>
+          <p class="lp-vendor-desc">[Eco Burner presentation description — fill in once topic is confirmed.]</p>
+        </div>
+      </div>
+
+      <div class="lp-vendor-card">
+        <div class="lp-vendor-logo-wrap"><img src="[VENDOR LOGO URL — Onis]" alt="Onis"></div>
+        <div class="lp-vendor-body">
+          <p class="lp-vendor-name">Onis</p>
+          <p class="lp-vendor-tag">Glassware</p>
+          <p class="lp-vendor-desc">A presentation on Onis glassware — built for the pace and pressure of a commercial bar or dining room.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STUDIO NOTE -->
+  <section class="lp-studio-note">
+    <p>Filmed live from our showroom studio, with select vendors presenting remotely from their own facilities.</p>
+  </section>
+
+  <!-- SECOND CTA -->
+  <section class="lp-cta-band">
+    <h2>Don't Miss It — October 21st, 10 AM ET</h2>
+    <a href="#register" class="lp-btn">Register Now</a>
+  </section>
+
+  <!-- FAQ -->
+  <section class="lp-section">
+    <h2 class="lp-section-title">Questions?</h2>
+    <div class="lp-faq">
+      <details>
+        <summary>Is this event free?</summary>
+        <p>Yes — registration is free and takes less than a minute.</p>
+      </details>
+      <details>
+        <summary>Do I need to download anything to watch?</summary>
+        <p>No — the event streams right in your browser once you register, no app or download required.</p>
+      </details>
+      <details>
+        <summary>Will there be a replay if I can't make it live?</summary>
+        <p>[Confirm once the on-demand replay setting is decided in StreamYard — update this answer accordingly.]</p>
+      </details>
+      <details>
+        <summary>Can I ask the vendors questions?</summary>
+        <p>Yes — live chat is open throughout the event for real-time questions and comments.</p>
+      </details>
+    </div>
+  </section>
+
+</div>
+
+<!-- PASTE ENDS HERE -->
