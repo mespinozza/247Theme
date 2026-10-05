@@ -64,7 +64,7 @@
   data-section-id="{{ section.id }}"
   class="section-content wt-slider--wrapper {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}"
 >
-  {% render 'headline', title: section.settings.heading | newline_to_br %}
+  {% render 'headline', title: section.settings.heading %}
 
   <slideshow-section class="wt-slider" data-skip-center-nav-method="true" data-slides-group>
     <div data-swiper class="wt-slider__container--collection-list collection-list">
@@ -291,3 +291,13 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'headline', title: section.settings.heading | newline_to_br %}"
+  to: "{% render 'headline', title: section.settings.heading %}"
+  position: 2144..2200
+{% endcomment %}

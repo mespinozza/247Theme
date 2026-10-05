@@ -89,7 +89,7 @@
     {% assign class_name = '' %}
   {% endif %}
   <low-power-video>
-    {% render 'headline', title: section.settings.heading | newline_to_br %}
+    {% render 'headline', title: section.settings.heading %}
     <div
       class="{% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %} wt-video {{ class_name }}"
       data-section-id="{{ section.id }}"
@@ -563,3 +563,13 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'headline', title: section.settings.heading | newline_to_br %}"
+  to: "{% render 'headline', title: section.settings.heading %}"
+  position: 3429..3485
+{% endcomment %}

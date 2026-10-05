@@ -131,7 +131,7 @@
 </style>
 
 <div class="wt-mosaic" data-section-id="{{ section.id }}">
-  {% render 'headline', title: section.settings.heading | newline_to_br %}
+  {% render 'headline', title: section.settings.heading %}
   
   <!-- Mobile Swiper Layout -->
   <slideshow-section
@@ -587,3 +587,13 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'headline', title: section.settings.heading | newline_to_br %}"
+  to: "{% render 'headline', title: section.settings.heading %}"
+  position: 4164..4220
+{% endcomment %}

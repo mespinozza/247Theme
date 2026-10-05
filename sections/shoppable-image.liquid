@@ -62,7 +62,7 @@
   data-section-id="{{ section.id }}"
   class="shoppable-image {% if section.settings.full-width-enabled %} shoppable-image__full {% endif %}"
 >
-  {% render 'headline', title: section.settings.heading | newline_to_br %}
+  {% render 'headline', title: section.settings.heading %}
 
   <div class="shoppable-image__text {% if settings.animations %} scroll-trigger animate--slide-in {% endif %} {% if settings.disabled_animations_on_mobile %} disabled-on-mobile {% endif %}">
     {{ section.settings.text }}
@@ -411,3 +411,13 @@
   }
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'headline', title: section.settings.heading | newline_to_br %}"
+  to: "{% render 'headline', title: section.settings.heading %}"
+  position: 1986..2042
+{% endcomment %}
