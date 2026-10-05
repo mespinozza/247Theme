@@ -1,0 +1,41 @@
+{%- comment -%}
+  Kitchen-themed fallback image for cards without a featured image.
+  Accepts:
+  - seed: {Number} used to pick one of the icons (e.g. article.id)
+{%- endcomment -%}
+
+{%- assign variant = seed | default: 0 | modulo: 3 -%}
+
+<div class="kitchen-placeholder" role="img" aria-label="{{ shop.name | escape }}">
+  <svg
+    class="kitchen-placeholder__icon"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.25"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+    focusable="false"
+  >
+    {%- case variant -%}
+      {%- when 0 -%}
+        <path d="M9 2.5c-.6.8-.6 1.7 0 2.5"/>
+        <path d="M12 2.5c-.6.8-.6 1.7 0 2.5"/>
+        <path d="M15 2.5c-.6.8-.6 1.7 0 2.5"/>
+        <path d="M10 8h4"/>
+        <path d="M4 10h16"/>
+        <path d="M5 10v7a3 3 0 0 0 3 3h8a3 3 0 0 0 3-3v-7"/>
+        <path d="M2 12h3"/>
+        <path d="M19 12h3"/>
+      {%- when 1 -%}
+        <path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z"/>
+        <path d="M6 17h12"/>
+      {%- else -%}
+        <path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/>
+        <path d="M7 2v20"/>
+        <path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/>
+    {%- endcase -%}
+  </svg>
+</div>

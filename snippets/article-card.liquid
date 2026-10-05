@@ -29,11 +29,12 @@
   </div>
   <a href="{{ article.url }}" class="article-content motion-reduce">
     {% assign button_link = article.url %}
-    {% if article.image == blank %}
-      {% assign placeholder = 'product-apparel-1' %}
-    {% endif %}
     <div class="article-card__image-wrapper  {% if make_full_width %} article-card__image-wrapper--full-width {% endif %} {% if search %} search {% endif %} {% if show_image != true %} hidden {% endif %}">
-      {% render 'picture', desktop_image: article.image, mobile_image: article.image, placeholder: placeholder %}
+      {% if article.image == blank %}
+        {% render 'kitchen-placeholder', seed: article.id %}
+      {% else %}
+        {% render 'picture', desktop_image: article.image, mobile_image: article.image %}
+      {% endif %}
     </div>
   </a>
   <div class="article-card__info {% if make_full_width %} article-card__info--full-width {% endif %}">

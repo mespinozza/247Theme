@@ -7645,6 +7645,22 @@ pickup-availability-drawer .pickup-availability-list .pickup-availability-list__
 .article-card__image-wrapper .hero__pic {
   padding-top: 0;
 }
+.article-card__image-wrapper .kitchen-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  background-color: #f2f2f2;
+  border-radius: var(--border-radius);
+  color: #9a9a9a;
+}
+.article-card__image-wrapper--full-width .kitchen-placeholder {
+  border-radius: 0;
+}
+.article-card__image-wrapper .kitchen-placeholder__icon {
+  width: 40%;
+  height: 40%;
+}
 .article-card .card__badges {
   z-index: 1;
 }
