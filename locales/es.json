@@ -584,6 +584,11 @@
       },
       "payment_gateway": {
         "bank_account_label": "Cuenta bancaria"
+      },
+      "local_pickup": {
+        "stock_details": {
+          "in_stock": "En stock"
+        }
       }
     }
   },
