@@ -55,6 +55,10 @@
   endif
 -%}
 
+{%- if sidebar contains '<product-form' -%}
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
 <div data-section-id="{{ section.id }}">
   <article class="main-article" itemscope>
     {%- for block in section.blocks -%}
@@ -577,7 +581,8 @@
           "type": "checkbox",
           "id": "auto_detect",
           "label": "Show products and collections linked in the article",
-          "default": true
+          "default": true,
+          "info": "Links to products or collections that no longer exist still get a card, which opens a store search for the link text."
         },
         {
           "type": "product_list",
@@ -595,9 +600,9 @@
           "type": "range",
           "id": "max_items",
           "min": 1,
-          "max": 10,
+          "max": 12,
           "step": 1,
-          "default": 6,
+          "default": 8,
           "label": "Maximum items"
         },
         {
@@ -605,14 +610,11 @@
           "content": "Products"
         },
         {
-          "type": "select",
-          "id": "product_style",
-          "label": "Product card style",
-          "options": [
-            { "value": "image", "label": "Large image" },
-            { "value": "compact", "label": "Compact" }
-          ],
-          "default": "image"
+          "type": "checkbox",
+          "id": "show_add_to_cart",
+          "label": "Show add to cart button",
+          "default": true,
+          "info": "Shown for in-stock products with a single option and a price. Other products show the product link text instead."
         },
         {
           "type": "checkbox",
