@@ -1,0 +1,165 @@
+{%- comment -%}
+  "Featured in this article" list for blog posts.
+  Accepts:
+  - article: {Object} the current article
+  - block: {Object} the main-article "featured_links" block
+
+  Product and collection links are read from the article body in the order
+  they appear. Manually picked products/collections are appended after them.
+  Handles are stored as "p:handle" / "c:handle" entries separated by "|".
+{%- endcomment -%}
+
+{%- liquid
+  assign max_items = block.settings.max_items | default: 6
+  assign entries = '|'
+
+  if block.settings.auto_detect
+    assign chunks = article.content | split: 'href="'
+    for chunk in chunks offset: 1
+      assign url = chunk | split: '"' | first | split: '?' | first | split: '#' | first
+      assign entry = blank
+
+      if url contains '/products/'
+        assign handle = url | split: '/products/' | last | split: '/' | first
+        assign entry = 'p:' | append: handle
+      elsif url contains '/collections/'
+        assign handle = url | split: '/collections/' | last | split: '/' | first
+        unless handle == 'all' or handle == 'vendors' or handle == 'types'
+          assign entry = 'c:' | append: handle
+        endunless
+      endif
+
+      if entry != blank and handle != blank
+        assign needle = '|' | append: entry | append: '|'
+        unless entries contains needle
+          assign entries = entries | append: entry | append: '|'
+        endunless
+      endif
+    endfor
+  endif
+
+  for collection_item in block.settings.collections
+    assign needle = '|c:' | append: collection_item.handle | append: '|'
+    unless entries contains needle
+      assign entries = entries | append: 'c:' | append: collection_item.handle | append: '|'
+    endunless
+  endfor
+
+  for product_item in block.settings.products
+    assign needle = '|p:' | append: product_item.handle | append: '|'
+    unless entries contains needle
+      assign entries = entries | append: 'p:' | append: product_item.handle | append: '|'
+    endunless
+  endfor
+
+  assign entry_list = entries | split: '|'
+-%}
+
+{%- capture items -%}
+  {%- assign shown = 0 -%}
+  {%- for entry in entry_list -%}
+    {%- if shown >= max_items -%}{%- break -%}{%- endif -%}
+    {%- assign kind = entry | slice: 0, 2 -%}
+    {%- assign handle = entry | remove_first: kind -%}
+
+    {%- if kind == 'p:' -%}
+      {%- assign item = all_products[handle] -%}
+      {%- if item == blank or item.id == blank -%}{%- continue -%}{%- endif -%}
+      {%- assign shown = shown | plus: 1 -%}
+      {%- assign item_image = item.featured_media.preview_image -%}
+
+      <li class="featured-links__item">
+        {%- if block.settings.product_style == 'image' and item_image != blank -%}
+          <a href="{{ item.url }}" class="featured-links__card featured-links__card--media">
+            <span class="featured-links__media">
+              {{
+                item_image
+                | image_url: width: 480
+                | image_tag:
+                  loading: 'lazy',
+                  widths: '240, 360, 480',
+                  sizes: '(min-width: 990px) 300px, (min-width: 600px) 45vw, 90vw',
+                  alt: item.title,
+                  class: 'featured-links__img'
+              }}
+            </span>
+            <span class="featured-links__body">
+              <span class="featured-links__label">{{ block.settings.product_label }}</span>
+              <span class="featured-links__title">{{ item.title }}</span>
+              {%- if block.settings.show_price and item.price > 0 -%}
+                <span class="featured-links__price">{{ item.price | money }}</span>
+              {%- endif -%}
+              <span class="featured-links__cta">
+                {{- block.settings.product_cta -}}
+                {%- render 'featured-links-chevron' -%}
+              </span>
+            </span>
+          </a>
+        {%- else -%}
+          <a href="{{ item.url }}" class="featured-links__card featured-links__card--compact">
+            <span class="featured-links__row">
+              <span class="featured-links__thumb">
+                {%- if item_image != blank -%}
+                  {{ item_image | image_url: width: 120 | image_tag: loading: 'lazy', alt: item.title }}
+                {%- else -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 8h12l-1 12H7L6 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+                {%- endif -%}
+              </span>
+              <span class="featured-links__text">
+                <span class="featured-links__label">{{ block.settings.product_label }}</span>
+                <span class="featured-links__title">{{ item.title }}</span>
+                {%- if block.settings.show_price and item.price > 0 -%}
+                  <span class="featured-links__price">{{ item.price | money }}</span>
+                {%- endif -%}
+              </span>
+            </span>
+            <span class="featured-links__cta">
+              {{- block.settings.product_cta -}}
+              {%- render 'featured-links-chevron' -%}
+            </span>
+          </a>
+        {%- endif -%}
+      </li>
+
+    {%- elsif kind == 'c:' -%}
+      {%- assign item = collections[handle] -%}
+      {%- if item == blank or item.id == blank -%}{%- continue -%}{%- endif -%}
+      {%- assign shown = shown | plus: 1 -%}
+      {%- assign item_image = item.featured_image | default: item.products.first.featured_media.preview_image -%}
+
+      <li class="featured-links__item">
+        <a href="{{ item.url }}" class="featured-links__card featured-links__card--compact">
+          <span class="featured-links__row">
+            <span class="featured-links__thumb">
+              {%- if item_image != blank -%}
+                {{ item_image | image_url: width: 120 | image_tag: loading: 'lazy', alt: item.title }}
+              {%- else -%}
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="4" y="4" width="7" height="7" rx="1"/><rect x="13" y="4" width="7" height="7" rx="1"/><rect x="4" y="13" width="7" height="7" rx="1"/><rect x="13" y="13" width="7" height="7" rx="1"/></svg>
+              {%- endif -%}
+            </span>
+            <span class="featured-links__text">
+              <span class="featured-links__label">{{ block.settings.collection_label }}</span>
+              <span class="featured-links__title">{{ item.title }}</span>
+            </span>
+          </span>
+          <span class="featured-links__cta">
+            {{- block.settings.collection_cta -}}
+            {%- render 'featured-links-chevron' -%}
+          </span>
+        </a>
+      </li>
+    {%- endif -%}
+  {%- endfor -%}
+{%- endcapture -%}
+
+{%- assign items = items | strip -%}
+{%- if items != blank -%}
+  <div class="featured-links" {{ block.shopify_attributes }}>
+    {%- if block.settings.heading != blank -%}
+      <h2 class="featured-links__heading">{{ block.settings.heading | escape }}</h2>
+    {%- endif -%}
+    <ul class="featured-links__list" role="list">
+      {{ items }}
+    </ul>
+  </div>
+{%- endif -%}
