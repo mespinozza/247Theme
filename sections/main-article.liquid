@@ -105,32 +105,66 @@
       <div class="main-article__content rte">
         {%- case block.type -%}
           {%- when 'title' -%}
-            <header {{ block.shopify_attributes }}>
-              <div class="main-article__header">
-                {%- if block.settings.blog_show_author -%}
-                  <span itemprop="author">
-                    <span itemprop="name">Posted by {{ article.author }} </span>
-                  </span>
-                {%- endif -%}
-                {%- if block.settings.blog_show_date -%}
-                  <span itemprop="dateCreated pubdate datePublished"
-                    >on {{ article.published_at | date: '%B %d, %Y' -}}
-                  </span>
-                {%- endif -%}
-              </div>
-              {%- if block.settings.blog_show_author or block.settings.blog_show_date -%}
-                {% assign header_class = 'main-article__title main-article__title--no-margin' %}
-              {% else %}
-                {% assign header_class = 'main-article__title' %}
-              {% endif %}
-              <h1 class="{{ header_class }}" itemprop="headline">
+            <header class="main-article__heading" {{ block.shopify_attributes }}>
+              {%- if block.settings.show_blog_link -%}
+                <a href="{{ blog.url }}" class="main-article__eyebrow">{{ blog.title | escape }}</a>
+              {%- endif -%}
+              <h1 class="main-article__title" itemprop="headline">
                 {{ article.title | escape }}
               </h1>
+              {%- liquid
+                assign show_read_time = false
+                if block.settings.show_reading_time
+                  assign word_count = article.content | strip_html | split: ' ' | size
+                  assign read_minutes = word_count | divided_by: 225.0 | ceil
+                  if read_minutes < 1
+                    assign read_minutes = 1
+                  endif
+                  assign show_read_time = true
+                endif
+              -%}
+              {%- if block.settings.blog_show_author or block.settings.blog_show_date or show_read_time -%}
+                <ul class="main-article__meta" role="list">
+                  {%- if block.settings.blog_show_author -%}
+                    <li class="main-article__meta-item" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                      <svg class="main-article__meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+                      <span>By <span itemprop="name">{{ article.author }}</span></span>
+                    </li>
+                  {%- endif -%}
+                  {%- if block.settings.blog_show_date -%}
+                    <li class="main-article__meta-item">
+                      <svg class="main-article__meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+                      <time datetime="{{ article.published_at | date: '%Y-%m-%d' }}" itemprop="datePublished">
+                        {{- article.published_at | date: '%B %d, %Y' -}}
+                      </time>
+                    </li>
+                  {%- endif -%}
+                  {%- if show_read_time -%}
+                    <li class="main-article__meta-item">
+                      <svg class="main-article__meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                      <span>{{ read_minutes }} min read</span>
+                    </li>
+                  {%- endif -%}
+                </ul>
+              {%- endif -%}
             </header>
 
           {%- when 'content' -%}
+            {%- liquid
+              assign article_body = article.content
+              assign trimmed_body = article_body | strip
+              assign opening_tag = trimmed_body | slice: 0, 4
+              if opening_tag == '<h1>' or opening_tag == '<h1 '
+                assign first_heading = trimmed_body | split: '</h1>' | first
+                assign heading_text = first_heading | strip_html | replace: '&amp;', '&' | replace: '&#39;', "'" | replace: '&rsquo;', "'" | replace: '’', "'" | strip | downcase
+                assign title_text = article.title | replace: '’', "'" | strip | downcase
+                if heading_text == title_text
+                  assign article_body = trimmed_body | remove_first: first_heading | remove_first: '</h1>'
+                endif
+              endif
+            -%}
             <div class="main-article__body" itemprop="articleBody" {{ block.shopify_attributes }}>
-              {{ article.content }}
+              {{ article_body }}
             </div>
 
           {%- when 'social_sharing' %}
@@ -488,6 +522,18 @@
           "id": "blog_show_author",
           "default": true,
           "label": "t:sections.main-article.blocks.title.settings.blog_show_author.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_reading_time",
+          "default": true,
+          "label": "Show reading time"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_blog_link",
+          "default": true,
+          "label": "Show blog name above title"
         },
         {
           "type": "range",
