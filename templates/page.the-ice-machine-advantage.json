@@ -178,7 +178,7 @@
       "settings": {
         "title": "Customer Favorites",
         "disable_on_mobile": false,
-        "collection": "ice-machines-1",
+        "collection": "ice-machines",
         "products_to_show": 8,
         "show_view_all": true,
         "button_select": "primary",
