@@ -106,7 +106,8 @@
                   show_date: section.settings.show_date,
                   button_type: section.settings.button_select,
                   hide_badge: true,
-                  media_aspect_ratio: section.settings.image_ratio
+                  media_aspect_ratio: section.settings.image_ratio,
+                  icon_card: section.settings.icon_cards
                 %}
               </div>
             </li>
@@ -253,6 +254,13 @@
       "default": true,
       "label": "t:sections.featured-blog.settings.show_image.label",
       "info": "t:sections.featured-blog.settings.show_image.info"
+    },
+    {
+      "type": "checkbox",
+      "id": "icon_cards",
+      "default": true,
+      "label": "Use compact icon cards for posts without an image",
+      "info": "Shows a topic icon with the title and summary instead of a large placeholder image."
     },
     {
       "type": "select",

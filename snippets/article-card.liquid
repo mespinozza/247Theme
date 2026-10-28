@@ -10,6 +10,22 @@
   if ratio == 0 or ratio == null
     assign ratio = auto
   endif
+
+  assign use_icon_card = false
+  if icon_card and article.image == blank and show_image
+    assign use_icon_card = true
+  endif
+
+  if article.excerpt.size > 0
+    assign card_excerpt = article.excerpt | strip_html | strip
+  else
+    assign card_excerpt = article.content | strip_html | strip
+    assign title_text = article.title | strip
+    assign excerpt_head = card_excerpt | slice: 0, title_text.size
+    if excerpt_head == title_text
+      assign card_excerpt = card_excerpt | slice: title_text.size, card_excerpt.size | strip
+    endif
+  endif
 -%}
 
 <style>
@@ -19,7 +35,7 @@
 </style>
 
 <article
-  class="article-card{% if article.image == blank or show_image == false %} article-card--no-image{% endif %} {{ classname }}"
+  class="article-card{% if article.image == blank or show_image == false %} article-card--no-image{% endif %}{% if use_icon_card %} article-card--icon{% endif %} {{ classname }}"
   aria-labelledby="Article-{{ article.id }}"
 >
   <div class="card__badges {% if show_image != true or hide_badge %} hidden {% endif %}">
@@ -27,11 +43,17 @@
       {{ 'blogs.article.blog' | t }}
     </div>
   </div>
-  <a href="{{ article.url }}" class="article-content motion-reduce">
+  <a
+    href="{{ article.url }}"
+    class="article-content motion-reduce"
+    {% if use_icon_card %}
+      tabindex="-1" aria-hidden="true"
+    {% endif %}
+  >
     {% assign button_link = article.url %}
-    <div class="article-card__image-wrapper  {% if make_full_width %} article-card__image-wrapper--full-width {% endif %} {% if search %} search {% endif %} {% if show_image != true %} hidden {% endif %}">
+    <div class="article-card__image-wrapper {% if use_icon_card %} article-card__image-wrapper--icon {% endif %} {% if make_full_width %} article-card__image-wrapper--full-width {% endif %} {% if search %} search {% endif %} {% if show_image != true %} hidden {% endif %}">
       {% if article.image == blank %}
-        {% render 'kitchen-placeholder', seed: article.id %}
+        {% render 'kitchen-placeholder', seed: article.id, topic: article.title %}
       {% else %}
         {% render 'picture', desktop_image: article.image, mobile_image: article.image %}
       {% endif %}
@@ -75,14 +97,10 @@
         </h3>
       {% endif %}
     </header>
-    {%- if article.excerpt.size > 0 or article.content.size > 0 -%}
+    {%- if card_excerpt != blank -%}
       <div class="hero__text hero__text--search">
         <p class="article-card__excerpt rte-width" {{ block.shopify_attributes }}>
-          {%- if article.excerpt.size > 0 -%}
-            {{ article.excerpt | strip_html | truncatewords: 30 }}
-          {%- else -%}
-            {{ article.content | strip_html | truncatewords: 30 }}
-          {%- endif -%}
+          {{ card_excerpt | truncatewords: 30 }}
         </p>
       </div>
     {%- endif -%}
