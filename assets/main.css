@@ -7662,9 +7662,11 @@ pickup-availability-drawer .pickup-availability-list .pickup-availability-list__
   height: 40%;
 }
 
-.wt-blog__item:has(.article-card--icon) {
+.wt-blog__item:has(.article-card--icon),
+.main-blog__grid__item:has(.article-card--icon) {
   display: flex;
   height: auto;
+  overflow: visible;
 }
 .wt-blog__item:has(.article-card--icon) > div {
   display: flex;
@@ -7740,7 +7742,8 @@ pickup-availability-drawer .pickup-availability-list .pickup-availability-list__
   margin-bottom: 0;
   padding-top: calc(var(--gap, 8px) * 2);
 }
-.wt-blog__item--center .article-card--icon .article-content {
+.wt-blog__item--center .article-card--icon .article-content,
+.main-blog__grid__item--center .article-card--icon .article-content {
   margin-left: auto;
   margin-right: auto;
 }
