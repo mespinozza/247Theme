@@ -1,0 +1,87 @@
+{%- comment -%}
+  Product JSON-LD. Usage: {% render 'product-structured-data', product: product %}
+  Variants priced at $0 (quote-only items) are left out of offers so search engines don't list them as free.
+{%- endcomment -%}
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  if current_variant.featured_media
+    assign seo_media = current_variant.featured_media
+  else
+    assign seo_media = product.featured_media
+  endif
+
+  assign priced_count = 0
+  for variant in product.variants
+    if variant.price > 0
+      assign priced_count = priced_count | plus: 1
+    endif
+  endfor
+-%}
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": {{ product.title | json }},
+    "url": {{ request.origin | append: product.url | json }},
+    {%- if seo_media %}
+    "image": [
+      {{ seo_media | image_url: width: 1920 | prepend: 'https:' | json }}
+    ],
+    {%- endif %}
+    "description": {{ product.description | strip_html | strip | truncate: 5000 | json }},
+    {%- if current_variant.sku != blank %}
+    "sku": {{ current_variant.sku | json }},
+    "mpn": {{ current_variant.sku | json }},
+    {%- endif %}
+    {%- if product.type != blank %}
+    "category": {{ product.type | json }},
+    {%- endif %}
+    "brand": {
+      "@type": "Brand",
+      "name": {{ product.vendor | json }}
+    }
+    {%- if priced_count > 0 -%},
+    "offers": [
+      {%- assign first_offer = true -%}
+      {%- for variant in product.variants -%}
+        {%- if variant.price > 0 -%}
+          {%- liquid
+            assign barcode = variant.barcode | strip
+            assign barcode_letters = barcode | remove: '0' | remove: '1' | remove: '2' | remove: '3' | remove: '4' | remove: '5' | remove: '6' | remove: '7' | remove: '8' | remove: '9'
+          -%}
+          {%- unless first_offer -%},{%- endunless -%}
+          {%- assign first_offer = false -%}
+        {
+          "@type": "Offer",
+          {%- if variant.sku != blank %}
+          "sku": {{ variant.sku | json }},
+          "mpn": {{ variant.sku | json }},
+          {%- endif %}
+          {%- if barcode != blank and barcode_letters == blank -%}
+            {%- case barcode.size -%}
+              {%- when 8 %}
+          "gtin8": {{ barcode | json }},
+              {%- when 12 %}
+          "gtin12": {{ barcode | json }},
+              {%- when 13 %}
+          "gtin13": {{ barcode | json }},
+              {%- when 14 %}
+          "gtin14": {{ barcode | json }},
+            {%- endcase -%}
+          {%- endif %}
+          "itemCondition": "https://schema.org/NewCondition",
+          "availability": "https://schema.org/{% if variant.available %}InStock{% else %}OutOfStock{% endif %}",
+          "price": {{ variant.price | divided_by: 100.00 | json }},
+          "priceCurrency": {{ cart.currency.iso_code | json }},
+          "url": {{ request.origin | append: variant.url | json }},
+          "seller": {
+            "@type": "Organization",
+            "name": {{ shop.name | json }}
+          }
+        }
+        {%- endif -%}
+      {%- endfor -%}
+    ]
+    {%- endif %}
+  }
+</script>

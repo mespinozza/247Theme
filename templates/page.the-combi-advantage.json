@@ -190,6 +190,7 @@
         },
         "button_AGNAeB": {
           "type": "button",
+          "disabled": true,
           "settings": {
             "button_select": "primary",
             "button_label": "Button label",
