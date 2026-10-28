@@ -23,9 +23,6 @@
     {% endif %}
 
     {% render 'meta-tags' %}
-    {%- if request.page_type == 'index' -%}
-      {% render 'organization-structured-data' %}
-    {%- endif -%}
 
     {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag: preload: true }}
     {{ 'swiper.css' | asset_url | stylesheet_tag: preload: true }}
