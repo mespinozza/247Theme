@@ -1,0 +1,525 @@
+{% comment %}
+  24/7 Restaurant Equipment — November "Ready for the Rush" campaign
+  Section file: sections/november-specials.liquid
+  Template:     templates/page.november-specials.json
+  Product + hero photos are built in (Shopify Files). Uploading an image in the
+  theme editor overrides them. Logos and "View Details" links are set there too —
+  a View Details button only appears once its link is filled in.
+  Copy, phone and email are edited directly below.
+{% endcomment %}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+<style>
+  .ns-wrap {
+    --ns-red: #a20d17;
+    --ns-red-dark: #7f0a12;
+    --ns-blue: #0400c2;
+    --ns-ink: #222321;
+    --ns-navy: #0f1923;
+    --ns-gray: #f3f4f6;
+    --ns-line: #e2e4e8;
+    --ns-muted: #5b5f66;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    color: var(--ns-ink);
+    background: #fff;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  .ns-wrap *, .ns-wrap *::before, .ns-wrap *::after { box-sizing: border-box; }
+  .ns-wrap img { max-width: 100%; display: block; }
+  .ns-container { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+  .ns-display {
+    font-family: "Anton", Impact, "Arial Narrow", sans-serif;
+    font-weight: 400; text-transform: uppercase; letter-spacing: .5px; line-height: .95; margin: 0;
+  }
+  .ns-eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; margin: 0 0 14px;
+  }
+
+  /* Buttons */
+  .ns-btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 16px 28px; border-radius: 4px; font-weight: 700; font-size: 16px;
+    text-decoration: none; border: 2px solid transparent; cursor: pointer;
+    transition: transform .15s ease, background .15s ease, color .15s ease, border-color .15s ease;
+    font-family: inherit; line-height: 1.1;
+  }
+  .ns-btn:hover { transform: translateY(-2px); }
+  .ns-btn--red { background: var(--ns-red); color: #fff; }
+  .ns-btn--red:hover { background: var(--ns-red-dark); color: #fff; }
+  .ns-btn--blue { background: var(--ns-blue); color: #fff; }
+  .ns-btn--blue:hover { background: #03009a; color: #fff; }
+  .ns-btn--ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.7); }
+  .ns-btn--ghost:hover { background: #fff; color: var(--ns-navy); }
+  .ns-btn--outline { background: #fff; color: var(--ns-blue); border-color: var(--ns-blue); }
+  .ns-btn--outline:hover { background: var(--ns-blue); color: #fff; }
+  .ns-btn svg { width: 18px; height: 18px; flex: none; }
+
+  /* Hero — white, flyer-style split with kitchen photo */
+  .ns-hero { background: #fff; color: var(--ns-ink); border-bottom: 1px solid var(--ns-line); }
+  .ns-hero__inner {
+    display: grid; grid-template-columns: 1fr 1.05fr; gap: 48px; align-items: center;
+    padding-top: 64px; padding-bottom: 64px;
+  }
+  .ns-hero .ns-eyebrow { color: #fff; background: var(--ns-blue); padding: 7px 12px; border-radius: 2px; }
+  .ns-hero__title { font-size: clamp(56px, 7.4vw, 104px); }
+  .ns-hero__title span { display: block; color: var(--ns-blue); }
+  .ns-hero__title .ns-red { color: var(--ns-red); }
+  .ns-hero__lead { max-width: 540px; font-size: 18px; margin: 22px 0 30px; color: #3a3c40; }
+  .ns-hero__lead strong { color: var(--ns-ink); }
+  .ns-hero__ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+  .ns-hero__media {
+    position: relative; aspect-ratio: 4 / 3; border-radius: 6px; overflow: hidden;
+    box-shadow: 0 20px 50px rgba(15,25,35,.16);
+  }
+  .ns-hero__media img, .ns-hero__img { width: 100%; height: 100%; object-fit: cover; }
+  .ns-hero__media::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 8px; background: var(--ns-red);
+  }
+  .ns-hero__fallback {
+    width: 100%; height: 100%; background: linear-gradient(160deg, #eef0f3, #dfe2e7);
+    display: flex; align-items: center; justify-content: center;
+    color: #8a9099; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  }
+
+  /* Strip */
+  .ns-strip { background: var(--ns-blue); color: #fff; }
+  .ns-strip__list {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 44px;
+    list-style: none; margin: 0; padding: 18px 24px;
+    font-weight: 700; font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase;
+  }
+  .ns-strip__list li { display: flex; align-items: center; gap: 10px; }
+  .ns-strip__list li::before { content: ""; width: 8px; height: 8px; background: #fff; transform: rotate(45deg); }
+
+  /* Intro */
+  .ns-intro { padding: 88px 0 24px; }
+  .ns-intro__grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 56px; align-items: start; }
+  .ns-intro h2 { font-size: clamp(40px, 5vw, 60px); color: var(--ns-blue); }
+  .ns-intro h2 span { color: var(--ns-red); }
+  .ns-intro p { font-size: 18px; margin: 0 0 16px; color: #3a3c40; }
+  .ns-intro p:last-child { margin-bottom: 0; }
+
+  /* Section heading with rules (echoes the flyer) */
+  .ns-ruled { display: flex; align-items: center; gap: 0; margin: 64px 0 44px; }
+  .ns-ruled::before, .ns-ruled::after { content: ""; flex: 1; height: 6px; background: var(--ns-red); }
+  .ns-ruled h2 { background: var(--ns-red); color: #fff; font-size: clamp(30px, 4vw, 44px); padding: 12px 26px 10px; }
+
+  /* Equipment cards */
+  .ns-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; padding-bottom: 96px; }
+  .ns-card {
+    display: flex; flex-direction: column; background: #fff; border: 1px solid var(--ns-line);
+    border-top: 6px solid var(--ns-blue); border-radius: 6px; overflow: hidden;
+    transition: box-shadow .2s ease, transform .2s ease;
+  }
+  .ns-card:hover { box-shadow: 0 18px 40px rgba(15,25,35,.12); transform: translateY(-4px); }
+  .ns-card__problem {
+    background: var(--ns-navy); color: #fff; font-size: 12px; font-weight: 700;
+    letter-spacing: 1.8px; text-transform: uppercase; padding: 10px 22px;
+  }
+  .ns-card__head { padding: 26px 22px 6px; text-align: center; }
+  .ns-card__logo { height: 56px; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+  .ns-card__logo img { max-height: 56px; width: auto; }
+  .ns-wordmark { font-family: "Anton", Impact, sans-serif; font-size: 30px; letter-spacing: 3px; color: var(--ns-ink); }
+  .ns-card h3 { font-size: 21px; line-height: 1.25; margin: 0; color: var(--ns-ink); }
+  .ns-card__img {
+    height: 260px; display: flex; align-items: center; justify-content: center; padding: 18px 22px;
+  }
+  .ns-card__img img { max-height: 100%; width: auto; object-fit: contain; }
+  .ns-card__body { padding: 0 22px 24px; display: flex; flex-direction: column; flex: 1; }
+  .ns-card__body p { margin: 0 0 14px; font-size: 16px; color: #3a3c40; }
+  .ns-card__solves {
+    border-left: 4px solid var(--ns-red); background: var(--ns-gray);
+    padding: 12px 14px; font-size: 15px; margin-bottom: 22px !important;
+  }
+  .ns-card__solves strong { color: var(--ns-red); }
+  .ns-card__actions { margin-top: auto; display: grid; gap: 10px; }
+  .ns-card__actions .ns-btn { width: 100%; padding: 14px 18px; font-size: 15px; }
+
+  .ns-ph {
+    width: 100%; height: 100%; min-height: 200px; border-radius: 4px;
+    background: linear-gradient(160deg, #eef0f3, #dfe2e7);
+    display: flex; align-items: center; justify-content: center;
+    color: #8a9099; font-size: 13px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+  }
+
+  /* Pricing band */
+  .ns-price { background: var(--ns-red); color: #fff; position: relative; overflow: hidden; }
+  .ns-price::before {
+    content: ""; position: absolute; inset: 0;
+    background: repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 2px, transparent 2px 26px);
+  }
+  .ns-price__inner {
+    position: relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+    gap: 24px; padding: 48px 24px;
+  }
+  .ns-price h2 { font-size: clamp(34px, 4.6vw, 54px); }
+  .ns-price p { margin: 10px 0 0; font-size: 18px; color: rgba(255,255,255,.9); }
+  .ns-price__phone {
+    font-family: "Anton", Impact, sans-serif; font-size: clamp(36px, 5vw, 58px);
+    color: #fff; text-decoration: none; letter-spacing: 1px; line-height: 1;
+    display: inline-flex; align-items: center; gap: 14px;
+  }
+  .ns-price__phone svg { width: 40px; height: 40px; }
+  .ns-price__phone:hover { color: #fff; opacity: .9; }
+
+  /* Demo */
+  .ns-demo { background: var(--ns-gray); padding: 96px 0; }
+  .ns-demo__grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; align-items: start; }
+  .ns-demo .ns-eyebrow { color: var(--ns-red); }
+  .ns-demo h2 { font-size: clamp(40px, 5vw, 60px); color: var(--ns-blue); }
+  .ns-demo__tag { font-size: 22px; font-style: italic; margin: 18px 0 30px; color: var(--ns-ink); }
+  .ns-demo__tag strong { color: var(--ns-blue); font-style: italic; }
+  .ns-steps { list-style: none; margin: 0 0 30px; padding: 0; display: grid; gap: 18px; }
+  .ns-steps li { display: grid; grid-template-columns: 52px 1fr; gap: 16px; align-items: start; }
+  .ns-steps__num {
+    width: 52px; height: 52px; background: var(--ns-red); color: #fff; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: "Anton", Impact, sans-serif; font-size: 26px;
+  }
+  .ns-steps h4 { margin: 2px 0 4px; font-size: 18px; }
+  .ns-steps p { margin: 0; color: var(--ns-muted); font-size: 16px; }
+  .ns-demo__contact { font-size: 16px; color: var(--ns-muted); }
+  .ns-demo__contact a { color: var(--ns-blue); font-weight: 700; text-decoration: none; }
+
+  /* Form */
+  .ns-form {
+    background: #fff; border-radius: 8px; padding: 36px;
+    box-shadow: 0 20px 50px rgba(15,25,35,.10); border-top: 6px solid var(--ns-red);
+  }
+  .ns-form h3 { font-family: "Anton", Impact, sans-serif; font-weight: 400; text-transform: uppercase;
+    font-size: 30px; margin: 0 0 6px; color: var(--ns-ink); letter-spacing: .5px; }
+  .ns-form__sub { margin: 0 0 24px; color: var(--ns-muted); font-size: 15px; }
+  .ns-form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .ns-field { margin-bottom: 16px; }
+  .ns-field label, .ns-field legend {
+    display: block; font-size: 13px; font-weight: 700; letter-spacing: .5px; margin-bottom: 6px; color: var(--ns-ink);
+  }
+  .ns-field input[type="text"], .ns-field input[type="email"], .ns-field input[type="tel"],
+  .ns-field input[type="date"], .ns-field select, .ns-field textarea {
+    width: 100%; padding: 13px 14px; font-size: 16px; font-family: inherit; color: var(--ns-ink);
+    border: 1.5px solid #cfd3d9; border-radius: 4px; background: #fff;
+  }
+  .ns-field input:focus, .ns-field select:focus, .ns-field textarea:focus {
+    outline: none; border-color: var(--ns-blue); box-shadow: 0 0 0 3px rgba(4,0,194,.12);
+  }
+  .ns-field textarea { min-height: 96px; resize: vertical; }
+  .ns-field fieldset { border: 0; padding: 0; margin: 0; }
+  .ns-checks { display: grid; gap: 8px; }
+  .ns-check {
+    display: flex; align-items: center; gap: 10px; padding: 11px 14px;
+    border: 1.5px solid #cfd3d9; border-radius: 4px; cursor: pointer; font-size: 15px;
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .ns-check input { width: 18px; height: 18px; accent-color: var(--ns-blue); margin: 0; }
+  .ns-check:has(input:checked) { border-color: var(--ns-blue); background: rgba(4,0,194,.05); }
+  .ns-form .ns-btn { width: 100%; margin-top: 6px; font-size: 17px; padding: 18px; }
+  .ns-form__note { font-size: 13px; color: var(--ns-muted); text-align: center; margin: 12px 0 0; }
+  .ns-alert { padding: 16px 18px; border-radius: 4px; margin-bottom: 20px; font-size: 15px; }
+  .ns-alert--ok { background: #e8f6ec; border-left: 4px solid #1f8a3b; }
+  .ns-alert--err { background: #fdecee; border-left: 4px solid var(--ns-red); }
+
+  /* Closing */
+  .ns-close { background: #fff; color: var(--ns-ink); padding: 80px 0; text-align: center; border-top: 6px solid var(--ns-blue); }
+  .ns-close h2 { font-size: clamp(36px, 5vw, 56px); color: var(--ns-blue); }
+  .ns-close h2 span { color: var(--ns-red); }
+  .ns-close p { margin: 16px auto 30px; max-width: 620px; color: #3a3c40; font-size: 18px; }
+  .ns-close__ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; }
+  .ns-close__email { margin-top: 26px; font-size: 16px; }
+  .ns-close__email a { color: var(--ns-blue); font-weight: 700; }
+
+  /* Mobile sticky bar */
+  .ns-sticky { display: none; }
+
+  @media (max-width: 960px) {
+    .ns-intro__grid, .ns-demo__grid, .ns-hero__inner { grid-template-columns: 1fr; gap: 28px; }
+    .ns-cards { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+  }
+  @media (max-width: 640px) {
+    .ns-container { padding: 0 16px; }
+    .ns-hero__inner { padding-top: 40px; padding-bottom: 44px; }
+    .ns-hero__lead { font-size: 17px; }
+    .ns-hero__ctas .ns-btn { width: 100%; }
+    .ns-strip__list { gap: 8px 22px; font-size: 12px; padding: 14px 16px; }
+    .ns-intro { padding-top: 60px; }
+    .ns-ruled { margin: 48px 0 32px; }
+    .ns-ruled h2 { padding: 10px 14px 8px; }
+    .ns-price__inner { padding: 40px 16px; flex-direction: column; align-items: flex-start; }
+    .ns-demo { padding: 64px 0; }
+    .ns-form { padding: 24px 18px; }
+    .ns-form__row { grid-template-columns: 1fr; gap: 0; }
+    .ns-close__ctas .ns-btn { width: 100%; }
+    .ns-wrap { padding-bottom: 68px; }
+    .ns-sticky {
+      display: grid; grid-template-columns: 1fr 1fr; position: fixed; left: 0; right: 0; bottom: 0; z-index: 50;
+      box-shadow: 0 -6px 20px rgba(0,0,0,.18);
+    }
+    .ns-sticky a {
+      display: flex; align-items: center; justify-content: center; gap: 8px; padding: 18px 8px;
+      font-weight: 700; font-size: 15px; text-decoration: none; color: #fff;
+    }
+    .ns-sticky a:first-child { background: var(--ns-red); }
+    .ns-sticky a:last-child { background: var(--ns-blue); }
+    .ns-sticky svg { width: 18px; height: 18px; }
+  }
+</style>
+
+<div class="ns-wrap">
+
+  <!-- HERO -->
+  <section class="ns-hero">
+    <div class="ns-container ns-hero__inner">
+      <div>
+      <p class="ns-eyebrow">November Equipment Specials</p>
+      <h1 class="ns-display ns-hero__title"><span>Ready for</span><span class="ns-red">the Rush</span></h1>
+      <p class="ns-hero__lead"><strong>Problem-solving equipment for busy kitchens heading into catering season.</strong> Special November pricing on three kitchen workhorses — plus a private showroom demo so you can see them run with your own product.</p>
+      <div class="ns-hero__ctas">
+        <a href="#ns-demo" class="ns-btn ns-btn--red">Book a Showroom Demo</a>
+        <a href="tel:2017264900" class="ns-btn ns-btn--outline">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>
+          Call 201.726.4900
+        </a>
+      </div>
+      </div>
+      <div class="ns-hero__media">
+        {% if section.settings.hero_image %}{{ section.settings.hero_image | image_url: width: 1600 | image_tag: class: 'ns-hero__img', loading: 'eager', alt: 'Chefs working in a busy commercial kitchen' }}{% else %}<img class="ns-hero__img" src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/busy_kitchen.jpg?v=1793205592&width=1600" alt="Chefs working in a busy commercial kitchen" loading="eager" width="1600" height="1200">{% endif %}
+      </div>
+    </div>
+  </section>
+
+  <!-- STRIP -->
+  <div class="ns-strip">
+    <ul class="ns-strip__list">
+      <li>Special November Pricing</li>
+      <li>Private Showroom Demos</li>
+      <li>Bring Your Own Product</li>
+    </ul>
+  </div>
+
+  <!-- INTRO -->
+  <section class="ns-intro">
+    <div class="ns-container ns-intro__grid">
+      <h2 class="ns-display">Catering season shows up <span>all at once.</span></h2>
+      <div>
+        <p>One week it's business as usual. The next, it's Thanksgiving trays, office holiday parties and back-to-back events across New Jersey and the tri-state area — and every bottleneck in your kitchen shows up at the same time.</p>
+        <p>The oven that can't keep pace. The prep that eats your mornings. The menu you can't stretch without another piece of equipment. This November we've lined up three machines that solve exactly those problems, so your kitchen can work smarter, prep more efficiently, and deliver consistent results when demand picks up.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED EQUIPMENT -->
+  <section class="ns-container" id="ns-equipment">
+    <div class="ns-ruled"><h2 class="ns-display">Featured Equipment</h2></div>
+
+    <div class="ns-cards">
+
+      <!-- UNOX -->
+      <article class="ns-card">
+        <div class="ns-card__problem">Short on space, long on orders</div>
+        <div class="ns-card__head">
+          <div class="ns-card__logo">{% if section.settings.unox_logo %}{{ section.settings.unox_logo | image_url: width: 400 | image_tag: alt: 'Unox' }}{% else %}<span class="ns-wordmark">UNOX</span>{% endif %}</div>
+          <h3>Electric Convection Oven</h3>
+        </div>
+        <div class="ns-card__img">{% if section.settings.unox_image %}{{ section.settings.unox_image | image_url: width: 800 | image_tag: alt: 'Unox electric convection oven', loading: 'lazy' }}{% else %}<img src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/image_3.png?v=1793205297&width=800" alt="Unox electric convection oven" loading="lazy">{% endif %}</div>
+        <div class="ns-card__body">
+          <p>Fast, consistent cooking with a compact footprint and user-friendly performance for busy commercial kitchens.</p>
+          <p class="ns-card__solves"><strong>Solves:</strong> more output without giving up more square footage.</p>
+          <div class="ns-card__actions">
+            <a href="#ns-demo" class="ns-btn ns-btn--blue" data-ns-equip="unox">Get November Pricing</a>
+            {% if section.settings.unox_url != blank %}<a href="{{ section.settings.unox_url }}" class="ns-btn ns-btn--outline">View Details</a>{% endif %}
+          </div>
+        </div>
+      </article>
+
+      <!-- ORVED -->
+      <article class="ns-card">
+        <div class="ns-card__problem">Prep is eating your mornings</div>
+        <div class="ns-card__head">
+          <div class="ns-card__logo">{% if section.settings.orved_logo %}{{ section.settings.orved_logo | image_url: width: 400 | image_tag: alt: 'Orved' }}{% else %}<span class="ns-wordmark">ORVED</span>{% endif %}</div>
+          <h3>Vacuum Processing Machine</h3>
+        </div>
+        <div class="ns-card__img">{% if section.settings.orved_image %}{{ section.settings.orved_image | image_url: width: 800 | image_tag: alt: 'Orved vacuum processing machine', loading: 'lazy' }}{% else %}<img src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/image_2.png?v=1793205297&width=800" alt="Orved vacuum processing machine" loading="lazy">{% endif %}</div>
+        <div class="ns-card__body">
+          <p>A smart solution for food prep, packaging, and preservation that helps improve efficiency and product quality.</p>
+          <p class="ns-card__solves"><strong>Solves:</strong> prep ahead and portion with confidence, so event day is about cooking, not catching up.</p>
+          <div class="ns-card__actions">
+            <a href="#ns-demo" class="ns-btn ns-btn--blue" data-ns-equip="orved">Get November Pricing</a>
+            {% if section.settings.orved_url != blank %}<a href="{{ section.settings.orved_url }}" class="ns-btn ns-btn--outline">View Details</a>{% endif %}
+          </div>
+        </div>
+      </article>
+
+      <!-- GIORIK -->
+      <article class="ns-card">
+        <div class="ns-card__problem">One menu, many cooking methods</div>
+        <div class="ns-card__head">
+          <div class="ns-card__logo">{% if section.settings.giorik_logo %}{{ section.settings.giorik_logo | image_url: width: 400 | image_tag: alt: 'Giorik' }}{% else %}<span class="ns-wordmark">GIORIK</span>{% endif %}</div>
+          <h3>Steambox Evolution Combi Ovens</h3>
+        </div>
+        <div class="ns-card__img">{% if section.settings.giorik_image %}{{ section.settings.giorik_image | image_url: width: 800 | image_tag: alt: 'Giorik Steambox Evolution combi oven', loading: 'lazy' }}{% else %}<img src="https://cdn.shopify.com/s/files/1/0566/4043/8327/files/image_1_2364ccb4-b403-4650-a70a-2a300d84958a.png?v=1793205297&width=800" alt="Giorik Steambox Evolution combi oven" loading="lazy">{% endif %}</div>
+        <div class="ns-card__body">
+          <p>Versatile combi cooking for professional kitchens that need flexibility and performance. Available in electric and gas.</p>
+          <p class="ns-card__solves"><strong>Solves:</strong> a bigger, more varied menu from a single footprint.</p>
+          <div class="ns-card__actions">
+            <a href="#ns-demo" class="ns-btn ns-btn--blue" data-ns-equip="giorik">Get November Pricing</a>
+            {% if section.settings.giorik_url != blank %}<a href="{{ section.settings.giorik_url }}" class="ns-btn ns-btn--outline">View Details</a>{% endif %}
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- PRICING BAND -->
+  <section class="ns-price">
+    <div class="ns-container ns-price__inner">
+      <div>
+        <h2 class="ns-display">Special November Pricing Available</h2>
+        <p>Call for pricing on all three featured machines.</p>
+      </div>
+      <a href="tel:2017264900" class="ns-price__phone">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>
+        201.726.4900
+      </a>
+    </div>
+  </section>
+
+  <!-- DEMO -->
+  <section class="ns-demo" id="ns-demo">
+    <div class="ns-container ns-demo__grid">
+      <div>
+        <p class="ns-eyebrow">Private Showroom Demo</p>
+        <h2 class="ns-display">See it work before you buy.</h2>
+        <p class="ns-demo__tag">Bring your team. Bring your product. <strong>See what works for your kitchen.</strong></p>
+        <ol class="ns-steps">
+          <li><span class="ns-steps__num">1</span><div><h4>Request a time</h4><p>Tell us which equipment you're curious about and when your team can get away.</p></div></li>
+          <li><span class="ns-steps__num">2</span><div><h4>Bring your own product</h4><p>Cook your actual menu items, not a canned demo. That's how you know it fits.</p></div></li>
+          <li><span class="ns-steps__num">3</span><div><h4>Talk numbers</h4><p>We'll put together your special November pricing while the offer is on.</p></div></li>
+        </ol>
+        <p class="ns-demo__contact">Prefer to talk it through? Call <a href="tel:2017264900">201.726.4900</a> or email <a href="mailto:Jeanette@247restaurantequipment.com">Jeanette@247restaurantequipment.com</a>.</p>
+      </div>
+
+      <div class="ns-form">
+        <h3>Book Your Demo</h3>
+        <p class="ns-form__sub">We'll reach out to confirm a time that works for your team.</p>
+
+        {% form 'contact', id: 'ns-demo-form' %}
+          {% if form.posted_successfully? %}<div class="ns-alert ns-alert--ok"><strong>Thanks — you're on the list!</strong> Jeanette will reach out shortly to schedule your showroom demo.</div>{% endif %}
+          {% if form.errors %}<div class="ns-alert ns-alert--err">{{ form.errors | default_errors }}</div>{% endif %}
+
+          <input type="hidden" name="contact[Campaign]" value="November Specials — Ready for the Rush">
+
+          <div class="ns-form__row">
+            <div class="ns-field"><label for="ns-name">Your name *</label><input type="text" id="ns-name" name="contact[name]" required autocomplete="name"></div>
+            <div class="ns-field"><label for="ns-biz">Business name *</label><input type="text" id="ns-biz" name="contact[Business]" required autocomplete="organization"></div>
+          </div>
+          <div class="ns-form__row">
+            <div class="ns-field"><label for="ns-email">Email *</label><input type="email" id="ns-email" name="contact[email]" required autocomplete="email"></div>
+            <div class="ns-field"><label for="ns-phone">Phone *</label><input type="tel" id="ns-phone" name="contact[phone]" required autocomplete="tel"></div>
+          </div>
+
+          <div class="ns-field">
+            <fieldset>
+              <legend>I'm interested in</legend>
+              <div class="ns-checks">
+                <label class="ns-check"><input type="checkbox" id="ns-eq-unox" name="contact[Interest - Unox Convection Oven]" value="Yes"> Unox Electric Convection Oven</label>
+                <label class="ns-check"><input type="checkbox" id="ns-eq-orved" name="contact[Interest - Orved Vacuum Machine]" value="Yes"> Orved Vacuum Processing Machine</label>
+                <label class="ns-check"><input type="checkbox" id="ns-eq-giorik" name="contact[Interest - Giorik Combi Oven]" value="Yes"> Giorik Steambox Evolution Combi Oven</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="ns-form__row">
+            <div class="ns-field">
+              <label for="ns-request">I'd like</label>
+              <select id="ns-request" name="contact[Request]">
+                <option>A showroom demo + pricing</option>
+                <option>November pricing only</option>
+              </select>
+            </div>
+            <div class="ns-field"><label for="ns-date">Preferred demo date</label><input type="date" id="ns-date" name="contact[Preferred Date]"></div>
+          </div>
+
+          <div class="ns-field"><label for="ns-msg">What are you cooking? (optional)</label><textarea id="ns-msg" name="contact[body]" placeholder="Tell us about your menu, volume, or what you'd like to test."></textarea></div>
+
+          <button type="submit" class="ns-btn ns-btn--red">Request My Demo</button>
+          <p class="ns-form__note">No obligation. We'll only use your info to follow up on this request.</p>
+        {% endform %}
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="ns-close">
+    <div class="ns-container">
+      <h2 class="ns-display">Get ready <span>before</span> the rush.</h2>
+      <p>The best time to upgrade is before the holiday orders start stacking up. Lock in November pricing now and walk into catering season ready.</p>
+      <div class="ns-close__ctas">
+        <a href="#ns-demo" class="ns-btn ns-btn--red">Book a Showroom Demo</a>
+        <a href="tel:2017264900" class="ns-btn ns-btn--outline">Call 201.726.4900</a>
+      </div>
+      <p class="ns-close__email">Or email <a href="mailto:Jeanette@247restaurantequipment.com">Jeanette@247restaurantequipment.com</a></p>
+    </div>
+  </section>
+
+  <!-- MOBILE STICKY BAR -->
+  <div class="ns-sticky">
+    <a href="tel:2017264900"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>Call for Pricing</a>
+    <a href="#ns-demo">Book a Demo</a>
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    // "Get November Pricing" buttons pre-check that equipment in the demo form
+    document.querySelectorAll('[data-ns-equip]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var box = document.getElementById('ns-eq-' + btn.getAttribute('data-ns-equip'));
+        if (box) box.checked = true;
+      });
+    });
+    // Smooth scroll for in-page links
+    document.querySelectorAll('.ns-wrap a[href^="#ns-"]').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var target = document.querySelector(a.getAttribute('href'));
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+    // After a submit, Shopify reloads the page — jump back to the form message
+    if (window.location.search.indexOf('contact_posted=true') > -1 || document.querySelector('.ns-alert')) {
+      var demo = document.getElementById('ns-demo');
+      if (demo) demo.scrollIntoView();
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "November Specials",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Hero" },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero background photo" },
+    { "type": "header", "content": "Unox" },
+    { "type": "image_picker", "id": "unox_logo", "label": "Unox logo" },
+    { "type": "image_picker", "id": "unox_image", "label": "Unox product photo" },
+    { "type": "url", "id": "unox_url", "label": "Unox product page link" },
+    { "type": "header", "content": "Orved" },
+    { "type": "image_picker", "id": "orved_logo", "label": "Orved logo" },
+    { "type": "image_picker", "id": "orved_image", "label": "Orved product photo" },
+    { "type": "url", "id": "orved_url", "label": "Orved product page link" },
+    { "type": "header", "content": "Giorik" },
+    { "type": "image_picker", "id": "giorik_logo", "label": "Giorik logo" },
+    { "type": "image_picker", "id": "giorik_image", "label": "Giorik product photo" },
+    { "type": "url", "id": "giorik_url", "label": "Giorik product page link" }
+  ],
+  "presets": [{ "name": "November Specials" }]
+}
+{% endschema %}
