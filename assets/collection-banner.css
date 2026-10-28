@@ -101,8 +101,10 @@
   align-items: center;
   gap: 4px;
   margin-top: var(--gap, 8px);
-  padding: 0;
+  margin-left: -10px;
+  padding: 4px 10px;
   border: 0;
+  border-radius: var(--border-radius-button);
   background: none;
   font-family: var(--font-base);
   font-size: 13px;
@@ -110,8 +112,14 @@
   color: var(--color-links);
   cursor: pointer;
 }
-.collection-header__toggle:hover {
-  color: var(--color-links-active);
+.collection-header__toggle:hover,
+.collection-header__toggle:focus-visible {
+  color: #ffffff;
+}
+@media (max-width: 749px) {
+  .collection-header__panel--mobile-center .collection-header__toggle {
+    margin-left: 0;
+  }
 }
 .collection-header__toggle svg {
   width: 16px;
