@@ -73,6 +73,10 @@
             "margin-bottom": 8
           }
         },
+        "melon_order_limits_app_block_MTm48r": {
+          "type": "shopify://apps/melon-order-limits/blocks/app-block/91904755-64ba-4bc5-85c6-2e5708522f2b",
+          "settings": {}
+        },
         "price": {
           "type": "price",
           "settings": {
@@ -192,6 +196,7 @@
         "rating",
         "locally_available_VPtXVc",
         "separator_46mxVr",
+        "melon_order_limits_app_block_MTm48r",
         "price",
         "separator_RrKQ4A",
         "variant_picker",
